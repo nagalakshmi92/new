@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>clFFT &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>clFFT</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Tools/clFFT.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="clfft">
+<span id="c1fft"></span><h1>clFFT<a class="headerlink" href="#clfft" title="Permalink to this headline">¶</a></h1>
+<p>For Github Repository <a class="reference external" href="https://github.com/clMathLibraries/clFFT">clFFT</a></p>
+<p>clFFT is a software library containing FFT functions written in OpenCL. In addition to GPU devices, the library also supports running on CPU devices to facilitate debugging and heterogeneous programming.</p>
+<p>Pre-built binaries are available here.</p>
+<div class="section" id="what-s-new">
+<h2>What’s New<a class="headerlink" href="#what-s-new" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Support for powers of 11&amp;13 size transforms</li>
+<li>Support for 1D large size transforms with no extra memory allocation requirement with environment flag CLFFT_REQUEST_LIB_NOMEMALLOC=1 for complex FFTs of powers of 2,3,5,10 sizes</li>
+</ul>
+</div>
+<div class="section" id="note">
+<h2>Note<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>clFFT requires platform/runtime that supports OpenCL 1.2</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="introduction-to-clfft">
+<h2>Introduction to clFFT<a class="headerlink" href="#introduction-to-clfft" title="Permalink to this headline">¶</a></h2>
+<p>The FFT is an implementation of the Discrete Fourier Transform (DFT) that makes use of symmetries in the FFT definition to reduce the mathematical intensity required from O(N^2) to O(N log2(N)) when the sequence length N is the product of small prime factors. Currently, there is no standard API for FFT routines. Hardware vendors usually provide a set of high-performance FFTs optimized for their systems: no two vendors employ the same interfaces for their FFT routines. clFFT provides a set of FFT routines that are optimized for AMD graphics processors, but also are functional across CPU and other compute devices.</p>
+<p>The clFFT library is an open source OpenCL library implementation of discrete Fast Fourier Transforms. The library:</p>
+<blockquote>
+<div><ul class="simple">
+<li>provides a fast and accurate platform for calculating discrete FFTs.</li>
+<li>works on CPU or GPU backends.</li>
+<li>supports in-place or out-of-place transforms.</li>
+<li>supports 1D, 2D, and 3D transforms with a batch size that can be greater than 1.</li>
+<li>supports planar (real and complex components in separate arrays) and interleaved (real and complex components as a pair contiguous in memory) formats.</li>
+<li>supports dimension lengths that can be any combination of powers of 2, 3, 5, 7, 11 and 13.</li>
+<li>Supports single and double precision floating point formats.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="clfft-library-user-documentation">
+<h2>clFFT library user documentation<a class="headerlink" href="#clfft-library-user-documentation" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://clmathlibraries.github.io/clFFT/">Library and API documentation</a> for developers is available online as a GitHub Pages website</p>
+</div>
+<div class="section" id="google-groups">
+<h2>Google Groups<a class="headerlink" href="#google-groups" title="Permalink to this headline">¶</a></h2>
+<p>Two mailing lists exist for the clMath projects:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="mailto:clmath&#37;&#52;&#48;googlegroups&#46;com">clmath<span>&#64;</span>googlegroups<span>&#46;</span>com</a> - group whose focus is to answer questions on using the library or reporting issues</li>
+<li><a class="reference external" href="mailto:clmath-developers&#37;&#52;&#48;googlegroups&#46;com">clmath-developers<span>&#64;</span>googlegroups<span>&#46;</span>com</a> - group whose focus is for developers interested in contributing to the library code</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="api-semantic-versioning">
+<h2>API semantic versioning<a class="headerlink" href="#api-semantic-versioning" title="Permalink to this headline">¶</a></h2>
+<p>Good software is typically the result of the loop of feedback and iteration; software interfaces no less so. clFFT follows the <a class="reference external" href="http://semver.org/">semantic</a> versioning guidelines. The version number used is of the form MAJOR.MINOR.PATCH.</p>
+</div>
+<div class="section" id="clfft-wiki">
+<h2>clFFT Wiki<a class="headerlink" href="#clfft-wiki" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/clMathLibraries/clFFT/wiki">project wiki</a> contains helpful documentation, including a <a class="reference external" href="https://github.com/clMathLibraries/clFFT/wiki/Build">build primer</a></p>
+</div>
+<div class="section" id="contributing-code">
+<h2>Contributing code<a class="headerlink" href="#contributing-code" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to and read the <a class="reference external" href="https://github.com/clMathLibraries/clFFT/blob/master/CONTRIBUTING.md">Contributing</a> document for guidelines on how to contribute code to this open source project. The code in the /master branch is considered to be stable, and all pull-requests must be made against the /develop branch.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>The source for clFFT is licensed under the <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a> , Version 2.0</p>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>The following simple example shows how to use clFFT to compute a simple 1D forward transform</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdlib.h&gt;</span>
+
+<span class="o">/*</span> <span class="n">No</span> <span class="n">need</span> <span class="n">to</span> <span class="n">explicitely</span> <span class="n">include</span> <span class="n">the</span> <span class="n">OpenCL</span> <span class="n">headers</span> <span class="o">*/</span>
+<span class="c1">#include &lt;clFFT.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">cl_int</span> <span class="n">err</span><span class="p">;</span>
+   <span class="n">cl_platform_id</span> <span class="n">platform</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="n">cl_device_id</span> <span class="n">device</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="n">cl_context_properties</span> <span class="n">props</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">CL_CONTEXT_PLATFORM</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">};</span>
+   <span class="n">cl_context</span> <span class="n">ctx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="n">cl_command_queue</span> <span class="n">queue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="n">cl_mem</span> <span class="n">bufX</span><span class="p">;</span>
+       <span class="nb">float</span> <span class="o">*</span><span class="n">X</span><span class="p">;</span>
+   <span class="n">cl_event</span> <span class="n">event</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+   <span class="nb">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+       <span class="n">size_t</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span>
+
+       <span class="o">/*</span> <span class="n">FFT</span> <span class="n">library</span> <span class="n">realted</span> <span class="n">declarations</span> <span class="o">*/</span>
+       <span class="n">clfftPlanHandle</span> <span class="n">planHandle</span><span class="p">;</span>
+       <span class="n">clfftDim</span> <span class="n">dim</span> <span class="o">=</span> <span class="n">CLFFT_1D</span><span class="p">;</span>
+       <span class="n">size_t</span> <span class="n">clLengths</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">N</span><span class="p">};</span>
+
+   <span class="o">/*</span> <span class="n">Setup</span> <span class="n">OpenCL</span> <span class="n">environment</span><span class="o">.</span> <span class="o">*/</span>
+   <span class="n">err</span> <span class="o">=</span> <span class="n">clGetPlatformIDs</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">platform</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">);</span>
+   <span class="n">err</span> <span class="o">=</span> <span class="n">clGetDeviceIDs</span><span class="p">(</span> <span class="n">platform</span><span class="p">,</span> <span class="n">CL_DEVICE_TYPE_GPU</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">device</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">);</span>
+
+   <span class="n">props</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">cl_context_properties</span><span class="p">)</span><span class="n">platform</span><span class="p">;</span>
+   <span class="n">ctx</span> <span class="o">=</span> <span class="n">clCreateContext</span><span class="p">(</span> <span class="n">props</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">device</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span> <span class="p">);</span>
+   <span class="n">queue</span> <span class="o">=</span> <span class="n">clCreateCommandQueue</span><span class="p">(</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span> <span class="p">);</span>
+
+   <span class="o">/*</span> <span class="n">Setup</span> <span class="n">clFFT</span><span class="o">.</span> <span class="o">*/</span>
+       <span class="n">clfftSetupData</span> <span class="n">fftSetup</span><span class="p">;</span>
+       <span class="n">err</span> <span class="o">=</span> <span class="n">clfftInitSetupData</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fftSetup</span><span class="p">);</span>
+       <span class="n">err</span> <span class="o">=</span> <span class="n">clfftSetup</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fftSetup</span><span class="p">);</span>
+
+       <span class="o">/*</span> <span class="n">Allocate</span> <span class="n">host</span> <span class="o">&amp;</span> <span class="n">initialize</span> <span class="n">data</span><span class="o">.</span> <span class="o">*/</span>
+       <span class="o">/*</span> <span class="n">Only</span> <span class="n">allocation</span> <span class="n">shown</span> <span class="k">for</span> <span class="n">simplicity</span><span class="o">.</span> <span class="o">*/</span>
+       <span class="n">X</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">X</span><span class="p">));</span>
+
+   <span class="o">/*</span> <span class="n">Prepare</span> <span class="n">OpenCL</span> <span class="n">memory</span> <span class="n">objects</span> <span class="ow">and</span> <span class="n">place</span> <span class="n">data</span> <span class="n">inside</span> <span class="n">them</span><span class="o">.</span> <span class="o">*/</span>
+   <span class="n">bufX</span> <span class="o">=</span> <span class="n">clCreateBuffer</span><span class="p">(</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">CL_MEM_READ_WRITE</span><span class="p">,</span> <span class="n">N</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">X</span><span class="p">),</span> <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span> <span class="p">);</span>
+
+   <span class="n">err</span> <span class="o">=</span> <span class="n">clEnqueueWriteBuffer</span><span class="p">(</span> <span class="n">queue</span><span class="p">,</span> <span class="n">bufX</span><span class="p">,</span> <span class="n">CL_TRUE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+       <span class="n">N</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span> <span class="o">*</span><span class="n">X</span> <span class="p">),</span> <span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">);</span>
+
+       <span class="o">/*</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">default</span> <span class="n">plan</span> <span class="k">for</span> <span class="n">a</span> <span class="nb">complex</span> <span class="n">FFT</span><span class="o">.</span> <span class="o">*/</span>
+       <span class="n">err</span> <span class="o">=</span> <span class="n">clfftCreateDefaultPlan</span><span class="p">(</span><span class="o">&amp;</span><span class="n">planHandle</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">clLengths</span><span class="p">);</span>
+
+       <span class="o">/*</span> <span class="n">Set</span> <span class="n">plan</span> <span class="n">parameters</span><span class="o">.</span> <span class="o">*/</span>
+       <span class="n">err</span> <span class="o">=</span> <span class="n">clfftSetPlanPrecision</span><span class="p">(</span><span class="n">planHandle</span><span class="p">,</span> <span class="n">CLFFT_SINGLE</span><span class="p">);</span>
+       <span class="n">err</span> <span class="o">=</span> <span class="n">clfftSetLayout</span><span class="p">(</span><span class="n">planHandle</span><span class="p">,</span> <span class="n">CLFFT_COMPLEX_INTERLEAVED</span><span class="p">,</span> <span class="n">CLFFT_COMPLEX_INTERLEAVED</span><span class="p">);</span>
+       <span class="n">err</span> <span class="o">=</span> <span class="n">clfftSetResultLocation</span><span class="p">(</span><span class="n">planHandle</span><span class="p">,</span> <span class="n">CLFFT_INPLACE</span><span class="p">);</span>
+
+   <span class="o">/*</span> <span class="n">Bake</span> <span class="n">the</span> <span class="n">plan</span><span class="o">.</span> <span class="o">*/</span>
+       <span class="n">err</span> <span class="o">=</span> <span class="n">clfftBakePlan</span><span class="p">(</span><span class="n">planHandle</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">queue</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
+
+       <span class="o">/*</span> <span class="n">Execute</span> <span class="n">the</span> <span class="n">plan</span><span class="o">.</span> <span class="o">*/</span>
+       <span class="n">err</span> <span class="o">=</span> <span class="n">clfftEnqueueTransform</span><span class="p">(</span><span class="n">planHandle</span><span class="p">,</span> <span class="n">CLFFT_FORWARD</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">queue</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">bufX</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
+
+       <span class="o">/*</span> <span class="n">Wait</span> <span class="k">for</span> <span class="n">calculations</span> <span class="n">to</span> <span class="n">be</span> <span class="n">finished</span><span class="o">.</span> <span class="o">*/</span>
+       <span class="n">err</span> <span class="o">=</span> <span class="n">clFinish</span><span class="p">(</span><span class="n">queue</span><span class="p">);</span>
+
+       <span class="o">/*</span> <span class="n">Fetch</span> <span class="n">results</span> <span class="n">of</span> <span class="n">calculations</span><span class="o">.</span> <span class="o">*/</span>
+       <span class="n">err</span> <span class="o">=</span> <span class="n">clEnqueueReadBuffer</span><span class="p">(</span> <span class="n">queue</span><span class="p">,</span> <span class="n">bufX</span><span class="p">,</span> <span class="n">CL_TRUE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">N</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span> <span class="o">*</span><span class="n">X</span> <span class="p">),</span> <span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">);</span>
+
+   <span class="o">/*</span> <span class="n">Release</span> <span class="n">OpenCL</span> <span class="n">memory</span> <span class="n">objects</span><span class="o">.</span> <span class="o">*/</span>
+   <span class="n">clReleaseMemObject</span><span class="p">(</span> <span class="n">bufX</span> <span class="p">);</span>
+
+       <span class="n">free</span><span class="p">(</span><span class="n">X</span><span class="p">);</span>
+
+       <span class="o">/*</span> <span class="n">Release</span> <span class="n">the</span> <span class="n">plan</span><span class="o">.</span> <span class="o">*/</span>
+       <span class="n">err</span> <span class="o">=</span> <span class="n">clfftDestroyPlan</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">planHandle</span> <span class="p">);</span>
+
+   <span class="o">/*</span> <span class="n">Release</span> <span class="n">clFFT</span> <span class="n">library</span><span class="o">.</span> <span class="o">*/</span>
+   <span class="n">clfftTeardown</span><span class="p">(</span> <span class="p">);</span>
+
+   <span class="o">/*</span> <span class="n">Release</span> <span class="n">OpenCL</span> <span class="n">working</span> <span class="n">objects</span><span class="o">.</span> <span class="o">*/</span>
+   <span class="n">clReleaseCommandQueue</span><span class="p">(</span> <span class="n">queue</span> <span class="p">);</span>
+   <span class="n">clReleaseContext</span><span class="p">(</span> <span class="n">ctx</span> <span class="p">);</span>
+
+   <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-dependencies">
+<h2>Build dependencies<a class="headerlink" href="#build-dependencies" title="Permalink to this headline">¶</a></h2>
+<p><strong>Library for Windows</strong></p>
+<p>To develop the clFFT library code on a Windows operating system, ensure to install the following packages on your system:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Windows® 7/8.1</li>
+<li>Visual Studio 2012 or later</li>
+<li>Latest CMake</li>
+<li>An OpenCL SDK, such as APP SDK 3.0</li>
+</ul>
+</div></blockquote>
+<p><strong>Library for Linux</strong></p>
+<p>To develop the clFFT library code on a Linux operating system, ensure to install the following packages on your system:</p>
+<blockquote>
+<div><ul class="simple">
+<li>GCC 4.6 and onwards</li>
+<li>Latest CMake</li>
+<li>An OpenCL SDK, such as APP SDK 3.0</li>
+</ul>
+</div></blockquote>
+<p><strong>Library for Mac OSX</strong></p>
+<p>To develop the clFFT library code on a Mac OS X, it is recommended to generate Unix makefiles with cmake.</p>
+<p><strong>Test infrastructure</strong></p>
+<p>To test the developed clFFT library code, ensure to install the following packages on your system:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Googletest v1.6</li>
+<li>Latest FFTW</li>
+<li>Latest Boost</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="performance-infrastructure">
+<h2>Performance infrastructure<a class="headerlink" href="#performance-infrastructure" title="Permalink to this headline">¶</a></h2>
+<p>To measure the performance of the clFFT library code, ensure that the Python package is installed on your system.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,956 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ROCr API Documentation &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>ROCr API Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_API_References/ROCr-API.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rocr-api-documentation">
+<span id="rocr-api"></span><h1>ROCr API Documentation<a class="headerlink" href="#rocr-api-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="runtime-notification">
+<h2>Runtime Notification<a class="headerlink" href="#runtime-notification" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_status_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_status_string” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="common-definition">
+<h2>common definition<a class="headerlink" href="#common-definition" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_access_permission_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenclass: Cannot find class “struct hsa_dim3_s” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “HSA_API hsa_init” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="initialization-and-shut-down">
+<h2>Initialization and Shut Down<a class="headerlink" href="#initialization-and-shut-down" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “HSA_API hsa_init” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “HSA_API hsa_shut_down” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="system-and-agent-information">
+<h2>System and Agent Information<a class="headerlink" href="#system-and-agent-information" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenclass: Cannot find class “hsa_agent_s” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenclass: Cannot find class “hsa_cache_s” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_agent_s” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_cache_s” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_agent_feature_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_agent_info_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_cache_info_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_default_float_rounding_mode_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_device_type_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_endianness_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_exception_policy_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_extension_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_machine_model_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_profile_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_system_info_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_agent_get_info” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_agent_iterate_caches” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_agent_major_extension_supported” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_cache_get_info” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_extension_get_name” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_iterate_agents” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_system_extension_supported” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_system_get_info” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_system_get_major_extension_table” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_system_major_extension_supported” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenclass: Cannot find class “hsa_signal_s” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenclass: Cannot find class “hsa_signal_group_s” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_signal_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_signal_value_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_signal_group_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_signal_condition_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_wait_state_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_signal_add_relaxed” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_signal_add_release” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_signal_add_scacq_screl” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_signal_add_scacquire” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_signal_add_screlease” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_signal_and_acq_rel” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_signal_and_relaxed” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_signal_and_scacq_screl” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="memory">
+<h2>Memory<a class="headerlink" href="#memory" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenclass: Cannot find class “hsa_region_s” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_region_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_region_global_flag_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_region_info_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_region_segment_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_agent_iterate_regions” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_memory_allocate” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_memory_assign_agent” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_memory_copy” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_memory_deregister” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_memory_free” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_memory_register” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_region_get_info” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="queue">
+<h2>Queue<a class="headerlink" href="#queue" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_queue_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_queue_feature_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_queue_type_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_add_write_index_acq_rel” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_add_write_index_acquire” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_add_write_index_relaxed” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_add_write_index_release” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_add_write_index_scacquire” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_add_write_index_screlease” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_cas_write_index_acq_rel” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_cas_write_index_acquire” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_cas_write_index_relaxed” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_cas_write_index_release” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_cas_write_index_scacq_screl” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_cas_write_index_scacquire” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_cas_write_index_screlease” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_create” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_destroy” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_inactivate” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_load_read_index_acquire” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_load_read_index_relaxed” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_load_read_index_scacquire” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_load_write_index_acquire” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_load_write_index_relaxed” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_load_write_index_scacquire” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_store_read_index_relaxed” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_store_read_index_release” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_store_read_index_screlease” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_store_write_index_relaxed” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_store_write_index_release” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_queue_store_write_index_screlease” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_soft_queue_create” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="architected-queuing-language">
+<h2>Architected Queuing Language<a class="headerlink" href="#architected-queuing-language" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenclass: Cannot find class “hsa_kernel_dispatch_packet_s” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenclass: Cannot find class “hsa_agent_dispatch_packet_s” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenclass: Cannot find class “hsa_barrier_and_packet_s” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenclass: Cannot find class “hsa_barrier_or_packet_s” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_kernel_dispatch_packet_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_agent_dispatch_packet_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_barrier_and_packet_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_barrier_or_packet_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_fence_scope_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_kernel_dispatch_packet_setup_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_packet_header_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_packet_header_width_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_packet_type_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="instruction-set-architecture">
+<h2>Instruction Set Architecture.<a class="headerlink" href="#instruction-set-architecture" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_flush_mode_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_fp_type_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_isa_info_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_round_method_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_wavefront_info_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_agent_iterate_isas” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_isa_compatible” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_isa_from_name” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_isa_get_exception_policies” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_isa_get_info” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_isa_get_info_alt” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_isa_get_round_method” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_isa_iterate_wavefronts” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_wavefront_get_info” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="executable">
+<h2>Executable<a class="headerlink" href="#executable" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_executable_symbol_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_executable_info_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_executable_state_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_executable_symbol_info_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_symbol_kind_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_symbol_linkage_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_variable_allocation_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_variable_segment_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_code_object_reader_create_from_file” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_code_object_reader_create_from_memory” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_code_object_reader_destroy” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_agent_global_variable_define” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_create” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_create_alt” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_destroy” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_freeze” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_get_info” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_get_symbol” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_get_symbol_by_name” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_global_variable_define” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_iterate_agent_symbols” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_iterate_program_symbols” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_iterate_symbols” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_load_agent_code_object” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_load_program_code_object” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_readonly_variable_define” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_symbol_get_info” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_validate” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_validate_alt” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="code-objects-deprecated">
+<h2>Code Objects (deprecated).<a class="headerlink" href="#code-objects-deprecated" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_callback_data_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_code_object_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “hsa_code_symbol_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_code_object_type_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_code_symbol_info_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_code_object_deserialize” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_code_object_destroy” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_code_object_get_info” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_code_object_get_symbol” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_code_object_get_symbol_from_name” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_code_object_iterate_symbols” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_code_object_serialize” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_code_symbol_get_info” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_executable_load_code_object” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="finalization-extensions">
+<h2>Finalization Extensions<a class="headerlink" href="#finalization-extensions" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “anonymous” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="finalization-program">
+<h2>Finalization Program<a class="headerlink" href="#finalization-program" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_ext_finalizer_call_convention_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “hsa_ext_program_info_t” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_ext_program_add_module” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_ext_program_create” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_ext_program_destroy” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_ext_program_finalize” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_ext_program_get_info” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “hsa_ext_program_iterate_modules” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="images-and-samplers">
+<h2>Images and Samplers<a class="headerlink" href="#images-and-samplers" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenenum: Cannot find enum “anonymous” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

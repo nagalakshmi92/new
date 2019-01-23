@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hipCaffe: the HIP Port of Caffe &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>hipCaffe: the HIP Port of Caffe</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Tutorial/caffe.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hipcaffe-the-hip-port-of-caffe">
+<span id="caffe"></span><h1>hipCaffe: the HIP Port of Caffe<a class="headerlink" href="#hipcaffe-the-hip-port-of-caffe" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This repository hosts the HIP port of Caffe (or hipCaffe, for short). For details on HIP, please refer here. This HIP-ported framework is able to target both AMD ROCm and Nvidia CUDA devices from the same source code. Hardware-specific optimized library calls are also supported within this codebase.</p>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hardware-requirements">
+<h3>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>For ROCm hardware requirements, <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#system-requirement">see here</a> .</li>
+</ul>
+</div>
+<div class="section" id="software-and-driver-requirements">
+<h3>Software and Driver Requirements<a class="headerlink" href="#software-and-driver-requirements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>For ROCm software requirements, <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installation-guide-ubuntu">see here</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="amd-rocm-installation">
+<h3>AMD ROCm Installation<a class="headerlink" href="#amd-rocm-installation" title="Permalink to this headline">¶</a></h3>
+<p>For further background information on ROCm, refer <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installation-guide-ubuntu">here</a>.</p>
+<p>Installing ROCm Debian packages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PKG_REPO=&quot;http://repo.radeon.com/rocm/apt/debian/&quot;
+
+wget -qO - $PKG_REPO/rocm.gpg.key | sudo apt-key add -
+
+sudo sh -c &quot;echo deb [arch=amd64] $PKG_REPO xenial main &gt; /etc/apt/sources.list.d/rocm.list&quot;
+
+sudo apt-get update
+
+sudo apt-get install rocm rocm-utils rocm-opencl rocm-opencl-dev rocm-profiler cxlactivitylogger
+
+echo &#39;export PATH=/opt/rocm/bin:$PATH&#39; &gt;&gt; $HOME/.bashrc
+
+echo &#39;export LD_LIBRARY_PATH=/opt/rocm/lib:$LD_LIBRARY_PATH&#39; &gt;&gt; $HOME/.bashrc
+
+source $HOME/.bashrc
+
+sudo reboot
+</pre></div>
+</div>
+<p>Then, verify the installation. Double-check your kernel (at a minimum, you should see “kfd” in the name):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uname</span> <span class="o">-</span><span class="n">r</span>
+</pre></div>
+</div>
+<p>In addition, check that you can run the simple HSA vector_copy sample application:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rocm</span><span class="o">/</span><span class="n">hsa</span><span class="o">/</span><span class="n">sample</span>
+<span class="n">make</span>
+<span class="o">./</span><span class="n">vector_copy</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pre-requisites-installation">
+<h3>Pre-requisites Installation<a class="headerlink" href="#pre-requisites-installation" title="Permalink to this headline">¶</a></h3>
+<p>Install Caffe dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> \
+       <span class="n">pkg</span><span class="o">-</span><span class="n">config</span> \
+       <span class="n">protobuf</span><span class="o">-</span><span class="n">compiler</span> \
+       <span class="n">libprotobuf</span><span class="o">-</span><span class="n">dev</span> \
+       <span class="n">libleveldb</span><span class="o">-</span><span class="n">dev</span> \
+       <span class="n">libsnappy</span><span class="o">-</span><span class="n">dev</span> \
+       <span class="n">libhdf5</span><span class="o">-</span><span class="n">serial</span><span class="o">-</span><span class="n">dev</span> \
+       <span class="n">libatlas</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">dev</span> \
+       <span class="n">libboost</span><span class="o">-</span><span class="nb">all</span><span class="o">-</span><span class="n">dev</span> \
+       <span class="n">libgflags</span><span class="o">-</span><span class="n">dev</span> \
+       <span class="n">libgoogle</span><span class="o">-</span><span class="n">glog</span><span class="o">-</span><span class="n">dev</span> \
+       <span class="n">liblmdb</span><span class="o">-</span><span class="n">dev</span> \
+       <span class="n">python</span><span class="o">-</span><span class="n">numpy</span> <span class="n">python</span><span class="o">-</span><span class="n">scipy</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span><span class="o">-</span><span class="n">yaml</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> \
+       <span class="n">libopencv</span><span class="o">-</span><span class="n">dev</span> \
+       <span class="n">libfftw3</span><span class="o">-</span><span class="n">dev</span> \
+       <span class="n">libelf</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>Install the necessary ROCm compute libraries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">rocm</span><span class="o">-</span><span class="n">libs</span> <span class="n">miopen</span><span class="o">-</span><span class="n">hip</span> <span class="n">miopengemm</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hipcaffe-build-steps">
+<h3>hipCaffe Build Steps<a class="headerlink" href="#hipcaffe-build-steps" title="Permalink to this headline">¶</a></h3>
+<p>Clone hipCaffe:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ROCmSoftwarePlatform</span><span class="o">/</span><span class="n">hipCaffe</span><span class="o">.</span><span class="n">git</span>
+
+<span class="n">cd</span> <span class="n">hipCaffe</span>
+</pre></div>
+</div>
+<p>You may need to modify the Makefile.config file for your own installation. Then, build it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">./</span><span class="n">Makefile</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">example</span> <span class="o">./</span><span class="n">Makefile</span><span class="o">.</span><span class="n">config</span>
+<span class="n">make</span>
+</pre></div>
+</div>
+<p>To improve build time, consider invoking parallel make with the “-j$(nproc)” flag.</p>
+</div>
+</div>
+<div class="section" id="unit-testing">
+<h2>Unit Testing<a class="headerlink" href="#unit-testing" title="Permalink to this headline">¶</a></h2>
+<p>Run the following commands to perform unit testing of different components of Caffe.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">test</span>
+<span class="o">./</span><span class="n">build</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">test_all</span><span class="o">.</span><span class="n">testbin</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-workloads">
+<h2>Example Workloads<a class="headerlink" href="#example-workloads" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mnist-training">
+<h3>MNIST training<a class="headerlink" href="#mnist-training" title="Permalink to this headline">¶</a></h3>
+<p>Steps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">data</span><span class="o">/</span><span class="n">mnist</span><span class="o">/</span><span class="n">get_mnist</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">./</span><span class="n">examples</span><span class="o">/</span><span class="n">mnist</span><span class="o">/</span><span class="n">create_mnist</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">./</span><span class="n">examples</span><span class="o">/</span><span class="n">mnist</span><span class="o">/</span><span class="n">train_lenet</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cifar-10-training">
+<h3>CIFAR-10 training<a class="headerlink" href="#cifar-10-training" title="Permalink to this headline">¶</a></h3>
+<p>Steps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">data</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">get_cifar10</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">./</span><span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">create_cifar10</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">./</span><span class="n">build</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">caffe</span> <span class="n">train</span> <span class="o">--</span><span class="n">solver</span><span class="o">=</span><span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">cifar10_quick_solver</span><span class="o">.</span><span class="n">prototxt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="caffenet-inference">
+<h3>CaffeNet inference<a class="headerlink" href="#caffenet-inference" title="Permalink to this headline">¶</a></h3>
+<p>Steps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">data</span><span class="o">/</span><span class="n">ilsvrc12</span><span class="o">/</span><span class="n">get_ilsvrc_aux</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">./</span><span class="n">scripts</span><span class="o">/</span><span class="n">download_model_binary</span><span class="o">.</span><span class="n">py</span> <span class="n">models</span><span class="o">/</span><span class="n">bvlc_reference_caffenet</span>
+<span class="o">./</span><span class="n">build</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">cpp_classification</span><span class="o">/</span><span class="n">classification</span><span class="o">.</span><span class="n">bin</span> \ <span class="n">models</span><span class="o">/</span><span class="n">bvlc_reference_caffenet</span><span class="o">/</span><span class="n">deploy</span><span class="o">.</span><span class="n">prototxt</span> \<span class="n">models</span><span class="o">/</span><span class="n">bvlc_reference_caffenet</span><span class="o">/</span><span class="n">bvlc_reference_caffenet</span><span class="o">.</span><span class="n">caffemodel</span> \<span class="n">data</span><span class="o">/</span><span class="n">ilsvrc12</span><span class="o">/</span><span class="n">imagenet_mean</span><span class="o">.</span><span class="n">binaryproto</span> \<span class="n">data</span><span class="o">/</span><span class="n">ilsvrc12</span><span class="o">/</span><span class="n">synset_words</span><span class="o">.</span><span class="n">txt</span> \<span class="n">examples</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">cat</span><span class="o">.</span><span class="n">jpg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="known-issues">
+<h2>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="temp-workaround-for-multi-gpu-data-transfer-error">
+<h3>Temp workaround for multi-GPU data transfer error<a class="headerlink" href="#temp-workaround-for-multi-gpu-data-transfer-error" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes when training with multiple GPUs, we hit this type of error signature:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">***</span> <span class="n">SIGSEGV</span> <span class="p">(</span><span class="nd">@0x0</span><span class="p">)</span> <span class="n">received</span> <span class="n">by</span> <span class="n">PID</span> <span class="mi">57122</span> <span class="p">(</span><span class="n">TID</span> <span class="mh">0x7fd841500b80</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">PID</span> <span class="mi">0</span><span class="p">;</span> <span class="n">stack</span> <span class="n">trace</span><span class="p">:</span> <span class="o">***</span>
+    <span class="o">@</span>     <span class="mh">0x7fd8409a1390</span> <span class="p">(</span><span class="n">unknown</span><span class="p">)</span>
+    <span class="o">@</span>     <span class="mh">0x7fd8400a71f7</span> <span class="p">(</span><span class="n">unknown</span><span class="p">)</span>
+    <span class="o">@</span>     <span class="mh">0x7fd840515263</span> <span class="p">(</span><span class="n">unknown</span><span class="p">)</span>
+    <span class="o">@</span>     <span class="mh">0x7fd81f5ef907</span> <span class="n">UnpinnedCopyEngine</span><span class="p">::</span><span class="n">CopyHostToDevice</span><span class="p">()</span>
+    <span class="o">@</span>     <span class="mh">0x7fd81f5d3bb9</span> <span class="n">HSACopy</span><span class="p">::</span><span class="n">syncCopyExt</span><span class="p">()</span>
+    <span class="o">@</span>     <span class="mh">0x7fd81f5d28bc</span> <span class="n">Kalmar</span><span class="p">::</span><span class="n">HSAQueue</span><span class="p">::</span><span class="n">copy_ext</span><span class="p">()</span>
+    <span class="o">@</span>     <span class="mh">0x7fd8410dba5b</span> <span class="n">ihipStream_t</span><span class="p">::</span><span class="n">locked_copySync</span><span class="p">()</span>
+    <span class="o">@</span>     <span class="mh">0x7fd8411030bf</span> <span class="n">hipMemcpy</span>
+    <span class="o">@</span>           <span class="mh">0x6cfd43</span> <span class="n">caffe</span><span class="p">::</span><span class="n">caffe_gpu_rng_uniform</span><span class="p">()</span>
+    <span class="o">@</span>           <span class="mh">0x5a32ba</span> <span class="n">caffe</span><span class="p">::</span><span class="n">DropoutLayer</span><span class="o">&lt;&gt;</span><span class="p">::</span><span class="n">Forward_gpu</span><span class="p">()</span>
+    <span class="o">@</span>           <span class="mh">0x430bbf</span> <span class="n">caffe</span><span class="p">::</span><span class="n">Layer</span><span class="o">&lt;&gt;</span><span class="p">::</span><span class="n">Forward</span><span class="p">()</span>
+    <span class="o">@</span>           <span class="mh">0x6fefe7</span> <span class="n">caffe</span><span class="p">::</span><span class="n">Net</span><span class="o">&lt;&gt;</span><span class="p">::</span><span class="n">ForwardFromTo</span><span class="p">()</span>
+    <span class="o">@</span>           <span class="mh">0x6feeff</span> <span class="n">caffe</span><span class="p">::</span><span class="n">Net</span><span class="o">&lt;&gt;</span><span class="p">::</span><span class="n">Forward</span><span class="p">()</span>
+    <span class="o">@</span>           <span class="mh">0x801e8c</span> <span class="n">caffe</span><span class="p">::</span><span class="n">Solver</span><span class="o">&lt;&gt;</span><span class="p">::</span><span class="n">Step</span><span class="p">()</span>
+    <span class="o">@</span>           <span class="mh">0x8015c3</span> <span class="n">caffe</span><span class="p">::</span><span class="n">Solver</span><span class="o">&lt;&gt;</span><span class="p">::</span><span class="n">Solve</span><span class="p">()</span>
+    <span class="o">@</span>           <span class="mh">0x71a277</span> <span class="n">caffe</span><span class="p">::</span><span class="n">P2PSync</span><span class="o">&lt;&gt;</span><span class="p">::</span><span class="n">Run</span><span class="p">()</span>
+    <span class="o">@</span>           <span class="mh">0x42dcbc</span> <span class="n">train</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>See this <a class="reference external" href="https://github.com/ROCmSoftwarePlatform/hipCaffe/issues/11#issuecomment-318518802">comment</a>.</p>
+<p>In short, here’s the temporary workaround:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">HCC_UNPINNED_COPY_MODE</span><span class="o">=</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="hipCaffe .html#hipcaffe"><span class="std std-ref">hipCaffe Quickstart Guide</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

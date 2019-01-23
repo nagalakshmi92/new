@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Porting CUDA Driver API &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Porting CUDA Driver API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Programming_Guides/hipporting-driver-api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="porting-cuda-driver-api">
+<span id="hipporting-driver-api"></span><h1>Porting CUDA Driver API<a class="headerlink" href="#porting-cuda-driver-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction-to-the-cuda-driver-and-runtime-apis">
+<h2>Introduction to the CUDA Driver and Runtime APIs<a class="headerlink" href="#introduction-to-the-cuda-driver-and-runtime-apis" title="Permalink to this headline">¶</a></h2>
+<p>CUDA provides a separate CUDA Driver and Runtime APIs. The two APIs have significant overlap in functionality:</p>
+<ul class="simple">
+<li>Both APIs support events, streams, memory management, memory copy, and error handling.</li>
+<li>Both APIs deliver similar performance.</li>
+<li>Driver APIs calls begin with the prefix <strong>cu</strong> while Runtime APIs begin with the prefix cuda. For example, the Driver API API contains ‘cuEventCreate’ while the Runtime API contains ‘cudaEventCreate’, with similar functionality.</li>
+<li>The Driver API defines a different but largely overlapping error code space than the Runtime API, and uses a different coding convention. For example, Driver API defines <code class="docutils literal notranslate"><span class="pre">CUDA_ERROR_INVALID_VALUE</span></code> while the Runtime API defines <code class="docutils literal notranslate"><span class="pre">cudaErrorInvalidValue</span></code></li>
+</ul>
+<p>The Driver API offers two additional pieces of functionality not provided by the Runtime API: cuModule and cuCtx APIs.</p>
+<div class="section" id="cumodule-api">
+<h3>cuModule API<a class="headerlink" href="#cumodule-api" title="Permalink to this headline">¶</a></h3>
+<p>The Module section of the Driver API provides additional control over how and when accelerator code objects are loaded. For example, the driver API allows code objects to be loaded from files or memory pointers. Symbols for kernels or global data can be extracted from the loaded code objects. In contrast, the Runtime API automatically loads and (if necessary) compiles all of the kernels from an executable binary when run. In this mode, NVCC must be used to compile kernel code so the automatic loading can function correctly.</p>
+<p>Both Driver and Runtime APIs define a function for launching kernels (called <code class="docutils literal notranslate"><span class="pre">cuLaunchKernel</span></code> or <code class="docutils literal notranslate"><span class="pre">cudaLaunchKernel.</span></code> The kernel arguments and the execution configuration (grid dimensions, group dimensions, dynamic shared memory, and stream) are passed as arguments to the launch function. The Runtime additionally provides the <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;</span> <span class="pre">&gt;&gt;&gt;</span></code> syntax for launching kernels, which resembles a special function call and is easier to use than explicit launch API (in particular with respect to handling of kernel arguments). However, this syntax is not standard C++ and is available only when NVCC is used to compile the host code.</p>
+<p>The Module features are useful in an environment which generates the code objects directly, such as a new accelerator language front-end. Here, NVCC is not used. Instead, the environment may have a different kernel language or different compilation flow. Other environments have many kernels and do not want them to be all loaded automatically. The Module functions can be used to load the generated code objects and launch kernels. As we will see below, HIP defines a Module API which provides similar explicit control over code object management.</p>
+</div>
+<div class="section" id="cuctx-api">
+<h3>cuCtx API<a class="headerlink" href="#cuctx-api" title="Permalink to this headline">¶</a></h3>
+<p>The Driver API defines “Context” and “Devices” as separate entities. Contexts contain a single device, and a device can theoretically have multiple contexts. Each context contains a set of streams and events specific to the context. Historically contexts also defined a unique address space for the GPU, though this may no longer be the case in Unified Memory platforms (since the CPU and all the devices in the same process share a single unified address space). The Context APIs also provide a mechanism to switch between devices, which allowed a single CPU thread to send commands to different GPUs. HIP as well as a recent versions of CUDA Runtime provide other mechanisms to accomplish this feat - for example using streams or <code class="docutils literal notranslate"><span class="pre">cudaSetDevice</span></code>.</p>
+<p>The CUDA Runtime API unifies the Context API with the Device API. This simplifies the APIs and has little loss of functionality since each Context can contain a single device, and the benefits of multiple contexts has been replaced with other interfaces. HIP provides a context API to facilitate easy porting from existing Driver codes. In HIP, the Ctx functions largely provide an alternate syntax for changing the active device. Most new applications will prefer to use <code class="docutils literal notranslate"><span class="pre">hipSetDevice</span></code> or the stream APIs.</p>
+</div>
+</div>
+<div class="section" id="hip-module-and-ctx-apis">
+<h2>HIP Module and Ctx APIs<a class="headerlink" href="#hip-module-and-ctx-apis" title="Permalink to this headline">¶</a></h2>
+<p>Rather than present two separate APIs, HIP extends the HIP API with new APIs for Modules and Ctx control.</p>
+<div class="section" id="hipmodule-api">
+<h3>hipModule API<a class="headerlink" href="#hipmodule-api" title="Permalink to this headline">¶</a></h3>
+<p>Like the CUDA Driver API, the Module API provides additional control over how code is loaded, including options to load code from files or from in-memory pointers. NVCC and HCC target different architectures and use different code object formats: NVCC is <code class="docutils literal notranslate"><span class="pre">cubin</span></code> or <code class="docutils literal notranslate"><span class="pre">ptx</span></code> files, while the HCC path is the <code class="docutils literal notranslate"><span class="pre">hsaco</span></code> format. The external compilers which generate these code objects are responsible for generating and loading the correct code object for each platform. Notably, there is not a fat binary format that can contain code for both NVCC and HCC platforms. The following table summarizes the formats used on each platform:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="40%" />
+<col width="23%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Format</th>
+<th class="head">APIs</th>
+<th class="head">NVCC</th>
+<th class="head">HCC</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Code Object</td>
+<td>hipModuleLoad, hipModuleLoadData</td>
+<td>.cubin or PTX text</td>
+<td>.hsaco</td>
+</tr>
+<tr class="row-odd"><td>Fat Binary</td>
+<td>hipModuleLoadFatBin</td>
+<td>.fatbin</td>
+<td>Under Development</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="hipctx-api">
+<h3>hipCtx API<a class="headerlink" href="#hipctx-api" title="Permalink to this headline">¶</a></h3>
+<p>HIP provides a <strong>Ctx</strong> API as a thin layer over the existing Device functions. This Ctx API can be used to set the current context, or to query properties of the device associated with the context. The current context is implicitly used by other APIs such as <code class="docutils literal notranslate"><span class="pre">hipStreamCreate.</span></code></p>
+</div>
+<div class="section" id="hipify-translation-of-cuda-driver-api">
+<h3>hipify translation of CUDA Driver API<a class="headerlink" href="#hipify-translation-of-cuda-driver-api" title="Permalink to this headline">¶</a></h3>
+<p>The hipify tool converts CUDA Driver APIs for streams, events, modules, devices, memory management, context, profiler to the equivalent HIP driver calls. For example, <code class="docutils literal notranslate"><span class="pre">cuEventCreate</span></code> will be translated to <code class="docutils literal notranslate"><span class="pre">hipEventCreate.</span></code> Hipify also converts error code from the Driver namespace and coding convention to the equivalent HIP error code. Thus, HIP unifies the APIs for these common functions.</p>
+<p>The memory copy API requires additional explanation. The CUDA driver includes the memory direction in the name of the API (ie <code class="docutils literal notranslate"><span class="pre">cuMemcpyH2D</span></code>) while the CUDA driver API provides a single memory copy API with a parameter that specifies the direction and additionally supports a “default” direction where the runtime determines the direction automatically. HIP provides APIs with both styles: for example, <code class="docutils literal notranslate"><span class="pre">hipMemcpyH2D</span></code> as well as <code class="docutils literal notranslate"><span class="pre">hipMemcpy</span></code>. The first flavor may be faster in some cases since they avoid host overhead to detect the different memory directions.</p>
+<p>HIP defines a single error space, and uses camel-case for all errors (i.e. <code class="docutils literal notranslate"><span class="pre">hipErrorInvalidValue</span></code>).</p>
+</div>
+<div class="section" id="hcc-implementation-notes">
+<h3>HCC Implementation Notes<a class="headerlink" href="#hcc-implementation-notes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="hsaco">
+<h4>.hsaco<a class="headerlink" href="#hsaco" title="Permalink to this headline">¶</a></h4>
+<p>The .hsaco format used by HCC is described in more detail <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Compiler_SDK/ROCm-Codeobj-format.html">here</a>. An example and blog that show how to use the format is <a class="reference external" href="http://gpuopen.com/rocm-with-harmony-combining-opencl-hcc-hsa-in-a-single-program">here</a>. hsaco can be generated by hcc + extractkernel tool, cloc, the GCN assembler, or other tools.</p>
+</div>
+<div class="section" id="address-spaces">
+<h4>Address Spaces<a class="headerlink" href="#address-spaces" title="Permalink to this headline">¶</a></h4>
+<p>HCC defines a process-wide address space where the CPU and all devices allocate addresses from a single unified pool. Thus addresses may be shared between contexts, and unlike the original CUDA definition a new context does not create a new address space for the device.</p>
+</div>
+<div class="section" id="using-hipmodulelaunchkernel">
+<h4>Using hipModuleLaunchKernel<a class="headerlink" href="#using-hipmodulelaunchkernel" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">hipModuleLaunchKernel</span></code> is <code class="docutils literal notranslate"><span class="pre">cuLaunchKernel</span></code> in HIP world. It takes the same arguments as <code class="docutils literal notranslate"><span class="pre">cuLaunchKernel</span></code>. The argument <code class="docutils literal notranslate"><span class="pre">kernelParams</span></code> is not fully implemented for HCC. The workaround for it is, to use platform specific macros for each target. Or, <code class="docutils literal notranslate"><span class="pre">extra</span></code> argument can be used which works on both the platforms.</p>
+</div>
+<div class="section" id="additional-information">
+<h4>Additional Information<a class="headerlink" href="#additional-information" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>HCC allocates staging buffers (used for unpinned copies) on a per-device basis.</li>
+<li>HCC creates a primary context when the HIP API is called. So in a pure driver API code, HIP/HCC will create a primary context while HIP/NVCC will have empty context stack. HIP/HCC will push primary context to context stack when it is empty. This can have subtle differences on applications which mix the runtime and driver APIs.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="nvcc-implementation-notes">
+<h3>NVCC Implementation Notes<a class="headerlink" href="#nvcc-implementation-notes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="interoperation-between-hip-and-cuda-driver">
+<h4>Interoperation between HIP and CUDA Driver<a class="headerlink" href="#interoperation-between-hip-and-cuda-driver" title="Permalink to this headline">¶</a></h4>
+<p>CUDA applications may want to mix CUDA driver code with HIP code (see example below). This table shows the type equivalence to enable this interaction.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="32%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">HIP Type</th>
+<th class="head">CU Driver Type</th>
+<th class="head">CUDA Runtime Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hipModule_t</td>
+<td>CUmodule</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>hipFunction_t</td>
+<td>CUfunction</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>hipCtx_t</td>
+<td>CUcontext</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>hipDevice_t</td>
+<td>CUdevice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>hipStream_t</td>
+<td>CUstream</td>
+<td>cudaStream_t</td>
+</tr>
+<tr class="row-odd"><td>hipEvent_t</td>
+<td>CUevent</td>
+<td>cudaEvent_t</td>
+</tr>
+<tr class="row-even"><td>hipArray</td>
+<td>CUarray</td>
+<td>cudaArray</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="compilation-options">
+<h4>Compilation Options<a class="headerlink" href="#compilation-options" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">hipModule_t</span></code> interface does not support <code class="docutils literal notranslate"><span class="pre">cuModuleLoadDataEx</span></code> function, which is used to control PTX compilation options. HCC does not use PTX and does not support these compilation options. In fact, HCC code objects always contain fully compiled ISA and do not require additional compilation as a part of the load step. The corresponding HIP function <code class="docutils literal notranslate"><span class="pre">hipModuleLoadDataEx</span></code> behaves as <code class="docutils literal notranslate"><span class="pre">hipModuleLoadData</span></code> on HCC path (compilation options are not used) and as <code class="docutils literal notranslate"><span class="pre">cuModuleLoadDataEx</span></code> on NVCC path.</p>
+<p>For example (CUDA):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CUmodule</span> <span class="n">module</span><span class="p">;</span>
+<span class="n">void</span> <span class="o">*</span><span class="n">imagePtr</span> <span class="o">=</span> <span class="o">...</span><span class="p">;</span>  <span class="o">//</span> <span class="n">Somehow</span> <span class="n">populate</span> <span class="n">data</span> <span class="n">pointer</span> <span class="k">with</span> <span class="n">code</span> <span class="nb">object</span>
+
+<span class="n">const</span> <span class="nb">int</span> <span class="n">numOptions</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">CUJit_option</span> <span class="n">options</span><span class="p">[</span><span class="n">numOptions</span><span class="p">];</span>
+<span class="n">void</span> <span class="o">*</span> <span class="n">optionValues</span><span class="p">[</span><span class="n">numOptions</span><span class="p">];</span>
+
+<span class="n">options</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">CU_JIT_MAX_REGISTERS</span><span class="p">;</span>
+<span class="n">unsigned</span> <span class="n">maxRegs</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="n">optionValues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">void</span><span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">maxRegs</span><span class="p">);</span>
+
+<span class="n">cuModuleLoadDataEx</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">imagePtr</span><span class="p">,</span> <span class="n">numOptions</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">optionValues</span><span class="p">);</span>
+
+<span class="n">CUfunction</span> <span class="n">k</span><span class="p">;</span>
+<span class="n">cuModuleGetFunction</span><span class="p">(</span><span class="o">&amp;</span><span class="n">k</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="s2">&quot;myKernel&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>HIP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hipModule_t</span> <span class="n">module</span><span class="p">;</span>
+<span class="n">void</span> <span class="o">*</span><span class="n">imagePtr</span> <span class="o">=</span> <span class="o">...</span><span class="p">;</span>  <span class="o">//</span> <span class="n">Somehow</span> <span class="n">populate</span> <span class="n">data</span> <span class="n">pointer</span> <span class="k">with</span> <span class="n">code</span> <span class="nb">object</span>
+
+<span class="n">const</span> <span class="nb">int</span> <span class="n">numOptions</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">hipJitOption</span> <span class="n">options</span><span class="p">[</span><span class="n">numOptions</span><span class="p">];</span>
+<span class="n">void</span> <span class="o">*</span> <span class="n">optionValues</span><span class="p">[</span><span class="n">numOptions</span><span class="p">];</span>
+
+<span class="n">options</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">hipJitOptionMaxRegisters</span><span class="p">;</span>
+<span class="n">unsigned</span> <span class="n">maxRegs</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="n">optionValues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">void</span><span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">maxRegs</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">hipModuleLoadData</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">imagePtr</span><span class="p">)</span> <span class="n">will</span> <span class="n">be</span> <span class="n">called</span> <span class="n">on</span> <span class="n">HCC</span> <span class="n">path</span><span class="p">,</span> <span class="n">JIT</span> <span class="n">options</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">used</span><span class="p">,</span> <span class="ow">and</span>
+<span class="o">//</span> <span class="n">cupModuleLoadDataEx</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">imagePtr</span><span class="p">,</span> <span class="n">numOptions</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">optionValues</span><span class="p">)</span> <span class="n">will</span> <span class="n">be</span> <span class="n">called</span> <span class="n">on</span> <span class="n">NVCC</span> <span class="n">path</span>
+<span class="n">hipModuleLoadDataEx</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">imagePtr</span><span class="p">,</span> <span class="n">numOptions</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">optionValues</span><span class="p">);</span>
+
+<span class="n">hipFunction_t</span> <span class="n">k</span><span class="p">;</span>
+<span class="n">hipModuleGetFunction</span><span class="p">(</span><span class="o">&amp;</span><span class="n">k</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="s2">&quot;myKernel&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The below sample shows how to use hipModuleGetFunction.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;hip_runtime.h&gt;</span>
+<span class="c1">#include&lt;hip_runtime_api.h&gt;</span>
+<span class="c1">#include&lt;iostream&gt;</span>
+<span class="c1">#include&lt;fstream&gt;</span>
+<span class="c1">#include&lt;vector&gt;</span>
+
+<span class="c1">#define LEN 64</span>
+<span class="c1">#define SIZE LEN&lt;&lt;2</span>
+
+<span class="c1">#ifdef __HIP_PLATFORM_HCC__</span>
+<span class="c1">#define fileName &quot;vcpy_isa.co&quot;</span>
+<span class="c1">#endif</span>
+
+<span class="c1">#ifdef __HIP_PLATFORM_NVCC__</span>
+<span class="c1">#define fileName &quot;vcpy_isa.ptx&quot;</span>
+<span class="c1">#endif</span>
+
+<span class="c1">#define kernel_name &quot;hello_world&quot;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="nb">float</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="o">*</span><span class="n">B</span><span class="p">;</span>
+    <span class="n">hipDeviceptr_t</span> <span class="n">Ad</span><span class="p">,</span> <span class="n">Bd</span><span class="p">;</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">new</span> <span class="nb">float</span><span class="p">[</span><span class="n">LEN</span><span class="p">];</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">new</span> <span class="nb">float</span><span class="p">[</span><span class="n">LEN</span><span class="p">];</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="n">uint32_t</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">LEN</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="mf">1.0</span><span class="n">f</span><span class="p">;</span>
+        <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span>
+        <span class="n">std</span><span class="p">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+
+<span class="c1">#ifdef __HIP_PLATFORM_NVCC__</span>
+          <span class="n">hipInit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+          <span class="n">hipDevice_t</span> <span class="n">device</span><span class="p">;</span>
+          <span class="n">hipCtx_t</span> <span class="n">context</span><span class="p">;</span>
+          <span class="n">hipDeviceGet</span><span class="p">(</span><span class="o">&amp;</span><span class="n">device</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+          <span class="n">hipCtxCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">context</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">device</span><span class="p">);</span>
+<span class="c1">#endif</span>
+
+    <span class="n">hipMalloc</span><span class="p">((</span><span class="n">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">Ad</span><span class="p">,</span> <span class="n">SIZE</span><span class="p">);</span>
+    <span class="n">hipMalloc</span><span class="p">((</span><span class="n">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">Bd</span><span class="p">,</span> <span class="n">SIZE</span><span class="p">);</span>
+
+    <span class="n">hipMemcpyHtoD</span><span class="p">(</span><span class="n">Ad</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">SIZE</span><span class="p">);</span>
+    <span class="n">hipMemcpyHtoD</span><span class="p">(</span><span class="n">Bd</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">SIZE</span><span class="p">);</span>
+    <span class="n">hipModule_t</span> <span class="n">Module</span><span class="p">;</span>
+    <span class="n">hipFunction_t</span> <span class="n">Function</span><span class="p">;</span>
+    <span class="n">hipModuleLoad</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Module</span><span class="p">,</span> <span class="n">fileName</span><span class="p">);</span>
+    <span class="n">hipModuleGetFunction</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Function</span><span class="p">,</span> <span class="n">Module</span><span class="p">,</span> <span class="n">kernel_name</span><span class="p">);</span>
+
+    <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">void</span><span class="o">*&gt;</span><span class="n">argBuffer</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argBuffer</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">Ad</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">void</span><span class="o">*</span><span class="p">));</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argBuffer</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">Bd</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">void</span><span class="o">*</span><span class="p">));</span>
+
+    <span class="n">size_t</span> <span class="n">size</span> <span class="o">=</span> <span class="n">argBuffer</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">*</span><span class="n">sizeof</span><span class="p">(</span><span class="n">void</span><span class="o">*</span><span class="p">);</span>
+
+    <span class="n">void</span> <span class="o">*</span><span class="n">config</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">HIP_LAUNCH_PARAM_BUFFER_POINTER</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">argBuffer</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+      <span class="n">HIP_LAUNCH_PARAM_BUFFER_SIZE</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">size</span><span class="p">,</span>
+      <span class="n">HIP_LAUNCH_PARAM_END</span>
+    <span class="p">};</span>
+
+    <span class="n">hipModuleLaunchKernel</span><span class="p">(</span><span class="n">Function</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">LEN</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="p">(</span><span class="n">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">config</span><span class="p">);</span>
+
+    <span class="n">hipMemcpyDtoH</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">Bd</span><span class="p">,</span> <span class="n">SIZE</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">uint32_t</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">LEN</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">std</span><span class="p">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s2">&quot; - &quot;</span><span class="o">&lt;&lt;</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="c1">#ifdef __HIP_PLATFORM_NVCC__</span>
+          <span class="n">hipCtxDetach</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="c1">#endif</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

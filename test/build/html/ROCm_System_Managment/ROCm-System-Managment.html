@@ -1,0 +1,1575 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ROCm System Management &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ROCm Virtualization &amp; Containers" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html" />
+    <link rel="prev" title="ROCm Compiler SDK" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ROCm System Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rocm-smi">ROCm-SMI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#programing-rocm-smi">Programing ROCm-SMI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sysfs-interface">SYSFS Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#naming-and-data-format-standards-for-sysfs-files">Naming and data format standards for sysfs files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#global-attributes">Global attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#voltages">Voltages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fans">Fans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pwm">PWM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#temperatures">Temperatures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#currents">Currents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#power">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#energy">Energy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#humidity">Humidity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#alarms">Alarms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intrusion-detection">Intrusion detection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#kfd-topology">KFD Topology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hsa-agent-information">HSA Agent Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#node-information">Node Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#memory">Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#io-links">IO-LINKS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-use-topology-information">How to use topology information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>ROCm System Management</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_System_Managment/ROCm-System-Managment.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rocm-system-management">
+<span id="id1"></span><h1>ROCm System Management<a class="headerlink" href="#rocm-system-management" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rocm-smi">
+<h2>ROCm-SMI<a class="headerlink" href="#rocm-smi" title="Permalink to this headline">¶</a></h2>
+<p><strong>ROCm System Management Interface</strong></p>
+<p>This repository includes the rocm-smi tool. This tool exposes functionality for clock and temperature management of your ROCm enabled system.</p>
+<p><strong>Installation</strong></p>
+<p>You may find rocm-smi at the following location after installing the rocm package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rocm</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">rocm</span><span class="o">-</span><span class="n">smi</span>
+</pre></div>
+</div>
+<p>Alternatively, you may clone this repository and run the tool directly.</p>
+<p><strong>Usage</strong></p>
+<p>For detailed and up to date usage information, we recommend consulting the help:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rocm</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">rocm</span><span class="o">-</span><span class="n">smi</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>For convenience purposes, following is a quick excerpt:</p>
+<dl class="docutils">
+<dt>usage: rocm-smi [-h] [-d DEVICE] [-i] [-t] [-c] [-g] [-f] [-p] [-P] [-o] [-l] [-s] [-a] [-r]</dt>
+<dd>[–setsclk LEVEL [LEVEL …]] [–setmclk LEVEL [LEVEL …]] [–setfan LEVEL]
+[–setperflevel LEVEL] [–setoverdrive %] [–setprofile # # # # #] [–resetprofile]
+[–load FILE | –save FILE] [–autorespond RESPONSE]</dd>
+</dl>
+<p>AMD ROCm System Management Interface</p>
+<p>optional arguments:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>-h, –help</td>
+<td>show this help message and exit</td>
+</tr>
+<tr class="row-even"><td>–load FILE</td>
+<td>Load Clock, Fan, Performance and Profile settings from FILE</td>
+</tr>
+<tr class="row-odd"><td>–save FILE</td>
+<td>Save Clock, Fan, Performance and Profile settings to FILE</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-d <var>DEVICE</var></span>, <span class="option">--device <var>DEVICE</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Execute command on specified device</td></tr>
+</tbody>
+</table>
+</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>-i, –showid</td>
+<td>Show GPU ID</td>
+</tr>
+<tr class="row-even"><td>-t, –showtemp</td>
+<td>Show current temperature</td>
+</tr>
+<tr class="row-odd"><td>-c, –showclocks</td>
+<td>Show current clock frequencies</td>
+</tr>
+<tr class="row-even"><td>-g, –showgpuclocks</td>
+<td>Show current GPU clock frequencies</td>
+</tr>
+<tr class="row-odd"><td>-f, –showfan</td>
+<td>Show current fan speed</td>
+</tr>
+<tr class="row-even"><td>-p, –showperflevel</td>
+<td>Show current PowerPlay Performance Level</td>
+</tr>
+<tr class="row-odd"><td>-P, –showpower</td>
+<td>Show current GPU ASIC power consumption</td>
+</tr>
+<tr class="row-even"><td>-o, –showoverdrive</td>
+<td>Show current OverDrive level</td>
+</tr>
+<tr class="row-odd"><td>-l, –showprofile</td>
+<td>Show Compute Profile attributes</td>
+</tr>
+<tr class="row-even"><td>-s, –showclkfrq</td>
+<td>Show supported GPU and Memory Clock</td>
+</tr>
+<tr class="row-odd"><td>-a, –showallinfo</td>
+<td>Show all SMI-supported values values</td>
+</tr>
+<tr class="row-even"><td>-r, –resetclocks</td>
+<td>Reset clocks to default values</td>
+</tr>
+<tr class="row-odd"><td>–setsclk LEVEL [LEVEL …]</td>
+<td>Set GPU Clock Frequency Level Mask</td>
+</tr>
+<tr class="row-even"><td>–setmclk LEVEL [LEVEL …]</td>
+<td>Set GPU Memory Clock Frequency Mask</td>
+</tr>
+<tr class="row-odd"><td>–setfan LEVEL</td>
+<td>Set GPU Fan Speed Level</td>
+</tr>
+<tr class="row-even"><td>–setperflevel LEVEL</td>
+<td>Set PowerPlay Performance Level</td>
+</tr>
+<tr class="row-odd"><td>–setoverdrive %</td>
+<td>Set GPU OverDrive level</td>
+</tr>
+<tr class="row-even"><td>–setprofile # # # # #</td>
+<td>Specify Compute Profile attributes</td>
+</tr>
+<tr class="row-odd"><td>–resetprofile</td>
+<td>Reset Compute Profile</td>
+</tr>
+<tr class="row-even"><td>–autorespond RESPONSE</td>
+<td>Response to automatically provide for all prompts (NOT RECOMMENDED)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Detailed Option Descriptions</strong></p>
+<p><strong>–setsclk/–setmclk # [# # …]:</strong>  This allows you to set a mask for the levels. For example, if a GPU has 8 clock levels, you can set a mask to use levels 0, 5, 6 and 7 with –setsclk 0 5 6 7 . This will only use the base level, and the top 3 clock levels. This will allow you to keep the GPU at base level when there is no GPU load, and the top 3 levels when the GPU load increases.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The clock levels will change dynamically based on GPU load based on the default Compute and Graphics profiles. The thresholds and     delays for a custom mask cannot be controlled through the SMI tool</p>
+<p class="last">This flag automatically sets the Performance Level to “manual” as the mask is not
+applied when the Performance level is set to auto</p>
+</div>
+<p><strong>–setfan LEVEL:</strong> This sets the fan speed to a value ranging from 0 to 255 (not from 0-100%).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">While the hardware is usually capable of overriding this value when required, it is recommended to not set the fan level         lower than the default value for extended periods of time</p>
+</div>
+<p><strong>–setperflevel LEVEL:</strong> This lets you use the pre-defined Performance Level values, which can include: auto (Automatically change             PowerPlay values based on GPU workload low (Keep PowerPlay values low, regardless of workload) high (Keep PowerPlay values high,        regardless of workload) manual (Only use values defined in sysfs values)</p>
+<p><strong>–setoverdrive #:</strong> This sets the percentage above maximum for the max Performance Level. For example, –setoverdrive 20 will increase        the top sclk level by 20%. If the maximum sclk level is 1000MHz, then –setoverdrive 20 will increase the maximum sclk to 1200MHz</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This option can be used in conjunction with the –setsclk mask Operating the GPU outside of specifications can cause irreparable     damage to your hardware Please observe the warning displayed when using this option</p>
+</div>
+<p><strong>–setprofile # # # # #:</strong> The Compute Profile accepts 5 parameters, which are (in order): Minimum SCLK - Minimum GPU clock speed in MHz Minimum MCLK - Minimum GPU Memory clock speed in MHz Activity threshold - Workload required before clock levels change (%) Hysteresis Up - Delay before clock level is increased in milliseconds Hysteresis Down - Delay before clock level is decresed in milliseconds</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When a compute queue is detected, these values will be automatically applied to the system
+Compute Power Profiles are only applied when the Performance Level is set to “auto”</p>
+</div>
+<p><strong>Testing changes</strong></p>
+<p>After making changes to the SMI, run the test script to ensure that all functionality remains intact before uploading the patch. This can be done using:</p>
+<p>./test-rocm-smi.sh /opt/rocm/bin/rocm-smi</p>
+<p>The test can run all flags for the SMI, or specific flags can be tested with the -s option.</p>
+<p>Any new functionality added to the SMI should have a corresponding test added to the test script.</p>
+<p>Disclaimer</p>
+<p>The information contained herein is for informational purposes only, and is subject to change without notice. While every precaution has been taken in the preparation of this document, it may contain technical inaccuracies, omissions and typographical errors, and AMD is under no obligation to update or otherwise correct this information. Advanced Micro Devices, Inc. makes no representations or warranties with respect to the accuracy or completeness of the contents of this document, and assumes no liability of any kind, including the implied warranties of noninfringement, merchantability or fitness for particular purposes, with respect to the operation or use of AMD hardware, software or other products described herein. No license, including implied or arising by estoppel, to any intellectual property rights is granted by this document. Terms and limitations applicable to the purchase or use of AMD’s products are as set forth in a signed agreement between the parties or in AMD’s Standard Terms and Conditions of Sale.</p>
+<p>AMD, the AMD Arrow logo, and combinations thereof are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.</p>
+<p>Copyright (c) 2014-2017 Advanced Micro Devices, Inc. All rights reserved.</p>
+<div class="section" id="programing-rocm-smi">
+<h3>Programing ROCm-SMI<a class="headerlink" href="#programing-rocm-smi" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="sysfs-interface">
+<h2>SYSFS Interface<a class="headerlink" href="#sysfs-interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="naming-and-data-format-standards-for-sysfs-files">
+<h3>Naming and data format standards for sysfs files<a class="headerlink" href="#naming-and-data-format-standards-for-sysfs-files" title="Permalink to this headline">¶</a></h3>
+<p>The libsensors library offers an interface to the raw sensors data through the sysfs interface. Since lm-sensors 3.0.0, libsensors is
+completely chip-independent. It assumes that all the kernel drivers implement the standard sysfs interface described in this document.
+This makes adding or updating support for any given chip very easy,as libsensors, and applications using it, do not need to be modified.</p>
+<p>Note that motherboards vary widely in the connections to sensor chips.There is no standard that ensures connection of sensor to CPU,variation in external resistor value and conversion calculation we can not hard code this into the driver and have to be done in user space.</p>
+<p>Each chip gets its own directory in the sysfs /sys/devices tree.  To find all sensor chips, it is easier to follow the device symlinks from /sys/class/hwmon/hwmon*. This document briefly describes the standards that the drivers follow, so that an application program can scan for entries and access this data in a simple and consistent way. That said, such programs will have to implement conversion, labeling and hiding of inputs</p>
+<p>Up to lm-sensors 3.0.0, libsensors looks for hardware monitoring attributes in the “physical” device directory. Since lm-sensors 3.0.1, attributes found in the hwmon “class” device directory are also supported. Complex drivers (e.g. drivers for multifunction chips) may want to use this possibility to avoid namespace pollution. The only drawback will be that older versions of
+libsensors won’t support the driver in question.</p>
+<p>All sysfs values are fixed point numbers.</p>
+<p>There is only one value per file, unlike the older /proc specification.The common scheme for files naming is: &lt;type&gt;&lt;number&gt;_&lt;item&gt;. Usual types for sensor chips are “in” (voltage), “temp” (temperature) and “fan” (fan). Usual items are “input” (measured value), “max” (high threshold, “min” (low threshold). Numbering usually starts from 1,except for voltages which start from 0 (because most data sheets use this). A number is always used for elements that can be present more than once, even if there is a single element of the given type on the specific chip. Other files do not refer to a specific element, so they have a simple name, and no number.</p>
+<p>Alarms are direct indications read from the chips. The drivers do NOT make comparisons of readings to thresholds. This allows violations between readings to be caught and alarmed. The exact definition of an alarm (for example, whether a threshold must be met or must be exceeded to cause an alarm) is chip-dependent.</p>
+<p>When setting values of hwmon sysfs attributes, the string representation of the desired value must be written, note that strings which are not a number are interpreted as 0! For more on how written strings are interpreted see the “sysfs attribute writes interpretation” section at the end of this file.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>[0-<a href="#id2"><span class="problematic" id="id3">*</span></a>]</td>
+<td>denotes any positive number starting from 0</td>
+</tr>
+<tr class="row-even"><td>[1-<a href="#id4"><span class="problematic" id="id5">*</span></a>]</td>
+<td>denotes any positive number starting from 1</td>
+</tr>
+<tr class="row-odd"><td>RO</td>
+<td>read only value</td>
+</tr>
+<tr class="row-even"><td>WO</td>
+<td>write only value</td>
+</tr>
+<tr class="row-odd"><td>RW</td>
+<td>read/write value</td>
+</tr>
+</tbody>
+</table>
+<p>Read/write values may be read-only for some chips, depending on the hardware implementation.</p>
+<p>All entries (except name) are optional, and should only be created in a given driver if the chip has the feature.</p>
+<div class="section" id="global-attributes">
+<h4>Global attributes<a class="headerlink" href="#global-attributes" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>name</td>
+<td><div class="first last line-block">
+<div class="line">The chip name.This should be a short, lowercase string, not containing whitespace,</div>
+<div class="line">dashes, or the wildcard character ‘*’.This attribute represents the chip name.</div>
+<div class="line">It is the only mandatory attribute.I2C devices get this attribute created automatically.</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>update_interval</td>
+<td><div class="first last line-block">
+<div class="line">The interval at which the chip will update readings.</div>
+<div class="line">Unit: millisecond</div>
+<div class="line">RW</div>
+<div class="line">Some devices have a variable update rate or interval.</div>
+<div class="line">This attribute can be used to change it to the desired value.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="voltages">
+<h4>Voltages<a class="headerlink" href="#voltages" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>in[0-<a href="#id6"><span class="problematic" id="id7">*</span></a>]_min</td>
+<td><div class="first last line-block">
+<div class="line">Voltage min value.</div>
+<div class="line">Unit: millivolt</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>in[0-<a href="#id8"><span class="problematic" id="id9">*</span></a>]_lcrit</td>
+<td><div class="first last line-block">
+<div class="line">Voltage critical min value.</div>
+<div class="line">Unit: millivolt</div>
+<div class="line">RW</div>
+<div class="line">If voltage drops to or below this limit, the system may take drastic action such as power</div>
+<div class="line">down or reset. At the very least, it should report a fault.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>in[0-<a href="#id10"><span class="problematic" id="id11">*</span></a>]_max</td>
+<td><div class="first last line-block">
+<div class="line">Voltage max value.</div>
+<div class="line">Unit: millivolt</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>in[0-<a href="#id12"><span class="problematic" id="id13">*</span></a>]_crit</td>
+<td><div class="first last line-block">
+<div class="line">Voltage critical max value.</div>
+<div class="line">Unit: millivolt</div>
+<div class="line">RW</div>
+<div class="line">If voltage reaches or exceeds this limit, the system may take drastic action such as power</div>
+<div class="line">down or reset. At the very least, it should report a fault.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>in[0-<a href="#id14"><span class="problematic" id="id15">*</span></a>]_input</td>
+<td><div class="first last line-block">
+<div class="line">Voltage input value.</div>
+<div class="line">Unit: millivolt</div>
+<div class="line">RO</div>
+<div class="line">Voltage measured on the chip pin.Actual voltage depends on the scaling resistors on the</div>
+<div class="line">motherboard, as recommended in the chip datasheet.This varies by chip and by motherboard.</div>
+<div class="line">Because of this variation, values are generally NOT scaled by the chip driver, and must be</div>
+<div class="line">done by the application.However, some drivers (notably lm87 and via686a) do scale, because</div>
+<div class="line">of internal resistors built into a chip.These drivers will output the actual voltage. Rule of</div>
+<div class="line">thumb: drivers should report the voltage values at the “pins” of the chip.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>in[0-<a href="#id16"><span class="problematic" id="id17">*</span></a>]_average</td>
+<td><div class="first last line-block">
+<div class="line">Average voltage</div>
+<div class="line">Unit: millivolt</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>in[0-<a href="#id18"><span class="problematic" id="id19">*</span></a>]_lowest</td>
+<td><div class="first last line-block">
+<div class="line">Historical minimum voltage</div>
+<div class="line">Unit: millivolt</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>in[0-<a href="#id20"><span class="problematic" id="id21">*</span></a>]_highest</td>
+<td><div class="first last line-block">
+<div class="line">Historical maximum voltage</div>
+<div class="line">Unit: millivolt</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>in[0-<a href="#id22"><span class="problematic" id="id23">*</span></a>]_reset_history</td>
+<td><div class="first last line-block">
+<div class="line">Reset inX_lowest and inX_highest</div>
+<div class="line">WO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>in_reset_history</td>
+<td><div class="first last line-block">
+<div class="line">Reset inX_lowest and inX_highest for all sensors</div>
+<div class="line">WO</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>in[0-<a href="#id24"><span class="problematic" id="id25">*</span></a>]_label</td>
+<td><div class="first last line-block">
+<div class="line">Suggested voltage channel label.</div>
+<div class="line">Text string Should only be created if the driver has hints about what this voltage channel</div>
+<div class="line">is being used for, and user-space doesn’t. In all other cases, the label is provided by</div>
+<div class="line">user-space.</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>cpu[0-<a href="#id26"><span class="problematic" id="id27">*</span></a>]_vid</td>
+<td><div class="first last line-block">
+<div class="line">CPU core reference voltage.</div>
+<div class="line">Unit: millivolt</div>
+<div class="line">RO</div>
+<div class="line">Not always correct.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>vrm</td>
+<td><div class="first last line-block">
+<div class="line">Voltage Regulator Module version number.</div>
+<div class="line">RW (but changing it should no more be necessary)</div>
+<div class="line">Originally the VRM standard version multiplied by 10, but now an arbitrary number, as not</div>
+<div class="line">all standards have a version number.Affects the way the driver calculates the CPU core</div>
+<div class="line">reference voltage from the vid pins.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Also see the Alarms section for status flags associated with voltages.</p>
+</div>
+<div class="section" id="fans">
+<h4>Fans<a class="headerlink" href="#fans" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>fan[1-<a href="#id28"><span class="problematic" id="id29">*</span></a>]_min</td>
+<td><div class="first last line-block">
+<div class="line">Fan minimum value</div>
+<div class="line">Unit: revolution/min (RPM)</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>fan[1-<a href="#id30"><span class="problematic" id="id31">*</span></a>]_max</td>
+<td><div class="first last line-block">
+<div class="line">Fan maximum value</div>
+<div class="line">Unit: revolution/min (RPM)</div>
+<div class="line">Only rarely supported by the hardware.</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>fan[1-<a href="#id32"><span class="problematic" id="id33">*</span></a>]_input</td>
+<td><div class="first last line-block">
+<div class="line">Fan input value.</div>
+<div class="line">Unit: revolution/min (RPM)</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>fan[1-<a href="#id34"><span class="problematic" id="id35">*</span></a>]_div</td>
+<td><div class="first last line-block">
+<div class="line">Fan divisor.</div>
+<div class="line">Integer value in powers of two (1, 2, 4, 8, 16, 32, 64, 128).</div>
+<div class="line">RW</div>
+<div class="line">Some chips only support values 1, 2, 4 and 8.</div>
+<div class="line">Note that this is actually an internal clock divisor, which</div>
+<div class="line">affects the measurable speed range, not the read value.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>fan[1-<a href="#id36"><span class="problematic" id="id37">*</span></a>]_pulses</td>
+<td><div class="first last line-block">
+<div class="line">Number of tachometer pulses per fan revolution.</div>
+<div class="line">Integer value, typically between 1 and 4.</div>
+<div class="line">RW</div>
+<div class="line">This value is a characteristic of the fan connected to the device’s input,</div>
+<div class="line">so it has to be set in accordance with the fan model.Should only be created</div>
+<div class="line">if the chip has a register to configure the number of pulses. In the absence</div>
+<div class="line">of such a register (and thus attribute) the value assumed by all devices is 2 pulses</div>
+<div class="line">per fan revolution.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>fan[1-<a href="#id38"><span class="problematic" id="id39">*</span></a>]_target</td>
+<td><div class="first last line-block">
+<div class="line">Desired fan speed</div>
+<div class="line">Unit: revolution/min (RPM)</div>
+<div class="line">RW</div>
+<div class="line">Only makes sense if the chip supports closed-loop fan speed</div>
+<div class="line">control based on the measured fan speed.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>fan[1-<a href="#id40"><span class="problematic" id="id41">*</span></a>]_label</td>
+<td><div class="first last line-block">
+<div class="line">Suggested fan channel label.</div>
+<div class="line">Text string</div>
+<div class="line">Should only be created if the driver has hints about what this fan channel is being</div>
+<div class="line">used for, and user-space doesn’t.In all other cases, the label is provided by user-space.</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Also see the Alarms section for status flags associated with fans.</p>
+</div>
+<div class="section" id="pwm">
+<h4>PWM<a class="headerlink" href="#pwm" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>pwm[1-<a href="#id42"><span class="problematic" id="id43">*</span></a>]</td>
+<td><div class="first last line-block">
+<div class="line">Pulse width modulation fan control.</div>
+<div class="line">Integer value in the range 0 to 255</div>
+<div class="line">RW</div>
+<div class="line">255 is max or 100%.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>pwm[1-<a href="#id44"><span class="problematic" id="id45">*</span></a>]_enable</td>
+<td><div class="first last line-block">
+<div class="line">Fan speed control method:</div>
+<div class="line">0: no fan speed control (i.e. fan at full speed)</div>
+<div class="line">1: manual fan speed control enabled (using pwm[1-<a href="#id46"><span class="problematic" id="id47">*</span></a>])</div>
+<div class="line">2+: automatic fan speed control enabled</div>
+<div class="line">Check individual chip documentation files for automatic mode details.</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>pwm[1-<a href="#id48"><span class="problematic" id="id49">*</span></a>]_mode</td>
+<td><div class="first last line-block">
+<div class="line">0: DC mode (direct current)</div>
+<div class="line">1: PWM mode (pulse-width modulation)</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>pwm[1-<a href="#id50"><span class="problematic" id="id51">*</span></a>]_freq</td>
+<td><div class="first last line-block">
+<div class="line">Base PWM frequency in Hz.</div>
+<div class="line">Only possibly available when pwmN_mode is PWM, but not always present even then.</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>pwm[1-<a href="#id52"><span class="problematic" id="id53">*</span></a>]_auto_channels_temp</td>
+<td><div class="first last line-block">
+<div class="line">Select which temperature channels affect this PWM output in auto mode. Bitfield,</div>
+<div class="line">1 is temp1, 2 is temp2, 4 is temp3 etc…</div>
+<div class="line">Which values are possible depend on the chip used.</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">pwm[1-<em>]_auto_point[1-</em>]_pwm</div>
+<div class="line">pwm[1-<em>]_auto_point[1-</em>]_temp</div>
+<div class="line">pwm[1-<em>]_auto_point[1-</em>]_temp_hyst</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">Define the PWM vs temperature curve. Number of trip points is chip-dependent.Use this</div>
+<div class="line">for chips which associate trip points to PWM output channels.</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">temp[1-<em>]_auto_point[1-</em>]_pwm</div>
+<div class="line">temp[1-<em>]_auto_point[1-</em>]_temp</div>
+<div class="line">temp[1-<em>]_auto_point[1-</em>]_temp_hyst</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">Define the PWM vs temperature curve. Number of trip points is chip dependent.</div>
+<div class="line">Use this for chips which associate trip points to temperature channels.</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>There is a third case where trip points are associated to both PWM output channels and temperature channels: the PWM values are associated to PWM output channels while the temperature values are associated to temperature channels. In that case, the result is determined by the mapping between temperature inputs and PWM outputs. When several temperature inputs are mapped to a given PWM output, this leads to several candidate PWM values.The actual result is up to the chip, but in general the highest candidate
+value (fastest fan speed) wins.</p>
+</div>
+<div class="section" id="temperatures">
+<h4>Temperatures<a class="headerlink" href="#temperatures" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>temp[1-<a href="#id54"><span class="problematic" id="id55">*</span></a>]_type</td>
+<td><div class="first last line-block">
+<div class="line">Sensor type selection.</div>
+<div class="line">Integers 1 to 6</div>
+<div class="line">RW</div>
+<div class="line">1: CPU embedded diode</div>
+<div class="line">2: 3904 transistor</div>
+<div class="line">3: thermal diode</div>
+<div class="line">4: thermistor</div>
+<div class="line">5: AMD AMDSI</div>
+<div class="line">6: Intel PECI</div>
+<div class="line">Not all types are supported by all chips</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>temp[1-<a href="#id56"><span class="problematic" id="id57">*</span></a>]_max</td>
+<td><div class="first last line-block">
+<div class="line">Temperature max value.</div>
+<div class="line">Unit: millidegree Celsius (or millivolt, see below)</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>temp[1-<a href="#id58"><span class="problematic" id="id59">*</span></a>]_min</td>
+<td><div class="first last line-block">
+<div class="line">Temperature min value.</div>
+<div class="line">Unit: millidegree Celsius</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>temp[1-<a href="#id60"><span class="problematic" id="id61">*</span></a>]_max_hyst</td>
+<td><div class="first last line-block">
+<div class="line">Temperature hysteresis value for max limit.</div>
+<div class="line">Unit: millidegree Celsius</div>
+<div class="line">Must be reported as an absolute temperature, NOT a delta from the max value.</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>temp[1-<a href="#id62"><span class="problematic" id="id63">*</span></a>]_min_hyst</td>
+<td><div class="first last line-block">
+<div class="line">Temperature hysteresis value for min limit.</div>
+<div class="line">Unit: millidegree Celsius</div>
+<div class="line">Must be reported as an absolute temperature, NOT a delta from the min value.</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>temp[1-<a href="#id64"><span class="problematic" id="id65">*</span></a>]_input</td>
+<td><div class="first last line-block">
+<div class="line">Temperature input value.</div>
+<div class="line">Unit: millidegree Celsius</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>temp[1-<a href="#id66"><span class="problematic" id="id67">*</span></a>]_crit</td>
+<td><div class="first last line-block">
+<div class="line">Temperature critical max value, typically greater than</div>
+<div class="line">corresponding temp_max values.</div>
+<div class="line">Unit: millidegree Celsius</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>temp[1-<a href="#id68"><span class="problematic" id="id69">*</span></a>]_crit_hyst</td>
+<td><div class="first last line-block">
+<div class="line">Temperature hysteresis value for critical limit.</div>
+<div class="line">Unit: millidegree Celsius</div>
+<div class="line">Must be reported as an absolute temperature, NOT a delta from the critical value.</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>temp[1-<a href="#id70"><span class="problematic" id="id71">*</span></a>]_emergency</td>
+<td><div class="first last line-block">
+<div class="line">Temperature emergency max value, for chips supporting more than two upper</div>
+<div class="line">temperature limits. Must be equal or greater than corresponding temp_crit values.</div>
+<div class="line">Unit: millidegree Celsius</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>temp[1-<a href="#id72"><span class="problematic" id="id73">*</span></a>]_emergency_hyst</td>
+<td><div class="first last line-block">
+<div class="line">Temperature hysteresis value for emergency limit.</div>
+<div class="line">Unit: millidegree Celsius</div>
+<div class="line">Must be reported as an absolute temperature, NOT a delta from the emergency value.</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>temp[1-<a href="#id74"><span class="problematic" id="id75">*</span></a>]_lcrit</td>
+<td><div class="first last line-block">
+<div class="line">Temperature critical min value, typically lower than corresponding temp_min values.</div>
+<div class="line">Unit: millidegree Celsius</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>temp[1-<a href="#id76"><span class="problematic" id="id77">*</span></a>]_lcrit_hyst</td>
+<td><div class="first last line-block">
+<div class="line">Temperature hysteresis value for critical min limit.</div>
+<div class="line">Unit: millidegree Celsius</div>
+<div class="line">Must be reported as an absolute temperature, NOT a delta from the critical min value.</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>temp[1-<a href="#id78"><span class="problematic" id="id79">*</span></a>]_offset</td>
+<td><div class="first last line-block">
+<div class="line">Temperature offset which is added to the temperature reading by the chip.</div>
+<div class="line">Unit: millidegree Celsius</div>
+<div class="line">Read/Write value.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>temp[1-<a href="#id80"><span class="problematic" id="id81">*</span></a>]_label</td>
+<td><div class="first last line-block">
+<div class="line">Suggested temperature channel label.</div>
+<div class="line">Text string Should only be created if the driver has hints about what this temperature</div>
+<div class="line">channel is being used for, and user-space doesn’t. In all other cases, the label is</div>
+<div class="line">provided by user-space.</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>temp[1-<a href="#id82"><span class="problematic" id="id83">*</span></a>]_lowest</td>
+<td><div class="first last line-block">
+<div class="line">Historical minimum temperature</div>
+<div class="line">Unit: millidegree Celsius</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>temp[1-<a href="#id84"><span class="problematic" id="id85">*</span></a>]_highest</td>
+<td><div class="first last line-block">
+<div class="line">Historical maximum temperature</div>
+<div class="line">Unit: millidegree Celsius</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>temp[1-<a href="#id86"><span class="problematic" id="id87">*</span></a>]_reset_history</td>
+<td><div class="first last line-block">
+<div class="line">Reset temp_lowest and temp_highest</div>
+<div class="line">WO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>temp_reset_history</td>
+<td><div class="first last line-block">
+<div class="line">Reset temp_lowest and temp_highest for all sensors</div>
+<div class="line">WO</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Some chips measure temperature using external thermistors and an ADC, and report the temperature measurement as a voltage. Converting this voltage back to a temperature (or the other way around for limits) requires mathematical functions not available in the kernel, so the conversion must occur in user space. For these chips, all temp* files described above should contain values expressed in millivolt instead of millidegree Celsius. In other words, such temperature channels are handled as voltage channels by the driver.</p>
+<p>Also see the Alarms section for status flags associated with temperatures.</p>
+</div>
+<div class="section" id="currents">
+<h4>Currents<a class="headerlink" href="#currents" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>curr[1-<a href="#id88"><span class="problematic" id="id89">*</span></a>]_max</td>
+<td><div class="first last line-block">
+<div class="line">Current max value</div>
+<div class="line">Unit: milliampere</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>curr[1-<a href="#id90"><span class="problematic" id="id91">*</span></a>]_min</td>
+<td><div class="first last line-block">
+<div class="line">Current min value.</div>
+<div class="line">Unit: milliampere</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>curr[1-<a href="#id92"><span class="problematic" id="id93">*</span></a>]_lcrit</td>
+<td><div class="first last line-block">
+<div class="line">Current critical low value</div>
+<div class="line">Unit: milliampere</div>
+<div class="line-block">
+<div class="line">RW</div>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>curr[1-<a href="#id94"><span class="problematic" id="id95">*</span></a>]_crit</td>
+<td><div class="first last line-block">
+<div class="line">Current critical high value.</div>
+<div class="line">Unit: milliampere</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>curr[1-<a href="#id96"><span class="problematic" id="id97">*</span></a>]_input</td>
+<td><div class="first last line-block">
+<div class="line">Current input value</div>
+<div class="line">Unit: milliampere</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>curr[1-<a href="#id98"><span class="problematic" id="id99">*</span></a>]_average</td>
+<td><div class="first last line-block">
+<div class="line">Average current use</div>
+<div class="line">Unit: milliampere</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>curr[1-<a href="#id100"><span class="problematic" id="id101">*</span></a>]_lowest</td>
+<td><div class="first last line-block">
+<div class="line">Historical minimum current</div>
+<div class="line">Unit: milliampere</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>curr[1-<a href="#id102"><span class="problematic" id="id103">*</span></a>]_highest</td>
+<td><div class="first last line-block">
+<div class="line">Historical maximum current</div>
+<div class="line">Unit: milliampere</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>curr[1-<a href="#id104"><span class="problematic" id="id105">*</span></a>]_reset_history</td>
+<td><div class="first last line-block">
+<div class="line">Reset currX_lowest and currX_highest</div>
+<div class="line">WO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>curr_reset_history</td>
+<td><div class="first last line-block">
+<div class="line">Reset currX_lowest and currX_highest for all sensors</div>
+<div class="line">WO</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Also see the Alarms section for status flags associated with currents.</p>
+</div>
+<div class="section" id="power">
+<h4>Power<a class="headerlink" href="#power" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>power[1-<a href="#id106"><span class="problematic" id="id107">*</span></a>]_average</td>
+<td><div class="first last line-block">
+<div class="line">Average power use</div>
+<div class="line">Unit: microWatt</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>power[1-<a href="#id108"><span class="problematic" id="id109">*</span></a>]_average_interval</td>
+<td><div class="first last line-block">
+<div class="line">Power use averaging interval.  A poll notification is sent to this</div>
+<div class="line">file if the hardware changes the averaging interval.</div>
+<div class="line">Unit: milliseconds</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>power[1-<a href="#id110"><span class="problematic" id="id111">*</span></a>]_average_interval_max</td>
+<td><div class="first last line-block">
+<div class="line">Maximum power use averaging interval</div>
+<div class="line">Unit: milliseconds</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>power[1-<a href="#id112"><span class="problematic" id="id113">*</span></a>]_average_interval_min</td>
+<td><div class="first last line-block">
+<div class="line">Minimum power use averaging interval</div>
+<div class="line">Unit: milliseconds</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>power[1-<a href="#id114"><span class="problematic" id="id115">*</span></a>]_average_highest</td>
+<td><div class="first last line-block">
+<div class="line">Historical average maximum power use</div>
+<div class="line">Unit: microWatt</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>power[1-<a href="#id116"><span class="problematic" id="id117">*</span></a>]_average_lowest</td>
+<td><div class="first last line-block">
+<div class="line">Historical average minimum power use</div>
+<div class="line">Unit: microWatt</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>power[1-<a href="#id118"><span class="problematic" id="id119">*</span></a>]_average_max</td>
+<td><div class="first last line-block">
+<div class="line">A poll notification is sent to power[1-<a href="#id120"><span class="problematic" id="id121">*</span></a>]_average when power use</div>
+<div class="line">rises above this value.</div>
+<div class="line">Unit: microWatt</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>power[1-<a href="#id122"><span class="problematic" id="id123">*</span></a>]_average_min</td>
+<td><div class="first last line-block">
+<div class="line">A poll notification is sent to power[1-<a href="#id124"><span class="problematic" id="id125">*</span></a>]_average when power use</div>
+<div class="line">sinks below this value.</div>
+<div class="line">Unit: microWatt</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>power[1-<a href="#id126"><span class="problematic" id="id127">*</span></a>]_input</td>
+<td><div class="first last line-block">
+<div class="line">Instantaneous power use</div>
+<div class="line">Unit: microWatt</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>power[1-<a href="#id128"><span class="problematic" id="id129">*</span></a>]_input_highest</td>
+<td><div class="first last line-block">
+<div class="line">Historical maximum power use</div>
+<div class="line">Unit: microWatt</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>power[1-<a href="#id130"><span class="problematic" id="id131">*</span></a>]_input_lowest</td>
+<td><div class="first last line-block">
+<div class="line">Historical minimum power use</div>
+<div class="line">Unit: microWatt</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>power[1-<a href="#id132"><span class="problematic" id="id133">*</span></a>]_reset_history</td>
+<td><div class="first last line-block">
+<div class="line">Reset input_highest, input_lowest,</div>
+<div class="line">average_highest and average_lowest.</div>
+<div class="line">WO</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>power[1-<a href="#id134"><span class="problematic" id="id135">*</span></a>]_accuracy</td>
+<td><div class="first last line-block">
+<div class="line">Accuracy of the power meter.</div>
+<div class="line">Unit: Percent</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>power[1-<a href="#id136"><span class="problematic" id="id137">*</span></a>]_cap</td>
+<td><div class="first last line-block">
+<div class="line">If power use rises above this limit, the system should take action to</div>
+<div class="line">reduce power use.A poll notification is sent to this file if the cap is</div>
+<div class="line">changed by the hardware.The <a href="#id138"><span class="problematic" id="id139">*</span></a>_cap files only appear if the cap is known</div>
+<div class="line">to be enforced by hardware.</div>
+<div class="line">Unit: microWatt</div>
+<div class="line-block">
+<div class="line">RW</div>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>power[1-<a href="#id140"><span class="problematic" id="id141">*</span></a>]_cap_hyst</td>
+<td><div class="first last line-block">
+<div class="line">Margin of hysteresis built around capping and notification.</div>
+<div class="line">Unit: microWatt</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>power[1-<a href="#id142"><span class="problematic" id="id143">*</span></a>]_cap_max</td>
+<td><div class="first last line-block">
+<div class="line">Maximum cap that can be set.</div>
+<div class="line">Unit: microWatt</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>power[1-<a href="#id144"><span class="problematic" id="id145">*</span></a>]_cap_min</td>
+<td><div class="first last line-block">
+<div class="line">Minimum cap that can be set.</div>
+<div class="line">Unit: microWatt</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>power[1-<a href="#id146"><span class="problematic" id="id147">*</span></a>]_max</td>
+<td><div class="first last line-block">
+<div class="line">Maximum power.</div>
+<div class="line">Unit: microWatt</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>power[1-<a href="#id148"><span class="problematic" id="id149">*</span></a>]_crit</td>
+<td><div class="first last line-block">
+<div class="line">Critical maximum power.</div>
+<div class="line">If power rises to or above this limit, the system is expected take drastic</div>
+<div class="line">action to reduce power consumption, such as a system shutdown or</div>
+<div class="line">a forced powerdown of some devices.</div>
+<div class="line">Unit: microWatt</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Also see the Alarms section for status flags associated with power readings.</p>
+</div>
+<div class="section" id="energy">
+<h4>Energy<a class="headerlink" href="#energy" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="55%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>energy[1-<a href="#id150"><span class="problematic" id="id151">*</span></a>]_input</td>
+<td><div class="first last line-block">
+<div class="line">Cumulative energy use</div>
+<div class="line">Unit: microJoule</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="humidity">
+<h4>Humidity<a class="headerlink" href="#humidity" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>humidity[1-<a href="#id152"><span class="problematic" id="id153">*</span></a>]_input</td>
+<td><div class="first last line-block">
+<div class="line">Humidity</div>
+<div class="line">Unit: milli-percent (per cent mille, pcm)</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="alarms">
+<h4>Alarms<a class="headerlink" href="#alarms" title="Permalink to this headline">¶</a></h4>
+<p>Each channel or limit may have an associated alarm file, containing a
+boolean value. 1 means than an alarm condition exists, 0 means no alarm.</p>
+<p>Usually a given chip will either use channel-related alarms, or
+limit-related alarms, not both. The driver should just reflect the hardware
+implementation.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="54%" />
+<col width="46%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">in[0-<a href="#id154"><span class="problematic" id="id155">*</span></a>]_alarm</div>
+<div class="line">curr[1-<a href="#id156"><span class="problematic" id="id157">*</span></a>]_alarm</div>
+<div class="line">power[1-<a href="#id158"><span class="problematic" id="id159">*</span></a>]_alarm</div>
+<div class="line">fan[1-<a href="#id160"><span class="problematic" id="id161">*</span></a>]_alarm</div>
+<div class="line">temp[1-<a href="#id162"><span class="problematic" id="id163">*</span></a>]_alarm</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">Channel alarm</div>
+<div class="line">0: no alarm</div>
+<div class="line">1: alarm</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>OR</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="65%" />
+<col width="35%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">in[0-<a href="#id164"><span class="problematic" id="id165">*</span></a>]_min_alarm</div>
+<div class="line">in[0-<a href="#id166"><span class="problematic" id="id167">*</span></a>]_max_alarm</div>
+<div class="line">in[0-<a href="#id168"><span class="problematic" id="id169">*</span></a>]_lcrit_alarm</div>
+<div class="line">in[0-<a href="#id170"><span class="problematic" id="id171">*</span></a>]_crit_alarm</div>
+<div class="line">curr[1-<a href="#id172"><span class="problematic" id="id173">*</span></a>]_min_alarm</div>
+<div class="line">curr[1-<a href="#id174"><span class="problematic" id="id175">*</span></a>]_max_alarm</div>
+<div class="line">curr[1-<a href="#id176"><span class="problematic" id="id177">*</span></a>]_lcrit_alarm</div>
+<div class="line">curr[1-<a href="#id178"><span class="problematic" id="id179">*</span></a>]_crit_alarm</div>
+<div class="line">power[1-<a href="#id180"><span class="problematic" id="id181">*</span></a>]_cap_alarm</div>
+<div class="line">power[1-<a href="#id182"><span class="problematic" id="id183">*</span></a>]_max_alarm</div>
+<div class="line">power[1-<a href="#id184"><span class="problematic" id="id185">*</span></a>]_crit_alarm</div>
+<div class="line">fan[1-<a href="#id186"><span class="problematic" id="id187">*</span></a>]_min_alarm</div>
+<div class="line">fan[1-<a href="#id188"><span class="problematic" id="id189">*</span></a>]_max_alarm</div>
+<div class="line">temp[1-<a href="#id190"><span class="problematic" id="id191">*</span></a>]_min_alarm</div>
+<div class="line">temp[1-<a href="#id192"><span class="problematic" id="id193">*</span></a>]_max_alarm</div>
+<div class="line">temp[1-<a href="#id194"><span class="problematic" id="id195">*</span></a>]_lcrit_alarm</div>
+<div class="line">temp[1-<a href="#id196"><span class="problematic" id="id197">*</span></a>]_crit_alarm</div>
+<div class="line">temp[1-<a href="#id198"><span class="problematic" id="id199">*</span></a>]_emergency_alarm</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">Limit alarm</div>
+<div class="line">0: no alarm</div>
+<div class="line">1: alarm</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Each input channel may have an associated fault file. This can be used
+to notify open diodes, unconnected fans etc. where the hardware
+supports it. When this boolean has value 1, the measurement for that
+channel should not be trusted.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">fan[1-<a href="#id200"><span class="problematic" id="id201">*</span></a>]_fault</div>
+<div class="line">temp[1-<a href="#id202"><span class="problematic" id="id203">*</span></a>]_fault</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">Input fault condition</div>
+<div class="line">0: no fault occurred</div>
+<div class="line">1: fault condition</div>
+<div class="line">RO</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Some chips also offer the possibility to get beeped when an alarm occurs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>beep_enable</td>
+<td><div class="first last line-block">
+<div class="line">Master beep enable</div>
+<div class="line">0: no beeps</div>
+<div class="line">1: beeps</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">in[0-<a href="#id204"><span class="problematic" id="id205">*</span></a>]_beep</div>
+<div class="line">curr[1-<a href="#id206"><span class="problematic" id="id207">*</span></a>]_beep</div>
+<div class="line">fan[1-<a href="#id208"><span class="problematic" id="id209">*</span></a>]_beep</div>
+<div class="line">temp[1-<a href="#id210"><span class="problematic" id="id211">*</span></a>]_beep</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">Channel beep</div>
+<div class="line">0: disable</div>
+<div class="line">1: enable</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>In theory, a chip could provide per-limit beep masking, but no such chip
+was seen so far.</p>
+<p>Old drivers provided a different, non-standard interface to alarms and
+beeps. These interface files are deprecated, but will be kept around
+for compatibility reasons:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>alarms</td>
+<td><div class="first last line-block">
+<div class="line">Alarm bitmask.</div>
+<div class="line">RO</div>
+<div class="line">Integer representation of one to four bytes.</div>
+<div class="line">A ‘1’ bit means an alarm.</div>
+<div class="line">Chips should be programmed for ‘comparator’ mode so that</div>
+<div class="line">the alarm will ‘come back’ after you read the register</div>
+<div class="line">if it is still valid.</div>
+<div class="line">Generally a direct representation of a chip’s internal</div>
+<div class="line">alarm registers; there is no standard for the position</div>
+<div class="line">of individual bits. For this reason, the use of this</div>
+<div class="line">interface file for new drivers is discouraged. Use</div>
+<div class="line">individual <a href="#id212"><span class="problematic" id="id213">*</span></a>_alarm and <a href="#id214"><span class="problematic" id="id215">*</span></a>_fault files instead.</div>
+<div class="line">Bits are defined in kernel/include/sensors.h.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>beep_mask</td>
+<td><div class="first last line-block">
+<div class="line">Bitmask for beep.</div>
+<div class="line">Same format as ‘alarms’ with the same bit locations,</div>
+<div class="line">use discouraged for the same reason. Use individual</div>
+<div class="line"><a href="#id216"><span class="problematic" id="id217">*</span></a>_beep files instead.</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="intrusion-detection">
+<h4>Intrusion detection<a class="headerlink" href="#intrusion-detection" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>intrusion[0-<a href="#id218"><span class="problematic" id="id219">*</span></a>]_alarm</td>
+<td><div class="first last line-block">
+<div class="line">Chassis intrusion detection</div>
+<div class="line">0: OK</div>
+<div class="line">1: intrusion detected</div>
+<div class="line">RW</div>
+<div class="line">Contrary to regular alarm flags which clear themselves</div>
+<div class="line">automatically when read, this one sticks until cleared by</div>
+<div class="line">the user. This is done by writing 0 to the file. Writing</div>
+<div class="line">other values is unsupported.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>intrusion[0-<a href="#id220"><span class="problematic" id="id221">*</span></a>]_beep</td>
+<td><div class="first last line-block">
+<div class="line">Chassis intrusion beep</div>
+<div class="line">0: disable</div>
+<div class="line">1: enable</div>
+<div class="line">RW</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="sysfs-attribute-writes-interpretation">
+<h5>sysfs attribute writes interpretation<a class="headerlink" href="#sysfs-attribute-writes-interpretation" title="Permalink to this headline">¶</a></h5>
+<p>hwmon sysfs attributes always contain numbers, so the first thing to do is to
+convert the input to a number, there are 2 ways todo this depending whether
+the number can be negative or not:
+unsigned long u = simple_strtoul(buf, NULL, 10);
+long s = simple_strtol(buf, NULL, 10);</p>
+<p>With buf being the buffer with the user input being passed by the kernel.
+Notice that we do not use the second argument of strto[u]l, and thus cannot
+tell when 0 is returned, if this was really 0 or is caused by invalid input.
+This is done deliberately as checking this everywhere would add a lot of
+code to the kernel.</p>
+<p>Notice that it is important to always store the converted value in an
+unsigned long or long, so that no wrap around can happen before any further
+checking.</p>
+<p>After the input string is converted to an (unsigned) long, the value should be
+checked if its acceptable. Be careful with further conversions on the value
+before checking it for validity, as these conversions could still cause a wrap
+around before the check. For example do not multiply the result, and only
+add/subtract if it has been divided before the add/subtract.</p>
+<p>What to do if a value is found to be invalid, depends on the type of the
+sysfs attribute that is being set. If it is a continuous setting like a
+tempX_max or inX_max attribute, then the value should be clamped to its
+limits using clamp_val(value, min_limit, max_limit). If it is not continuous
+like for example a tempX_type, then when an invalid value is written,
+-EINVAL should be returned.</p>
+<p>Example1, temp1_max, register is a signed 8 bit value (-128 - 127 degrees):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">long</span> <span class="n">v</span> <span class="o">=</span> <span class="n">simple_strtol</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">clamp_val</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="o">-</span><span class="mi">128</span><span class="p">,</span> <span class="mi">127</span><span class="p">);</span>
+<span class="o">/*</span> <span class="n">write</span> <span class="n">v</span> <span class="n">to</span> <span class="n">register</span> <span class="o">*/</span>
+</pre></div>
+</div>
+<p>Example2, fan divider setting, valid values 2, 4 and 8:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unsigned</span> <span class="n">long</span> <span class="n">v</span> <span class="o">=</span> <span class="n">simple_strtoul</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+
+<span class="n">switch</span> <span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">case</span> <span class="mi">2</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+<span class="n">case</span> <span class="mi">4</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+<span class="n">case</span> <span class="mi">8</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+<span class="n">default</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">/*</span> <span class="n">write</span> <span class="n">v</span> <span class="n">to</span> <span class="n">register</span> <span class="o">*/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="kfd-topology">
+<h2>KFD Topology<a class="headerlink" href="#kfd-topology" title="Permalink to this headline">¶</a></h2>
+<p>Application software needs to understand the properties of the underlying hardware to leverage the performance capabilities of the platform for feature utilization and task scheduling. The sysfs topology exposes this information in a loosely hierarchal order. The information is populated by the KFD driver is gathered from ACPI (CRAT) and AMDGPU base driver.</p>
+<div class="line-block">
+<div class="line">The sysfs topology is arranged hierarchically as following. The root directory of the topology is</div>
+<div class="line"><strong>/sys/devices/virtual/kfd/kfd/topology/nodes/</strong></div>
+</div>
+<p>Based on the platform inside this directory there will be sub-directories corresponding to each HSA Agent. A system with N HSA Agents will have N directories as shown below.</p>
+<div class="line-block">
+<div class="line">/sys/devices/virtual/kfd/kfd/topology/nodes/0/</div>
+<div class="line">/sys/devices/virtual/kfd/kfd/topology/nodes/1/</div>
+<div class="line">.</div>
+<div class="line">.</div>
+<div class="line">/sys/devices/virtual/kfd/kfd/topology/nodes/N-1/</div>
+</div>
+<div class="section" id="hsa-agent-information">
+<h3>HSA Agent Information<a class="headerlink" href="#hsa-agent-information" title="Permalink to this headline">¶</a></h3>
+<p>The HSA Agent directory and the sub-directories inside that contains all the information about that agent. The following are the main information available.</p>
+</div>
+<div class="section" id="node-information">
+<h3>Node Information<a class="headerlink" href="#node-information" title="Permalink to this headline">¶</a></h3>
+<p>This is available in the root directory of the HSA agent. This provides information about the compute capabilities of the agent which includes number of cores or compute units, SIMD count and clock speed.</p>
+</div>
+<div class="section" id="memory">
+<h3>Memory<a class="headerlink" href="#memory" title="Permalink to this headline">¶</a></h3>
+<p>The memory bank information attached to this agent is populated in “mem_banks” subdirectory.
+/sys/devices/virtual/kfd/kfd/topology/nodes/N/mem_banks</p>
+</div>
+<div class="section" id="cache">
+<h3>Cache<a class="headerlink" href="#cache" title="Permalink to this headline">¶</a></h3>
+<p>The caches available for this agent is populated in “cache” subdirectory
+/sys/devices/virtual/kfd/kfd/topology/nodes/N/cache</p>
+</div>
+<div class="section" id="io-links">
+<h3>IO-LINKS<a class="headerlink" href="#io-links" title="Permalink to this headline">¶</a></h3>
+<p>The IO links provides HSA agent interconnect information with latency (cost) between agents. This is useful for peer-to-peer transfers.</p>
+</div>
+<div class="section" id="how-to-use-topology-information">
+<h3>How to use topology information<a class="headerlink" href="#how-to-use-topology-information" title="Permalink to this headline">¶</a></h3>
+<p>The information provided in sysfs should not be directly used by application software. Application software should always use Thunk library API (libhsakmt) to access topology information. Please refer to Thunk API for more information.</p>
+<p>The data are associated with a node ID, forming a per-node element list which references the elements contained at relative offsets within that list. A node associates with a kernel agent or agent. Node ID’s should be 0-based, with the “0” ID representing the primary elements of the system (e.g., “boot cores”, memory) if applicable. The enumeration order and—if applicable—values of the ID should match other information reported through mechanisms outside of the scope of the requirements;</p>
+<p>For example, the data and enumeration order contained in the ACPI SRAT table on some systems should match the memory order and properties reported through HSA. Further detail is out of the scope of the System Architecture and outlined in the Runtime API specification.</p>
+<img alt="../_images/simple_platform.png" src="../_images/simple_platform.png" />
+<p>Each of these nodes is interconnected with other nodes in more advanced systems to the level necessary to adequately describe the topology.</p>
+<img alt="../_images/More_advanced_topology.png" src="../_images/More_advanced_topology.png" />
+<p>Where applicable, the node grouping of physical memory follows NUMA principles to leverage memory locality in software when multiple physical memory blocks are available in the system and agents have a different “access cost” (e.g., bandwidth/latency) to that memory.</p>
+<p><strong>KFD Topology structure for AMDGPU :</strong></p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="topo0.html#sysfsclasskfd"><span class="std std-ref">sysfs-class-kfd</span></a></div>
+<div class="line"><a class="reference internal" href="topo1.html#sysfsclasskfdtopology"><span class="std std-ref">sysfs-class-kfd-topology</span></a></div>
+<div class="line"><a class="reference internal" href="topo2.html#sysfsclasskfdtopologynodes0"><span class="std std-ref">sysfs-class-kfd-topology-nodes-N</span></a></div>
+<div class="line"><a class="reference internal" href="topo3.html#sysfsclasskfdtopologynodes0iolinks01"><span class="std std-ref">sysfs-class-kfd-topology-nodes-N-io_links-X</span></a></div>
+<div class="line"><a class="reference internal" href="topo4.html#sysfsclasskfdtopologynodes0membanks0"><span class="std std-ref">sysfs-class-kfd-topology-nodes-N-membanks-X</span></a></div>
+<div class="line">sysfs-class-kfd-topology-nodes-N-caches</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html" class="btn btn-neutral float-right" title="ROCm Virtualization &amp; Containers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html" class="btn btn-neutral" title="ROCm Compiler SDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

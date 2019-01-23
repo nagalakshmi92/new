@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>clRNG &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>clRNG</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Tools/clRNG.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="clrng">
+<span id="cl1rng"></span><h1>clRNG<a class="headerlink" href="#clrng" title="Permalink to this headline">¶</a></h1>
+<p>For Github repository <a class="reference external" href="https://github.com/clMathLibraries/clRNG">clRNG</a></p>
+<p>A library for uniform random number generation in OpenCL.</p>
+<p>Streams of random numbers act as virtual random number generators. They can be created on the host computer in unlimited numbers, and then used either on the host or on computing devices by work items to generate random numbers. Each stream also has equally-spaced substreams, which are occasionally useful. The API is currently implemented for four different RNGs, namely the MRG31k3p, MRG32k3a, LFSR113 and Philox-4×32-10 generators.</p>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://clmathlibraries.github.io/clRNG/htmldocs/index.html">HTML Documentation (generated with Doxygen)</a></li>
+<li><a class="reference external" href="http://clmathlibraries.github.io/clRNG/docs/clrng-api.pdf">Tutorial Document (please cite this document if you use clRNG) clRNG: A Random Number API with Multiple Streams for OpenCL</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="what-s-new">
+<h2>What’s New<a class="headerlink" href="#what-s-new" title="Permalink to this headline">¶</a></h2>
+<p>Libraries related to clRNG, for probability distributions and quasi-Monte Carlo methods, are available:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://github.com/umontreal-simul/clProbDist">clProbDist</a></li>
+<li><a class="reference external" href="https://github.com/umontreal-simul/clQMC">clQMC</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="releases">
+<h2>Releases<a class="headerlink" href="#releases" title="Permalink to this headline">¶</a></h2>
+<p>The first public version of clRNG is v1.0.0 beta. Please go to <a class="reference external" href="https://github.com/clMathLibraries/clRNG/releases">releases</a> for downloads.</p>
+</div>
+<div class="section" id="building">
+<h2>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic">
+<li><dl class="first docutils">
+<dt>Install the runtime dependency:</dt>
+<dd><ul class="first last simple">
+<li>An OpenCL SDK, such as APP SDK.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Install the build dependencies:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The CMake cross-platform build system. Visual Studio users can use CMake Tools for Visual Studio.</li>
+<li>A recent C compiler, such as <a class="reference external" href="https://gcc.gnu.org/">GCC 4.9</a> , or Visual Studio 2013.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Get the clRNG source code.</p>
+</li>
+<li><p class="first">Configure the project using <a class="reference external" href="https://cmake.org/">CMake</a> (to generate standard makefiles) or <a class="reference external" href="https://cmaketools.codeplex.com/">CMake Tools for Visual Studio</a> (to generate solution and project files).</p>
+</li>
+<li><p class="first">Build the project.</p>
+</li>
+<li><p class="first">Install the project (by default, the library will be installed in the package directory under the build directory).</p>
+</li>
+<li><p class="first">Point the environment variable CLRNG_ROOT to the installation directory, i.e., the directory under which include/clRNG can be       found. This step is optional if the library is installed under /usr, which is the default.</p>
+</li>
+<li><p class="first">In order to execute the example programs (under the bin subdirectory of the installation directory) or to link clRNG into other     software, the dynamic linker must be informed where to find the clRNG shared library. The name and location of the shared library         generally depend on the platform.</p>
+</li>
+<li><p class="first">Optionally run the tests.</p>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="example-instructions-for-linux">
+<h2>Example Instructions for Linux<a class="headerlink" href="#example-instructions-for-linux" title="Permalink to this headline">¶</a></h2>
+<p>On a 64-bit Linux platform, steps 3 through 9 from above, executed in a Bash-compatible shell, could consist of:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/clMathLibraries/clRNG.git
+mkdir clRNG.build; cd clRNG.build; cmake ../clRNG/src
+make
+make install
+export CLRNG_ROOT=$PWD/package
+export LD_LIBRARY_PATH=$CLRNG_ROOT/lib64:$LD_LIBRARY_PATH
+$CLRNG_ROOT/bin/CTest
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Examples can be found in src/client. The compiled client program examples can be found under the bin subdirectory of the installation package ($CLRNG_ROOT/bin under Linux). Note that the examples expect an OpenCL GPU device to be available.</p>
+</div>
+<div class="section" id="simple-example">
+<h2>Simple example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
+<p>The simple example below shows how to use clRNG to generate random numbers by directly using device side headers (.clh) in your OpenCL kernel.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdlib.h&gt;</span>
+<span class="c1">#include &lt;string.h&gt;</span>
+
+<span class="c1">#include &quot;clRNG/clRNG.h&quot;</span>
+<span class="c1">#include &quot;clRNG/mrg31k3p.h&quot;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">cl_int</span> <span class="n">err</span><span class="p">;</span>
+    <span class="n">cl_platform_id</span> <span class="n">platform</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">cl_device_id</span> <span class="n">device</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">cl_context_properties</span> <span class="n">props</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">CL_CONTEXT_PLATFORM</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">};</span>
+    <span class="n">cl_context</span> <span class="n">ctx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">cl_command_queue</span> <span class="n">queue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">cl_program</span> <span class="n">program</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">cl_kernel</span> <span class="n">kernel</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">cl_event</span> <span class="n">event</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">cl_mem</span> <span class="n">bufIn</span><span class="p">,</span> <span class="n">bufOut</span><span class="p">;</span>
+    <span class="nb">float</span> <span class="o">*</span><span class="n">out</span><span class="p">;</span>
+    <span class="n">char</span> <span class="o">*</span><span class="n">clrng_root</span><span class="p">;</span>
+    <span class="n">char</span> <span class="n">include_str</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+    <span class="n">char</span> <span class="n">build_log</span><span class="p">[</span><span class="mi">4096</span><span class="p">];</span>
+    <span class="n">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">size_t</span> <span class="n">numWorkItems</span> <span class="o">=</span> <span class="mi">64</span><span class="p">;</span>
+    <span class="n">clrngMrg31k3pStream</span> <span class="o">*</span><span class="n">streams</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">size_t</span> <span class="n">streamBufferSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">size_t</span> <span class="n">kernelLines</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="o">/*</span> <span class="n">Sample</span> <span class="n">kernel</span> <span class="n">that</span> <span class="n">calls</span> <span class="n">clRNG</span> <span class="n">device</span><span class="o">-</span><span class="n">side</span> <span class="n">interfaces</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">random</span> <span class="n">numbers</span> <span class="o">*/</span>
+    <span class="n">const</span> <span class="n">char</span> <span class="o">*</span><span class="n">kernelSrc</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;    #define CLRNG_SINGLE_PRECISION                                   </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;    #include &lt;clRNG/mrg31k3p.clh&gt;                                    </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;                                                                     </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;    __kernel void example(__global clrngMrg31k3pHostStream *streams, </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;                          __global float *out)                       </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;    {                                                                </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;        int gid = get_global_id(0);                                  </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;                                                                     </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;        clrngMrg31k3pStream workItemStream;                          </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;        clrngMrg31k3pCopyOverStreamsFromGlobal(1, &amp;workItemStream,   </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;                                                     &amp;streams[gid]); </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;                                                                     </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;        out[gid] = clrngMrg31k3pRandomU01(&amp;workItemStream);          </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;    }                                                                </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;                                                                     </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">};</span>
+
+  <span class="o">/*</span> <span class="n">Setup</span> <span class="n">OpenCL</span> <span class="n">environment</span><span class="o">.</span> <span class="o">*/</span>
+  <span class="n">err</span> <span class="o">=</span> <span class="n">clGetPlatformIDs</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">platform</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">);</span>
+  <span class="n">err</span> <span class="o">=</span> <span class="n">clGetDeviceIDs</span><span class="p">(</span> <span class="n">platform</span><span class="p">,</span> <span class="n">CL_DEVICE_TYPE_GPU</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">device</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">);</span>
+
+  <span class="n">props</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">cl_context_properties</span><span class="p">)</span><span class="n">platform</span><span class="p">;</span>
+  <span class="n">ctx</span> <span class="o">=</span> <span class="n">clCreateContext</span><span class="p">(</span> <span class="n">props</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">device</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span> <span class="p">);</span>
+  <span class="n">queue</span> <span class="o">=</span> <span class="n">clCreateCommandQueue</span><span class="p">(</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span> <span class="p">);</span>
+
+  <span class="o">/*</span> <span class="n">Make</span> <span class="n">sure</span> <span class="n">CLRNG_ROOT</span> <span class="ow">is</span> <span class="n">specified</span> <span class="n">to</span> <span class="n">get</span> <span class="n">library</span> <span class="n">path</span> <span class="o">*/</span>
+  <span class="n">clrng_root</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CLRNG_ROOT&quot;</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">clrng_root</span> <span class="o">==</span> <span class="n">NULL</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Specify environment variable CLRNG_ROOT as described</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">include_str</span><span class="p">,</span> <span class="s2">&quot;-I &quot;</span><span class="p">);</span>
+  <span class="n">strcat</span><span class="p">(</span><span class="n">include_str</span><span class="p">,</span> <span class="n">clrng_root</span><span class="p">);</span>
+  <span class="n">strcat</span><span class="p">(</span><span class="n">include_str</span><span class="p">,</span> <span class="s2">&quot;/include&quot;</span><span class="p">);</span>
+
+  <span class="o">/*</span> <span class="n">Create</span> <span class="n">sample</span> <span class="n">kernel</span> <span class="o">*/</span>
+  <span class="n">kernelLines</span> <span class="o">=</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">kernelSrc</span><span class="p">)</span> <span class="o">/</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">kernelSrc</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+  <span class="n">program</span> <span class="o">=</span> <span class="n">clCreateProgramWithSource</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">kernelLines</span><span class="p">,</span> <span class="n">kernelSrc</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+  <span class="n">err</span> <span class="o">=</span> <span class="n">clBuildProgram</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">device</span><span class="p">,</span> <span class="n">include_str</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">CL_SUCCESS</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">clBuildProgram has failed</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+      <span class="n">clGetProgramBuildInfo</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">CL_PROGRAM_BUILD_LOG</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="n">build_log</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">build_log</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">kernel</span> <span class="o">=</span> <span class="n">clCreateKernel</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+
+  <span class="o">/*</span> <span class="n">Create</span> <span class="n">streams</span> <span class="o">*/</span>
+  <span class="n">streams</span> <span class="o">=</span> <span class="n">clrngMrg31k3pCreateStreams</span><span class="p">(</span><span class="n">NULL</span><span class="p">,</span> <span class="n">numWorkItems</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">streamBufferSize</span><span class="p">,</span> <span class="p">(</span><span class="n">clrngStatus</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+
+  <span class="o">/*</span> <span class="n">Create</span> <span class="n">buffers</span> <span class="k">for</span> <span class="n">the</span> <span class="n">kernel</span> <span class="o">*/</span>
+  <span class="n">bufIn</span> <span class="o">=</span> <span class="n">clCreateBuffer</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">CL_MEM_READ_ONLY</span> <span class="o">|</span> <span class="n">CL_MEM_COPY_HOST_PTR</span><span class="p">,</span> <span class="n">streamBufferSize</span><span class="p">,</span> <span class="n">streams</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+  <span class="n">bufOut</span> <span class="o">=</span> <span class="n">clCreateBuffer</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">CL_MEM_WRITE_ONLY</span> <span class="o">|</span> <span class="n">CL_MEM_HOST_READ_ONLY</span><span class="p">,</span> <span class="n">numWorkItems</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">cl_float</span><span class="p">),</span> <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+
+  <span class="o">/*</span> <span class="n">Setup</span> <span class="n">the</span> <span class="n">kernel</span> <span class="o">*/</span>
+  <span class="n">err</span> <span class="o">=</span> <span class="n">clSetKernelArg</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">bufIn</span><span class="p">),</span>  <span class="o">&amp;</span><span class="n">bufIn</span><span class="p">);</span>
+  <span class="n">err</span> <span class="o">=</span> <span class="n">clSetKernelArg</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">bufOut</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">bufOut</span><span class="p">);</span>
+
+  <span class="o">/*</span> <span class="n">Execute</span> <span class="n">the</span> <span class="n">kernel</span> <span class="ow">and</span> <span class="n">read</span> <span class="n">back</span> <span class="n">results</span> <span class="o">*/</span>
+  <span class="n">err</span> <span class="o">=</span> <span class="n">clEnqueueNDRangeKernel</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">numWorkItems</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">event</span><span class="p">);</span>
+  <span class="n">err</span> <span class="o">=</span> <span class="n">clWaitForEvents</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">event</span><span class="p">);</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">numWorkItems</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+  <span class="n">err</span> <span class="o">=</span> <span class="n">clEnqueueReadBuffer</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">bufOut</span><span class="p">,</span> <span class="n">CL_TRUE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">numWorkItems</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">out</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
+
+  <span class="o">/*</span> <span class="n">Release</span> <span class="n">allocated</span> <span class="n">resources</span> <span class="o">*/</span>
+  <span class="n">clReleaseEvent</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+  <span class="n">free</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+  <span class="n">clReleaseMemObject</span><span class="p">(</span><span class="n">bufIn</span><span class="p">);</span>
+  <span class="n">clReleaseMemObject</span><span class="p">(</span><span class="n">bufOut</span><span class="p">);</span>
+
+  <span class="n">clReleaseKernel</span><span class="p">(</span><span class="n">kernel</span><span class="p">);</span>
+  <span class="n">clReleaseProgram</span><span class="p">(</span><span class="n">program</span><span class="p">);</span>
+
+  <span class="n">clReleaseCommandQueue</span><span class="p">(</span><span class="n">queue</span><span class="p">);</span>
+  <span class="n">clReleaseContext</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="building-the-documentation-manually">
+<h2>Building the documentation manually<a class="headerlink" href="#building-the-documentation-manually" title="Permalink to this headline">¶</a></h2>
+<p>The documentation can be generated by running make from within the doc directory. This requires Doxygen to be installed.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

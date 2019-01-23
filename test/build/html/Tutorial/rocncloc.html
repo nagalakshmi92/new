@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CLOC offline compiler &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>CLOC offline compiler</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Tutorial/rocncloc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cloc-offline-compiler">
+<span id="rocncloc"></span><h1>CLOC offline compiler<a class="headerlink" href="#cloc-offline-compiler" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rocm-with-harmony-combining-opencl-hcc-and-hsa-in-a-single-program">
+<h2>ROCm With Harmony: Combining OpenCL, HCC, and HSA in a Single Program<a class="headerlink" href="#rocm-with-harmony-combining-opencl-hcc-and-hsa-in-a-single-program" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="introduction">
+<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<p>In a previous blog we discussed the different languages available on the ROCm platform.  Here we’ll show you how to combine several of these languages in a single program:</p>
+<blockquote>
+<div><ul class="simple">
+<li>We’ll use an offline OpenCL™ compiler to compile the “BitonicSort” OpenCL kernel (from the AMD APP SDK) into a standard HSA code     object (“hsaco”) format.</li>
+<li>The host code will employ HCC’s hc dialect for device discovery (ie hc::accelerator and hc::accelerator_view) and memory             management (hc::array)</li>
+<li>The actual dispatch will use the low-level HSA Runtime calls.  Recall that ROCR is an implementation of the HSA Runtime with         extensions for multi-GPU configurations.   We’ll show you how to extract HSA queue and agent structures from the HCC C++ ones, and       then use them to perform the kernel launch.</li>
+</ul>
+</div></blockquote>
+<p>There are several reasons you might want to do something along these lines. First, many kernels exist in OpenCL and re-using this existing investment can save time.  The OpenCL kernel language is widely-used, and it enables programmers to use advanced GPU features including local memory, rich math functions, and vector operations.   But the OpenCL runtime can be verbose and the memory interface can be difficult to control and optimize. HCC provides the advantage of a full C++ runtime but also full control over the memory allocation and copies.  Using the techniques we’ll show you here, you can employ OpenCL kernels without having to port the host runtime code to OpenCL. This approach offers a significant advantage for larger C++ programs that can use a few optimized OpenCL kernels while sticking with C++ kernels and features for the rest of the program.</p>
+</div>
+<div class="section" id="hsaco-the-common-currency">
+<h3>hsaco : The Common Currency<a class="headerlink" href="#hsaco-the-common-currency" title="Permalink to this headline">¶</a></h3>
+<p>Hsaco is informally pronounced “sock-o” (with a slight emphasis on the first letter to reflect the otherwise silent “h”).  It’s a standard ELF file ;`ELF &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a>&gt;`_ (“Executable and Linkable Format”) is a container format widely used in Linux to store object code, and the hsaco ELF container organization matches the one generated by the popular LLVM tool chain.  Hsaco stores the compiled GCN code in the .text section, it optionally contains debug information, and it defines symbols that allow the host code to find the kernel entrypoints and functions.  Like other ELF files, code objects can contain multiple kernels, functions, and data – so when using hsaco you will need to specify both the code object and the desired symbol.  Refer to the <a class="reference external" href="https://github.com/RadeonOpenCompute/ROCm-Docs">detailed description</a> of the hsaco format for more information. Many tools in AMD’s compiler chain generate and use the hsaco format including  OpenCL, HCC, HIP, the GCN assembler and the HSAIL Finalizer.  Kernel code contained in hsaco can be extracted and then launched onto the GPU.Additionally, the <a class="reference external" href="https://github.com/ROCm-Developer-Tools/LLVM-AMDGPU-Assembler-Extra">dissembler tool</a> can disassemble hsaco files so you can see what is going on inside the kernel.  In a future blog, we’ll talk about using the same techniques described here to assemble and then launch kernels written in GCN assembly.  Essentially, hsaco is the interchange format used to pass code between these different tools, and allows code written in different languages to be used together.</p>
+</div>
+<div class="section" id="compiling-an-opencl-kernel-into-hsaco">
+<h3>Compiling an OpenCL Kernel into hsaco<a class="headerlink" href="#compiling-an-opencl-kernel-into-hsaco" title="Permalink to this headline">¶</a></h3>
+<p>The Makefile shows the usage of the <a class="reference external" href="https://github.com/HSAFoundation/CLOC">CLOC</a> (CL Offline Compiler) tool to compile the CL kernel into the hsaco file.  Here’s the relevant call to CLOC: /opt/rocm/cloc/bin/cloc.sh BitonicSort_Kernels.cl -o BitonicSort_Kernels.hsaco</p>
+</div>
+<div class="section" id="using-hsaco">
+<h3>Using hsaco:<a class="headerlink" href="#using-hsaco" title="Permalink to this headline">¶</a></h3>
+<p>This example shows two methods for accessing the hsaco data from the host application :</p>
+<blockquote>
+<div><ul class="simple">
+<li>Use a separate file and load it using C++ file I/O code. See the load_hsa_from_file() command. This path is enabled when             p_loadKernelFromFile=true.</li>
+<li>Serialize the code into a global string and thus directly link the hsaco into the executable. This approach avoids the need to       find the hsaco file at runtime.  This path is enabled when p_loadKernelFromFile=false.</li>
+</ul>
+</div></blockquote>
+<p>The “load_hsa_code_object” shows the use of the standard HSA Runtime API calls to load the code object into memory and extract the pointer to the BitonicSort kernel.  If we were working with an HSAIL or BRIG kernel we would first call the finalizer which would produce hsaco data, and the use these exact same finalizer APIs to load the hsaco into memory and find the desired symbols.    This is a powerful and extremely useful concept that allows applications using the HSA Runtime to support either:</p>
+<blockquote>
+<div><ul class="simple">
+<li>An industry standard portable intermediate language (HSAIL/BRIG) that can be finalized to a vendor-specific binary, or</li>
+<li>A standard ELF container that stores vendor-specific binary code (hsaco). This flavor supports vendor-specific ISA inside a         standard container format, and still benefits from the standard HSA runtime API.  Effectively this enables use cases where apps         and tools can use the HSA Runtime APIs without using HSAIL, and still retain source code portability.</li>
+</ul>
+</div></blockquote>
+<p>The picture below shows the different steps in the code loading process, and in particular the clean separation between the pre-finalization (green) and post-finalization (yellow) steps.</p>
+<img alt="../_images/finalizer-executable-hsail-flow.png" src="../_images/finalizer-executable-hsail-flow.png" />
+</div>
+<div class="section" id="making-hcc-sing">
+<h3>Making HCC Sing<a class="headerlink" href="#making-hcc-sing" title="Permalink to this headline">¶</a></h3>
+<p>The example uses the hc <a class="reference external" href="gpuopen.com/rocm-do-you-speaka-my-language/">C++ dialect</a> to select the default accelerator and queue.  To launch the hsaco file we’ve created, we need to make HCC reveal the details of the HSA data structure that live under the covers. Here’s the critical piece of code that shows how to get from the HCC world to the HSA world using “hc::accelerator_view::get_hsa_queue”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">_acc</span> <span class="ow">is</span> <span class="nb">type</span> <span class="n">hc</span><span class="p">::</span><span class="n">accelerator</span><span class="o">.</span>
+
+<span class="o">//</span> <span class="n">Select</span> <span class="n">default</span> <span class="n">queue</span>
+
+<span class="n">hc</span><span class="p">::</span><span class="n">accelerator_view</span> <span class="n">av</span> <span class="o">=</span> <span class="n">_acc</span><span class="o">.</span><span class="n">get_default_view</span><span class="p">();</span>
+
+<span class="o">//</span> <span class="n">Extract</span> <span class="n">the</span> <span class="n">HSA</span> <span class="n">queue</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">accelerator</span> <span class="n">view</span><span class="p">:</span>
+<span class="n">hsa_queue_t</span>  <span class="o">*</span><span class="n">hsaQueue</span> <span class="o">=</span> <span class="n">static_cast</span><span class="o">&lt;</span><span class="n">hsa_queue_t</span><span class="o">*&gt;</span> <span class="p">(</span><span class="n">av</span><span class="o">.</span><span class="n">get_hsa_queue</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>Now that we have an HSA queue we can use the low-level HSA runtime API to enqueue the kernel for execution on the GPU. The code creates an “AQL” packet, uses the hsa runtime APIs (such as hsa_queue_store_write_index_relaxed) to place the packet into the queue and make it visible to the GPU for execution. More details in the code. This capability is a quite useful since we can now mix HCC kernels (submitted with parallel_for_each) with kernels in hsaco format (from OpenCL kernels, or assembly, or other sources) in the same application or even in the same queue.   For example, libraries can benefit from this architecture : the library interface can be based on HCC structures (accelerator, accelerator_view, completion_future) while the implementation uses HSA Runtime and hsacos.</p>
+</div>
+<div class="section" id="extracting-data-pointers">
+<h3>Extracting Data Pointers<a class="headerlink" href="#extracting-data-pointers" title="Permalink to this headline">¶</a></h3>
+<p>The example under discussion uses hc::array&lt;&gt;to store the array of integers that are sorted.  The original OpenCL kernel of course knows nothing of the  hc::array&lt;&gt; data-type.  Here’s the OpenCL kernel signature:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">__kernel</span>
+<span class="n">void</span> <span class="n">bitonicSort</span><span class="p">(</span><span class="n">__global</span> <span class="n">uint</span> <span class="o">*</span> <span class="n">theArray</span><span class="p">,</span> <span class="n">const</span> <span class="n">uint</span> <span class="n">stage</span><span class="p">,</span> <span class="n">const</span> <span class="n">uint</span> <span class="n">passOfStage</span><span class="p">,</span> <span class="n">const</span> <span class="n">uint</span> <span class="n">direction</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When calling this kernel, the first parameter (theArray) is an 8-byte pointer.  Fortunately the hc syntax defines an API that allows us to retrieve this pointer on the host side so we can later pass it to the kernel in the expected position:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_inputAccPtr</span> <span class="o">=</span> <span class="n">_inputArray</span><span class="o">-&gt;</span><span class="p">;</span><span class="n">accelerator_pointer</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Our application is still responsible for ensuring that the data at this pointer is valid on the accelerator, before calling the kernel.   In this case, the application copies from host data (allocated with malloc) to the inputArray.</p>
+<p>The code also shows the use of hc’s accelerator memory interface to allocate and copy the data.  This is an alternative to using hc::array&lt;&gt;, and can be select by setting p_useHcArray=false in the top of the source code.  Here’s the relevant code snippet:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">//</span> <span class="n">Alternative</span> <span class="n">allocation</span> <span class="n">technique</span> <span class="n">using</span> <span class="n">am_alloc</span>
+
+<span class="n">_inputAccPtr</span> <span class="o">=</span> <span class="n">hc</span><span class="p">::</span><span class="n">am_alloc</span><span class="p">(</span><span class="n">sizeBytes</span><span class="p">,</span> <span class="n">_acc</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="n">hc</span><span class="p">::</span><span class="n">am_copy</span><span class="p">(</span><span class="n">_inputAccPtr</span><span class="p">,</span> <span class="n">_input</span><span class="p">,</span> <span class="n">sizeBytes</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We do not recommended usinge  hc::array_view&lt;&gt; with the direct hsaco code launching techniques we are discussing here.  hc::array_view&lt;&gt; is designed to automatically synchronize the data before and after parallel_for_each blocks are launched.  Direct launching with HSA runtime APIs will not automatically synchronize hc::array_view&lt;&gt;.</p>
+<p>Finally, HCC provides accessors that allow easy retrieval of the the HSA “regions” associated with an accelerator.  The HSA runtime API uses regions to specify where memory on an agent is located - for example coarse-grain device memory or fine-grain system memory.    When enumerating accelerators, HCC scans the supported regions for each underlying HSA agent and provides the following accessors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span><span class="o">*</span> <span class="n">get_hsa_am_region</span><span class="p">();</span><span class="o">//</span> <span class="n">Accelerator</span><span class="o">-</span><span class="n">memory</span> <span class="n">region</span><span class="o">.</span>  <span class="n">On</span> <span class="n">discrete</span> <span class="n">GPUs</span> <span class="n">its</span> <span class="n">the</span> <span class="n">device</span> <span class="n">memory</span> <span class="p">;</span> <span class="n">on</span> <span class="n">APUs</span> <span class="n">its</span> <span class="n">shared</span> <span class="n">host</span> <span class="n">memory</span>
+
+<span class="n">void</span><span class="o">*</span> <span class="n">get_hsa_am_system_region</span><span class="p">()</span> <span class="o">//</span> <span class="n">Pinned</span> <span class="ow">or</span> <span class="n">registered</span> <span class="n">host</span> <span class="n">memory</span> <span class="n">accessible</span> <span class="n">to</span> <span class="n">this</span> <span class="n">accelerator</span>
+
+<span class="n">void</span><span class="o">*</span> <span class="n">get_hsa_kernarg_region</span><span class="p">()</span> <span class="o">//</span> <span class="n">Memory</span> <span class="k">for</span> <span class="n">kernel</span> <span class="n">arguments</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>This example uses get_hsa_kernarg_region() to allocate memory for the kernel arguments passed to the BitonicSort kernel.  Kernarg memory is typically written by the host CPU and read by the accelerator executing the kernel.  The example defines a host-side structure to describe the layout of the arguments expected by the kernel, and then typecasts the pointer returned by the kernarg pointer.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
+
+<span class="o">*</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">host</span><span class="o">-</span><span class="n">side</span> <span class="n">representation</span> <span class="n">of</span> <span class="n">the</span> <span class="n">kernel</span> <span class="n">arguments</span> <span class="n">expected</span> <span class="n">by</span> <span class="n">the</span> <span class="n">BitonicSort</span> <span class="n">kernel</span><span class="o">.</span>
+
+<span class="o">*</span> <span class="n">The</span> <span class="nb">format</span> <span class="ow">and</span> <span class="n">alignment</span> <span class="k">for</span> <span class="n">this</span> <span class="n">structure</span> <span class="n">must</span> <span class="n">exactly</span> <span class="n">match</span> <span class="n">the</span> <span class="n">kernel</span> <span class="n">signature</span> <span class="n">defined</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">kernel</span>
+
+<span class="o">*/</span>
+
+<span class="n">struct</span> <span class="n">BitonicSort_args_t</span> <span class="p">{</span>
+
+<span class="n">uint32_t</span> <span class="o">*</span> <span class="n">theArray</span><span class="p">;</span>
+
+<span class="n">uint32_t</span> <span class="n">stage</span><span class="p">;</span>
+
+<span class="n">uint32_t</span> <span class="n">passOfStage</span><span class="p">;</span>
+
+<span class="n">uint32_t</span> <span class="n">direction</span><span class="p">;</span>
+
+<span class="p">}</span> <span class="p">;</span>
+
+
+
+<span class="o">/*</span>
+
+<span class="o">*</span> <span class="n">Allocate</span> <span class="n">the</span> <span class="n">kernel</span> <span class="n">argument</span> <span class="n">buffer</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">correct</span> <span class="n">region</span><span class="o">.</span>
+
+<span class="o">*/</span>
+
+<span class="n">BitonicSort_args_t</span> <span class="o">*</span> <span class="n">args</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+
+<span class="n">hsa_region_t</span> <span class="n">kernarg_region</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">hsa_region_t</span><span class="o">*&gt;</span> <span class="p">(</span><span class="n">_acc</span><span class="o">.</span><span class="n">get_hsa_kernarg_region</span><span class="p">()));</span>
+
+<span class="n">hsa_status</span> <span class="o">=</span> <span class="n">hsa_memory_allocate</span><span class="p">(</span><span class="n">kernarg_region</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">args</span><span class="p">),</span> <span class="p">(</span><span class="n">void</span><span class="o">**</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">args</span><span class="p">));</span>
+
+<span class="n">aql</span><span class="o">.</span><span class="n">kernarg_address</span> <span class="o">=</span> <span class="n">args</span><span class="p">;</span>
+
+<span class="k">assert</span><span class="p">(</span><span class="n">HSA_STATUS_SUCCESS</span> <span class="o">==</span> <span class="n">hsa_status</span><span class="p">);</span>
+
+
+
+<span class="o">/*</span>
+
+<span class="o">*</span> <span class="n">Write</span> <span class="n">the</span> <span class="n">args</span> <span class="n">directly</span> <span class="n">into</span> <span class="n">the</span> <span class="n">kernargs</span> <span class="n">buffer</span><span class="p">:</span>
+
+<span class="o">*/</span>
+
+ <span class="n">args</span><span class="o">-&gt;</span><span class="n">theArray</span> <span class="o">=</span> <span class="n">_inputAccPtr</span><span class="p">;</span>
+
+<span class="n">args</span><span class="o">-&gt;</span><span class="n">stage</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="n">args</span><span class="o">-&gt;</span><span class="n">passOfStage</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="n">args</span><span class="o">-&gt;</span><span class="n">direction</span> <span class="o">=</span> <span class="n">_sortIncreasing</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<p>We learned how to use offline compilation to convert an OpenCL kernel into a standard hsaco file and then employed the HSA Runtime API to launch that kernel from an HCC program.  Harmony!  In the future we’ll look at how to optimize the HSA Runtime calls, and also how to use other tools to create hsaco files (such as the AMDGCN assembler).   Stay tuned.
+Reference:
+<a class="reference external" href="https://github.com/RadeonOpenCompute/HCC-Example-Application/tree/master/BitonicSort-CL-from-HCC">GitHub Code for this example</a>
+<a class="reference external" href="https://en.wikipedia.org/wiki/Bitonic_sorter">https://en.wikipedia.org/wiki/Bitonic_sorter</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

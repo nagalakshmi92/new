@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>UCT Design &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>UCT Design</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Remote_Device_Programming/UCT-Design.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="uct-design">
+<span id="id1"></span><h1>UCT Design<a class="headerlink" href="#uct-design" title="Permalink to this headline">¶</a></h1>
+<p>A low level transport API, which provides access to the simple and commonly supported hardware capabilities.</p>
+<div class="section" id="transport">
+<h2>Transport<a class="headerlink" href="#transport" title="Permalink to this headline">¶</a></h2>
+<p>The library will contain an abstraction layer called “transport” or “tl”. It enables the support of different types of hardware with single API. There are multiple functions in the API, for each type of operation and data layout. Not all capabilities have to be supported, and such support is exposed through attributes.</p>
+</div>
+<div class="section" id="communication-primitives">
+<h2>Communication primitives<a class="headerlink" href="#communication-primitives" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>Remote memory access:</dt>
+<dd><ul class="first last">
+<li>put</li>
+<li>get</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Remote memory atomics:</dt>
+<dd><ul class="first last">
+<li>add</li>
+<li>fetch-and-add</li>
+<li>swap</li>
+<li>compare-and-swap</li>
+<li>32/64 bit arguments</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>active message</li>
+<li>flush/fence</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="context-and-communication-objects">
+<h2>Context and communication objects<a class="headerlink" href="#context-and-communication-objects" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">uct_md_h - Memory domain object. Supports memory registrations and allocation for the use of underlying transports.</p>
+</li>
+<li><p class="first">uct_md_resource_desc_t, uct_tl_resource_desc_t - Structs which hold information about resources available to the current process.    Has distinctive properties such as bandwidth, latency, message rate, cpu locality.</p>
+</li>
+<li><p class="first">uct_worker_h - Groups communication resources and holds a progress engine. When explicitly progressing UCT, need to pass the         worker object.</p>
+</li>
+<li><p class="first">uct_iface_h - Communication resource on a specific device with a specific transport, on a given worker. It has unique network        address and can (potentially) be connected to. Also, it holds a table of active messages.</p>
+</li>
+<li><p class="first">uct_ep_h - A connection to remote peer. There are 2 ways to create it: either create an endpoint which is connected to remote        interface (by its address), or create an endpoint and later connect it to a remote endpoint (p2p mode). A transport should support       at least one of these method, and indicate this in capability bits.
+examples: * RC: a qp * UD: address handle, reliability state * DC: address handle * Shared memory: Mapped segment</p>
+<blockquote>
+<div><ul class="simple">
+<li>performs RMA to any virtual addresses which was registered within the protection domain on which the remote interface is                 running.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="ordering-semantics">
+<h2>Ordering semantics<a class="headerlink" href="#ordering-semantics" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>based on endpoint/transport configuration and capabilities.</li>
+<li>ordering property is exposed to the upper layer.</li>
+<li>a fence operation can be used to insert order enforcement</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="completion-semantics">
+<h2>Completion Semantics<a class="headerlink" href="#completion-semantics" title="Permalink to this headline">¶</a></h2>
+<p>There are 2 types of completion a “local completion” and a “remote completion”.</p>
+<ul>
+<li><p class="first">Remote completion: Remote side has performed the operation.
+There is no way to track a remote completion of a particular operation. It’s only possible to wait for the remote completion of all   operations issues so far, using a blocking/non-blocking flush. The exact semantics of remote completion depend on the transport and     exposed as part of its capabilities. For example</p>
+<blockquote>
+<div><ul class="simple">
+<li>RMA: Remote memory has been written / data has been scheduled on PCI bus.</li>
+<li>AM: Remote callback has started / completed</li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>Local completion: User buffer can be reused.</dt>
+<dd><ul class="first last simple">
+<li>Explicit non-blocking: User will accept a handle, and the completion will be signaled on this handle.</li>
+<li>Implicit non-blocking: User will not request a handle, and the local completion would be implied by remote completion.</li>
+<li>Option to specify send completion callback. The callback thread safety semantics are same as network AM handler. After it’s        called, the handle will be release by the library.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="operation-handle-allocation">
+<h2>Operation handle allocation<a class="headerlink" href="#operation-handle-allocation" title="Permalink to this headline">¶</a></h2>
+<p>Communication API which may not local-complete immediately will look like this:</p>
+<p>ucs_status_t uct_OPERATION(… , uct_completion_t <a href="#id2"><span class="problematic" id="id3">*</span></a>comp)</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">ucs_status_t</span> <span class="n">uct_ep_put_zcopy</span><span class="p">(</span><span class="n">uct_ep_h</span> <span class="n">ep</span><span class="p">,</span> <span class="n">const</span> <span class="n">void</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">length</span><span class="p">,</span>
+                             <span class="n">uct_mem_h</span> <span class="n">memh</span><span class="p">,</span> <span class="n">uint64_t</span> <span class="n">remote_addr</span><span class="p">,</span>
+                             <span class="n">uct_rkey_t</span> <span class="n">rkey</span><span class="p">,</span> <span class="n">uct_completion_t</span> <span class="o">*</span><span class="n">comp</span><span class="p">)</span>
+<span class="o">*</span> <span class="n">comp</span> <span class="o">-</span> <span class="n">Pointer</span> <span class="n">to</span> <span class="n">callback</span> <span class="n">structure</span><span class="p">,</span> <span class="n">allocated</span> <span class="n">by</span> <span class="n">the</span> <span class="n">user</span><span class="p">,</span> <span class="n">which</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">signal</span> <span class="n">local</span> <span class="n">completion</span><span class="o">.</span> <span class="n">The</span> <span class="n">user</span> <span class="n">should</span>          <span class="n">initialize</span> <span class="n">the</span> <span class="n">struct</span> <span class="k">with</span> <span class="n">a</span> <span class="n">counter</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">callback</span><span class="o">.</span> <span class="n">UCT</span> <span class="n">decrements</span> <span class="n">the</span> <span class="n">counter</span> <span class="ow">in</span> <span class="n">case</span> <span class="n">of</span> <span class="n">a</span> <span class="n">completion</span><span class="p">,</span> <span class="ow">and</span> <span class="n">calls</span> <span class="n">the</span> <span class="n">callback</span>         <span class="n">whenever</span> <span class="n">it</span> <span class="n">reaches</span> <span class="mf">0.</span> <span class="n">The</span> <span class="n">same</span> <span class="n">pointer</span> <span class="n">can</span> <span class="n">be</span> <span class="n">passed</span> <span class="n">to</span> <span class="n">multiple</span> <span class="n">communication</span> <span class="n">functions</span><span class="o">.</span> <span class="n">If</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">ignored</span><span class="p">,</span> <span class="ow">and</span> <span class="ow">in</span> <span class="n">that</span>            <span class="n">case</span> <span class="n">need</span> <span class="n">to</span> <span class="n">use</span> <span class="n">flush</span> <span class="n">to</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">local</span> <span class="n">completion</span><span class="o">.</span>
+<span class="o">*</span> <span class="n">Possible</span> <span class="k">return</span> <span class="n">values</span><span class="p">:</span>
+   <span class="o">*</span> <span class="n">UCS_OK</span> <span class="o">-</span> <span class="n">Operation</span> <span class="ow">is</span> <span class="n">completed</span> <span class="n">locally</span> <span class="ow">and</span> <span class="n">buffer</span> <span class="n">can</span> <span class="n">be</span> <span class="n">reused</span><span class="o">.</span> <span class="n">No</span> <span class="n">request</span> <span class="n">handle</span> <span class="ow">is</span> <span class="n">returned</span> <span class="ow">and</span> <span class="n">callback</span> <span class="n">parameter</span> <span class="ow">is</span>         <span class="n">ignored</span><span class="o">.</span>
+   <span class="o">*</span> <span class="n">UCS_INPROGRESS</span> <span class="o">-</span> <span class="n">The</span> <span class="n">operation</span> <span class="n">has</span> <span class="n">started</span><span class="p">,</span> <span class="n">will</span> <span class="n">complete</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">future</span><span class="o">.</span> <span class="n">If</span> <span class="n">comp</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">the</span> <span class="n">callback</span> <span class="n">will</span> <span class="n">be</span> <span class="n">called</span> <span class="n">when</span>        <span class="n">local</span> <span class="n">completion</span> <span class="ow">is</span> <span class="n">known</span><span class="o">.</span>
+   <span class="o">*</span> <span class="n">UCS_ERR_NO_RESOURCE</span> <span class="o">-</span> <span class="n">The</span> <span class="n">operation</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">initiated</span> <span class="n">right</span> <span class="n">now</span><span class="p">,</span> <span class="n">but</span> <span class="n">could</span> <span class="n">be</span> <span class="n">later</span><span class="o">.</span> <span class="n">It</span> <span class="ow">is</span> <span class="n">recommended</span> <span class="n">to</span> <span class="n">retry</span> <span class="n">later</span> <span class="n">after</span>       <span class="n">calling</span> <span class="n">uct_worker_progress</span><span class="p">()</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Usage example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">status</span> <span class="o">=</span> <span class="n">api_call</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">my_handle</span><span class="o">-&gt;</span><span class="n">comp</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">likely</span><span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="n">UCS_OK</span><span class="p">))</span> <span class="p">{</span>
+    <span class="o">/*</span> <span class="n">done</span> <span class="o">*/</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="n">UCS_INPROGRESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">/*</span> <span class="n">started</span> <span class="o">*/</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="n">UCS_ERR_NO_RESOURCE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">/*</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">started</span> <span class="n">now</span> <span class="o">*/</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="o">/*</span> <span class="n">error</span> <span class="o">*/</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Ordering
+Callback is triggered by lowest level interface. transport may be not-locally-ordered (which means completion for X does not imply local completion for 0..X-1). Therefore the high-level/user might want to put a callback for every fragment. In addition there would be a separate fence operation.</p>
+</div>
+<div class="section" id="active-messages">
+<h2>Active messages<a class="headerlink" href="#active-messages" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>User would specify whether his callback is thread safe or not. If not, the transport would have to call it only during API’s         progress call, and not from progress thread, if such exists.</li>
+<li>The callback may call any communication function, but not progress. Recursion is avoided because the callback has to take care of    putting the desired operation on a pending queue, in case it cannot be initiated (returns UCS_ERR_NO_RESOURCE).</li>
+<li>The callback is allowed to keep the data passed to it, and release it later (example usage unexpected tags), by returning            UCS_INPROGRESS.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="progress-semantics">
+<h2>Progress Semantics<a class="headerlink" href="#progress-semantics" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>There is an explicit progress function for worker.</li>
+<li>RMA and AMO operations do not require explicit call to progress on destination side. If the transport does not support HW RMA/AMO,    it should use progress thread to emulate it in SW.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="thread-safety">
+<h2>Thread safety<a class="headerlink" href="#thread-safety" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>All API functions should be thread safe</li>
+<li>Interface (uct_iface_h) can progress independently from different threads.</li>
+<li><dl class="first docutils">
+<dt>During compile time, could specify one of following:</dt>
+<dd><ul class="first last">
+<li>Not thread safe</li>
+<li>Coarse grained lock (per-context)</li>
+<li>Fine-grained locks (do best effort to progress same context from multiple threads)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Thread safety of data structures:</dt>
+<dd><ul class="first last">
+<li>Every data structure will have non-thread-safe version</li>
+<li>Some data structures will have also thread-safe-version</li>
+<li>During compile time, if it’s not “fine-grained”, the thread-safe-version will be downgraded to non-thread-safe.</li>
+<li>When using data structure, the developer may use thread-safe version as part of fine-grained-locking version.</li>
+<li><dl class="first docutils">
+<dt>In order to decide in runtime (ala MPI_Init_thread):</dt>
+<dd><ul class="first last">
+<li>Option1: load alternative library versions (e.g -mt)</li>
+<li>Option2: add runtime check for every lock/atomic</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="memory-handling">
+<h2>Memory handling<a class="headerlink" href="#memory-handling" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Memory domain has support for alloc/free and register/unregister.</li>
+<li>Registered memory is represented by uct_mem_h</li>
+<li>In order to allow remote access to a memory region, the user has to get a packed rkey and send it over using and out-of-band         mechanism. The packed rkey buffer is obtained by providing the memory handle.</li>
+<li>The side which performs the RMA unpacks the buffer, and gets an rkey_bundle_t, which contains the rkey as uct_rkey_t, and an         opaque pointer used to track it resource usage.</li>
+<li>The rkey can be used directly for RMA.</li>
+<li>A memory domain may choose to cache registrations, to lower their overhead, or take advantage of on-demand-paging mechanisms.</li>
+<li>In UCP, there will be function which can figure out correct order to register memory with multiple transports.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="data-specifications">
+<h2>Data specifications<a class="headerlink" href="#data-specifications" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>1.short - inline:</dt>
+<dd><ul class="first last simple">
+<li>buffer, length.</li>
+<li>exposes the maximal supported inline size.</li>
+<li>transport must guarantee a minimal size of &lt;CONSTANT&gt; bytes, defined in compile time. About 40 bytes.</li>
+<li>not supported by get()</li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>bcopy:</dt>
+<dd><ul class="first last">
+<li>“pack” callback, context argument, length</li>
+<li>memcpy() can be passed as the pack callback</li>
+<li>size limit is defined by bounce buffer size and exposed in transport attributes.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>zcopy:</dt>
+<dd><ul class="first last">
+<li>buffer, length, memory handle</li>
+<li>data must be sent as zero copy.</li>
+<li>local key must be valid</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>single-dimension scatter/gather - iovec (can be either local or remote)</dt>
+<dd><ul class="first last">
+<li>iovec element has: pointer, length, stride, count, key / iovec+len</li>
+<li>the key should have been obtained from mmap functions.</li>
+<li>transport exposes its max number of entries in the iovec</li>
+<li>IB implementation note: tl will post umr-s in correct order as needed, with temporary memory keys.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>atomics - pass the arguments directly without local key, since cost of copying the result is negligible.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="connection-establishment">
+<h2>Connection establishment<a class="headerlink" href="#connection-establishment" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Transport supports:</dt>
+<dd><ul class="first last">
+<li>create_ep(iface) -&gt; uct_ep_t - local operation</li>
+<li>connect_ep_to_ep(uct_ep_t, remote_iface_addr, remote_ep_addr) - both sides have to call it - most likely local operation.</li>
+<li>connect_ep_to_iface(uct_ep_t, remote_iface_addr) - optional by transport capabilities - one sided - it’s enough one side would       call it.</li>
+<li>Transport exposes what it supports by setting capability flags</li>
+<li>DC would use only connect_to_iface()</li>
+<li>active message callback does not really has to know who is the sender. Only for tag matching, and in that case we already pack      sender rank number.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>It’s possible to create multiple endpoints on same network context, and connect them to multiple endpoints of same destination        network context. each local endpoint may have unique “index”/”tag” which is part of the address. this information would be              exchanged as part of remote_ep_addr_blob.</li>
+</ul>
+</div>
+<div class="section" id="rte">
+<h2>RTE<a class="headerlink" href="#rte" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>will not be part of the API. a user may use RTE to provide UCT the address blobs to connect to.</li>
+<li>callback table</li>
+<li>point-to-point semantics (active messages)</li>
+<li>consider runtimes: slurm, alps, orte, stci, hydra, lsf, torque, sge, ssh, rsh, oracle grid engine, pmi-x</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

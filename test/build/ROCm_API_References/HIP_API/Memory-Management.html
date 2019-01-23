@@ -1,0 +1,1102 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Memory Management &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Memory Management</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/ROCm_API_References/HIP_API/Memory-Management.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="memory-management">
+<span id="id1"></span><h1>Memory Management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hippointergetattributes">
+<h2>hipPointerGetAttributes<a class="headerlink" href="#hippointergetattributes" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv323hipPointerGetAttributesP21hipPointerAttribute_tPKv">
+<span id="_CPPv223hipPointerGetAttributesP21hipPointerAttribute_tPKv"></span><span id="hipPointerGetAttributes__hipPointerAttribute_tP.voidCP"></span><span class="target" id="group___memory_1ga7c3e8663feebb7be9fd3a1e5139bcefc"></span>hipError_t <code class="descname">hipPointerGetAttributes</code><span class="sig-paren">(</span>hipPointerAttribute_t *<em>attributes</em>, <em class="property">const</em> void *<em>ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv323hipPointerGetAttributesP21hipPointerAttribute_tPKv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return attributes for the specified pointer. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidDevice, #hipErrorInvalidValue</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="Device-management.html#group___device_1ga8555d5c76d88c50ddbf54ae70b568394"><span class="std std-ref">hipGetDeviceCount</span></a>, <a class="reference internal" href="Device-management.html#group___device_1ga7e0e2e8c5f78e3c7449764657c254e0a"><span class="std std-ref">hipGetDevice</span></a>, <a class="reference internal" href="Device-management.html#group___device_1ga43c1e7f15925eeb762195ccb5e063eae"><span class="std std-ref">hipSetDevice</span></a>, <a class="reference internal" href="Device-management.html#group___device_1gaf1e365e1d17cf40644d1470de4817c8e"><span class="std std-ref">hipChooseDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">attributes</span></code>: for the specified pointer </li>
+<li><code class="docutils literal notranslate"><span class="pre">pointer</span></code>: to get attributes for</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmalloc">
+<h2>hipMalloc<a class="headerlink" href="#hipmalloc" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv39hipMallocPPv6size_t">
+<span id="_CPPv29hipMallocPPv6size_t"></span><span id="hipMalloc__voidPP.s"></span><span class="target" id="group___memory_1ga4c6fcfe80010069d2792780d00dcead2"></span>hipError_t <code class="descname">hipMalloc</code><span class="sig-paren">(</span>void **<em>ptr</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv39hipMallocPPv6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allocate memory on the default accelerator. </p>
+<p><p>If size is 0, no memory is allocated, *ptr returns nullptr, and hipSuccess is returned.</p>
+<dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ptr</span></code>: Pointer to the allocated memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">size</span></code>: Requested memory size</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorMemoryAllocation, #hipErrorInvalidValue (bad context, null *ptr)</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1ga805c7320498926e444616fe090c727ee"><span class="std std-ref">hipMallocPitch</span></a>, <a class="reference internal" href="#group___memory_1ga740d08da65cae1441ba32f8fedb863d1"><span class="std std-ref">hipFree</span></a>, <a class="reference internal" href="#group___memory_1gad20a96c14589cb226fcde1219512a0f9"><span class="std std-ref">hipMallocArray</span></a>, <a class="reference internal" href="#group___memory_1gae29935073517245c69bc64790dd2747a"><span class="std std-ref">hipFreeArray</span></a>, hipMalloc3D, <a class="reference internal" href="#group___memory_1ga6b3423ded4fe1c64eb7b168cb569a6ea"><span class="std std-ref">hipMalloc3DArray</span></a>, hipHostFree, <a class="reference internal" href="#group___memory_1gaad40bc7d97ccc799403ef5a9a8c246e1"><span class="std std-ref">hipHostMalloc</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmallochost">
+<h2>hipMallocHost<a class="headerlink" href="#hipmallochost" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv313hipMallocHostPPv6size_t">
+<span id="_CPPv213hipMallocHostPPv6size_t"></span><span id="hipMallocHost__voidPP.s"></span><span class="target" id="group___memory_1ga66399e729223ff5b66ffc16297c0710e"></span>hipError_t <code class="descname">hipMallocHost</code><span class="sig-paren">(</span>void **<em>ptr</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv313hipMallocHostPPv6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allocate pinned host memory [Deprecated]. </p>
+<p><p>If size is 0, no memory is allocated, *ptr returns nullptr, and hipSuccess is returned.</p>
+<dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ptr</span></code>: Pointer to the allocated host pinned memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">size</span></code>: Requested memory size</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorMemoryAllocation</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hiphostmalloc">
+<h2>hipHostMalloc<a class="headerlink" href="#hiphostmalloc" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv313hipHostMallocPPv6size_tj">
+<span id="_CPPv213hipHostMallocPPv6size_tj"></span><span id="hipHostMalloc__voidPP.s.unsigned-i"></span><span class="target" id="group___memory_1gaad40bc7d97ccc799403ef5a9a8c246e1"></span>hipError_t <code class="descname">hipHostMalloc</code><span class="sig-paren">(</span>void **<em>ptr</em>, size_t <em>size</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv313hipHostMallocPPv6size_tj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allocate device accessible page locked host memory. </p>
+<p><p>If size is 0, no memory is allocated, *ptr returns nullptr, and hipSuccess is returned.</p>
+<dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ptr</span></code>: Pointer to the allocated host pinned memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">size</span></code>: Requested memory size </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: Type of host memory allocation</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorMemoryAllocation</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="Device-management.html#group___device_1ga6e54db382768827e84725632018307aa"><span class="std std-ref">hipSetDeviceFlags</span></a>, hipHostFree </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hiphostalloc">
+<h2>hipHostAlloc<a class="headerlink" href="#hiphostalloc" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv312hipHostAllocPPv6size_tj">
+<span id="_CPPv212hipHostAllocPPv6size_tj"></span><span id="hipHostAlloc__voidPP.s.unsigned-i"></span><span class="target" id="group___memory_1ga0e35f3397f6ea9c3f47a17461ae01231"></span>hipError_t <code class="descname">hipHostAlloc</code><span class="sig-paren">(</span>void **<em>ptr</em>, size_t <em>size</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv312hipHostAllocPPv6size_tj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allocate device accessible page locked host memory [Deprecated]. </p>
+<p><p>If size is 0, no memory is allocated, *ptr returns nullptr, and hipSuccess is returned.</p>
+<dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ptr</span></code>: Pointer to the allocated host pinned memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">size</span></code>: Requested memory size </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: Type of host memory allocation</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorMemoryAllocation</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hiphostgetdevicepointer">
+<h2>hipHostGetDevicePointer<a class="headerlink" href="#hiphostgetdevicepointer" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv323hipHostGetDevicePointerPPvPvj">
+<span id="_CPPv223hipHostGetDevicePointerPPvPvj"></span><span id="hipHostGetDevicePointer__voidPP.voidP.unsigned-i"></span><span class="target" id="group___memory_1ga8fa7a0478020b835a24785cd6bb89725"></span>hipError_t <code class="descname">hipHostGetDevicePointer</code><span class="sig-paren">(</span>void **<em>devPtr</em>, void *<em>hstPtr</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv323hipHostGetDevicePointerPPvPvj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get Device pointer from Host Pointer allocated through hipHostMalloc. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorMemoryAllocation</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="Device-management.html#group___device_1ga6e54db382768827e84725632018307aa"><span class="std std-ref">hipSetDeviceFlags</span></a>, <a class="reference internal" href="#group___memory_1gaad40bc7d97ccc799403ef5a9a8c246e1"><span class="std std-ref">hipHostMalloc</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dstPtr</span></code>: Device Pointer mapped to passed host pointer </li>
+<li><code class="docutils literal notranslate"><span class="pre">hstPtr</span></code>: Host Pointer allocated through hipHostMalloc </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: Flags to be passed for extension</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hiphostgetflags">
+<h2>hipHostGetFlags<a class="headerlink" href="#hiphostgetflags" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv315hipHostGetFlagsPjPv">
+<span id="_CPPv215hipHostGetFlagsPjPv"></span><span id="hipHostGetFlags__unsigned-iP.voidP"></span><span class="target" id="group___memory_1ga4d26915873b3e3534ceb4dc310f8709a"></span>hipError_t <code class="descname">hipHostGetFlags</code><span class="sig-paren">(</span>unsigned int *<em>flagsPtr</em>, void *<em>hostPtr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv315hipHostGetFlagsPjPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return flags associated with host pointer. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1gaad40bc7d97ccc799403ef5a9a8c246e1"><span class="std std-ref">hipHostMalloc</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">flagsPtr</span></code>: Memory location to store flags </li>
+<li><code class="docutils literal notranslate"><span class="pre">hostPtr</span></code>: Host Pointer allocated through hipHostMalloc </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hiphostregister">
+<h2>hipHostRegister<a class="headerlink" href="#hiphostregister" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv315hipHostRegisterPv6size_tj">
+<span id="_CPPv215hipHostRegisterPv6size_tj"></span><span id="hipHostRegister__voidP.s.unsigned-i"></span><span class="target" id="group___memory_1gab8258f051e1a1f7385f794a15300e674"></span>hipError_t <code class="descname">hipHostRegister</code><span class="sig-paren">(</span>void *<em>hostPtr</em>, size_t <em>sizeBytes</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv315hipHostRegisterPv6size_tj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Register host memory so it can be accessed from the current device. </p>
+<p><p>Flags:</p>
+<ul class="simple">
+<li>hipHostRegisterDefault Memory is Mapped and Portable</li>
+<li>hipHostRegisterPortable Memory is considered registered by all contexts. HIP only supports one context so this is always assumed true.</li>
+<li>hipHostRegisterMapped Map the allocation into the address space for the current device. The device pointer can be obtained with <a class="reference internal" href="#group___memory_1ga8fa7a0478020b835a24785cd6bb89725"><span class="std std-ref">hipHostGetDevicePointer</span></a>.</li>
+</ul>
+<dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">hostPtr</span></code>: Pointer to host memory to be registered. </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: size of the host memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags.</span></code>: See below.</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>After registering the memory, use <a class="reference internal" href="#group___memory_1ga8fa7a0478020b835a24785cd6bb89725"><span class="std std-ref">hipHostGetDevicePointer</span></a> to obtain the mapped device pointer. On many systems, the mapped device pointer will have a different value than the mapped host pointer. Applications must use the device pointer in device code, and the host pointer in device code.</p>
+<p>On some systems, registered memory is pinned. On some systems, registered memory may not be actually be pinned but uses OS or hardware facilities to all GPU access to the host memory.</p>
+<p>Developers are strongly encouraged to register memory blocks which are aligned to the host cache-line size. (typically 64-bytes but can be obtains from the CPUID instruction).</p>
+<p>If registering non-aligned pointers, the application must take care when register pointers from the same cache line on different devices. HIP’s coarse-grained synchronization model does not guarantee correct results if different devices write to different parts of the same cache block - typically one of the writes will “win” and overwrite data from the other registered memory region.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorMemoryAllocation</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1ga4c9e1810b9f5858d36c4d28c91c86924"><span class="std std-ref">hipHostUnregister</span></a>, <a class="reference internal" href="#group___memory_1ga4d26915873b3e3534ceb4dc310f8709a"><span class="std std-ref">hipHostGetFlags</span></a>, <a class="reference internal" href="#group___memory_1ga8fa7a0478020b835a24785cd6bb89725"><span class="std std-ref">hipHostGetDevicePointer</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hiphostunregister">
+<h2>hipHostUnregister<a class="headerlink" href="#hiphostunregister" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv317hipHostUnregisterPv">
+<span id="_CPPv217hipHostUnregisterPv"></span><span id="hipHostUnregister__voidP"></span><span class="target" id="group___memory_1ga4c9e1810b9f5858d36c4d28c91c86924"></span>hipError_t <code class="descname">hipHostUnregister</code><span class="sig-paren">(</span>void *<em>hostPtr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv317hipHostUnregisterPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Un-register host pointer. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>Error code</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1gab8258f051e1a1f7385f794a15300e674"><span class="std std-ref">hipHostRegister</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">hostPtr</span></code>: Host pointer previously registered with <a class="reference internal" href="#group___memory_1gab8258f051e1a1f7385f794a15300e674"><span class="std std-ref">hipHostRegister</span></a> </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmallocpitch">
+<h2>hipMallocPitch<a class="headerlink" href="#hipmallocpitch" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv314hipMallocPitchPPvP6size_t6size_t6size_t">
+<span id="_CPPv214hipMallocPitchPPvP6size_t6size_t6size_t"></span><span id="hipMallocPitch__voidPP.sP.s.s"></span><span class="target" id="group___memory_1ga805c7320498926e444616fe090c727ee"></span>hipError_t <code class="descname">hipMallocPitch</code><span class="sig-paren">(</span>void **<em>ptr</em>, size_t *<em>pitch</em>, size_t <em>width</em>, size_t <em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv314hipMallocPitchPPvP6size_t6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allocates at least width (in bytes) * height bytes of linear memory Padding may occur to ensure alighnment requirements are met for the given row The change in width size due to padding will be returned in *pitch. </p>
+<p>Currently the alignment is set to 128 bytes</p>
+<p><p>If size is 0, no memory is allocated, *ptr returns nullptr, and hipSuccess is returned.</p>
+<dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ptr</span></code>: Pointer to the allocated device memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">pitch</span></code>: Pitch for allocation (in bytes) </li>
+<li><code class="docutils literal notranslate"><span class="pre">width</span></code>: Requested pitched allocation width (in bytes) </li>
+<li><code class="docutils literal notranslate"><span class="pre">height</span></code>: Requested pitched allocation height</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>Error code</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1ga4c6fcfe80010069d2792780d00dcead2"><span class="std std-ref">hipMalloc</span></a>, <a class="reference internal" href="#group___memory_1ga740d08da65cae1441ba32f8fedb863d1"><span class="std std-ref">hipFree</span></a>, <a class="reference internal" href="#group___memory_1gad20a96c14589cb226fcde1219512a0f9"><span class="std std-ref">hipMallocArray</span></a>, <a class="reference internal" href="#group___memory_1gae29935073517245c69bc64790dd2747a"><span class="std std-ref">hipFreeArray</span></a>, hipHostFree, hipMalloc3D, <a class="reference internal" href="#group___memory_1ga6b3423ded4fe1c64eb7b168cb569a6ea"><span class="std std-ref">hipMalloc3DArray</span></a>, <a class="reference internal" href="#group___memory_1gaad40bc7d97ccc799403ef5a9a8c246e1"><span class="std std-ref">hipHostMalloc</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipfree">
+<h2>hipFree<a class="headerlink" href="#hipfree" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv37hipFreePv">
+<span id="_CPPv27hipFreePv"></span><span id="hipFree__voidP"></span><span class="target" id="group___memory_1ga740d08da65cae1441ba32f8fedb863d1"></span>hipError_t <code class="descname">hipFree</code><span class="sig-paren">(</span>void *<em>ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv37hipFreePv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Free memory allocated by the hcc hip memory allocation API. </p>
+<p>This API performs an implicit <a class="reference internal" href="Device-management.html#group___device_1gaefdc2847fb1d6c3fb1354e827a191ebd"><span class="std std-ref">hipDeviceSynchronize()</span></a> call. If pointer is NULL, the hip runtime is initialized and hipSuccess is returned.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess </dd>
+<dt><strong>Return</strong></dt>
+<dd>#hipErrorInvalidDevicePointer (if pointer is invalid, including host pointers allocated with hipHostMalloc)</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1ga4c6fcfe80010069d2792780d00dcead2"><span class="std std-ref">hipMalloc</span></a>, <a class="reference internal" href="#group___memory_1ga805c7320498926e444616fe090c727ee"><span class="std std-ref">hipMallocPitch</span></a>, <a class="reference internal" href="#group___memory_1gad20a96c14589cb226fcde1219512a0f9"><span class="std std-ref">hipMallocArray</span></a>, <a class="reference internal" href="#group___memory_1gae29935073517245c69bc64790dd2747a"><span class="std std-ref">hipFreeArray</span></a>, hipHostFree, hipMalloc3D, <a class="reference internal" href="#group___memory_1ga6b3423ded4fe1c64eb7b168cb569a6ea"><span class="std std-ref">hipMalloc3DArray</span></a>, <a class="reference internal" href="#group___memory_1gaad40bc7d97ccc799403ef5a9a8c246e1"><span class="std std-ref">hipHostMalloc</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ptr</span></code>: Pointer to memory to be freed </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipfreehost">
+<h2>hipFreeHost<a class="headerlink" href="#hipfreehost" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv311hipFreeHostPv">
+<span id="_CPPv211hipFreeHostPv"></span><span id="hipFreeHost__voidP"></span><span class="target" id="group___memory_1ga28d7d92836116dfadeb62e416ee887d3"></span>hipError_t <code class="descname">hipFreeHost</code><span class="sig-paren">(</span>void *<em>ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv311hipFreeHostPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Free memory allocated by the hcc hip host memory allocation API. </p>
+<p>[Deprecated]</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue (if pointer is invalid, including device pointers allocated with hipMalloc)</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ptr</span></code>: Pointer to memory to be freed </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpy">
+<h2>hipMemcpy<a class="headerlink" href="#hipmemcpy" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv39hipMemcpyPvPKv6size_t13hipMemcpyKind">
+<span id="_CPPv29hipMemcpyPvPKv6size_t13hipMemcpyKind"></span><span id="hipMemcpy__voidP.voidCP.s.hipMemcpyKind"></span><span class="target" id="group___memory_1gac1a055d288302edd641c6d7416858e1e"></span>hipError_t <code class="descname">hipMemcpy</code><span class="sig-paren">(</span>void *<em>dst</em>, <em class="property">const</em> void *<em>src</em>, size_t <em>sizeBytes</em>, hipMemcpyKind <em>kind</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv39hipMemcpyPvPKv6size_t13hipMemcpyKind" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy data from src to dst. </p>
+<p>It supports memory from host to device, device to host, device to device and host to host The src and dst must not overlap.</p>
+<p>For hipMemcpy, the copy is always performed by the current device (set by hipSetDevice). For multi-gpu or peer-to-peer configurations, it is recommended to set the current device to the device where the src data is physically located. For optimal peer-to-peer copies, the copy device must be able to access the src and dst pointers (by calling hipDeviceEnablePeerAccess with copy agent as the current device and src/dest as the peerDevice argument. if this is not done, the hipMemcpy will still work, but will perform the copy using a staging buffer on the host.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorMemoryFree, #hipErrorUnknowni</dd>
+<dt><strong>See</strong></dt>
+<dd>hipArrayCreate, hipArrayDestroy, hipArrayGetDescriptor, hipMemAlloc, hipMemAllocHost, hipMemAllocPitch, <a class="reference internal" href="#group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"><span class="std std-ref">hipMemcpy2D</span></a>, <a class="reference internal" href="#group___memory_1gac79f26f9ec7b4d7bcda27d103ff6c3cd"><span class="std std-ref">hipMemcpy2DAsync</span></a>, hipMemcpy2DUnaligned, hipMemcpyAtoA, hipMemcpyAtoD, hipMemcpyAtoH, hipMemcpyAtoHAsync, hipMemcpyDtoA, <a class="reference internal" href="#group___memory_1ga814f245b8918f173c1f2f8c1480f7f93"><span class="std std-ref">hipMemcpyDtoD</span></a>, <a class="reference internal" href="#group___memory_1gad3bba6016cba62f0e933cdfb4c312d27"><span class="std std-ref">hipMemcpyDtoDAsync</span></a>, <a class="reference internal" href="#group___memory_1gae61f4e35ff1b9643c6328bc45d091c3f"><span class="std std-ref">hipMemcpyDtoH</span></a>, <a class="reference internal" href="#group___memory_1gad69da1994a646b843fb1fa465dbeb623"><span class="std std-ref">hipMemcpyDtoHAsync</span></a>, hipMemcpyHtoA, hipMemcpyHtoAAsync, <a class="reference internal" href="#group___memory_1gae3e76acb34bed5e3b19b4c1822975bcd"><span class="std std-ref">hipMemcpyHtoDAsync</span></a>, hipMemFree, hipMemFreeHost, <a class="reference internal" href="Device-Memory-Access.html#group___peer_to_peer_1gac7d9132f6e3d102e9b512020e5654f38"><span class="std std-ref">hipMemGetAddressRange</span></a>, <a class="reference internal" href="#group___memory_1ga311c3e246a21590de14478b8bd063be2"><span class="std std-ref">hipMemGetInfo</span></a>, hipMemHostAlloc, hipMemHostGetDevicePointer </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Data being copy to </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: Data being copy from </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: Data size in bytes </li>
+<li><code class="docutils literal notranslate"><span class="pre">copyType</span></code>: Memory copy type </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpyhtod">
+<h2>hipMemcpyHtoD<a class="headerlink" href="#hipmemcpyhtod" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv313hipMemcpyHtoD14hipDeviceptr_tPv6size_t">
+<span id="_CPPv213hipMemcpyHtoD14hipDeviceptr_tPv6size_t"></span><span id="hipMemcpyHtoD__hipDeviceptr_t.voidP.s"></span><span class="target" id="group___memory_1gaa415ecdd2535e1eb618ed8a31a6f03af"></span>hipError_t <code class="descname">hipMemcpyHtoD</code><span class="sig-paren">(</span>hipDeviceptr_t <em>dst</em>, void *<em>src</em>, size_t <em>sizeBytes</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv313hipMemcpyHtoD14hipDeviceptr_tPv6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy data from Host to Device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorDeInitialized, #hipErrorNotInitialized, #hipErrorInvalidContext, #hipErrorInvalidValue</dd>
+<dt><strong>See</strong></dt>
+<dd>hipArrayCreate, hipArrayDestroy, hipArrayGetDescriptor, hipMemAlloc, hipMemAllocHost, hipMemAllocPitch, <a class="reference internal" href="#group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"><span class="std std-ref">hipMemcpy2D</span></a>, <a class="reference internal" href="#group___memory_1gac79f26f9ec7b4d7bcda27d103ff6c3cd"><span class="std std-ref">hipMemcpy2DAsync</span></a>, hipMemcpy2DUnaligned, hipMemcpyAtoA, hipMemcpyAtoD, hipMemcpyAtoH, hipMemcpyAtoHAsync, hipMemcpyDtoA, <a class="reference internal" href="#group___memory_1ga814f245b8918f173c1f2f8c1480f7f93"><span class="std std-ref">hipMemcpyDtoD</span></a>, <a class="reference internal" href="#group___memory_1gad3bba6016cba62f0e933cdfb4c312d27"><span class="std std-ref">hipMemcpyDtoDAsync</span></a>, <a class="reference internal" href="#group___memory_1gae61f4e35ff1b9643c6328bc45d091c3f"><span class="std std-ref">hipMemcpyDtoH</span></a>, <a class="reference internal" href="#group___memory_1gad69da1994a646b843fb1fa465dbeb623"><span class="std std-ref">hipMemcpyDtoHAsync</span></a>, hipMemcpyHtoA, hipMemcpyHtoAAsync, <a class="reference internal" href="#group___memory_1gae3e76acb34bed5e3b19b4c1822975bcd"><span class="std std-ref">hipMemcpyHtoDAsync</span></a>, hipMemFree, hipMemFreeHost, <a class="reference internal" href="Device-Memory-Access.html#group___peer_to_peer_1gac7d9132f6e3d102e9b512020e5654f38"><span class="std std-ref">hipMemGetAddressRange</span></a>, <a class="reference internal" href="#group___memory_1ga311c3e246a21590de14478b8bd063be2"><span class="std std-ref">hipMemGetInfo</span></a>, hipMemHostAlloc, hipMemHostGetDevicePointer </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Data being copy to </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: Data being copy from </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: Data size in bytes</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpydtoh">
+<h2>hipMemcpyDtoH<a class="headerlink" href="#hipmemcpydtoh" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv313hipMemcpyDtoHPv14hipDeviceptr_t6size_t">
+<span id="_CPPv213hipMemcpyDtoHPv14hipDeviceptr_t6size_t"></span><span id="hipMemcpyDtoH__voidP.hipDeviceptr_t.s"></span><span class="target" id="group___memory_1gae61f4e35ff1b9643c6328bc45d091c3f"></span>hipError_t <code class="descname">hipMemcpyDtoH</code><span class="sig-paren">(</span>void *<em>dst</em>, hipDeviceptr_t <em>src</em>, size_t <em>sizeBytes</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv313hipMemcpyDtoHPv14hipDeviceptr_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy data from Device to Host. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorDeInitialized, #hipErrorNotInitialized, #hipErrorInvalidContext, #hipErrorInvalidValue</dd>
+<dt><strong>See</strong></dt>
+<dd>hipArrayCreate, hipArrayDestroy, hipArrayGetDescriptor, hipMemAlloc, hipMemAllocHost, hipMemAllocPitch, <a class="reference internal" href="#group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"><span class="std std-ref">hipMemcpy2D</span></a>, <a class="reference internal" href="#group___memory_1gac79f26f9ec7b4d7bcda27d103ff6c3cd"><span class="std std-ref">hipMemcpy2DAsync</span></a>, hipMemcpy2DUnaligned, hipMemcpyAtoA, hipMemcpyAtoD, hipMemcpyAtoH, hipMemcpyAtoHAsync, hipMemcpyDtoA, <a class="reference internal" href="#group___memory_1ga814f245b8918f173c1f2f8c1480f7f93"><span class="std std-ref">hipMemcpyDtoD</span></a>, <a class="reference internal" href="#group___memory_1gad3bba6016cba62f0e933cdfb4c312d27"><span class="std std-ref">hipMemcpyDtoDAsync</span></a>, <a class="reference internal" href="#group___memory_1gae61f4e35ff1b9643c6328bc45d091c3f"><span class="std std-ref">hipMemcpyDtoH</span></a>, <a class="reference internal" href="#group___memory_1gad69da1994a646b843fb1fa465dbeb623"><span class="std std-ref">hipMemcpyDtoHAsync</span></a>, hipMemcpyHtoA, hipMemcpyHtoAAsync, <a class="reference internal" href="#group___memory_1gae3e76acb34bed5e3b19b4c1822975bcd"><span class="std std-ref">hipMemcpyHtoDAsync</span></a>, hipMemFree, hipMemFreeHost, <a class="reference internal" href="Device-Memory-Access.html#group___peer_to_peer_1gac7d9132f6e3d102e9b512020e5654f38"><span class="std std-ref">hipMemGetAddressRange</span></a>, <a class="reference internal" href="#group___memory_1ga311c3e246a21590de14478b8bd063be2"><span class="std std-ref">hipMemGetInfo</span></a>, hipMemHostAlloc, hipMemHostGetDevicePointer </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Data being copy to </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: Data being copy from </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: Data size in bytes</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpydtod">
+<h2>hipMemcpyDtoD<a class="headerlink" href="#hipmemcpydtod" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv313hipMemcpyDtoD14hipDeviceptr_t14hipDeviceptr_t6size_t">
+<span id="_CPPv213hipMemcpyDtoD14hipDeviceptr_t14hipDeviceptr_t6size_t"></span><span id="hipMemcpyDtoD__hipDeviceptr_t.hipDeviceptr_t.s"></span><span class="target" id="group___memory_1ga814f245b8918f173c1f2f8c1480f7f93"></span>hipError_t <code class="descname">hipMemcpyDtoD</code><span class="sig-paren">(</span>hipDeviceptr_t <em>dst</em>, hipDeviceptr_t <em>src</em>, size_t <em>sizeBytes</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv313hipMemcpyDtoD14hipDeviceptr_t14hipDeviceptr_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy data from Device to Device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorDeInitialized, #hipErrorNotInitialized, #hipErrorInvalidContext, #hipErrorInvalidValue</dd>
+<dt><strong>See</strong></dt>
+<dd>hipArrayCreate, hipArrayDestroy, hipArrayGetDescriptor, hipMemAlloc, hipMemAllocHost, hipMemAllocPitch, <a class="reference internal" href="#group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"><span class="std std-ref">hipMemcpy2D</span></a>, <a class="reference internal" href="#group___memory_1gac79f26f9ec7b4d7bcda27d103ff6c3cd"><span class="std std-ref">hipMemcpy2DAsync</span></a>, hipMemcpy2DUnaligned, hipMemcpyAtoA, hipMemcpyAtoD, hipMemcpyAtoH, hipMemcpyAtoHAsync, hipMemcpyDtoA, <a class="reference internal" href="#group___memory_1ga814f245b8918f173c1f2f8c1480f7f93"><span class="std std-ref">hipMemcpyDtoD</span></a>, <a class="reference internal" href="#group___memory_1gad3bba6016cba62f0e933cdfb4c312d27"><span class="std std-ref">hipMemcpyDtoDAsync</span></a>, <a class="reference internal" href="#group___memory_1gae61f4e35ff1b9643c6328bc45d091c3f"><span class="std std-ref">hipMemcpyDtoH</span></a>, <a class="reference internal" href="#group___memory_1gad69da1994a646b843fb1fa465dbeb623"><span class="std std-ref">hipMemcpyDtoHAsync</span></a>, hipMemcpyHtoA, hipMemcpyHtoAAsync, <a class="reference internal" href="#group___memory_1gae3e76acb34bed5e3b19b4c1822975bcd"><span class="std std-ref">hipMemcpyHtoDAsync</span></a>, hipMemFree, hipMemFreeHost, <a class="reference internal" href="Device-Memory-Access.html#group___peer_to_peer_1gac7d9132f6e3d102e9b512020e5654f38"><span class="std std-ref">hipMemGetAddressRange</span></a>, <a class="reference internal" href="#group___memory_1ga311c3e246a21590de14478b8bd063be2"><span class="std std-ref">hipMemGetInfo</span></a>, hipMemHostAlloc, hipMemHostGetDevicePointer </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Data being copy to </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: Data being copy from </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: Data size in bytes</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpyhtodasync">
+<h2>hipMemcpyHtoDAsync<a class="headerlink" href="#hipmemcpyhtodasync" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv318hipMemcpyHtoDAsync14hipDeviceptr_tPv6size_t11hipStream_t">
+<span id="_CPPv218hipMemcpyHtoDAsync14hipDeviceptr_tPv6size_t11hipStream_t"></span><span id="hipMemcpyHtoDAsync__hipDeviceptr_t.voidP.s.hipStream_t"></span><span class="target" id="group___memory_1gae3e76acb34bed5e3b19b4c1822975bcd"></span>hipError_t <code class="descname">hipMemcpyHtoDAsync</code><span class="sig-paren">(</span>hipDeviceptr_t <em>dst</em>, void *<em>src</em>, size_t <em>sizeBytes</em>, hipStream_t <em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv318hipMemcpyHtoDAsync14hipDeviceptr_tPv6size_t11hipStream_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy data from Host to Device asynchronously. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorDeInitialized, #hipErrorNotInitialized, #hipErrorInvalidContext, #hipErrorInvalidValue</dd>
+<dt><strong>See</strong></dt>
+<dd>hipArrayCreate, hipArrayDestroy, hipArrayGetDescriptor, hipMemAlloc, hipMemAllocHost, hipMemAllocPitch, <a class="reference internal" href="#group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"><span class="std std-ref">hipMemcpy2D</span></a>, <a class="reference internal" href="#group___memory_1gac79f26f9ec7b4d7bcda27d103ff6c3cd"><span class="std std-ref">hipMemcpy2DAsync</span></a>, hipMemcpy2DUnaligned, hipMemcpyAtoA, hipMemcpyAtoD, hipMemcpyAtoH, hipMemcpyAtoHAsync, hipMemcpyDtoA, <a class="reference internal" href="#group___memory_1ga814f245b8918f173c1f2f8c1480f7f93"><span class="std std-ref">hipMemcpyDtoD</span></a>, <a class="reference internal" href="#group___memory_1gad3bba6016cba62f0e933cdfb4c312d27"><span class="std std-ref">hipMemcpyDtoDAsync</span></a>, <a class="reference internal" href="#group___memory_1gae61f4e35ff1b9643c6328bc45d091c3f"><span class="std std-ref">hipMemcpyDtoH</span></a>, <a class="reference internal" href="#group___memory_1gad69da1994a646b843fb1fa465dbeb623"><span class="std std-ref">hipMemcpyDtoHAsync</span></a>, hipMemcpyHtoA, hipMemcpyHtoAAsync, <a class="reference internal" href="#group___memory_1gae3e76acb34bed5e3b19b4c1822975bcd"><span class="std std-ref">hipMemcpyHtoDAsync</span></a>, hipMemFree, hipMemFreeHost, <a class="reference internal" href="Device-Memory-Access.html#group___peer_to_peer_1gac7d9132f6e3d102e9b512020e5654f38"><span class="std std-ref">hipMemGetAddressRange</span></a>, <a class="reference internal" href="#group___memory_1ga311c3e246a21590de14478b8bd063be2"><span class="std std-ref">hipMemGetInfo</span></a>, hipMemHostAlloc, hipMemHostGetDevicePointer </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Data being copy to </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: Data being copy from </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: Data size in bytes</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpydtohasync">
+<h2>hipMemcpyDtoHAsync<a class="headerlink" href="#hipmemcpydtohasync" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv318hipMemcpyDtoHAsyncPv14hipDeviceptr_t6size_t11hipStream_t">
+<span id="_CPPv218hipMemcpyDtoHAsyncPv14hipDeviceptr_t6size_t11hipStream_t"></span><span id="hipMemcpyDtoHAsync__voidP.hipDeviceptr_t.s.hipStream_t"></span><span class="target" id="group___memory_1gad69da1994a646b843fb1fa465dbeb623"></span>hipError_t <code class="descname">hipMemcpyDtoHAsync</code><span class="sig-paren">(</span>void *<em>dst</em>, hipDeviceptr_t <em>src</em>, size_t <em>sizeBytes</em>, hipStream_t <em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv318hipMemcpyDtoHAsyncPv14hipDeviceptr_t6size_t11hipStream_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy data from Device to Host asynchronously. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorDeInitialized, #hipErrorNotInitialized, #hipErrorInvalidContext, #hipErrorInvalidValue</dd>
+<dt><strong>See</strong></dt>
+<dd>hipArrayCreate, hipArrayDestroy, hipArrayGetDescriptor, hipMemAlloc, hipMemAllocHost, hipMemAllocPitch, <a class="reference internal" href="#group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"><span class="std std-ref">hipMemcpy2D</span></a>, <a class="reference internal" href="#group___memory_1gac79f26f9ec7b4d7bcda27d103ff6c3cd"><span class="std std-ref">hipMemcpy2DAsync</span></a>, hipMemcpy2DUnaligned, hipMemcpyAtoA, hipMemcpyAtoD, hipMemcpyAtoH, hipMemcpyAtoHAsync, hipMemcpyDtoA, <a class="reference internal" href="#group___memory_1ga814f245b8918f173c1f2f8c1480f7f93"><span class="std std-ref">hipMemcpyDtoD</span></a>, <a class="reference internal" href="#group___memory_1gad3bba6016cba62f0e933cdfb4c312d27"><span class="std std-ref">hipMemcpyDtoDAsync</span></a>, <a class="reference internal" href="#group___memory_1gae61f4e35ff1b9643c6328bc45d091c3f"><span class="std std-ref">hipMemcpyDtoH</span></a>, <a class="reference internal" href="#group___memory_1gad69da1994a646b843fb1fa465dbeb623"><span class="std std-ref">hipMemcpyDtoHAsync</span></a>, hipMemcpyHtoA, hipMemcpyHtoAAsync, <a class="reference internal" href="#group___memory_1gae3e76acb34bed5e3b19b4c1822975bcd"><span class="std std-ref">hipMemcpyHtoDAsync</span></a>, hipMemFree, hipMemFreeHost, <a class="reference internal" href="Device-Memory-Access.html#group___peer_to_peer_1gac7d9132f6e3d102e9b512020e5654f38"><span class="std std-ref">hipMemGetAddressRange</span></a>, <a class="reference internal" href="#group___memory_1ga311c3e246a21590de14478b8bd063be2"><span class="std std-ref">hipMemGetInfo</span></a>, hipMemHostAlloc, hipMemHostGetDevicePointer </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Data being copy to </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: Data being copy from </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: Data size in bytes</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpydtodasync">
+<h2>hipMemcpyDtoDAsync<a class="headerlink" href="#hipmemcpydtodasync" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv318hipMemcpyDtoDAsync14hipDeviceptr_t14hipDeviceptr_t6size_t11hipStream_t">
+<span id="_CPPv218hipMemcpyDtoDAsync14hipDeviceptr_t14hipDeviceptr_t6size_t11hipStream_t"></span><span id="hipMemcpyDtoDAsync__hipDeviceptr_t.hipDeviceptr_t.s.hipStream_t"></span><span class="target" id="group___memory_1gad3bba6016cba62f0e933cdfb4c312d27"></span>hipError_t <code class="descname">hipMemcpyDtoDAsync</code><span class="sig-paren">(</span>hipDeviceptr_t <em>dst</em>, hipDeviceptr_t <em>src</em>, size_t <em>sizeBytes</em>, hipStream_t <em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv318hipMemcpyDtoDAsync14hipDeviceptr_t14hipDeviceptr_t6size_t11hipStream_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy data from Device to Device asynchronously. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorDeInitialized, #hipErrorNotInitialized, #hipErrorInvalidContext, #hipErrorInvalidValue</dd>
+<dt><strong>See</strong></dt>
+<dd>hipArrayCreate, hipArrayDestroy, hipArrayGetDescriptor, hipMemAlloc, hipMemAllocHost, hipMemAllocPitch, <a class="reference internal" href="#group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"><span class="std std-ref">hipMemcpy2D</span></a>, <a class="reference internal" href="#group___memory_1gac79f26f9ec7b4d7bcda27d103ff6c3cd"><span class="std std-ref">hipMemcpy2DAsync</span></a>, hipMemcpy2DUnaligned, hipMemcpyAtoA, hipMemcpyAtoD, hipMemcpyAtoH, hipMemcpyAtoHAsync, hipMemcpyDtoA, <a class="reference internal" href="#group___memory_1ga814f245b8918f173c1f2f8c1480f7f93"><span class="std std-ref">hipMemcpyDtoD</span></a>, <a class="reference internal" href="#group___memory_1gad3bba6016cba62f0e933cdfb4c312d27"><span class="std std-ref">hipMemcpyDtoDAsync</span></a>, <a class="reference internal" href="#group___memory_1gae61f4e35ff1b9643c6328bc45d091c3f"><span class="std std-ref">hipMemcpyDtoH</span></a>, <a class="reference internal" href="#group___memory_1gad69da1994a646b843fb1fa465dbeb623"><span class="std std-ref">hipMemcpyDtoHAsync</span></a>, hipMemcpyHtoA, hipMemcpyHtoAAsync, <a class="reference internal" href="#group___memory_1gae3e76acb34bed5e3b19b4c1822975bcd"><span class="std std-ref">hipMemcpyHtoDAsync</span></a>, hipMemFree, hipMemFreeHost, <a class="reference internal" href="Device-Memory-Access.html#group___peer_to_peer_1gac7d9132f6e3d102e9b512020e5654f38"><span class="std std-ref">hipMemGetAddressRange</span></a>, <a class="reference internal" href="#group___memory_1ga311c3e246a21590de14478b8bd063be2"><span class="std std-ref">hipMemGetInfo</span></a>, hipMemHostAlloc, hipMemHostGetDevicePointer </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Data being copy to </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: Data being copy from </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: Data size in bytes</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpytosymbol">
+<h2>hipMemcpyToSymbol<a class="headerlink" href="#hipmemcpytosymbol" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<span class="target" id="group___memory_1ga21dddb880b518c808f89b4a88da66625"></span><code class="descname">hipError_t hipMemcpyToSymbol(const void * symbolName, const void * src, size_t sizeBytes, size_t offset  __dparm0, hipMemcpyKind kind  __dparmhipMemcpyHostToDevice)</code></dt>
+<dd><p>Copies <code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code> bytes from the memory area pointed to by <code class="docutils literal notranslate"><span class="pre">src</span></code> to the memory area pointed to by <code class="docutils literal notranslate"><span class="pre">offset</span></code> bytes from the start of symbol <code class="docutils literal notranslate"><span class="pre">symbol</span></code>. </p>
+<p>The memory areas may not overlap. Symbol can either be a variable that resides in global or constant memory space, or it can be a character string, naming a variable that resides in global or constant memory space. Kind can be either hipMemcpyHostToDevice or hipMemcpyDeviceToDevice TODO: cudaErrorInvalidSymbol and cudaErrorInvalidMemcpyDirection is not supported, use hipErrorUnknown for now.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorMemoryFree, #hipErrorUnknown</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1gac1a055d288302edd641c6d7416858e1e"><span class="std std-ref">hipMemcpy</span></a>, <a class="reference internal" href="#group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"><span class="std std-ref">hipMemcpy2D</span></a>, <a class="reference internal" href="#group___memory_1ga2e631f0b6757b47b74cdaa2911784be9"><span class="std std-ref">hipMemcpyToArray</span></a>, <a class="reference internal" href="#group___memory_1gab08b0bd6cdbb57e79df40ef1cd0374e0"><span class="std std-ref">hipMemcpy2DToArray</span></a>, hipMemcpyFromArray, hipMemcpy2DFromArray, hipMemcpyArrayToArray, hipMemcpy2DArrayToArray, hipMemcpyFromSymbol, <a class="reference internal" href="#group___memory_1gab388b755a0ee2c86ca5e0c29391a584c"><span class="std std-ref">hipMemcpyAsync</span></a>, <a class="reference internal" href="#group___memory_1gac79f26f9ec7b4d7bcda27d103ff6c3cd"><span class="std std-ref">hipMemcpy2DAsync</span></a>, hipMemcpyToArrayAsync, hipMemcpy2DToArrayAsync, hipMemcpyFromArrayAsync, hipMemcpy2DFromArrayAsync, <a class="reference internal" href="#group___memory_1ga4023cb80b01c9744dbb1bdf64e4a5855"><span class="std std-ref">hipMemcpyToSymbolAsync</span></a>, hipMemcpyFromSymbolAsync </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">symbolName</span></code>: - Symbol destination on device </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: - Data being copy from </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: - Data size in bytes </li>
+<li><code class="docutils literal notranslate"><span class="pre">offset</span></code>: - Offset from start of symbol in bytes </li>
+<li><code class="docutils literal notranslate"><span class="pre">kind</span></code>: - Type of transfer </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpytosymbolasync">
+<h2>hipMemcpyToSymbolAsync<a class="headerlink" href="#hipmemcpytosymbolasync" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<span class="target" id="group___memory_1ga4023cb80b01c9744dbb1bdf64e4a5855"></span><code class="descname">hipError_t hipMemcpyToSymbolAsync(const void * symbolName, const void * src, size_t sizeBytes, size_t offset, hipMemcpyKind kind, hipStream_t stream  __dparm0)</code></dt>
+<dd><p>Copies <code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code> bytes from the memory area pointed to by <code class="docutils literal notranslate"><span class="pre">src</span></code> to the memory area pointed to by <code class="docutils literal notranslate"><span class="pre">offset</span></code> bytes from the start of symbol <code class="docutils literal notranslate"><span class="pre">symbol</span></code>. </p>
+<p>The memory areas may not overlap. Symbol can either be a variable that resides in global or constant memory space, or it can be a character string, naming a variable that resides in global or constant memory space. Kind can be either hipMemcpyHostToDevice or hipMemcpyDeviceToDevice <a class="reference internal" href="#group___memory_1ga4023cb80b01c9744dbb1bdf64e4a5855"><span class="std std-ref">hipMemcpyToSymbolAsync()</span></a> is asynchronous with respect to the host, so the call may return before copy is complete. TODO: cudaErrorInvalidSymbol and cudaErrorInvalidMemcpyDirection is not supported, use hipErrorUnknown for now.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorMemoryFree, #hipErrorUnknown</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1gac1a055d288302edd641c6d7416858e1e"><span class="std std-ref">hipMemcpy</span></a>, <a class="reference internal" href="#group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"><span class="std std-ref">hipMemcpy2D</span></a>, <a class="reference internal" href="#group___memory_1ga2e631f0b6757b47b74cdaa2911784be9"><span class="std std-ref">hipMemcpyToArray</span></a>, <a class="reference internal" href="#group___memory_1gab08b0bd6cdbb57e79df40ef1cd0374e0"><span class="std std-ref">hipMemcpy2DToArray</span></a>, hipMemcpyFromArray, hipMemcpy2DFromArray, hipMemcpyArrayToArray, hipMemcpy2DArrayToArray, hipMemcpyFromSymbol, <a class="reference internal" href="#group___memory_1gab388b755a0ee2c86ca5e0c29391a584c"><span class="std std-ref">hipMemcpyAsync</span></a>, <a class="reference internal" href="#group___memory_1gac79f26f9ec7b4d7bcda27d103ff6c3cd"><span class="std std-ref">hipMemcpy2DAsync</span></a>, hipMemcpyToArrayAsync, hipMemcpy2DToArrayAsync, hipMemcpyFromArrayAsync, hipMemcpy2DFromArrayAsync, <a class="reference internal" href="#group___memory_1ga4023cb80b01c9744dbb1bdf64e4a5855"><span class="std std-ref">hipMemcpyToSymbolAsync</span></a>, hipMemcpyFromSymbolAsync </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">symbolName</span></code>: - Symbol destination on device </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: - Data being copy from </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: - Data size in bytes </li>
+<li><code class="docutils literal notranslate"><span class="pre">offset</span></code>: - Offset from start of symbol in bytes </li>
+<li><code class="docutils literal notranslate"><span class="pre">kind</span></code>: - Type of transfer </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpyfromsymbol">
+<h2>hipMemcpyFromSymbol<a class="headerlink" href="#hipmemcpyfromsymbol" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<span class="target" id="group___memory_1ga7cb22578a745b47ece6b53c6057be5ad"></span><code class="descname">hipError_t hipMemcpyFromSymbol(void * dst, const void * symbolName, size_t sizeBytes, size_t offset  __dparm0, hipMemcpyKind kind  __dparmhipMemcpyDeviceToHost)</code></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="hipmemcpyfromsymbolasync">
+<h2>hipMemcpyFromSymbolAsync<a class="headerlink" href="#hipmemcpyfromsymbolasync" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<span class="target" id="group___memory_1ga34899aa766023a8ffbaa6f086dc9d11f"></span><code class="descname">hipError_t hipMemcpyFromSymbolAsync(void * dst, const void * symbolName, size_t sizeBytes, size_t offset, hipMemcpyKind kind, hipStream_t stream  __dparm0)</code></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="hipmemcpyasync">
+<h2>hipMemcpyAsync<a class="headerlink" href="#hipmemcpyasync" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<span class="target" id="group___memory_1gab388b755a0ee2c86ca5e0c29391a584c"></span><code class="descname">hipError_t hipMemcpyAsync(void * dst, const void * src, size_t sizeBytes, hipMemcpyKind kind, hipStream_t stream  __dparm0)</code></dt>
+<dd><p>Copy data from src to dst asynchronously. </p>
+<p><p>For multi-gpu or peer-to-peer configurations, it is recommended to use a stream which is a attached to the device where the src data is physically located. For optimal peer-to-peer copies, the copy device must be able to access the src and dst pointers (by calling hipDeviceEnablePeerAccess with copy agent as the current device and src/dest as the peerDevice argument. if this is not done, the hipMemcpy will still work, but will perform the copy using a staging buffer on the host.</p>
+<dl class="docutils">
+<dt><strong>Warning</strong></dt>
+<dd>If host or dest are not pinned, the memory copy will be performed synchronously. For best performance, use hipHostMalloc to allocate host memory that is transferred asynchronously.</dd>
+<dt><strong>Warning</strong></dt>
+<dd>on HCC hipMemcpyAsync does not support overlapped H2D and D2H copies. For hipMemcpy, the copy is always performed by the device associated with the specified stream.</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorMemoryFree, #hipErrorUnknown</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1gac1a055d288302edd641c6d7416858e1e"><span class="std std-ref">hipMemcpy</span></a>, <a class="reference internal" href="#group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"><span class="std std-ref">hipMemcpy2D</span></a>, <a class="reference internal" href="#group___memory_1ga2e631f0b6757b47b74cdaa2911784be9"><span class="std std-ref">hipMemcpyToArray</span></a>, <a class="reference internal" href="#group___memory_1gab08b0bd6cdbb57e79df40ef1cd0374e0"><span class="std std-ref">hipMemcpy2DToArray</span></a>, hipMemcpyFromArray, hipMemcpy2DFromArray, hipMemcpyArrayToArray, hipMemcpy2DArrayToArray, <a class="reference internal" href="#group___memory_1ga21dddb880b518c808f89b4a88da66625"><span class="std std-ref">hipMemcpyToSymbol</span></a>, hipMemcpyFromSymbol, <a class="reference internal" href="#group___memory_1gac79f26f9ec7b4d7bcda27d103ff6c3cd"><span class="std std-ref">hipMemcpy2DAsync</span></a>, hipMemcpyToArrayAsync, hipMemcpy2DToArrayAsync, hipMemcpyFromArrayAsync, hipMemcpy2DFromArrayAsync, <a class="reference internal" href="#group___memory_1ga4023cb80b01c9744dbb1bdf64e4a5855"><span class="std std-ref">hipMemcpyToSymbolAsync</span></a>, hipMemcpyFromSymbolAsync </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Data being copy to </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: Data being copy from </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: Data size in bytes </li>
+<li><code class="docutils literal notranslate"><span class="pre">accelerator_view</span></code>: Accelerator view which the copy is being enqueued </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemset">
+<h2>hipMemset<a class="headerlink" href="#hipmemset" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv39hipMemsetPvi6size_t">
+<span id="_CPPv29hipMemsetPvi6size_t"></span><span id="hipMemset__voidP.i.s"></span><span class="target" id="group___memory_1gac7441e74affcce4b8b69dba996c5ebc4"></span>hipError_t <code class="descname">hipMemset</code><span class="sig-paren">(</span>void *<em>dst</em>, int <em>value</em>, size_t <em>sizeBytes</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv39hipMemsetPvi6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Fills the first sizeBytes bytes of the memory area pointed to by dest with the constant byte value value. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorNotInitialized </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Data being filled </li>
+<li><code class="docutils literal notranslate"><span class="pre">constant</span></code>: value to be set </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: Data size in bytes </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemsetd8">
+<h2>hipMemsetD8<a class="headerlink" href="#hipmemsetd8" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv311hipMemsetD814hipDeviceptr_th6size_t">
+<span id="_CPPv211hipMemsetD814hipDeviceptr_th6size_t"></span><span id="hipMemsetD8__hipDeviceptr_t.unsigned-c.s"></span><span class="target" id="group___memory_1gab66cf8be5f4108218cc9a94d8c842e2c"></span>hipError_t <code class="descname">hipMemsetD8</code><span class="sig-paren">(</span>hipDeviceptr_t <em>dest</em>, unsigned char <em>value</em>, size_t <em>sizeBytes</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv311hipMemsetD814hipDeviceptr_th6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Fills the first sizeBytes bytes of the memory area pointed to by dest with the constant byte value value. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorNotInitialized </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Data ptr to be filled </li>
+<li><code class="docutils literal notranslate"><span class="pre">constant</span></code>: value to be set </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: Data size in bytes </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemsetasync">
+<h2>hipMemsetAsync<a class="headerlink" href="#hipmemsetasync" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<span class="target" id="group___memory_1gaab3fea033f93488f8c50ffc244396a78"></span><code class="descname">hipError_t hipMemsetAsync(void * dst, int value, size_t sizeBytes, hipStream_t stream  __dparm0)</code></dt>
+<dd><p>Fills the first sizeBytes bytes of the memory area pointed to by dev with the constant byte value value. </p>
+<p><a class="reference internal" href="#group___memory_1gaab3fea033f93488f8c50ffc244396a78"><span class="std std-ref">hipMemsetAsync()</span></a> is asynchronous with respect to the host, so the call may return before the memset is complete. The operation can optionally be associated to a stream by passing a non-zero stream argument. If stream is non-zero, the operation may overlap with operations in other streams.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorMemoryFree </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Pointer to device memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">value</span></code>: - Value to set for each byte of specified memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: - Size in bytes to set </li>
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: - Stream identifier </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemset2d">
+<h2>hipMemset2D<a class="headerlink" href="#hipmemset2d" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv311hipMemset2DPv6size_ti6size_t6size_t">
+<span id="_CPPv211hipMemset2DPv6size_ti6size_t6size_t"></span><span id="hipMemset2D__voidP.s.i.s.s"></span><span class="target" id="group___memory_1gae1e7b4c740cc02611ea8122bec376201"></span>hipError_t <code class="descname">hipMemset2D</code><span class="sig-paren">(</span>void *<em>dst</em>, size_t <em>pitch</em>, int <em>value</em>, size_t <em>width</em>, size_t <em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv311hipMemset2DPv6size_ti6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Fills the memory area pointed to by dst with the constant value. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorMemoryFree </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Pointer to device memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">pitch</span></code>: - data size in bytes </li>
+<li><code class="docutils literal notranslate"><span class="pre">value</span></code>: - constant value to be set </li>
+<li><code class="docutils literal notranslate"><span class="pre">width</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">height</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemgetinfo">
+<h2>hipMemGetInfo<a class="headerlink" href="#hipmemgetinfo" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv313hipMemGetInfoP6size_tP6size_t">
+<span id="_CPPv213hipMemGetInfoP6size_tP6size_t"></span><span id="hipMemGetInfo__sP.sP"></span><span class="target" id="group___memory_1ga311c3e246a21590de14478b8bd063be2"></span>hipError_t <code class="descname">hipMemGetInfo</code><span class="sig-paren">(</span>size_t *<em>free</em>, size_t *<em>total</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv313hipMemGetInfoP6size_tP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Query memory info. </p>
+<p>Return snapshot of free memory, and total allocatable memory on the device.</p>
+<p>Returns in *free a snapshot of the current free memory. <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidDevice, #hipErrorInvalidValue </dd>
+<dt><strong>Warning</strong></dt>
+<dd>On HCC, the free memory only accounts for memory allocated by this process and may be optimistic. </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemptrgetinfo">
+<h2>hipMemPtrGetInfo<a class="headerlink" href="#hipmemptrgetinfo" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv316hipMemPtrGetInfoPvP6size_t">
+<span id="_CPPv216hipMemPtrGetInfoPvP6size_t"></span><span id="hipMemPtrGetInfo__voidP.sP"></span><span class="target" id="group___memory_1gaf7e9522b8fd7bae6cc1bf2e3238fd20f"></span>hipError_t <code class="descname">hipMemPtrGetInfo</code><span class="sig-paren">(</span>void *<em>ptr</em>, size_t *<em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv316hipMemPtrGetInfoPvP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="hipmallocarray">
+<h2>hipMallocArray<a class="headerlink" href="#hipmallocarray" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<span class="target" id="group___memory_1gad20a96c14589cb226fcde1219512a0f9"></span><code class="descname">hipError_t hipMallocArray(hipArray ** array, const hipChannelFormatDesc * desc, size_t width, size_t height  __dparm0, unsigned int flags  __dparmhipArrayDefault)</code></dt>
+<dd><p>Allocate an array on the device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorMemoryAllocation</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1ga4c6fcfe80010069d2792780d00dcead2"><span class="std std-ref">hipMalloc</span></a>, <a class="reference internal" href="#group___memory_1ga805c7320498926e444616fe090c727ee"><span class="std std-ref">hipMallocPitch</span></a>, <a class="reference internal" href="#group___memory_1ga740d08da65cae1441ba32f8fedb863d1"><span class="std std-ref">hipFree</span></a>, <a class="reference internal" href="#group___memory_1gae29935073517245c69bc64790dd2747a"><span class="std std-ref">hipFreeArray</span></a>, <a class="reference internal" href="#group___memory_1gaad40bc7d97ccc799403ef5a9a8c246e1"><span class="std std-ref">hipHostMalloc</span></a>, hipHostFree </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">array</span></code>: Pointer to allocated array in device memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">desc</span></code>: Requested channel format </li>
+<li><code class="docutils literal notranslate"><span class="pre">width</span></code>: Requested array allocation width </li>
+<li><code class="docutils literal notranslate"><span class="pre">height</span></code>: Requested array allocation height </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: Requested properties of allocated array </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipfreearray">
+<h2>hipFreeArray<a class="headerlink" href="#hipfreearray" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv312hipFreeArrayP8hipArray">
+<span id="_CPPv212hipFreeArrayP8hipArray"></span><span id="hipFreeArray__hipArrayP"></span><span class="target" id="group___memory_1gae29935073517245c69bc64790dd2747a"></span>hipError_t <code class="descname">hipFreeArray</code><span class="sig-paren">(</span>hipArray *<em>array</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv312hipFreeArrayP8hipArray" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Frees an array on the device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInitializationError</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1ga4c6fcfe80010069d2792780d00dcead2"><span class="std std-ref">hipMalloc</span></a>, <a class="reference internal" href="#group___memory_1ga805c7320498926e444616fe090c727ee"><span class="std std-ref">hipMallocPitch</span></a>, <a class="reference internal" href="#group___memory_1ga740d08da65cae1441ba32f8fedb863d1"><span class="std std-ref">hipFree</span></a>, <a class="reference internal" href="#group___memory_1gad20a96c14589cb226fcde1219512a0f9"><span class="std std-ref">hipMallocArray</span></a>, <a class="reference internal" href="#group___memory_1gaad40bc7d97ccc799403ef5a9a8c246e1"><span class="std std-ref">hipHostMalloc</span></a>, hipHostFree </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">array</span></code>: Pointer to array to free </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmalloc3darray">
+<h2>hipMalloc3DArray<a class="headerlink" href="#hipmalloc3darray" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv316hipMalloc3DArrayPP8hipArrayPK20hipChannelFormatDesc9hipExtentj">
+<span id="_CPPv216hipMalloc3DArrayPP8hipArrayPK20hipChannelFormatDesc9hipExtentj"></span><span id="hipMalloc3DArray__hipArrayPP.hipChannelFormatDescCP.hipExtent.unsigned-i"></span><span class="target" id="group___memory_1ga6b3423ded4fe1c64eb7b168cb569a6ea"></span>hipError_t <code class="descname">hipMalloc3DArray</code><span class="sig-paren">(</span>hipArray **<em>array</em>, <em class="property">const</em> <em class="property">struct</em> hipChannelFormatDesc *<em>desc</em>, <em class="property">struct</em> hipExtent <em>extent</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv316hipMalloc3DArrayPP8hipArrayPK20hipChannelFormatDesc9hipExtentj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allocate an array on the device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorMemoryAllocation</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1ga4c6fcfe80010069d2792780d00dcead2"><span class="std std-ref">hipMalloc</span></a>, <a class="reference internal" href="#group___memory_1ga805c7320498926e444616fe090c727ee"><span class="std std-ref">hipMallocPitch</span></a>, <a class="reference internal" href="#group___memory_1ga740d08da65cae1441ba32f8fedb863d1"><span class="std std-ref">hipFree</span></a>, <a class="reference internal" href="#group___memory_1gae29935073517245c69bc64790dd2747a"><span class="std std-ref">hipFreeArray</span></a>, <a class="reference internal" href="#group___memory_1gaad40bc7d97ccc799403ef5a9a8c246e1"><span class="std std-ref">hipHostMalloc</span></a>, hipHostFree </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">array</span></code>: Pointer to allocated array in device memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">desc</span></code>: Requested channel format </li>
+<li><code class="docutils literal notranslate"><span class="pre">extent</span></code>: Requested array allocation width, height and depth </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: Requested properties of allocated array </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpy2d">
+<h2>hipMemcpy2D<a class="headerlink" href="#hipmemcpy2d" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv311hipMemcpy2DPv6size_tPKv6size_t6size_t6size_t13hipMemcpyKind">
+<span id="_CPPv211hipMemcpy2DPv6size_tPKv6size_t6size_t6size_t13hipMemcpyKind"></span><span id="hipMemcpy2D__voidP.s.voidCP.s.s.s.hipMemcpyKind"></span><span class="target" id="group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"></span>hipError_t <code class="descname">hipMemcpy2D</code><span class="sig-paren">(</span>void *<em>dst</em>, size_t <em>dpitch</em>, <em class="property">const</em> void *<em>src</em>, size_t <em>spitch</em>, size_t <em>width</em>, size_t <em>height</em>, hipMemcpyKind <em>kind</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv311hipMemcpy2DPv6size_tPKv6size_t6size_t6size_t13hipMemcpyKind" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copies data between host and device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInvalidPitchValue, #hipErrorInvalidDevicePointer, #hipErrorInvalidMemcpyDirection</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1gac1a055d288302edd641c6d7416858e1e"><span class="std std-ref">hipMemcpy</span></a>, <a class="reference internal" href="#group___memory_1ga2e631f0b6757b47b74cdaa2911784be9"><span class="std std-ref">hipMemcpyToArray</span></a>, <a class="reference internal" href="#group___memory_1gab08b0bd6cdbb57e79df40ef1cd0374e0"><span class="std std-ref">hipMemcpy2DToArray</span></a>, hipMemcpyFromArray, <a class="reference internal" href="#group___memory_1ga21dddb880b518c808f89b4a88da66625"><span class="std std-ref">hipMemcpyToSymbol</span></a>, <a class="reference internal" href="#group___memory_1gab388b755a0ee2c86ca5e0c29391a584c"><span class="std std-ref">hipMemcpyAsync</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Destination memory address </li>
+<li><code class="docutils literal notranslate"><span class="pre">dpitch</span></code>: Pitch of destination memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: Source memory address </li>
+<li><code class="docutils literal notranslate"><span class="pre">spitch</span></code>: Pitch of source memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">width</span></code>: Width of matrix transfer (columns in bytes) </li>
+<li><code class="docutils literal notranslate"><span class="pre">height</span></code>: Height of matrix transfer (rows) </li>
+<li><code class="docutils literal notranslate"><span class="pre">kind</span></code>: Type of transfer </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpy2dasync">
+<h2>hipMemcpy2DAsync<a class="headerlink" href="#hipmemcpy2dasync" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<span class="target" id="group___memory_1gac79f26f9ec7b4d7bcda27d103ff6c3cd"></span><code class="descname">hipError_t hipMemcpy2DAsync(void * dst, size_t dpitch, const void * src, size_t spitch, size_t width, size_t height, hipMemcpyKind kind, hipStream_t stream  __dparm0)</code></dt>
+<dd><p>Copies data between host and device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInvalidPitchValue, #hipErrorInvalidDevicePointer, #hipErrorInvalidMemcpyDirection</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1gac1a055d288302edd641c6d7416858e1e"><span class="std std-ref">hipMemcpy</span></a>, <a class="reference internal" href="#group___memory_1ga2e631f0b6757b47b74cdaa2911784be9"><span class="std std-ref">hipMemcpyToArray</span></a>, <a class="reference internal" href="#group___memory_1gab08b0bd6cdbb57e79df40ef1cd0374e0"><span class="std std-ref">hipMemcpy2DToArray</span></a>, hipMemcpyFromArray, <a class="reference internal" href="#group___memory_1ga21dddb880b518c808f89b4a88da66625"><span class="std std-ref">hipMemcpyToSymbol</span></a>, <a class="reference internal" href="#group___memory_1gab388b755a0ee2c86ca5e0c29391a584c"><span class="std std-ref">hipMemcpyAsync</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Destination memory address </li>
+<li><code class="docutils literal notranslate"><span class="pre">dpitch</span></code>: Pitch of destination memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: Source memory address </li>
+<li><code class="docutils literal notranslate"><span class="pre">spitch</span></code>: Pitch of source memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">width</span></code>: Width of matrix transfer (columns in bytes) </li>
+<li><code class="docutils literal notranslate"><span class="pre">height</span></code>: Height of matrix transfer (rows) </li>
+<li><code class="docutils literal notranslate"><span class="pre">kind</span></code>: Type of transfer </li>
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: Stream to use </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpy2dtoarray">
+<h2>hipMemcpy2DToArray<a class="headerlink" href="#hipmemcpy2dtoarray" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv318hipMemcpy2DToArrayP8hipArray6size_t6size_tPKv6size_t6size_t6size_t13hipMemcpyKind">
+<span id="_CPPv218hipMemcpy2DToArrayP8hipArray6size_t6size_tPKv6size_t6size_t6size_t13hipMemcpyKind"></span><span id="hipMemcpy2DToArray__hipArrayP.s.s.voidCP.s.s.s.hipMemcpyKind"></span><span class="target" id="group___memory_1gab08b0bd6cdbb57e79df40ef1cd0374e0"></span>hipError_t <code class="descname">hipMemcpy2DToArray</code><span class="sig-paren">(</span>hipArray *<em>dst</em>, size_t <em>wOffset</em>, size_t <em>hOffset</em>, <em class="property">const</em> void *<em>src</em>, size_t <em>spitch</em>, size_t <em>width</em>, size_t <em>height</em>, hipMemcpyKind <em>kind</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv318hipMemcpy2DToArrayP8hipArray6size_t6size_tPKv6size_t6size_t6size_t13hipMemcpyKind" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copies data between host and device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInvalidPitchValue, #hipErrorInvalidDevicePointer, #hipErrorInvalidMemcpyDirection</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1gac1a055d288302edd641c6d7416858e1e"><span class="std std-ref">hipMemcpy</span></a>, <a class="reference internal" href="#group___memory_1ga2e631f0b6757b47b74cdaa2911784be9"><span class="std std-ref">hipMemcpyToArray</span></a>, <a class="reference internal" href="#group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"><span class="std std-ref">hipMemcpy2D</span></a>, hipMemcpyFromArray, <a class="reference internal" href="#group___memory_1ga21dddb880b518c808f89b4a88da66625"><span class="std std-ref">hipMemcpyToSymbol</span></a>, <a class="reference internal" href="#group___memory_1gab388b755a0ee2c86ca5e0c29391a584c"><span class="std std-ref">hipMemcpyAsync</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Destination memory address </li>
+<li><code class="docutils literal notranslate"><span class="pre">dpitch</span></code>: Pitch of destination memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: Source memory address </li>
+<li><code class="docutils literal notranslate"><span class="pre">spitch</span></code>: Pitch of source memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">width</span></code>: Width of matrix transfer (columns in bytes) </li>
+<li><code class="docutils literal notranslate"><span class="pre">height</span></code>: Height of matrix transfer (rows) </li>
+<li><code class="docutils literal notranslate"><span class="pre">kind</span></code>: Type of transfer </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpytoarray">
+<h2>hipMemcpyToArray<a class="headerlink" href="#hipmemcpytoarray" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv316hipMemcpyToArrayP8hipArray6size_t6size_tPKv6size_t13hipMemcpyKind">
+<span id="_CPPv216hipMemcpyToArrayP8hipArray6size_t6size_tPKv6size_t13hipMemcpyKind"></span><span id="hipMemcpyToArray__hipArrayP.s.s.voidCP.s.hipMemcpyKind"></span><span class="target" id="group___memory_1ga2e631f0b6757b47b74cdaa2911784be9"></span>hipError_t <code class="descname">hipMemcpyToArray</code><span class="sig-paren">(</span>hipArray *<em>dst</em>, size_t <em>wOffset</em>, size_t <em>hOffset</em>, <em class="property">const</em> void *<em>src</em>, size_t <em>count</em>, hipMemcpyKind <em>kind</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv316hipMemcpyToArrayP8hipArray6size_t6size_tPKv6size_t13hipMemcpyKind" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copies data between host and device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInvalidPitchValue, #hipErrorInvalidDevicePointer, #hipErrorInvalidMemcpyDirection</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1gac1a055d288302edd641c6d7416858e1e"><span class="std std-ref">hipMemcpy</span></a>, <a class="reference internal" href="#group___memory_1gab08b0bd6cdbb57e79df40ef1cd0374e0"><span class="std std-ref">hipMemcpy2DToArray</span></a>, <a class="reference internal" href="#group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"><span class="std std-ref">hipMemcpy2D</span></a>, hipMemcpyFromArray, <a class="reference internal" href="#group___memory_1ga21dddb880b518c808f89b4a88da66625"><span class="std std-ref">hipMemcpyToSymbol</span></a>, <a class="reference internal" href="#group___memory_1gab388b755a0ee2c86ca5e0c29391a584c"><span class="std std-ref">hipMemcpyAsync</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: Destination memory address </li>
+<li><code class="docutils literal notranslate"><span class="pre">dpitch</span></code>: Pitch of destination memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: Source memory address </li>
+<li><code class="docutils literal notranslate"><span class="pre">spitch</span></code>: Pitch of source memory </li>
+<li><code class="docutils literal notranslate"><span class="pre">width</span></code>: Width of matrix transfer (columns in bytes) </li>
+<li><code class="docutils literal notranslate"><span class="pre">height</span></code>: Height of matrix transfer (rows) </li>
+<li><code class="docutils literal notranslate"><span class="pre">kind</span></code>: Type of transfer </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpy3d">
+<h2>hipMemcpy3D<a class="headerlink" href="#hipmemcpy3d" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv311hipMemcpy3DPK16hipMemcpy3DParms">
+<span id="_CPPv211hipMemcpy3DPK16hipMemcpy3DParms"></span><span id="hipMemcpy3D__hipMemcpy3DParmsCP"></span><span class="target" id="group___memory_1ga38facb98eb1ae8206376c3c48bf5c444"></span>hipError_t <code class="descname">hipMemcpy3D</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> hipMemcpy3DParms *<em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv311hipMemcpy3DPK16hipMemcpy3DParms" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copies data between host and device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInvalidPitchValue, #hipErrorInvalidDevicePointer, #hipErrorInvalidMemcpyDirection</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___memory_1gac1a055d288302edd641c6d7416858e1e"><span class="std std-ref">hipMemcpy</span></a>, <a class="reference internal" href="#group___memory_1gab08b0bd6cdbb57e79df40ef1cd0374e0"><span class="std std-ref">hipMemcpy2DToArray</span></a>, <a class="reference internal" href="#group___memory_1ga8af4597ff0cd17247d8a857c4d8bfa8a"><span class="std std-ref">hipMemcpy2D</span></a>, hipMemcpyFromArray, <a class="reference internal" href="#group___memory_1ga21dddb880b518c808f89b4a88da66625"><span class="std std-ref">hipMemcpyToSymbol</span></a>, <a class="reference internal" href="#group___memory_1gab388b755a0ee2c86ca5e0c29391a584c"><span class="std std-ref">hipMemcpyAsync</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">p</span></code>: 3D memory copy parameters </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

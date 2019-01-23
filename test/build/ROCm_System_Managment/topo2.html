@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sysfs-class-kfd-topology-nodes-N &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>sysfs-class-kfd-topology-nodes-N</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_System_Managment/topo2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sysfs-class-kfd-topology-nodes-n">
+<span id="sysfsclasskfdtopologynodes0"></span><h1>sysfs-class-kfd-topology-nodes-N<a class="headerlink" href="#sysfs-class-kfd-topology-nodes-n" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">What:            /sys/class/kfd/topology/nodes/N/cpu_cores_count</div>
+<div class="line">Date:            May 2018</div>
+<div class="line">KernelVersion:   4.13</div>
+<div class="line">Description:     This field gives information about Number of latency (= CPU) cores present on this HSA node. This value is 0 for a node with no such cores, e.g a “discrete HSA GPU”.</div>
+</div>
+<div class="line-block">
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/simd_count</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: Here the number of smid (Single Instruction Multiple Data architecture) processes count is registered</div>
+</div>
+<div class="line-block">
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/mem_banks_count</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: This field gives the Number of discoverable memory bank affinity properties on this “H-NUMA” node</div>
+</div>
+<div class="line-block">
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/caches_count</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: Gives the Number of discoverable cache affinity properties on the “H-NUMA” node.</div>
+</div>
+<div class="line-block">
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/io_links_count</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: This field gives the number of discoverable IO link affinity properties of this node connecting to other nodes.</div>
+</div>
+<div class="line-block">
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/cpu_cores_id</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: Gives the CPU core id details corresponding to core count</div>
+</div>
+<div class="line-block">
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/simd_id_base</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: This field gives simd id value.</div>
+</div>
+<div class="line-block">
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/max_waves_per_simd</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: This identifies the maximum number of launched waves per SIMD. If NUmSIMDCores is 0, this value is ignored</div>
+</div>
+<div class="line-block">
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/gds_size_in_kb</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: This field gives the size of Global Data Store in Kilobytes shared across SIMD Wavefronts, typically 32 or 64</div>
+</div>
+<div class="line-block">
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/wave_front_size</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: wavefront is group of threads (work-item) that execute together for executing kernels and this field gives the size of the wavefront used. Usually 64or 32 or a different value for some HSA based architectures</div>
+</div>
+<div class="line-block">
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/array_count</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: This field give Number of SIMD Arrays per Engine</div>
+</div>
+<div class="line-block">
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/simd_arrays_per_engine</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: It gives the simd array count for every compute unite (stream engine)</div>
+<div class="line"><br /></div>
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/cu_per_simd_array</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: Gives the Number of Compute Units (CU) per SIMD Array</div>
+<div class="line"><br /></div>
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/simd_per_cu</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: Number of SIMD representing a Compute Unit (CU)</div>
+<div class="line"><br /></div>
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/max_slots_scratch_cu</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: Bitmask of available CU slots, used for CU mask setup for the queues if assignment is desired by application necessary.</div>
+<div class="line"><br /></div>
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/vendor_id</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: This field contains the GPU vendor id; 0 on CPU-only nodes</div>
+<div class="line"><br /></div>
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/device_id</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: This field contains the  GPU device id; 0 on CPU-only nodes</div>
+<div class="line"><br /></div>
+<div class="line">What:                /sys/class/kfd/topology/nodes/N/location_id</div>
+<div class="line">Date:                May 2018</div>
+<div class="line">KernelVersion:       4.13</div>
+<div class="line">Description: LocationId, 32bit value, equivalent to BDF_ID used by Linux tools especially (identifies device in the overall</div>
+</div>
+<p>system)
+|
+|  What:                /sys/class/kfd/topology/nodes/N/drm_render_minor
+|  Date:                May 2018
+|  KernelVersion:       4.13
+|  Description: drm (Direct Rendering Manager) render data count is shown
+|
+|  What:                /sys/class/kfd/topology/nodes/N/max_engine_clk_ccompute
+|  Date:                May 2018
+|  KernelVersion:       4.13
+|  Description: Maximum engine clock speed of the CPU
+|</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

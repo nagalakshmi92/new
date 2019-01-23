@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>HCC WIKI &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>HCC WIKI</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Tools/HCC_WIKI.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hcc-wiki">
+<span id="hccwiki"></span><h1>HCC WIKI<a class="headerlink" href="#hcc-wiki" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hcc-is-an-open-source-optimizing-c-compiler-for-heterogeneous-compute">
+<h2>HCC is an Open Source, Optimizing C++ Compiler for Heterogeneous Compute<a class="headerlink" href="#hcc-is-an-open-source-optimizing-c-compiler-for-heterogeneous-compute" title="Permalink to this headline">¶</a></h2>
+<p>HCC supports heterogeneous offload to AMD APUs and discrete GPUs via HSA enabled runtimes and drivers. It is an ISO compliant C++ 11/14 compiler. It is based on Clang, the LLVM Compiler Infrastructure and the “libc++” C++ standard library.</p>
+</div>
+<div class="section" id="accelerator-modes-supported">
+<h2>Accelerator Modes Supported<a class="headerlink" href="#accelerator-modes-supported" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3><a class="reference external" href="https://scchan.github.io/hcc">HC (Heterogeneous Compute) C++ API</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Inspired by C++ AMP and C++14, this is the default C++ compute API for the HCC compiler. HC has some important differences from C++ AMP including removing the “restrict” keyword, supporting additional data types in kernels, providing more control over synchronization and data movement, and providing pointer-based memory allocation. It is designed to expose cutting edge compute capabilities on Boltzmann and HSA devices to developers while offering the productivity and usability of C++.</p>
+</div>
+<div class="section" id="id2">
+<h3><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Programming_Guides/hip-programming-guide.html">HIP</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>HIP provides a set of tools and API for converting CUDA applications into a portable C++ API. An application using the HIP API could be compiled by hcc to target AMD GPUs. Please refer to HIP’s repository for more information.</p>
+</div>
+<div class="section" id="id3">
+<h3><a class="reference external" href="http://download.microsoft.com/download/2/2/9/22972859-15C2-4D96-97AE-93344241D56C/CppAMPOpenSpecificationV12.pdf">C++ AMP</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Microsoft C++ AMP is a C++ accelerator API with support for GPU offload. This mode is compatible with Version 1.2 of the C++ AMP specification.</p>
+</div>
+<div class="section" id="id4">
+<h3><a class="reference external" href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3960.pdf">C++ Parallel STL</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>HCC provides an initial implementation of the parallel algorithms described in the ISO C++ Extensions for Parallelism, which enables parallel acceleration for certain STL algorithms.</p>
+</div>
+<div class="section" id="openmp">
+<h3>OpenMP<a class="headerlink" href="#openmp" title="Permalink to this headline">¶</a></h3>
+<p>HCC supports <a class="reference external" href="https://hpc-forge.cineca.it/files/CoursesDev/public/2016/Bologna/Introduction_to_Parallel_Computing_with_MPI_and_OpenMP/openmp.pdf">OpenMP 3.1</a> on CPU. The support for <a class="reference external" href="http://www.openmp.org/wp-content/uploads/openmp-4.5.pdf">OpenMP 4.x</a> accelerator offloading is currently in development.</p>
+</div>
+<div class="section" id="platform-requirements">
+<h3>Platform Requirements<a class="headerlink" href="#platform-requirements" title="Permalink to this headline">¶</a></h3>
+<p>Accelerated applications could be run on Radeon discrete GPUs from the Fiji family (AMD R9 Nano, R9 Fury, R9 Fury X, FirePro S9300 x2, Polaris 10, Polaris 11) paired with an Intel Haswell CPU or newer. HCC would work with AMD HSA APUs (Kaveri, Carrizo); however, they are not our main support platform and some of the more advanced compute capabilities may not be available on the APUs.</p>
+<p>HCC currently only works on Linux and with the open source ROCK kernel driver and the ROCR runtime (see Installation for details). It will not work with the closed source AMD graphics driver.</p>
+</div>
+<div class="section" id="compiler-backends">
+<h3>Compiler Backends<a class="headerlink" href="#compiler-backends" title="Permalink to this headline">¶</a></h3>
+<p>This backend compiles GPU kernels into native GCN ISA, which could be directly execute on the GPU hardware. It’s being actively developed by the Radeon Technology Group in LLVM.</p>
+</div>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p><strong>Prerequisites</strong></p>
+<p>Before continuing with the installation, please make sure any previously installed hcc compiler has been removed from on your system.</p>
+<p>Install <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installation-guide">ROCm</a> and make sure it works correctly.</p>
+</div>
+<div class="section" id="ubuntu">
+<h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h3>
+<p><strong>Ubuntu 14.04</strong></p>
+<p>Support for 14.04 has been deprecated.</p>
+<p><strong>Ubuntu 16.04</strong></p>
+<p>Follow the instruction <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installation-guide">here</a> to setup the ROCm apt repository and install the rocm or the rocm-dev meta-package</p>
+<p><strong>Fedora 24</strong></p>
+<p>Follow the instruction <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installation-guide">here</a> to setup the ROCm apt repository and install the rocm or the rocm-dev meta-package.</p>
+<p><strong>RHEL 7.4/CentOS 7</strong></p>
+<p>Follow the instruction <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installation-guide">here</a> to setup the ROCm yum rpm repository and install the rocm-dkms meta-package for CentOS/RHEL 7 Support.</p>
+<p>Please follow steps to prepare <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#install-and-setup-devtoolset-7">devtoolset-7 environment</a> which is needed for compiling HCC from source. This environment only requires to be installed once, but must enter the environment before compiling using command: scl enable devtoolset-7 bash</p>
+<blockquote>
+<div>Note: CentOS 7 cmake is outdated, will need to use alternate cmake3.</div></blockquote>
+<p><strong>openSUSE Leap 42.3</strong></p>
+<p>Currently, HCC support for openSUSE is experimental and the compiler has to be built from source.</p>
+</div>
+</div>
+<div class="section" id="download-hcc">
+<h2>Download HCC<a class="headerlink" href="#download-hcc" title="Permalink to this headline">¶</a></h2>
+<p>The project now employs git submodules to manage external components it depends upon. It it advised to add –recursive when you clone the project so all submodules are fetched automatically.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># automatically fetches all submodules</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recursive</span> <span class="o">-</span><span class="n">b</span> <span class="n">clang_tot_upgrade</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">hcc</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>First, install the build dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ubuntu 14.04</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">git</span> <span class="n">cmake</span> <span class="n">make</span> <span class="n">g</span><span class="o">++</span>  <span class="n">g</span><span class="o">++-</span><span class="n">multilib</span> <span class="n">gcc</span><span class="o">-</span><span class="n">multilib</span> <span class="n">libc</span><span class="o">++-</span><span class="n">dev</span> <span class="n">libc</span><span class="o">++</span><span class="mi">1</span> <span class="n">libc</span><span class="o">++</span><span class="n">abi</span><span class="o">-</span><span class="n">dev</span> <span class="n">libc</span><span class="o">++</span><span class="n">abi1</span> <span class="n">python</span> <span class="n">findutils</span> <span class="n">libelf1</span> <span class="n">libpci3</span> <span class="n">file</span> <span class="n">debianutils</span> <span class="n">libunwind8</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsa</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsa</span><span class="o">-</span><span class="n">ext</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsakmt</span><span class="o">-</span><span class="n">roct</span><span class="o">-</span><span class="n">dev</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span> <span class="n">rocm</span><span class="o">-</span><span class="n">utils</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ubuntu 16.04</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">git</span> <span class="n">cmake</span> <span class="n">make</span> <span class="n">g</span><span class="o">++</span>  <span class="n">g</span><span class="o">++-</span><span class="n">multilib</span> <span class="n">gcc</span><span class="o">-</span><span class="n">multilib</span> <span class="n">python</span> <span class="n">findutils</span> <span class="n">libelf1</span> <span class="n">libpci3</span> <span class="n">file</span> <span class="n">debianutils</span> <span class="n">libunwind</span><span class="o">-</span> <span class="n">dev</span> <span class="n">hsa</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsa</span><span class="o">-</span><span class="n">ext</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsakmt</span><span class="o">-</span><span class="n">roct</span><span class="o">-</span><span class="n">dev</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span> <span class="n">rocm</span><span class="o">-</span><span class="n">utils</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fedora 24</span>
+<span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">git</span> <span class="n">cmake</span> <span class="n">make</span> <span class="n">gcc</span><span class="o">-</span><span class="n">c</span><span class="o">++</span> <span class="n">python</span> <span class="n">findutils</span> <span class="n">elfutils</span><span class="o">-</span><span class="n">libelf</span> <span class="n">pciutils</span><span class="o">-</span><span class="n">libs</span> <span class="n">file</span> <span class="n">pth</span> <span class="n">rpm</span><span class="o">-</span><span class="n">build</span> <span class="n">libunwind</span><span class="o">-</span><span class="n">devel</span> <span class="n">hsa</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsa</span><span class="o">-</span><span class="n">ext</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsakmt</span><span class="o">-</span><span class="n">roct</span><span class="o">-</span><span class="n">dev</span> <span class="n">pkgconfig</span> <span class="n">rocm</span><span class="o">-</span><span class="n">utils</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># CentOS 7</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">git</span> <span class="n">cmake3</span> <span class="n">make</span> <span class="n">gcc</span><span class="o">-</span><span class="n">c</span><span class="o">++</span> <span class="n">python</span> <span class="n">findutils</span> <span class="n">elfutils</span><span class="o">-</span><span class="n">libelf</span> <span class="n">pciutils</span><span class="o">-</span><span class="n">libs</span> <span class="n">file</span> <span class="n">pth</span> <span class="n">rpm</span><span class="o">-</span><span class="n">build</span> <span class="n">libunwind</span><span class="o">-</span><span class="n">devel</span> <span class="n">redhat</span><span class="o">-</span><span class="n">lsb</span><span class="o">-</span><span class="n">core</span> <span class="n">libcxx</span> <span class="n">libcxxabi</span> <span class="n">hsa</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsa</span><span class="o">-</span><span class="n">ext</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsakmt</span><span class="o">-</span><span class="n">roct</span><span class="o">-</span><span class="n">dev</span> <span class="n">pkgconfig</span> <span class="n">rocm</span><span class="o">-</span><span class="n">utils</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># openSUSE Leap 42.3</span>
+<span class="n">sudo</span> <span class="n">zypper</span> <span class="n">install</span> <span class="n">git</span> <span class="n">cmake</span> <span class="n">make</span> <span class="n">gcc</span><span class="o">-</span><span class="n">c</span><span class="o">++</span> <span class="n">python</span> <span class="n">python</span><span class="o">-</span><span class="n">xml</span> <span class="n">findutils</span> <span class="n">elfutils</span> <span class="n">pciutils</span><span class="o">-</span><span class="n">devel</span> <span class="n">file</span> <span class="n">rpm</span><span class="o">-</span><span class="n">build</span> <span class="n">libunwind</span><span class="o">-</span><span class="n">devel</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span> <span class="n">libpth</span><span class="o">-</span><span class="n">devel</span>
+
+<span class="c1"># install libc++ from OSB</span>
+<span class="n">sudo</span> <span class="n">zypper</span> <span class="n">addrepo</span> <span class="o">-</span><span class="n">f</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">opensuse</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">repositories</span><span class="o">/</span><span class="n">devel</span><span class="p">:</span><span class="o">/</span><span class="n">tools</span><span class="p">:</span><span class="o">/</span><span class="n">compiler</span><span class="o">/</span><span class="n">openSUSE_Leap_42</span><span class="o">.</span><span class="mi">3</span><span class="o">/</span> <span class="n">devel_tools_compiler</span>
+<span class="n">sudo</span> <span class="n">zypper</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">zypper</span> <span class="n">install</span> <span class="n">libc</span><span class="o">++-</span><span class="n">devel</span>
+</pre></div>
+</div>
+<p>Clone the HCC source tree:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># automatically fetches all submodules</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recursive</span> <span class="o">-</span><span class="n">b</span> <span class="n">clang_tot_upgrade</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">hcc</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Create a build directory and run cmake to configure the build:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build</span><span class="p">;</span> <span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">../</span><span class="n">hcc</span>
+</pre></div>
+</div>
+<p>Compile HCC:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">j</span>
+</pre></div>
+</div>
+<p>Run the unit tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">test</span>
+</pre></div>
+</div>
+<p>Create an installer package (DEB or RPM file)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">package</span>
+</pre></div>
+</div>
+<p>Here’s a simple <a class="reference external" href="https://gist.github.com/scchan/540d410456e3e2682dbf018d3c179008">saxpy example</a> written with the hc API.</p>
+<p><strong>Compiling Your First HCC Program</strong></p>
+<p>To compile and link in a single step:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Assume HCC is installed and added to PATH
+# Notice the the hcc-config command is between two backticks
+hcc `hcc-config --cxxflags --ldflags` saxpy.cpp -o saxpy
+</pre></div>
+</div>
+<p>To build with separate compile and link steps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Assume HCC is installed and added to PATH
+# Notice the the hcc-config command is between two backticks
+hcc `hcc-config --cxxflags` saxpy.cpp -c -o saxpy.cpp.o
+hcc `hcc-config --ldflags` saxpy.cpp.o -o saxpy
+</pre></div>
+</div>
+<p><strong>Compiling for Different GPU Architectures</strong></p>
+<p>By default, HCC would auto-detect all the GPUs available it’s running on and set the correct GPU architectures. Users could use the –amdgpu-target=&lt;GCN Version&gt; option to compile for a specific architecture and to disable the auto-detection. The following table shows the different versions currently supported by HCC.</p>
+<p>There exists an environment variable HCC_AMDGPU_TARGET to override the default GPU architecture globally for HCC; however, the usage of this environment variable is NOT recommended as it is unsupported and it will be deprecated in a future release.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="20%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">GCN Version</th>
+<th class="head">GPU/APU Family</th>
+<th class="head">Examples of Radeon GPU</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>gfx701</td>
+<td>GFX7</td>
+<td>FirePro W8100, FirePro W9100, Radeon R9 290, Radeon R9 390</td>
+</tr>
+<tr class="row-odd"><td>gfx801</td>
+<td>Carrizo APU</td>
+<td>FX-8800P</td>
+</tr>
+<tr class="row-even"><td>gfx803</td>
+<td>GFX8</td>
+<td>R9 Fury, R9 Fury X, R9 Nano, FirePro S9300 x2, Radeon RX 480,
+Radeon RX 470, Radeon RX 460</td>
+</tr>
+<tr class="row-odd"><td>gfx900</td>
+<td>GFX9</td>
+<td>Vega10</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="https://scchan.github.io/hcc/">API reference of HCC</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>HCC API Documentation &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>HCC API Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_API_References/HCC-API.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hcc-api-documentation">
+<span id="hcc-api"></span><h1>HCC API Documentation<a class="headerlink" href="#hcc-api-documentation" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#hccdocumentation"><span class="std std-ref">HCC Documentation</span></a></li>
+<li><a class="reference internal" href="#hcapi"><span class="std std-ref">HC API</span></a></li>
+</ul>
+</div></blockquote>
+<div class="section" id="hcc-documentation">
+<span id="hccdocumentation"></span><h2>HCC Documentation<a class="headerlink" href="#hcc-documentation" title="Permalink to this headline">¶</a></h2>
+<p>HC is a C++ API for accelerated computing provided by the HCC compiler. It has some similarities to C++ AMP and therefore, reference materials (blogs, articles, books) that describe C++ AMP also proivide an excellent way to become familiar with HC. For example, both APIs use a parallel_for_each construct to specify a parallel execution region that runs on accelerator. However, HC has several important differences from C++ AMP, including the removal of the “restrict” keyword to annotate device code, an explicit asynchronous launch behavior for parallel_for_each, the support for non-constant tile size, the support for memory pointer, etc..</p>
+</div>
+<div class="section" id="hc-api">
+<span id="hcapi"></span><h2>HC API<a class="headerlink" href="#hc-api" title="Permalink to this headline">¶</a></h2>
+<p>HC comes with two header files as of now:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&lt;hc.hpp&gt; : Main header file for HC</li>
+<li>&lt;hc_math.hpp&gt; : Math functions for HC</li>
+</ul>
+</div></blockquote>
+<p>Most HC APIs are stored under “hc” namespace, and the class name is the same as their counterpart in C++AMP “Concurrency” namespace. Users of C++AMP should find it easy to switch from C++AMP to HC.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">C++AMP</th>
+<th class="head">HC</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::accelerator</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::accelerator</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::accelerator_view</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::accelerator_view</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::extent</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::extent</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::index</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::index</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::completion_future</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::completion_future</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::array</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::array</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::array_view</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::array_view</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="how-to-build-programs-with-hc-api">
+<h3>How to build programs with HC API<a class="headerlink" href="#how-to-build-programs-with-hc-api" title="Permalink to this headline">¶</a></h3>
+<p>Use “hcc-config”, instead of “clamp-config”, or you could manually add “-hc” when you invoke clang++. Also, “hcc” is added as an alias for “clang++”.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>`` hcchcc-config –cxxflags –ldflagsfoo.cpp -o foo ``
+</pre></div>
+</div>
+</div>
+<div class="section" id="hcc-built-in-macros">
+<h3>HCC built-in macros<a class="headerlink" href="#hcc-built-in-macros" title="Permalink to this headline">¶</a></h3>
+<p>Built-in macros:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Macro</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__HCC__</span></code></td>
+<td>always be 1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">__hcc_major__</span></code></td>
+<td>major version number of HCC</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__hcc_minor__</span></code></td>
+<td>minor version number of HCC</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">__hcc_patchlevel__</span></code></td>
+<td>patchlevel of HCC</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__hcc_version__</span></code></td>
+<td>combined string of <code class="docutils literal notranslate"><span class="pre">__hcc_major__</span></code>, <code class="docutils literal notranslate"><span class="pre">__hcc_minor__</span></code>, <code class="docutils literal notranslate"><span class="pre">__hcc_patchlevel__</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The rule for <code class="docutils literal notranslate"><span class="pre">__hcc_patchlevel__</span></code> is: yyWW-(HCC driver git commit #)-(HCC clang git commit #)</p>
+<blockquote>
+<div><ul class="simple">
+<li>yy stands for the last 2 digits of the year</li>
+<li>WW stands for the week number of the year</li>
+</ul>
+</div></blockquote>
+<p>Macros for language modes in use:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Macro</th>
+<th class="head">Meaning.</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__KALMAR_AMP__</span></code></td>
+<td>1 in case in C++ AMP mode (-std=c++amp; <strong>Removed from ROCm 2.0 onwards</strong>)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">__KALMAR_HC__</span></code></td>
+<td>1 in case in HC mode (-hc)</td>
+</tr>
+</tbody>
+</table>
+<p>Compilation mode: HCC is a single-source compiler where kernel codes and host codes can reside in the same file. Internally HCC would trigger 2 compilation iterations, and the following macros can be user by user programs to determine which mode the compiler is in.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Macro</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__KALMAR_ACCELERATOR__</span></code></td>
+<td>not 0 in case the compiler runs in kernel code compilation mode</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">__KALMAR_CPU__</span></code></td>
+<td>not 0 in case the compiler runs in host code compilation mode</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="hc-specific-features">
+<h3>HC-specific features<a class="headerlink" href="#hc-specific-features" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>relaxed rules in operations allowed in kernels</li>
+<li>new syntax of tiled_extent and tiled_index</li>
+<li>dynamic group segment memory allocation</li>
+<li>true asynchronous kernel launching behavior</li>
+<li>additional HSA-specific APIs</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="differences-between-hc-api-and-c-amp">
+<h3>Differences between HC API and C++ AMP<a class="headerlink" href="#differences-between-hc-api-and-c-amp" title="Permalink to this headline">¶</a></h3>
+<p>Despite HC and C++ AMP sharing many similar program constructs (e.g. parallel_for_each, array, array_view, etc.), there are several significant differences between the two APIs.</p>
+</div>
+<div class="section" id="support-for-explicit-asynchronous-parallel-for-each">
+<h3>Support for explicit asynchronous parallel_for_each<a class="headerlink" href="#support-for-explicit-asynchronous-parallel-for-each" title="Permalink to this headline">¶</a></h3>
+<p>In C++ AMP, the parallel_for_each appears as a synchronous function call in a program (i.e. the host waits for the kernel to complete); howevever, the compiler may optimize it to execute the kernel asynchronously and the host would synchronize with the device on the first access of the data modified by the kernel. For example, if a parallel_for_each writes the an array_view, then the first access to this array_view on the host after the parallel_for_each would block until the parallel_for_each completes.</p>
+<p>HC supports the automatic synchronization behavior as in C++ AMP. In addition, HC’s parallel_for_each supports explicit asynchronous execution. It returns a completion_future (similar to C++ std::future) object that other asynchronous operations could synchronize with, which provides better flexibility on task graph construction and enables more precise control on optimization.</p>
+</div>
+<div class="section" id="annotation-of-device-functions">
+<h3>Annotation of device functions<a class="headerlink" href="#annotation-of-device-functions" title="Permalink to this headline">¶</a></h3>
+<p>C++ AMP uses the restrict(amp) keyword to annotate functions that runs on the device.</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>` void foo() restrict(amp) { .. } … parallel_for_each(…,[=] () restrict(amp) { foo(); });</p>
+<p><a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a></p>
+<p>HC uses a function attribute ([[hc]] or __attribute__((hc)) ) to annotate a device function.</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span> <span class="pre">void</span> <span class="pre">foo()</span> <span class="pre">[[hc]]</span> <span class="pre">{</span> <span class="pre">..</span> <span class="pre">}</span> <span class="pre">...</span> <span class="pre">parallel_for_each(...,[=]</span> <span class="pre">()</span> <span class="pre">[[hc]]</span> <span class="pre">{</span> <span class="pre">foo();</span> <span class="pre">});</span> <span class="pre">`</span></code></p>
+<p>The [[hc]] annotation for the kernel function called by parallel_for_each is optional as it is automatically annotated as a device function by the hcc compiler. The compiler also supports partial automatic [[hc]] annotation for functions that are called by other device functions within the same source file:</p>
+<p><a href="#id7"><span class="problematic" id="id8">``</span></a>` // Since bar is called by foo, which is a device function, the hcc compiler // will automatically annotate bar as a device function void bar() { … }</p>
+<p>void foo() [[hc]] { bar(); } <a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a></p>
+</div>
+<div class="section" id="dynamic-tile-size">
+<h3>Dynamic tile size<a class="headerlink" href="#dynamic-tile-size" title="Permalink to this headline">¶</a></h3>
+<p>C++ AMP doesn’t support dynamic tile size. The size of each tile dimensions has to be a compile-time constant specified as template arguments to the tile_extent object:</p>
+<p><a href="#id13"><span class="problematic" id="id14">``</span></a>` extent&lt;2&gt; ex(x, y);</p>
+<p>// To create a tile extent of 8x8 from the extent object // observe that the tile dimensions have to be constant values tiled_extent&lt;8,8&gt; t_ex(ex);</p>
+<p>parallel_for_each(t_ex, [=](tiled_index&lt;8,8&gt; t_id) restrict(amp) { … }); <code class="docutils literal notranslate"><span class="pre">`</span> <span class="pre">HC</span> <span class="pre">supports</span> <span class="pre">both</span> <span class="pre">static</span> <span class="pre">and</span> <span class="pre">dynamic</span> <span class="pre">tile</span> <span class="pre">size:</span> <span class="pre">`</span></code> extent&lt;2&gt; ex(x,y)</p>
+<p>// create a tile extent from dynamically calculated values // observe that the the tiled_extent template takes the rank instead of dimensions tx = test_x ? tx_a : tx_b; ty = test_y ? ty_a : ty_b; tiled_extent&lt;2&gt; t_ex(ex, tx, ty);</p>
+<p>parallel_for_each(t_ex, [=](tiled_index&lt;2&gt; t_id) [[hc]] { … });</p>
+<p><a href="#id15"><span class="problematic" id="id16">``</span></a><a href="#id17"><span class="problematic" id="id18">`</span></a></p>
+</div>
+<div class="section" id="support-for-memory-pointer">
+<h3>Support for memory pointer<a class="headerlink" href="#support-for-memory-pointer" title="Permalink to this headline">¶</a></h3>
+<p>C++ AMP doesn’t support lambda capture of memory pointer into a GPU kernel.</p>
+<p>HC supports capturing memory pointer by a GPU kernel.</p>
+<p><a href="#id19"><span class="problematic" id="id20">``</span></a>` // allocate GPU memory through the HSA API int* gpu_pointer; hsa_memory_allocate(…, &amp;gpu_pointer); … parallel_for_each(ext, [=](index i) [[hc]] { gpu_pointer[i[0]]++; }</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span> <span class="pre">For</span> <span class="pre">HSA</span> <span class="pre">APUs</span> <span class="pre">that</span> <span class="pre">supports</span> <span class="pre">system</span> <span class="pre">wide</span> <span class="pre">shared</span> <span class="pre">virtual</span> <span class="pre">memory,</span> <span class="pre">a</span> <span class="pre">GPU</span> <span class="pre">kernel</span> <span class="pre">can</span> <span class="pre">directly</span> <span class="pre">access</span> <span class="pre">system</span> <span class="pre">memory</span> <span class="pre">allocated</span> <span class="pre">by</span> <span class="pre">the</span> <span class="pre">host:</span> <span class="pre">`</span></code> int* cpu_memory = (int*) malloc(…); … parallel_for_each(ext, [=](index i) [[hc]] { cpu_memory[i[0]]++; }); <a href="#id21"><span class="problematic" id="id22">``</span></a><a href="#id23"><span class="problematic" id="id24">`</span></a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

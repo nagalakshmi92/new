@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Event Management &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Event Management</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/ROCm_API_References/HIP_API/Event-Management.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="event-management">
+<span id="id1"></span><h1>Event Management<a class="headerlink" href="#event-management" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hipeventcreatewithflags">
+<h2>hipEventCreateWithFlags<a class="headerlink" href="#hipeventcreatewithflags" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv323hipEventCreateWithFlagsP10hipEvent_tj">
+<span id="_CPPv223hipEventCreateWithFlagsP10hipEvent_tj"></span><span id="hipEventCreateWithFlags__hipEvent_tP.unsigned"></span><span class="target" id="group___event_1gae86a5acb1b22b61bc9ecb9c28fc71b75"></span>hipError_t <code class="descname">hipEventCreateWithFlags</code><span class="sig-paren">(</span>hipEvent_t *<em>event</em>, unsigned <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv323hipEventCreateWithFlagsP10hipEvent_tj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create an event with the specified flags. </p>
+<p>hipEventDefault : Default flag. The event will use active synchronization and will support timing. Blocking synchronization provides lowest possible latency at the expense of dedicating a CPU to poll on the eevent. hipEventBlockingSync : The event will use blocking synchronization : if hipEventSynchronize is called on this event, the thread will block until the event completes. This can increase latency for the synchroniation but can result in lower power and more resources for other CPU threads. hipEventDisableTiming : Disable recording of timing information. On ROCM platform, timing information is always recorded and this flag has no performance benefit.<dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">event</span></code>: Returns the newly created event. </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: Flags to control event behavior. Valid values are hipEventDefault, hipEventBlockingSync, hipEventDisableTiming, hipEventInterprocess</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>Warning</strong></dt>
+<dd>On HCC platform, hipEventInterprocess support is under development. Use of this flag will return an error.</dd>
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInitializationError, #hipErrorInvalidValue, #hipErrorLaunchFailure, #hipErrorMemoryAllocation</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___event_1ga5df2309c9f29ca4c8e669db658d411b4"><span class="std std-ref">hipEventCreate</span></a>, <a class="reference internal" href="#group___event_1ga1f72d98ba5d6f7dc3da54e0c41fe38b1"><span class="std std-ref">hipEventSynchronize</span></a>, <a class="reference internal" href="#group___event_1ga83260357dce0c39e8c6a3c74ec97484c"><span class="std std-ref">hipEventDestroy</span></a>, <a class="reference internal" href="#group___event_1gad4128b815cb475c8e13c7e66ff6250b7"><span class="std std-ref">hipEventElapsedTime</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipeventcreate">
+<h2>hipEventCreate<a class="headerlink" href="#hipeventcreate" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv314hipEventCreateP10hipEvent_t">
+<span id="_CPPv214hipEventCreateP10hipEvent_t"></span><span id="hipEventCreate__hipEvent_tP"></span><span class="target" id="group___event_1ga5df2309c9f29ca4c8e669db658d411b4"></span>hipError_t <code class="descname">hipEventCreate</code><span class="sig-paren">(</span>hipEvent_t *<em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv314hipEventCreateP10hipEvent_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create an event. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInitializationError, #hipErrorInvalidValue, #hipErrorLaunchFailure, #hipErrorMemoryAllocation</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___event_1gae86a5acb1b22b61bc9ecb9c28fc71b75"><span class="std std-ref">hipEventCreateWithFlags</span></a>, <a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord</span></a>, <a class="reference internal" href="#group___event_1ga5d12d7b798b5ceb5932d1ac21f5ac776"><span class="std std-ref">hipEventQuery</span></a>, <a class="reference internal" href="#group___event_1ga1f72d98ba5d6f7dc3da54e0c41fe38b1"><span class="std std-ref">hipEventSynchronize</span></a>, <a class="reference internal" href="#group___event_1ga83260357dce0c39e8c6a3c74ec97484c"><span class="std std-ref">hipEventDestroy</span></a>, <a class="reference internal" href="#group___event_1gad4128b815cb475c8e13c7e66ff6250b7"><span class="std std-ref">hipEventElapsedTime</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">event</span></code>: Returns the newly created event.</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipeventrecord">
+<h2>hipEventRecord<a class="headerlink" href="#hipeventrecord" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv314hipEventRecord10hipEvent_t11hipStream_t">
+<span id="_CPPv214hipEventRecord10hipEvent_t11hipStream_t"></span><span id="hipEventRecord__hipEvent_t.hipStream_t"></span><span class="target" id="group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"></span>hipError_t <code class="descname">hipEventRecord</code><span class="sig-paren">(</span>hipEvent_t <em>event</em>, hipStream_t <em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv314hipEventRecord10hipEvent_t11hipStream_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Record an event in the specified stream. </p>
+<p><a class="reference internal" href="#group___event_1ga5d12d7b798b5ceb5932d1ac21f5ac776"><span class="std std-ref">hipEventQuery()</span></a> or <a class="reference internal" href="#group___event_1ga1f72d98ba5d6f7dc3da54e0c41fe38b1"><span class="std std-ref">hipEventSynchronize()</span></a> must be used to determine when the event transitions from “recording” (after <a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord()</span></a> is called) to “recorded” (when timestamps are set, if requested).<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInitializationError, #hipErrorInvalidResourceHandle, #hipErrorLaunchFailure</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">event</span></code>: event to record. </li>
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: stream in which to record event. </li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>Events which are recorded in a non-NULL stream will transition to from recording to “recorded” state when they reach the head of the specified stream, after all previous commands in that stream have completed executing.</p>
+<p>If <a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord()</span></a> has been previously called on this event, then this call will overwrite any existing state in event.</p>
+<p>If this function is called on a an event that is currently being recorded, results are undefined<ul class="simple">
+<li>either outstanding recording may save state into the event, and the order is not guaranteed.</li>
+</ul>
+</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___event_1ga5df2309c9f29ca4c8e669db658d411b4"><span class="std std-ref">hipEventCreate</span></a>, <a class="reference internal" href="#group___event_1gae86a5acb1b22b61bc9ecb9c28fc71b75"><span class="std std-ref">hipEventCreateWithFlags</span></a>, <a class="reference internal" href="#group___event_1ga5d12d7b798b5ceb5932d1ac21f5ac776"><span class="std std-ref">hipEventQuery</span></a>, <a class="reference internal" href="#group___event_1ga1f72d98ba5d6f7dc3da54e0c41fe38b1"><span class="std std-ref">hipEventSynchronize</span></a>, <a class="reference internal" href="#group___event_1ga83260357dce0c39e8c6a3c74ec97484c"><span class="std std-ref">hipEventDestroy</span></a>, <a class="reference internal" href="#group___event_1gad4128b815cb475c8e13c7e66ff6250b7"><span class="std std-ref">hipEventElapsedTime</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipeventdestroy">
+<h2>hipEventDestroy<a class="headerlink" href="#hipeventdestroy" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv315hipEventDestroy10hipEvent_t">
+<span id="_CPPv215hipEventDestroy10hipEvent_t"></span><span id="hipEventDestroy__hipEvent_t"></span><span class="target" id="group___event_1ga83260357dce0c39e8c6a3c74ec97484c"></span>hipError_t <code class="descname">hipEventDestroy</code><span class="sig-paren">(</span>hipEvent_t <em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv315hipEventDestroy10hipEvent_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Destroy the specified event. </p>
+<p><p>Releases memory associated with the event. If the event is recording but has not completed recording when </p>
+<a class="reference internal" href="#group___event_1ga83260357dce0c39e8c6a3c74ec97484c"><span class="std std-ref">hipEventDestroy()</span></a> is called, the function will return immediately and the completion_future resources will be released later, when the hipDevice is synchronized.<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInitializationError, #hipErrorInvalidValue, #hipErrorLaunchFailure</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">event</span></code>: Event to destroy. </li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___event_1ga5df2309c9f29ca4c8e669db658d411b4"><span class="std std-ref">hipEventCreate</span></a>, <a class="reference internal" href="#group___event_1gae86a5acb1b22b61bc9ecb9c28fc71b75"><span class="std std-ref">hipEventCreateWithFlags</span></a>, <a class="reference internal" href="#group___event_1ga5d12d7b798b5ceb5932d1ac21f5ac776"><span class="std std-ref">hipEventQuery</span></a>, <a class="reference internal" href="#group___event_1ga1f72d98ba5d6f7dc3da54e0c41fe38b1"><span class="std std-ref">hipEventSynchronize</span></a>, <a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord</span></a>, <a class="reference internal" href="#group___event_1gad4128b815cb475c8e13c7e66ff6250b7"><span class="std std-ref">hipEventElapsedTime</span></a></dd>
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipeventsynchronize">
+<h2>hipEventSynchronize<a class="headerlink" href="#hipeventsynchronize" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv319hipEventSynchronize10hipEvent_t">
+<span id="_CPPv219hipEventSynchronize10hipEvent_t"></span><span id="hipEventSynchronize__hipEvent_t"></span><span class="target" id="group___event_1ga1f72d98ba5d6f7dc3da54e0c41fe38b1"></span>hipError_t <code class="descname">hipEventSynchronize</code><span class="sig-paren">(</span>hipEvent_t <em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv319hipEventSynchronize10hipEvent_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wait for an event to complete. </p>
+<p>This function will block until the event is ready, waiting for all previous work in the stream specified when event was recorded with <a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord()</span></a>.</p>
+<p>If <a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord()</span></a> has not been called on <code class="docutils literal notranslate"><span class="pre">event</span></code>, this function returns immediately.</p>
+<p>TODO-hcc - This function needs to support hipEventBlockingSync parameter.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInitializationError, #hipErrorInvalidResourceHandle, #hipErrorLaunchFailure</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___event_1ga5df2309c9f29ca4c8e669db658d411b4"><span class="std std-ref">hipEventCreate</span></a>, <a class="reference internal" href="#group___event_1gae86a5acb1b22b61bc9ecb9c28fc71b75"><span class="std std-ref">hipEventCreateWithFlags</span></a>, <a class="reference internal" href="#group___event_1ga5d12d7b798b5ceb5932d1ac21f5ac776"><span class="std std-ref">hipEventQuery</span></a>, <a class="reference internal" href="#group___event_1ga83260357dce0c39e8c6a3c74ec97484c"><span class="std std-ref">hipEventDestroy</span></a>, <a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord</span></a>, <a class="reference internal" href="#group___event_1gad4128b815cb475c8e13c7e66ff6250b7"><span class="std std-ref">hipEventElapsedTime</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">event</span></code>: Event on which to wait. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipeventelapsedtime">
+<h2>hipEventElapsedTime<a class="headerlink" href="#hipeventelapsedtime" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv319hipEventElapsedTimePf10hipEvent_t10hipEvent_t">
+<span id="_CPPv219hipEventElapsedTimePf10hipEvent_t10hipEvent_t"></span><span id="hipEventElapsedTime__floatP.hipEvent_t.hipEvent_t"></span><span class="target" id="group___event_1gad4128b815cb475c8e13c7e66ff6250b7"></span>hipError_t <code class="descname">hipEventElapsedTime</code><span class="sig-paren">(</span>float *<em>ms</em>, hipEvent_t <em>start</em>, hipEvent_t <em>stop</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv319hipEventElapsedTimePf10hipEvent_t10hipEvent_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the elapsed time between two events. </p>
+<p><p>Computes the elapsed time between two events. Time is computed in ms, with a resolution of approximately 1 us.</p>
+<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorNotReady, #hipErrorInvalidResourceHandle, #hipErrorInitializationError, #hipErrorLaunchFailure</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ms</span></code>: : Return time between start and stop in ms. </li>
+<li><code class="docutils literal notranslate"><span class="pre">start</span></code>: : Start event. </li>
+<li><code class="docutils literal notranslate"><span class="pre">stop</span></code>: : Stop event. </li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>Events which are recorded in a NULL stream will block until all commands on all other streams complete execution, and then record the timestamp.</p>
+<p>Events which are recorded in a non-NULL stream will record their timestamp when they reach the head of the specified stream, after all previous commands in that stream have completed executing. Thus the time that the event recorded may be significantly after the host calls <a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord()</span></a>.</p>
+<p>If <a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord()</span></a> has not been called on either event, then #hipErrorInvalidResourceHandle is returned. If <a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord()</span></a> has been called on both events, but the timestamp has not yet been recorded on one or both events (that is, <a class="reference internal" href="#group___event_1ga5d12d7b798b5ceb5932d1ac21f5ac776"><span class="std std-ref">hipEventQuery()</span></a> would return #hipErrorNotReady on at least one of the events), then #hipErrorNotReady is returned.</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___event_1ga5df2309c9f29ca4c8e669db658d411b4"><span class="std std-ref">hipEventCreate</span></a>, <a class="reference internal" href="#group___event_1gae86a5acb1b22b61bc9ecb9c28fc71b75"><span class="std std-ref">hipEventCreateWithFlags</span></a>, <a class="reference internal" href="#group___event_1ga5d12d7b798b5ceb5932d1ac21f5ac776"><span class="std std-ref">hipEventQuery</span></a>, <a class="reference internal" href="#group___event_1ga83260357dce0c39e8c6a3c74ec97484c"><span class="std std-ref">hipEventDestroy</span></a>, <a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord</span></a>, <a class="reference internal" href="#group___event_1ga1f72d98ba5d6f7dc3da54e0c41fe38b1"><span class="std std-ref">hipEventSynchronize</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipeventquery-s">
+<h2>hipEventQuery S<a class="headerlink" href="#hipeventquery-s" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv313hipEventQuery10hipEvent_t">
+<span id="_CPPv213hipEventQuery10hipEvent_t"></span><span id="hipEventQuery__hipEvent_t"></span><span class="target" id="group___event_1ga5d12d7b798b5ceb5932d1ac21f5ac776"></span>hipError_t <code class="descname">hipEventQuery</code><span class="sig-paren">(</span>hipEvent_t <em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv313hipEventQuery10hipEvent_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Query event status. </p>
+<p><p>Query the status of the specified event. This function will return #hipErrorNotReady if all commands in the appropriate stream (specified to </p>
+<a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord()</span></a>) have completed. If that work has not completed, or if <a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord()</span></a> was not called on the event, then #hipSuccess is returned.<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorNotReady, #hipErrorInvalidResourceHandle, #hipErrorInvalidValue, #hipErrorInitializationError, #hipErrorLaunchFailure</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">event</span></code>: Event to query. </li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___event_1ga5df2309c9f29ca4c8e669db658d411b4"><span class="std std-ref">hipEventCreate</span></a>, <a class="reference internal" href="#group___event_1gae86a5acb1b22b61bc9ecb9c28fc71b75"><span class="std std-ref">hipEventCreateWithFlags</span></a>, <a class="reference internal" href="#group___event_1ga553b6f7a8e7b7dd9536d8a64c24d7e29"><span class="std std-ref">hipEventRecord</span></a>, <a class="reference internal" href="#group___event_1ga83260357dce0c39e8c6a3c74ec97484c"><span class="std std-ref">hipEventDestroy</span></a>, <a class="reference internal" href="#group___event_1ga1f72d98ba5d6f7dc3da54e0c41fe38b1"><span class="std std-ref">hipEventSynchronize</span></a>, <a class="reference internal" href="#group___event_1gad4128b815cb475c8e13c7e66ff6250b7"><span class="std std-ref">hipEventElapsedTime</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

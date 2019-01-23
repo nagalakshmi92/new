@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>clBLAS &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>clBLAS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Tools/clBLA.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="clblas">
+<span id="clbla"></span><h1>clBLAS<a class="headerlink" href="#clblas" title="Permalink to this headline">¶</a></h1>
+<p>For Github repository <a class="reference external" href="https://github.com/clMathLibraries/clBLAS">clBLAS</a></p>
+<p>This repository houses the code for the OpenCL™ BLAS portion of clMath. The complete set of BLAS level 1, 2 &amp; 3 routines is implemented. Please see Netlib BLAS for the list of supported routines. In addition to GPU devices, the library also supports running on CPU devices to facilitate debugging and multicore programming. APPML 1.12 is the most current generally available pre-packaged binary version of the library available for download for both Linux and Windows platforms.</p>
+<p>The primary goal of clBLAS is to make it easier for developers to utilize the inherent performance and power efficiency benefits of heterogeneous computing. clBLAS interfaces do not hide nor wrap OpenCL interfaces, but rather leaves OpenCL state management to the control of the user to allow for maximum performance and flexibility. The clBLAS library does generate and enqueue optimized OpenCL kernels, relieving the user from the task of writing, optimizing and maintaining kernel code themselves.</p>
+<p><strong>clBLAS update notes 01/2017</strong></p>
+<p>v2.12 is a bugfix release as a rollup of all fixes in /develop branch
+Thanks to &#64;pavanky, &#64;iotamudelta, &#64;shahsan10, &#64;psyhtest, &#64;haahh, &#64;hughperkins, &#64;tfauck &#64;abhiShandy, &#64;IvanVergiliev, &#64;zougloub, &#64;mgates3 for contributions to clBLAS v2.12
+Summary of fixes available to read on the releases tab</p>
+<div class="section" id="clblas-library-user-documentation">
+<h2>clBLAS library user documentation<a class="headerlink" href="#clblas-library-user-documentation" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://clmathlibraries.github.io/clBLAS/">Library and API documentation</a> for developers is available online as a GitHub Pages website</p>
+</div>
+<div class="section" id="google-groups">
+<h2>Google Groups<a class="headerlink" href="#google-groups" title="Permalink to this headline">¶</a></h2>
+<p>Two mailing lists have been created for the clMath projects:</p>
+<p><a class="reference external" href="mailto:clmath&#37;&#52;&#48;googlegroups&#46;com">clmath<span>&#64;</span>googlegroups<span>&#46;</span>com</a> - group whose focus is to answer questions on using the library or reporting issues</p>
+<p><a class="reference external" href="mailto:clmath-developers&#37;&#52;&#48;googlegroups&#46;com">clmath-developers<span>&#64;</span>googlegroups<span>&#46;</span>com</a> - group whose focus is for developers interested in contributing to the library code itself</p>
+</div>
+<div class="section" id="clblas-wiki">
+<h2>clBLAS Wiki<a class="headerlink" href="#clblas-wiki" title="Permalink to this headline">¶</a></h2>
+<p>The project <a class="reference external" href="https://github.com/clMathLibraries/clBLAS/wiki">wiki</a> contains helpful documentation, including a <a class="reference external" href="https://github.com/clMathLibraries/clBLAS/wiki">build primer</a></p>
+</div>
+<div class="section" id="contributing-code">
+<h2>Contributing code<a class="headerlink" href="#contributing-code" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to and read the <a class="reference external" href="https://github.com/clMathLibraries/clBLAS/blob/master/CONTRIBUTING.md">Contributing document</a> for guidelines on how to contribute code to this open source project. The code in the /master branch is considered to be stable, and all pull-requests should be made against the /develop branch.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>The source for clBLAS is licensed under the Apache License, Version 2.0</p>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>The simple example below shows how to use clBLAS to compute an OpenCL accelerated SGEMM</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;sys/types.h&gt;</span>
+<span class="c1">#include &lt;stdio.h&gt;</span>
+
+<span class="o">/*</span> <span class="n">Include</span> <span class="n">the</span> <span class="n">clBLAS</span> <span class="n">header</span><span class="o">.</span> <span class="n">It</span> <span class="n">includes</span> <span class="n">the</span> <span class="n">appropriate</span> <span class="n">OpenCL</span> <span class="n">headers</span> <span class="o">*/</span>
+<span class="c1">#include &lt;clBLAS.h&gt;</span>
+
+<span class="o">/*</span> <span class="n">This</span> <span class="n">example</span> <span class="n">uses</span> <span class="n">predefined</span> <span class="n">matrices</span> <span class="ow">and</span> <span class="n">their</span> <span class="n">characteristics</span> <span class="k">for</span>
+ <span class="o">*</span> <span class="n">simplicity</span> <span class="n">purpose</span><span class="o">.</span>
+<span class="o">*/</span>
+
+<span class="c1">#define M  4</span>
+<span class="c1">#define N  3</span>
+<span class="c1">#define K  5</span>
+
+<span class="n">static</span> <span class="n">const</span> <span class="n">cl_float</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="n">static</span> <span class="n">const</span> <span class="n">cl_float</span> <span class="n">A</span><span class="p">[</span><span class="n">M</span><span class="o">*</span><span class="n">K</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span>
+<span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span>
+<span class="mi">31</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span>
+<span class="mi">41</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">size_t</span> <span class="n">lda</span> <span class="o">=</span> <span class="n">K</span><span class="p">;</span>        <span class="o">/*</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">lda</span> <span class="o">=</span> <span class="n">K</span> <span class="o">*/</span>
+
+<span class="n">static</span> <span class="n">const</span> <span class="n">cl_float</span> <span class="n">B</span><span class="p">[</span><span class="n">K</span><span class="o">*</span><span class="n">N</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span>
+<span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span>
+<span class="mi">31</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span>
+<span class="mi">41</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span>
+<span class="mi">51</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">size_t</span> <span class="n">ldb</span> <span class="o">=</span> <span class="n">N</span><span class="p">;</span>        <span class="o">/*</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">ldb</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*/</span>
+
+<span class="n">static</span> <span class="n">const</span> <span class="n">cl_float</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+<span class="n">static</span> <span class="n">cl_float</span> <span class="n">C</span><span class="p">[</span><span class="n">M</span><span class="o">*</span><span class="n">N</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span>
+    <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="mi">31</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span>
+    <span class="mi">41</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">size_t</span> <span class="n">ldc</span> <span class="o">=</span> <span class="n">N</span><span class="p">;</span>        <span class="o">/*</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">ldc</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*/</span>
+
+<span class="n">static</span> <span class="n">cl_float</span> <span class="n">result</span><span class="p">[</span><span class="n">M</span><span class="o">*</span><span class="n">N</span><span class="p">];</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
+<span class="p">{</span>
+<span class="n">cl_int</span> <span class="n">err</span><span class="p">;</span>
+<span class="n">cl_platform_id</span> <span class="n">platform</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">cl_device_id</span> <span class="n">device</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">cl_context_properties</span> <span class="n">props</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">CL_CONTEXT_PLATFORM</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="n">cl_context</span> <span class="n">ctx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">cl_command_queue</span> <span class="n">queue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">cl_mem</span> <span class="n">bufA</span><span class="p">,</span> <span class="n">bufB</span><span class="p">,</span> <span class="n">bufC</span><span class="p">;</span>
+<span class="n">cl_event</span> <span class="n">event</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="o">/*</span> <span class="n">Setup</span> <span class="n">OpenCL</span> <span class="n">environment</span><span class="o">.</span> <span class="o">*/</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">clGetPlatformIDs</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">platform</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">);</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">clGetDeviceIDs</span><span class="p">(</span> <span class="n">platform</span><span class="p">,</span> <span class="n">CL_DEVICE_TYPE_GPU</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">device</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">);</span>
+
+<span class="n">props</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">cl_context_properties</span><span class="p">)</span><span class="n">platform</span><span class="p">;</span>
+<span class="n">ctx</span> <span class="o">=</span> <span class="n">clCreateContext</span><span class="p">(</span> <span class="n">props</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">device</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span> <span class="p">);</span>
+<span class="n">queue</span> <span class="o">=</span> <span class="n">clCreateCommandQueue</span><span class="p">(</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span> <span class="p">);</span>
+
+<span class="o">/*</span> <span class="n">Setup</span> <span class="n">clBLAS</span> <span class="o">*/</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">clblasSetup</span><span class="p">(</span> <span class="p">);</span>
+
+<span class="o">/*</span> <span class="n">Prepare</span> <span class="n">OpenCL</span> <span class="n">memory</span> <span class="n">objects</span> <span class="ow">and</span> <span class="n">place</span> <span class="n">matrices</span> <span class="n">inside</span> <span class="n">them</span><span class="o">.</span> <span class="o">*/</span>
+<span class="n">bufA</span> <span class="o">=</span> <span class="n">clCreateBuffer</span><span class="p">(</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">CL_MEM_READ_ONLY</span><span class="p">,</span> <span class="n">M</span> <span class="o">*</span> <span class="n">K</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">A</span><span class="p">),</span>
+                      <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span> <span class="p">);</span>
+<span class="n">bufB</span> <span class="o">=</span> <span class="n">clCreateBuffer</span><span class="p">(</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">CL_MEM_READ_ONLY</span><span class="p">,</span> <span class="n">K</span> <span class="o">*</span> <span class="n">N</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">B</span><span class="p">),</span>
+                      <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span> <span class="p">);</span>
+<span class="n">bufC</span> <span class="o">=</span> <span class="n">clCreateBuffer</span><span class="p">(</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">CL_MEM_READ_WRITE</span><span class="p">,</span> <span class="n">M</span> <span class="o">*</span> <span class="n">N</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">C</span><span class="p">),</span>
+                      <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span> <span class="p">);</span>
+
+<span class="n">err</span> <span class="o">=</span> <span class="n">clEnqueueWriteBuffer</span><span class="p">(</span> <span class="n">queue</span><span class="p">,</span> <span class="n">bufA</span><span class="p">,</span> <span class="n">CL_TRUE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">M</span> <span class="o">*</span> <span class="n">K</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span> <span class="o">*</span><span class="n">A</span> <span class="p">),</span> <span class="n">A</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">);</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">clEnqueueWriteBuffer</span><span class="p">(</span> <span class="n">queue</span><span class="p">,</span> <span class="n">bufB</span><span class="p">,</span> <span class="n">CL_TRUE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">K</span> <span class="o">*</span> <span class="n">N</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span> <span class="o">*</span><span class="n">B</span> <span class="p">),</span> <span class="n">B</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">);</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">clEnqueueWriteBuffer</span><span class="p">(</span> <span class="n">queue</span><span class="p">,</span> <span class="n">bufC</span><span class="p">,</span> <span class="n">CL_TRUE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">M</span> <span class="o">*</span> <span class="n">N</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span> <span class="o">*</span><span class="n">C</span> <span class="p">),</span> <span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">);</span>
+
+    <span class="o">/*</span> <span class="n">Call</span> <span class="n">clBLAS</span> <span class="n">extended</span> <span class="n">function</span><span class="o">.</span> <span class="n">Perform</span> <span class="n">gemm</span> <span class="k">for</span> <span class="n">the</span> <span class="n">lower</span> <span class="n">right</span> <span class="n">sub</span><span class="o">-</span><span class="n">matrices</span> <span class="o">*/</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="n">clblasSgemm</span><span class="p">(</span> <span class="n">clblasRowMajor</span><span class="p">,</span> <span class="n">clblasNoTrans</span><span class="p">,</span> <span class="n">clblasNoTrans</span><span class="p">,</span>
+                            <span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span>
+                            <span class="n">alpha</span><span class="p">,</span> <span class="n">bufA</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">lda</span><span class="p">,</span>
+                            <span class="n">bufB</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ldb</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span>
+                            <span class="n">bufC</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ldc</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">queue</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">event</span> <span class="p">);</span>
+
+<span class="o">/*</span> <span class="n">Wait</span> <span class="k">for</span> <span class="n">calculations</span> <span class="n">to</span> <span class="n">be</span> <span class="n">finished</span><span class="o">.</span> <span class="o">*/</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">clWaitForEvents</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">event</span> <span class="p">);</span>
+
+<span class="o">/*</span> <span class="n">Fetch</span> <span class="n">results</span> <span class="n">of</span> <span class="n">calculations</span> <span class="kn">from</span> <span class="nn">GPU</span> <span class="n">memory</span><span class="o">.</span> <span class="o">*/</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">clEnqueueReadBuffer</span><span class="p">(</span> <span class="n">queue</span><span class="p">,</span> <span class="n">bufC</span><span class="p">,</span> <span class="n">CL_TRUE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                            <span class="n">M</span> <span class="o">*</span> <span class="n">N</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">result</span><span class="p">),</span>
+                            <span class="n">result</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">);</span>
+
+<span class="o">/*</span> <span class="n">Release</span> <span class="n">OpenCL</span> <span class="n">memory</span> <span class="n">objects</span><span class="o">.</span> <span class="o">*/</span>
+<span class="n">clReleaseMemObject</span><span class="p">(</span> <span class="n">bufC</span> <span class="p">);</span>
+<span class="n">clReleaseMemObject</span><span class="p">(</span> <span class="n">bufB</span> <span class="p">);</span>
+<span class="n">clReleaseMemObject</span><span class="p">(</span> <span class="n">bufA</span> <span class="p">);</span>
+
+<span class="o">/*</span> <span class="n">Finalize</span> <span class="n">work</span> <span class="k">with</span> <span class="n">clBLAS</span> <span class="o">*/</span>
+<span class="n">clblasTeardown</span><span class="p">(</span> <span class="p">);</span>
+
+<span class="o">/*</span> <span class="n">Release</span> <span class="n">OpenCL</span> <span class="n">working</span> <span class="n">objects</span><span class="o">.</span> <span class="o">*/</span>
+<span class="n">clReleaseCommandQueue</span><span class="p">(</span> <span class="n">queue</span> <span class="p">);</span>
+<span class="n">clReleaseContext</span><span class="p">(</span> <span class="n">ctx</span> <span class="p">);</span>
+
+<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-dependencies">
+<h2>Build dependencies<a class="headerlink" href="#build-dependencies" title="Permalink to this headline">¶</a></h2>
+<p><strong>Library for Windows</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Windows® 7/8</li>
+<li>Visual Studio 2010 SP1, 2012</li>
+<li>An OpenCL SDK, such as APP SDK 2.8</li>
+<li>Latest CMake</li>
+</ul>
+</div></blockquote>
+<p><strong>Library for Linux</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>GCC 4.6 and onwards</li>
+<li>An OpenCL SDK, such as APP SDK 2.9</li>
+<li>Latest CMake</li>
+</ul>
+</div></blockquote>
+<p><strong>Library for Mac OSX</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Recommended to generate Unix makefiles with cmake</li>
+</ul>
+</div></blockquote>
+<p><strong>Test infrastructure</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Googletest v1.6</li>
+<li>Latest Boost</li>
+<li>CPU BLAS</li>
+<li>Netlib CBLAS (recommended) Ubuntu: install by “apt-get install libblas-dev” Windows: download &amp; install lapack-3.6.0 which comes     with CBLAS</li>
+<li>or ACML on windows/linux; Accelerate on Mac OSX</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="performance-infrastructure">
+<h2>Performance infrastructure<a class="headerlink" href="#performance-infrastructure" title="Permalink to this headline">¶</a></h2>
+<p>Python</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

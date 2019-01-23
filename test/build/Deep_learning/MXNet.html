@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MXNet &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>MXNet</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Deep_learning/MXNet.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mxnet">
+<span id="id1"></span><h1>MXNet<a class="headerlink" href="#mxnet" title="Permalink to this headline">¶</a></h1>
+<p>MXNet is a deep learning framework that has been ported to the HIP port of MXNet. It works both on HIP/ROCm and HIP/CUDA platforms.
+Mxnet makes use of rocBLAS,rocRAND,hcFFT and MIOpen APIs.</p>
+<p><strong>MXNet</strong></p>
+<img alt="../_images/MXNet_image1.png" src="../_images/MXNet_image1.png" />
+<div class="section" id="installation-guide-for-mxnet-library">
+<h2>Installation Guide for MXNet library<a class="headerlink" href="#installation-guide-for-mxnet-library" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://gcc.gnu.org/gcc-4.8/">GCC 4.8</a> or later to compile C++ 11.
+<a class="reference external" href="https://www.gnu.org/software/make/">GNU Make</a></p>
+</div>
+<div class="section" id="rocm-installation">
+<h3>ROCm installation<a class="headerlink" href="#rocm-installation" title="Permalink to this headline">¶</a></h3>
+<p>Follow the instructions from here -<a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installing-from-amd-rocm-repositories">ROCm Installation Guide</a></p>
+<p><strong>Install Dependencies to build mxnet for HIP/ROCm</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">rocm</span><span class="o">-</span><span class="n">device</span><span class="o">-</span><span class="n">libs</span> <span class="n">rocm</span><span class="o">-</span><span class="n">libs</span> <span class="n">rocblas</span> <span class="n">hipblas</span> <span class="n">rocrand</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">rocm</span><span class="o">-</span><span class="n">opencl</span> <span class="n">rocm</span><span class="o">-</span><span class="n">opencl</span><span class="o">-</span><span class="n">dev</span> <span class="n">rocm</span><span class="o">-</span><span class="n">utils</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">miopengemm</span> <span class="n">miopen</span><span class="o">-</span><span class="n">hip</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/hcFFT/wiki/Installation">Install hcfft from source</a></p>
+<p><strong>Install Dependencies to build mxnet for HIP/CUDA</strong></p>
+<p>Install CUDA following the NVIDIA’s <a class="reference external" href="http://docs.nvidia.com/cuda/cuda-installation-guide-linux/">installation guide</a> to setup MXNet with GPU support</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Make sure to add CUDA install path to LD_LIBRARY_PATH</li>
+<li>Example - export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH</li>
+</ul>
+</div>
+<p>Install the dependencies hipblas, rocrand, hcfft from source.</p>
+</div>
+</div>
+<div class="section" id="build-the-mxnet-library">
+<h2>Build the MXNet library<a class="headerlink" href="#build-the-mxnet-library" title="Permalink to this headline">¶</a></h2>
+<p><strong>Step 1: Install build tools.</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get update
+$ sudo apt-get install -y build-essential
+</pre></div>
+</div>
+<p><strong>Step 2: Install OpenBLAS.</strong>
+MXNet uses BLAS and LAPACK libraries for accelerated numerical computations on CPU machine. There are several flavors of BLAS/LAPACK libraries - OpenBLAS, ATLAS and MKL. In this step we install OpenBLAS. You can choose to install ATLAS or MKL.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install -y libopenblas-dev liblapack-dev libomp-dev libatlas-dev libatlas-base-dev
+</pre></div>
+</div>
+<p><strong>Step 3: Install `OpenCV &lt;https://opencv.org/&gt;`_.</strong>
+MXNet uses OpenCV for efficient image loading and augmentation operations.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install -y libopencv-dev
+</pre></div>
+</div>
+<p><strong>Step 4: Download MXNet sources and build MXNet core shared library.</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone --recursive https://github.com/ROCmSoftwarePlatform/mxnet.git
+$ cd mxnet
+$ export PATH=/opt/rocm/bin:$PATH
+</pre></div>
+</div>
+<p><strong>Step 5:</strong></p>
+<p><strong>To compile on HCC PLATFORM(HIP/ROCm):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export HIP_PLATFORM=hcc
+</pre></div>
+</div>
+<p><strong>To compile on NVCC PLATFORM(HIP/CUDA):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export HIP_PLATFORM=nvcc
+</pre></div>
+</div>
+<p><strong>Step 6:</strong></p>
+<p><strong>If building on CPU:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">jn</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">number</span> <span class="n">of</span> <span class="n">cores</span><span class="p">)</span> <span class="n">USE_CUDA</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p><strong>If building on GPU:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">jn</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">number</span> <span class="n">of</span> <span class="n">cores</span><span class="p">)</span> <span class="n">USE_CUDA</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p><strong>Step 7: To enable MIOpen for higher acceleration :</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">jn</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">number</span> <span class="n">of</span> <span class="n">cores</span><span class="p">)</span> <span class="n">USE_CUDNN</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>NOTE: Currently this feature is under development</p>
+<p>On succesfull compilation a library called libmxnet.so is created in mxnet/lib path.</p>
+<dl class="docutils">
+<dt><strong>Note:</strong></dt>
+<dd><ol class="first last arabic simple">
+<li>USE_CUDA, USE_CUDNN flags can be changed in make/config.mk.</li>
+<li>To compile on HIP/CUDA make sure to set USE_CUDA_PATH to right CUDA installation path in make/config.mk. In most cases it is - /usr/local/cuda.</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="install-the-mxnet-python-binding">
+<h2>Install the MXNet Python binding<a class="headerlink" href="#install-the-mxnet-python-binding" title="Permalink to this headline">¶</a></h2>
+<p><strong>Step 1: Install prerequisites - python, setup-tools, python-pip and numpy.</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install -y python-dev python-setuptools python-numpy python-pip
+</pre></div>
+</div>
+<p><strong>Step 2: Install the MXNet Python binding.</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd python
+$ sudo python setup.py install
+</pre></div>
+</div>
+<p><strong>Step 3: Execute sample example</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd example/
+$ cd bayesian-methods/
+To run on gpu change mx.cpu() to mx.gpu() in python script (Example- bdk_demo.py)
+$ python bdk_demo.py
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

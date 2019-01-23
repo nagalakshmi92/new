@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>HIP Programing FAQ &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>HIP Programing FAQ</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/FAQ/FAQ_HIP.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hip-programing-faq">
+<span id="hip-faq"></span><h1>HIP Programing FAQ<a class="headerlink" href="#hip-programing-faq" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-apis-and-features-does-hip-support">
+<h2>What APIs and features does HIP support?<a class="headerlink" href="#what-apis-and-features-does-hip-support" title="Permalink to this headline">¶</a></h2>
+<p>HIP provides the following:</p>
+<ul class="simple">
+<li>Devices (hipSetDevice(), hipGetDeviceProperties(), etc.)</li>
+<li>Memory management (hipMalloc(), hipMemcpy(), hipFree(), etc.)</li>
+<li>Streams (hipStreamCreate(),hipStreamSynchronize(), hipStreamWaitEvent(),  etc.)</li>
+<li>Events (hipEventRecord(), hipEventElapsedTime(), etc.)</li>
+<li>Kernel launching (hipLaunchKernel is a standard C/C++ function that replaces &lt;&lt;&lt; &gt;&gt;&gt;)</li>
+<li>HIP Module API to control when adn how code is loaded.</li>
+<li>CUDA*style kernel coordinate functions (threadIdx, blockIdx, blockDim, gridDim)</li>
+<li>Cross*lane instructions including shfl, ballot, any, all</li>
+<li>Most device*side math built*ins</li>
+<li>Error reporting (hipGetLastError(), hipGetErrorString())</li>
+</ul>
+<p>The HIP API documentation describes each API and its limitations, if any, compared with the equivalent CUDA API.</p>
+</div>
+<div class="section" id="what-is-not-supported">
+<h2>What is not supported?<a class="headerlink" href="#what-is-not-supported" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="runtime-driver-api-features">
+<h3>Runtime/Driver API features<a class="headerlink" href="#runtime-driver-api-features" title="Permalink to this headline">¶</a></h3>
+<p>At a high*level, the following features are not supported:</p>
+<ul class="simple">
+<li>Textures</li>
+<li>Dynamic parallelism (CUDA 5.0)</li>
+<li>Managed memory (CUDA 6.5)</li>
+<li>Graphics interoperability with OpenGL or Direct3D</li>
+<li>CUDA Driver API</li>
+<li>CUDA IPC Functions (Under Development)</li>
+<li>CUDA array, mipmappedArray and pitched memory</li>
+<li>MemcpyToSymbol functions</li>
+<li>Queue priority controls</li>
+</ul>
+<p>See the [API Support Table](CUDA_Runtime_API_functions_supported_by_HIP.md) for more detailed information.</p>
+</div>
+<div class="section" id="kernel-language-features">
+<h3>Kernel language features<a class="headerlink" href="#kernel-language-features" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Device*side dynamic memory allocations (malloc, free, new, delete) (CUDA 4.0)</li>
+<li>Virtual functions, indirect functions and try/catch (CUDA 4.0)</li>
+<li><cite>__prof_trigger</cite></li>
+<li>PTX assembly (CUDA 4.0).  HCC supports inline GCN assembly.</li>
+<li>Several kernel features are under development.  See the <a class="reference external" href="hip_kernel_language.md">HIP Kernel Language</a> for more information.</li>
+</ul>
+<p>These include</p>
+<blockquote>
+<div><ul class="simple">
+<li>printf</li>
+<li>assert</li>
+<li><cite>__restrict__</cite></li>
+<li><cite>__threadfence*_</cite>, <cite>__syncthreads*</cite></li>
+<li>Unbounded loop unroll</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="is-hip-a-drop-in-replacement-for-cuda">
+<h3>Is HIP a drop*in replacement for CUDA?<a class="headerlink" href="#is-hip-a-drop-in-replacement-for-cuda" title="Permalink to this headline">¶</a></h3>
+<p>No. HIP provides porting tools which do most of the work to convert CUDA code into portable C++ code that uses the HIP APIs.
+Most developers will port their code from CUDA to HIP and then maintain the HIP version.
+HIP code provides the same performance as native CUDA code, plus the benefits of running on AMD platforms.</p>
+</div>
+<div class="section" id="what-specific-version-of-cuda-does-hip-support">
+<h3>What specific version of CUDA does HIP support?<a class="headerlink" href="#what-specific-version-of-cuda-does-hip-support" title="Permalink to this headline">¶</a></h3>
+<p>HIP APIs and features do not map to a specific CUDA version. HIP provides a strong subset of functionality provided in CUDA, and the hipify tools can
+scan code to identify any unsupported CUDA functions * this is useful for identifying the specific features required by a given application.</p>
+<p>However, we can provide a rough summary of the features included in each CUDA SDK and the support level in HIP:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>CUDA 4.0 and earlier :</dt>
+<dd><ul class="first last">
+<li>HIP supports CUDA 4.0 except for the limitations described above.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CUDA 5.0 :</dt>
+<dd><ul class="first last">
+<li>Dynamic Parallelism (not supported)</li>
+<li>cuIpc functions (under development).</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CUDA 5.5 :</dt>
+<dd><ul class="first last">
+<li>CUPTI (not directly supported), <a class="reference external" href="http://developer.amd.com/tools*and*sdks/graphics*development/gpuperfapi/">AMD GPUPerfAPI</a> can be used as an alternative in some cases)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CUDA 6.0</dt>
+<dd><ul class="first last">
+<li>Managed memory (under development)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CUDA 6.5</dt>
+<dd><ul class="first last">
+<li>__shfl instriniscs (supported)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CUDA 7.0</dt>
+<dd><ul class="first last">
+<li>Per*thread*streams (under development)</li>
+<li>C++11 (HCC supports all of C++11, all of C++14 and some C++17 features)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CUDA 7.5</dt>
+<dd><ul class="first last">
+<li>float16</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CUDA 8.0</dt>
+<dd><ul class="first last">
+<li>TBD.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="what-libraries-does-hip-support">
+<h3>What libraries does HIP support?<a class="headerlink" href="#what-libraries-does-hip-support" title="Permalink to this headline">¶</a></h3>
+<p>HIP includes growing support for the 4 key math libraries using hcBlas, hcFft, hcrng and hcsparse.
+These offer pointer*based memory interfaces (as opposed to opaque buffers) and can be easily interfaced with other HCC applications.  Developers should use conditional compilation if portability to nvcc systems is desired * using calls to cu* routines on one path and hc* routines on the other.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/rocBLAS">rocblas</a></li>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/rocFFT">rocfft</a></li>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/MIOpen">MIOpen</a></li>
+<li>hipRAND Under Development</li>
+</ul>
+<p>Additionally, some of the cublas routines are automatically converted to hipblas equivalents by the hipify*clang tool.  These APIs use cublas or hcblas depending on the platform, and replace the need
+to use conditional compilation.</p>
+</div>
+<div class="section" id="how-does-hip-compare-with-opencl">
+<h3>How does HIP compare with OpenCL?<a class="headerlink" href="#how-does-hip-compare-with-opencl" title="Permalink to this headline">¶</a></h3>
+<p>Both AMD and Nvidia support OpenCL 1.2 on their devices, so developers can write portable code.
+HIP offers several benefits over OpenCL:</p>
+<ul class="simple">
+<li>Developers can code in C++ as well as mix host and device C++ code in their source files. HIP C++ code can use templates, lambdas, classes and so on.</li>
+<li>The HIP API is less verbose than OpenCL and is familiar to CUDA developers.</li>
+<li>Because both CUDA and HIP are C++ languages, porting from CUDA to HIP is significantly easier than porting from CUDA to OpenCL.</li>
+<li>HIP uses the best available development tools on each platform: on Nvidia GPUs, HIP code compiles using NVCC and can employ the nSight profiler and debugger (unlike OpenCL on Nvidia GPUs).</li>
+<li>HIP provides pointers and host*side pointer arithmetic.</li>
+<li>HIP provides device*level control over memory allocation and placement.</li>
+<li>HIP offers an offline compilation model.</li>
+</ul>
+</div>
+<div class="section" id="how-does-porting-cuda-to-hip-compare-to-porting-cuda-to-opencl">
+<h3>How does porting CUDA to HIP compare to porting CUDA to OpenCL?<a class="headerlink" href="#how-does-porting-cuda-to-hip-compare-to-porting-cuda-to-opencl" title="Permalink to this headline">¶</a></h3>
+<p>Both HIP and CUDA are dialects of C++, and thus porting between them is relatively straightforward.</p>
+<p>Both dialects support templates, classes, lambdas, and other C++ constructs.</p>
+<p>As one example, the hipify tool was originally a Perl script that used simple text conversions from CUDA to HIP.
+HIP and CUDA provide similar math library calls as well.  In summary, the HIP philosophy was to make the HIP language close enough to CUDA that the porting effort is relatively simple.</p>
+<p>This reduces the potential for error, and also makes it easy to automate the translation.  HIP’s goal is to quickly get the ported program running on both platforms with little manual intervention,
+so that the programmer can focus on performance optimizations.</p>
+<p>There have been several tools that have attempted to convert CUDA into OpenCL, such as CU2CL.  OpenCL is a C99*based kernel language (rather than C++) and also does not support single*source compilation.
+As a result, the OpenCL syntax is different from CUDA, and the porting tools have to perform some heroic transformations to bridge this gap.</p>
+<p>The tools also struggle with more complex CUDA applications, in particular those that use templates, classes, or other C++ features inside the kernel.</p>
+</div>
+<div class="section" id="what-hardware-does-hip-support">
+<h3>What hardware does HIP support?<a class="headerlink" href="#what-hardware-does-hip-support" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>For AMD platforms, HIP runs on the same hardware that the HCC “hc” mode supports.  See the ROCm documentation for the list of supported platforms.</li>
+<li>For Nvidia platforms, HIP requires Unified Memory and should run on any device supporting CUDA SDK 6.0 or newer. We have tested the Nvidia Titan and Tesla K40.</li>
+</ul>
+</div>
+<div class="section" id="does-hipify-automatically-convert-all-source-code">
+<h3>Does Hipify automatically convert all source code?<a class="headerlink" href="#does-hipify-automatically-convert-all-source-code" title="Permalink to this headline">¶</a></h3>
+<p>Typically, hipify can automatically convert almost all run*time code, and the coordinate indexing device code ( threadIdx.x <a href="#id1"><span class="problematic" id="id2">*</span></a>&gt; hipThreadIdx_x ).</p>
+<p>Most device code needs no additional conversion, since HIP and CUDA have similar names for math and built*in functions.
+The hipify*clang tool will automatically modify the kernel signature as needed (automating a step that used to be done manually)</p>
+<p>Additional porting may be required to deal with architecture feature queries or with CUDA capabilities that HIP doesn’t support.</p>
+<p>In general, developers should always expect to perform some platform*specific tuning and optimization.</p>
+</div>
+<div class="section" id="what-is-nvcc">
+<h3>What is NVCC?<a class="headerlink" href="#what-is-nvcc" title="Permalink to this headline">¶</a></h3>
+<p>NVCC is Nvidia’s compiler driver for compiling “CUDA C++” code into PTX or device code for Nvidia GPUs. It’s a closed*source binary compiler that is provided by the CUDA SDK.</p>
+</div>
+<div class="section" id="what-is-hcc">
+<h3>What is HCC?<a class="headerlink" href="#what-is-hcc" title="Permalink to this headline">¶</a></h3>
+<p>HCC is AMD’s compiler driver which compiles “heterogeneous C++” code into HSAIL or GCN device code for AMD GPUs.  It’s an open*source compiler based on recent versions of CLANG/LLVM.</p>
+</div>
+<div class="section" id="why-use-hip-rather-than-supporting-cuda-directly">
+<h3>Why use HIP rather than supporting CUDA directly?<a class="headerlink" href="#why-use-hip-rather-than-supporting-cuda-directly" title="Permalink to this headline">¶</a></h3>
+<p>While HIP is a strong subset of the CUDA, it is a subset.  The HIP layer allows that subset to be clearly defined and documented.</p>
+<p>Developers who code to the HIP API can be assured their code will remain portable across Nvidia and AMD platforms.
+In addition, HIP defines portable mechanisms to query architectural features, and supports a larger 64*bit wavesize which expands the return type for cross*lane functions like ballot and shuffle from 32*bit ints to 64*bit ints.</p>
+</div>
+<div class="section" id="can-i-develop-hip-code-on-an-nvidia-cuda-platform">
+<h3>Can I develop HIP code on an Nvidia CUDA platform?<a class="headerlink" href="#can-i-develop-hip-code-on-an-nvidia-cuda-platform" title="Permalink to this headline">¶</a></h3>
+<p>Yes.  HIP’s CUDA path only exposes the APIs and functionality that work on both NVCC and HCC back*ends.
+“Extra” APIs, parameters, and features which exist in CUDA but not in HCC will typically result in compile* or run*time errors.</p>
+<p>Developers need to use the HIP API for most accelerator code, and bracket any CUDA*specific code with preprocessor conditionals.</p>
+<p>Developers concerned about portability should of course run on both platforms, and should expect to tune for performance.
+In some cases CUDA has a richer set of modes for some APIs, and some C++ capabilities such as virtual functions * see the HIP &#64;API documentation for more details.</p>
+</div>
+<div class="section" id="can-i-develop-hip-code-on-an-amd-hcc-platform">
+<h3>Can I develop HIP code on an AMD HCC platform?<a class="headerlink" href="#can-i-develop-hip-code-on-an-amd-hcc-platform" title="Permalink to this headline">¶</a></h3>
+<p>Yes. HIP’s HCC path only exposes the APIs and functions that work on both NVCC and HCC back ends. “Extra” APIs, parameters and features that appear in HCC but not CUDA will typically cause compile* or run*time errors. Developers must use the HIP API for most accelerator code and bracket any HCC*specific code with preprocessor conditionals.</p>
+<p>Those concerned about portability should, of course, test their code on both platforms and should tune it for performance. Typically, HCC supports a more modern set of C++11/C++14/C++17 features, so HIP developers who want portability should be careful when using advanced C++ features on the hc path.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

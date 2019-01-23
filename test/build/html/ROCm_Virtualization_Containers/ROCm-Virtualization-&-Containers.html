@@ -1,0 +1,588 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ROCm Virtualization &amp; Containers &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Remote Device Programming" href="../Remote_Device_Programming/Remote-Device-Programming.html" />
+    <link rel="prev" title="ROCm System Management" href="../ROCm_System_Managment/ROCm-System-Managment.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ROCm Virtualization &amp; Containers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pcie-passthrough-on-kvm">PCIe Passthrough on KVM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ubuntu-16-04">Ubuntu 16.04</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fedora-27-or-centos-7-1708">Fedora 27 or CentOS 7 (1708)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rocm-docker">ROCm-Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docker-hub">Docker Hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rocm-docker-set-up-guide">ROCm-docker set up guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#details">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-images">Building images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Docker compose</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>ROCm Virtualization &amp; Containers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rocm-virtualization-containers">
+<span id="id1"></span><h1>ROCm Virtualization &amp; Containers<a class="headerlink" href="#rocm-virtualization-containers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pcie-passthrough-on-kvm">
+<h2>PCIe Passthrough on KVM<a class="headerlink" href="#pcie-passthrough-on-kvm" title="Permalink to this headline">¶</a></h2>
+<p>The following KVM-based instructions assume a headless host with an input/output memory management unit (IOMMU) to pass peripheral devices such as a GPU to guest virtual machines.  If you know your host supports IOMMU but the below command does not find “svm” or “vxm”, you may need to enable IOMMU in your BIOS.</p>
+<blockquote>
+<div>cat /proc/cpuinfo | grep -E “svm|vxm”</div></blockquote>
+<div class="section" id="ubuntu-16-04">
+<h3>Ubuntu 16.04<a class="headerlink" href="#ubuntu-16-04" title="Permalink to this headline">¶</a></h3>
+<p>Assume we use an intel system that support VT-d , with fresh ubuntu 16.04 installed</p>
+<p><strong>a. Install necessary packages and prepare for pass through device</strong></p>
+<ol class="arabic">
+<li><p class="first">sudo apt-get install qemu-kvm qemu-system bridge-utils virt-manager ubuntu-vm-builder libvirt-dev</p>
+</li>
+<li><dl class="first docutils">
+<dt>add following modules into /etc/modules</dt>
+<dd><blockquote class="first">
+<div><div class="line-block">
+<div class="line">vfio</div>
+<div class="line">vfio_iommu_type1</div>
+<div class="line">vfio_pci</div>
+<div class="line">kvm</div>
+<div class="line">kvm_intel</div>
+</div>
+</div></blockquote>
+<dl class="docutils">
+<dt>add intel_iommu=on in /etc/default/grub</dt>
+<dd><div class="first last line-block">
+<div class="line">GRUB_CMDLINE_LINUX_DEFAULT=”quiet splash intel_iommu=on”</div>
+</div>
+</dd>
+</dl>
+<p class="last">sudo update-grub</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Blacklist amdgpu by adding the following line to /etc/modprobe.d/blacklist.conf</dt>
+<dd><p class="first last">blacklist amdgpu</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p><strong>b. Bind pass through device to vfio-pci</strong></p>
+<ol class="arabic simple">
+<li>Create a script file (vfio-bind) under /usr/bin. The script file has the following content:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+modprobe vfio-pci
+for dev in &quot;$@&quot;; do
+        vendor=$(cat /sys/bus/pci/devices/$dev/vendor)
+        device=$(cat /sys/bus/pci/devices/$dev/device)
+        if [ -e /sys/bus/pci/devices/$dev/driver ]; then
+                echo $dev &gt; /sys/bus/pci/devices/$dev/driver/unbind
+        fi
+        echo $vendor $device &gt; /sys/bus/pci/drivers/vfio-pci/new_id
+done
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Make it executable by enter the command</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="mi">755</span> <span class="n">vfio</span><span class="o">-</span><span class="n">bind</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Bind the device to vfio by running the command for the three pass through devices</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lspci</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">d</span> <span class="mi">1002</span><span class="p">:</span>
+        <span class="mi">83</span><span class="p">:</span><span class="mf">00.0</span> <span class="mi">0300</span><span class="p">:</span> <span class="mi">1002</span><span class="p">:</span><span class="mi">7300</span> <span class="p">(</span><span class="n">rev</span> <span class="n">ca</span><span class="p">)</span>
+<span class="n">vfio</span><span class="o">.</span><span class="n">bind</span> <span class="mi">0000</span><span class="p">:</span><span class="mi">83</span><span class="p">:</span><span class="mf">00.0</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>sudo reboot</li>
+</ol>
+<p><strong>c. Pass through device to guest VM</strong></p>
+<ol class="arabic simple">
+<li>Start VMM by running “virt-manager” as root. Follow the on screen instruction to create one virtual machine(VM), make sure CPU       copy host CPU configuration, network use bridge mode.</li>
+<li>Add Hardware –&gt; Select PCI Host device, select the appropriate device to pass through. ex:0000:83:00.0</li>
+<li>sudo setpci -s 83:00.0 CAP_EXP+28.l=40</li>
+<li>sudo reboot</li>
+</ol>
+<p>After reboot, start virt-manager and then start the VM, inside the VM , lspci -d 1002: should shows the pass throughed device.</p>
+</div>
+<div class="section" id="fedora-27-or-centos-7-1708">
+<h3>Fedora 27 or CentOS 7 (1708)<a class="headerlink" href="#fedora-27-or-centos-7-1708" title="Permalink to this headline">¶</a></h3>
+<p>From a fresh install of Fedora 27 or CentOS 7 (1708)</p>
+<p><strong>a. Install necessary packages and prepare for pass through device</strong></p>
+<ol class="arabic simple">
+<li><dl class="first docutils">
+<dt>Identity the vendor and device id(s) for the PCIe device(s) you wish to passthrough, e.g., 1002:6861 and 1002:aaf8 for an AMD Radeon Pro WX 9100 and its associated audio device,</dt>
+<dd>lspci -nnk</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Install virtualization packages</dt>
+<dd>sudo dnf install &#64;virtualization
+sudo usermod -G libvirt -a $(whoami)
+sudo usermod -G kvm -a $(whoami)</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Enable IOMMU in the GRUB_CMDLINE_LINUX variable for your target kernel</dt>
+<dd><ol class="first last loweralpha">
+<li><dl class="first docutils">
+<dt>For an AMD CPU</dt>
+<dd>sudo sed ‘s/quiet/quiet amd_iommu=on iommu=pt/’ /etc/sysconfig/grub</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>For an Intel CPU</dt>
+<dd>sudo sed ‘s/quiet/quiet intel_iommu=on iommu=pt/’ /etc/sysconfig/grub</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+<p><strong>b. Bind pass through device to vfio-pci</strong></p>
+<ol class="arabic simple" start="4">
+<li><dl class="first docutils">
+<dt>Preempt the host claiming the device by loading a stub driver</dt>
+<dd>echo “options vfio-pci ids=1002:6861,1002:aaf8” | sudo tee -a /etc/modprobe.d/vfio.conf
+echo “options vfio-pci disable_vga=1” | sudo tee -a /etc/modprobe.d/vfio.conf
+sed ‘s/quiet/quiet rd.driver.pre=vfio-pci video=efifb:off/’ /etc/sysconfig/grub</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Update the kernel boot settings</dt>
+<dd>sudo grub2-mkconfig -o /etc/grub2-efi.cfg
+echo ‘add_drivers+=”vfio vfio_iommu_type1 vfio_pci”’ | sudo tee -a /etc/dracut.conf.d/vfio.conf
+sudo dracut -f –kver <cite>uname -r</cite></dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Reboot and verify that vfio-pci driver has been loaded</dt>
+<dd>lspci -nnk</dd>
+</dl>
+</li>
+</ol>
+<p><strong>c. Pass through device to guest VM</strong></p>
+<ol class="arabic simple">
+<li>Within virt-manager the device should now appear in the list of available PCI devices</li>
+</ol>
+<p>Note: To pass a device within a particular IOMMU group, all devices within that IOMMU group must also be passed.  You may wish to refer to <a class="reference external" href="https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF">https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF</a> for more details, such as the following script that lists all IOMMU groups and the devices within them.</p>
+<blockquote>
+<div><p>#!/bin/bash
+shopt -s nullglob
+for d in /sys/kernel/iommu_groups/<em>/devices/</em>; do</p>
+<blockquote>
+<div>n=${d#*/iommu_groups/<em>}; n=${n%%/</em>}
+printf ‘IOMMU Group %s ‘ “$n”
+lspci -nns “${d##*/}”</div></blockquote>
+<p>done;</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="rocm-docker">
+<h2>ROCm-Docker<a class="headerlink" href="#rocm-docker" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/ROCm-docker">ROCm-Docker</a></li>
+</ul>
+</div></blockquote>
+<p>This repository contains a framework for building the software layers defined in the Radeon Open Compute Platform into portable docker images. The following are docker dependencies, which should be installed on the target machine.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Docker on <a class="reference external" href="https://docs.docker.com/v2.0/installation/ubuntulinux/">Ubuntu</a> systems or <a class="reference external" href="https://docs.docker.com/v2.0/installation/fedora/">Fedora systems</a></li>
+<li>Highly recommended: <a class="reference external" href="https://docs.docker.com/compose/install/">Docker-Compose</a> to simplify container management</li>
+</ul>
+</div></blockquote>
+<div class="section" id="docker-hub">
+<h3>Docker Hub<a class="headerlink" href="#docker-hub" title="Permalink to this headline">¶</a></h3>
+<p>Looking for an easy start with ROCm + Docker? The rocm/rocm-terminal image is hosted on <a class="reference external" href="https://hub.docker.com/r/rocm/rocm-terminal/">Docker Hub</a> . After the <a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/ROCK-Kernel-Driver_readme.html#opencomute-kernel-deriver">ROCm kernel is installed</a> , pull the image from Docker Hub and create a new instance of a container.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">pull</span> <span class="n">rocm</span><span class="o">/</span><span class="n">rocm</span><span class="o">-</span><span class="n">terminal</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="o">--</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;/dev/kfd&quot;</span> <span class="n">rocm</span><span class="o">/</span><span class="n">rocm</span><span class="o">-</span><span class="n">terminal</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rocm-docker-set-up-guide">
+<h3>ROCm-docker set up guide<a class="headerlink" href="#rocm-docker-set-up-guide" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/RadeonOpenCompute/ROCm-docker/blob/master/quick-start.md">Installation instructions</a> and asciicasts demos are available to help users quickly get running with rocm-docker. Visit the set up guide to read more.</p>
+<p><strong>F.A.Q</strong></p>
+<p>When working with the ROCm containers, the following are common and useful docker commands:</p>
+<blockquote>
+<div><ul class="simple">
+<li>A new docker container typically does not house apt repository meta-data. Before trying to install new software using apt, make       sure to run sudo apt update first</li>
+<li>A message like the following typically means your user does not have permissions to execute docker; use sudo or <a class="reference external" href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/">add your user</a> to    the docker group.</li>
+<li>Cannot connect to the Docker daemon. Is the docker daemon running on this host?</li>
+<li>Open another terminal into a running container</li>
+<li>sudo docker exec -it &lt;CONTAINER-NAME&gt; bash -l</li>
+<li><dl class="first docutils">
+<dt>Copy files from host machine into running docker container</dt>
+<dd><ul class="first last">
+<li>sudo docker cp HOST_PATH &lt;CONTAINER-NAME&gt;:/PATH</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Copy files from running docker container onto host machine</dt>
+<dd><ul class="first last">
+<li>sudo docker cp &lt;CONTAINER-NAME&gt;:/PATH/TO/FILE HOST_PATH</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>If receiving messages about no space left on device when pulling images, check the storage driver in use by the docker engine. If    its ‘device mapper’, that means the image size limits imposed by the ‘device mapper’ storage driver are a problem
+Follow the documentation in the <a class="reference internal" href="quickstart.html#quickstart"><span class="std std-ref">quick start guide</span></a>  for a solution to change to the storage driver</li>
+</ul>
+</div></blockquote>
+<p><strong>Saving work in a container</strong></p>
+<p>Docker containers are typically ephemeral, and are discarded after closing the container with the ‘–rm’ flag to docker run. However, there are times when it is desirable to close a container that has arbitrary work in it, and serialize it back into a docker image. This may be to to create a checkpoint in a long and complicated series of instructions, or it may be desired to share the image with others through a docker registry, such as docker hub.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">ps</span> <span class="o">-</span><span class="n">a</span>  <span class="c1"># Find container of interest</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">commit</span> <span class="o">&lt;</span><span class="n">container</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">new</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">images</span> <span class="c1"># Confirm existence of a new image</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="details">
+<h3>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h3>
+<p>Docker does not virtualize or package the linux kernel inside of an image or container. This is a design decision of docker to provide lightweight and fast containerization. The implication for this on the ROCm compute stack is that in order for the docker framework to function, the ROCm kernel and corresponding modules must be installed on the host machine. Containers share the host kernel, so the ROCm KFD component ROCK-Kernel-Driver1 functions outside of docker.</p>
+<p><strong>Installing ROCK on the host machine.</strong></p>
+<p>An <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html">apt-get repository</a> is available to automate the installation of the required kernel and kernel modules.</p>
+</div>
+<div class="section" id="building-images">
+<h3>Building images<a class="headerlink" href="#building-images" title="Permalink to this headline">¶</a></h3>
+<p>There are two ways to install rocm components:</p>
+<blockquote>
+<div><p>1.install from the rocm apt/rpm repository (packages.amd.com)</p>
+<p>2.build the components from source and run install scripts</p>
+</div></blockquote>
+<p>The first method produces docker images with the smallest footprint and best building speed. The footprint is smaller because no developer tools need to be installed in the image, an the images build speed is fastest because typically downloading binaries is much faster than downloading source and then invoking a build process. Of course, building components allows much greater flexibility on install location and the ability to step through the source with debug builds. ROCm-docker supports making images either way, and depends on the flags passed to the setup script.</p>
+<p>The setup script included in this repository is provides some flexibility to how docker containers are constructed. Unfortunately, Dockerfiles do not have a preprocessor or template language, so typically build instructions are hardcoded. However, the setup script allows us to write a primitive ‘template’, and after running it instantiates baked dockerfiles with environment variables substituted in. For instance, if you wish to build release images and debug images, first run the setup script to generate release dockerfiles and build the images. Then, run the setup script again and specify debug dockerfiles and build new images. The docker images should generate unique image names and not conflict with each other.</p>
+<p><strong>setup.sh</strong></p>
+<p>Currently, the setup.sh scripts checks to make sure that it is running on an Ubuntu system, as it makes a few assumptions about the availability of tools and file locations. If running rocm on a Fedora machine, inspect the source of setup.sh and issue the appropriate commands manually. There are a few parameters to setup.sh of a generic nature that affects all images built after running. If no parameters are given, built images will be based off of Ubuntu 16.04 with rocm components installed from debians downloaded from packages.amd.com. Supported parameters can be queried with ./setup –help.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="24%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">setup.sh parameters</th>
+<th class="head">parameter [default]</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>–ubuntu</td>
+<td>xx.yy [16.04]</td>
+<td>Ubuntu version for to inherit base image</td>
+</tr>
+<tr class="row-odd"><td>–install-docker-compose</td>
+<td>&#160;</td>
+<td>helper to install the docker-compose tool</td>
+</tr>
+</tbody>
+</table>
+<p>The following parameters are specific to building containers that compile rocm components from source.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="24%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">setup.sh parameters</th>
+<th class="head">parameter [default]</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>–tag</td>
+<td>string [‘master’]</td>
+<td>string representing a git branch name</td>
+</tr>
+<tr class="row-odd"><td>–branch</td>
+<td>string [‘master’]</td>
+<td>alias for tag</td>
+</tr>
+<tr class="row-even"><td>–debug</td>
+<td>&#160;</td>
+<td>build code with debug flags</td>
+</tr>
+</tbody>
+</table>
+<p>./setup generates finalized Dockerfiles from textual template files ending with the .template suffix. Each sub-directory of this repository corresponds to a docker ‘build context’ responsible for a software layer in the ROCm stack. After running the script, each directory contains generated dockerfiles for building images from debians and from source.</p>
+</div>
+<div class="section" id="id4">
+<h3>Docker compose<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>./setup prepares an environment to be controlled with Docker Compose. While docker-compose is not necessary for proper operation, it is highly recommended. setup.sh does provide a flag to simplify the installation of this tool. Docker-compose coordinates the relationships between the various ROCm software layers, and it remembers flags that should be passed to docker to expose devices and import volumes.</p>
+<p><strong>Example of using docker-compose</strong></p>
+<p>docker-compose.yml provides services that build and run containers. YAML is structured data, so it’s easy to modify and extend. The setup.sh script generates a .env file that docker-compose reads to satisfy the definitions of the variables in the .yml file.</p>
+<blockquote>
+<div><ul class="simple">
+<li>docker-compose run –rm rocm – Run container using rocm packages</li>
+<li>docker-compose run –rm rocm-from-src – Run container with rocm built from source</li>
+</ul>
+</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Docker-compose</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>docker-compose</td>
+<td>docker compose executable</td>
+</tr>
+<tr class="row-odd"><td>run</td>
+<td>sub-command to bring up interactive container</td>
+</tr>
+<tr class="row-even"><td>–rm</td>
+<td>when shutting the container down, delete it</td>
+</tr>
+<tr class="row-odd"><td>rocm</td>
+<td>application service defined in docker-compose.yml</td>
+</tr>
+</tbody>
+</table>
+<p><strong>rocm-user has root privileges by default</strong></p>
+<p>The dockerfile that serves as a ‘terminal’ creates a non-root user called rocm-user. This container is meant to serve as a development environment (therefore apt-get is likely needed), the user has been added to the linux sudo group. Since it is somewhat difficult to set and change passwords in a container (often requiring a rebuild), the password prompt has been disabled for the sudo group. While this is convenient for development to be able sudo apt-get install packages, it does imply lower security in the container.</p>
+<p>To increase container security:</p>
+<blockquote>
+<div><p>1.Eliminate the sudo-nopasswd COPY statement in the dockerfile and replace with</p>
+<p>2.Your own password with RUN echo ‘account:password’ | chpasswd</p>
+</div></blockquote>
+<p><strong>Footnotes:</strong></p>
+<p>[1] It can be installed into a container, it just doesn’t do anything because containers do not go through the traditional boot process. We actually do provide a container for ROCK-Kernel-Driver, but it not used by the rest of the docker images. It does provide isolation and a reproducible environment for kernel development.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Remote_Device_Programming/Remote-Device-Programming.html" class="btn btn-neutral float-right" title="Remote Device Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../ROCm_System_Managment/ROCm-System-Managment.html" class="btn btn-neutral" title="ROCm System Management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

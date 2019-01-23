@@ -1,0 +1,667 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Context Management &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Context Management</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/ROCm_API_References/HIP_API/Context-Management.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="context-management">
+<span id="id1"></span><h1>Context Management<a class="headerlink" href="#context-management" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hipctxcreate">
+<h2>hipCtxCreate<a class="headerlink" href="#hipctxcreate" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv312hipCtxCreateP8hipCtx_tj11hipDevice_t">
+<span id="_CPPv212hipCtxCreateP8hipCtx_tj11hipDevice_t"></span><span id="hipCtxCreate__hipCtx_tP.unsigned-i.hipDevice_t"></span><span class="target" id="group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"></span>hipError_t <code class="descname">hipCtxCreate</code><span class="sig-paren">(</span>hipCtx_t *<em>ctx</em>, unsigned int <em>flags</em>, hipDevice_t <em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv312hipCtxCreateP8hipCtx_tj11hipDevice_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a context and set it as current/ default context. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ctx</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">associated</span></code>: device handle</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxdestroy">
+<h2>hipCtxDestroy<a class="headerlink" href="#hipctxdestroy" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv313hipCtxDestroy8hipCtx_t">
+<span id="_CPPv213hipCtxDestroy8hipCtx_t"></span><span id="hipCtxDestroy__hipCtx_t"></span><span class="target" id="group___context_1ga9a65fe43238ef303a6d97826c05fd14e"></span>hipError_t <code class="descname">hipCtxDestroy</code><span class="sig-paren">(</span>hipCtx_t <em>ctx</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv313hipCtxDestroy8hipCtx_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Destroy a HIP context. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>,<a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a> , <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ctx</span></code>: Context to destroy</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxpopcurrent">
+<h2>hipCtxPopCurrent<a class="headerlink" href="#hipctxpopcurrent" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv316hipCtxPopCurrentP8hipCtx_t">
+<span id="_CPPv216hipCtxPopCurrentP8hipCtx_t"></span><span id="hipCtxPopCurrent__hipCtx_tP"></span><span class="target" id="group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"></span>hipError_t <code class="descname">hipCtxPopCurrent</code><span class="sig-paren">(</span>hipCtx_t *<em>ctx</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv316hipCtxPopCurrentP8hipCtx_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Pop the current/default context and return the popped context. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidContext</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ctx</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxpushcurrent">
+<h2>hipCtxPushCurrent<a class="headerlink" href="#hipctxpushcurrent" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv317hipCtxPushCurrent8hipCtx_t">
+<span id="_CPPv217hipCtxPushCurrent8hipCtx_t"></span><span id="hipCtxPushCurrent__hipCtx_t"></span><span class="target" id="group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"></span>hipError_t <code class="descname">hipCtxPushCurrent</code><span class="sig-paren">(</span>hipCtx_t <em>ctx</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv317hipCtxPushCurrent8hipCtx_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Push the context to be set as current/ default context. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidContext</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a> , <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ctx</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxsetcurrent">
+<h2>hipCtxSetCurrent<a class="headerlink" href="#hipctxsetcurrent" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv316hipCtxSetCurrent8hipCtx_t">
+<span id="_CPPv216hipCtxSetCurrent8hipCtx_t"></span><span id="hipCtxSetCurrent__hipCtx_t"></span><span class="target" id="group___context_1ga834a192f70c2bfc0269c309436776feb"></span>hipError_t <code class="descname">hipCtxSetCurrent</code><span class="sig-paren">(</span>hipCtx_t <em>ctx</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv316hipCtxSetCurrent8hipCtx_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the passed context as current/default. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidContext</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a> , <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ctx</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxgetcurrent">
+<h2>hipCtxGetCurrent<a class="headerlink" href="#hipctxgetcurrent" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv316hipCtxGetCurrentP8hipCtx_t">
+<span id="_CPPv216hipCtxGetCurrentP8hipCtx_t"></span><span id="hipCtxGetCurrent__hipCtx_tP"></span><span class="target" id="group___context_1ga741786101d348fdbfa1f64546860357a"></span>hipError_t <code class="descname">hipCtxGetCurrent</code><span class="sig-paren">(</span>hipCtx_t *<em>ctx</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv316hipCtxGetCurrentP8hipCtx_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the handle of the current/ default context. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidContext</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ctx</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxgetdevice">
+<h2>hipCtxGetDevice<a class="headerlink" href="#hipctxgetdevice" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv315hipCtxGetDeviceP11hipDevice_t">
+<span id="_CPPv215hipCtxGetDeviceP11hipDevice_t"></span><span id="hipCtxGetDevice__hipDevice_tP"></span><span class="target" id="group___context_1ga8aa32cf64272da929f23ecbafefefcee"></span>hipError_t <code class="descname">hipCtxGetDevice</code><span class="sig-paren">(</span>hipDevice_t *<em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv315hipCtxGetDeviceP11hipDevice_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the handle of the device associated with current/default context. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidContext</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">device</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxgetapiversion">
+<h2>hipCtxGetApiVersion<a class="headerlink" href="#hipctxgetapiversion" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv319hipCtxGetApiVersion8hipCtx_tPi">
+<span id="_CPPv219hipCtxGetApiVersion8hipCtx_tPi"></span><span id="hipCtxGetApiVersion__hipCtx_t.iP"></span><span class="target" id="group___context_1gabe5941e6798c71a8351b7d51311e7e8f"></span>hipError_t <code class="descname">hipCtxGetApiVersion</code><span class="sig-paren">(</span>hipCtx_t <em>ctx</em>, int *<em>apiVersion</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv319hipCtxGetApiVersion8hipCtx_tPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the approximate HIP api version. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>Warning</strong></dt>
+<dd>The HIP feature set does not correspond to an exact CUDA SDK api revision. This function always set *apiVersion to 4 as an approximation though HIP supports some features which were introduced in later CUDA SDK revisions. HIP apps code should not rely on the api revision number here and should use arch feature flags to test device capabilities or conditional compilation.</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">ctx</span></code>: Context to check </li>
+<li><code class="docutils literal notranslate"><span class="pre">apiVersion</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxgetcacheconfig">
+<h2>hipCtxGetCacheConfig<a class="headerlink" href="#hipctxgetcacheconfig" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv320hipCtxGetCacheConfigP14hipFuncCache_t">
+<span id="_CPPv220hipCtxGetCacheConfigP14hipFuncCache_t"></span><span id="hipCtxGetCacheConfig__hipFuncCache_tP"></span><span class="target" id="group___context_1gab10373068faafd3042c9003e2e6d905a"></span>hipError_t <code class="descname">hipCtxGetCacheConfig</code><span class="sig-paren">(</span>hipFuncCache_t *<em>cacheConfig</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv320hipCtxGetCacheConfigP14hipFuncCache_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set Cache configuration for a specific function. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>Warning</strong></dt>
+<dd>AMD devices and some Nvidia GPUS do not support reconfigurable cache. This hint is ignored on those architectures.</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">cacheConfiguration</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxsetsharedmemconfig">
+<h2>hipCtxSetSharedMemConfig<a class="headerlink" href="#hipctxsetsharedmemconfig" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv324hipCtxSetSharedMemConfig18hipSharedMemConfig">
+<span id="_CPPv224hipCtxSetSharedMemConfig18hipSharedMemConfig"></span><span id="hipCtxSetSharedMemConfig__hipSharedMemConfig"></span><span class="target" id="group___context_1gad5c1d4ced27f584a74ed550dd002fa5a"></span>hipError_t <code class="descname">hipCtxSetSharedMemConfig</code><span class="sig-paren">(</span>hipSharedMemConfig <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv324hipCtxSetSharedMemConfig18hipSharedMemConfig" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set Shared memory bank configuration. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>Warning</strong></dt>
+<dd>AMD devices and some Nvidia GPUS do not support shared cache banking, and the hint is ignored on those architectures.</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sharedMemoryConfiguration</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxgetsharedmemconfig">
+<h2>hipCtxGetSharedMemConfig<a class="headerlink" href="#hipctxgetsharedmemconfig" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv324hipCtxGetSharedMemConfigP18hipSharedMemConfig">
+<span id="_CPPv224hipCtxGetSharedMemConfigP18hipSharedMemConfig"></span><span id="hipCtxGetSharedMemConfig__hipSharedMemConfigP"></span><span class="target" id="group___context_1ga3c78b22dd03435a7ca88621a45409565"></span>hipError_t <code class="descname">hipCtxGetSharedMemConfig</code><span class="sig-paren">(</span>hipSharedMemConfig *<em>pConfig</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv324hipCtxGetSharedMemConfigP18hipSharedMemConfig" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get Shared memory bank configuration. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>Warning</strong></dt>
+<dd>AMD devices and some Nvidia GPUS do not support shared cache banking, and the hint is ignored on those architectures.</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sharedMemoryConfiguration</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxsynchronize">
+<h2>hipCtxSynchronize<a class="headerlink" href="#hipctxsynchronize" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv317hipCtxSynchronizev">
+<span id="_CPPv217hipCtxSynchronizev"></span><span id="hipCtxSynchronize__void"></span><span class="target" id="group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"></span>hipError_t <code class="descname">hipCtxSynchronize</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv317hipCtxSynchronizev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Blocks until the default context has completed all preceding requested tasks. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>Warning</strong></dt>
+<dd>This function waits for all streams on the default context to complete execution, and then returns.</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxgetflags">
+<h2>hipCtxGetFlags<a class="headerlink" href="#hipctxgetflags" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv314hipCtxGetFlagsPj">
+<span id="_CPPv214hipCtxGetFlagsPj"></span><span id="hipCtxGetFlags__unsigned-iP"></span><span class="target" id="group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"></span>hipError_t <code class="descname">hipCtxGetFlags</code><span class="sig-paren">(</span>unsigned int *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv314hipCtxGetFlagsPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return flags used for creating default context. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxenablepeeraccess">
+<h2>hipCtxEnablePeerAccess<a class="headerlink" href="#hipctxenablepeeraccess" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv322hipCtxEnablePeerAccess8hipCtx_tj">
+<span id="_CPPv222hipCtxEnablePeerAccess8hipCtx_tj"></span><span id="hipCtxEnablePeerAccess__hipCtx_t.unsigned-i"></span><span class="target" id="group___context_1ga834dfd99d72082fe8770142fa30b30e2"></span>hipError_t <code class="descname">hipCtxEnablePeerAccess</code><span class="sig-paren">(</span>hipCtx_t <em>peerCtx</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv322hipCtxEnablePeerAccess8hipCtx_tj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Enables direct access to memory allocations in a peer context. </p>
+<p>Memory which already allocated on peer device will be mapped into the address space of the current device. In addition, all future memory allocations on peerDeviceId will be mapped into the address space of the current device when the memory is allocated. The peer memory remains accessible from the current device until a call to hipDeviceDisablePeerAccess or hipDeviceReset.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidDevice, #hipErrorInvalidValue, #hipErrorPeerAccessAlreadyEnabled</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Warning</strong></dt>
+<dd>PeerToPeer support is experimental. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">peerCtx</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipctxdisablepeeraccess">
+<h2>hipCtxDisablePeerAccess<a class="headerlink" href="#hipctxdisablepeeraccess" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv323hipCtxDisablePeerAccess8hipCtx_t">
+<span id="_CPPv223hipCtxDisablePeerAccess8hipCtx_t"></span><span id="hipCtxDisablePeerAccess__hipCtx_t"></span><span class="target" id="group___context_1gaf48e4e9c3b6bbad5deaeff10d2e28b31"></span>hipError_t <code class="descname">hipCtxDisablePeerAccess</code><span class="sig-paren">(</span>hipCtx_t <em>peerCtx</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv323hipCtxDisablePeerAccess8hipCtx_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Disable direct access from current context’s virtual address space to memory allocations physically located on a peer context.Disables direct access to memory allocations in a peer context and unregisters any registered allocations. </p>
+<p>Returns hipErrorPeerAccessNotEnabled if direct access to memory on peerDevice has not yet been enabled from the current device.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorPeerAccessNotEnabled</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Warning</strong></dt>
+<dd>PeerToPeer support is experimental. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">peerCtx</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdeviceprimaryctxgetstate">
+<h2>hipDevicePrimaryCtxGetState<a class="headerlink" href="#hipdeviceprimaryctxgetstate" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv327hipDevicePrimaryCtxGetState11hipDevice_tPjPi">
+<span id="_CPPv227hipDevicePrimaryCtxGetState11hipDevice_tPjPi"></span><span id="hipDevicePrimaryCtxGetState__hipDevice_t.unsigned-iP.iP"></span><span class="target" id="group___context_1ga60d31f744991c6c568ec3027cf1fb8ab"></span>hipError_t <code class="descname">hipDevicePrimaryCtxGetState</code><span class="sig-paren">(</span>hipDevice_t <em>dev</em>, unsigned int *<em>flags</em>, int *<em>active</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv327hipDevicePrimaryCtxGetState11hipDevice_tPjPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the state of the primary context. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">Device</span></code>: to get primary context flags for </li>
+<li><code class="docutils literal notranslate"><span class="pre">Pointer</span></code>: to store flags </li>
+<li><code class="docutils literal notranslate"><span class="pre">Pointer</span></code>: to store context state; 0 = inactive, 1 = active</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdeviceprimaryctxrelease">
+<h2>hipDevicePrimaryCtxRelease<a class="headerlink" href="#hipdeviceprimaryctxrelease" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv326hipDevicePrimaryCtxRelease11hipDevice_t">
+<span id="_CPPv226hipDevicePrimaryCtxRelease11hipDevice_t"></span><span id="hipDevicePrimaryCtxRelease__hipDevice_t"></span><span class="target" id="group___context_1ga7bbe8905908168909ddecd98cd34c1e8"></span>hipError_t <code class="descname">hipDevicePrimaryCtxRelease</code><span class="sig-paren">(</span>hipDevice_t <em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv326hipDevicePrimaryCtxRelease11hipDevice_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Release the primary context on the GPU. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Warning</strong></dt>
+<dd>This function return #hipSuccess though doesn’t release the primaryCtx by design on HIP/HCC path. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">Device</span></code>: which primary context is released</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdeviceprimaryctxretain">
+<h2>hipDevicePrimaryCtxRetain<a class="headerlink" href="#hipdeviceprimaryctxretain" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv325hipDevicePrimaryCtxRetainP8hipCtx_t11hipDevice_t">
+<span id="_CPPv225hipDevicePrimaryCtxRetainP8hipCtx_t11hipDevice_t"></span><span id="hipDevicePrimaryCtxRetain__hipCtx_tP.hipDevice_t"></span><span class="target" id="group___context_1gab6e1014e9a4dbe281b84e38d89ff2409"></span>hipError_t <code class="descname">hipDevicePrimaryCtxRetain</code><span class="sig-paren">(</span>hipCtx_t *<em>pctx</em>, hipDevice_t <em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv325hipDevicePrimaryCtxRetainP8hipCtx_t11hipDevice_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retain the primary context on the GPU. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">Returned</span></code>: context handle of the new context </li>
+<li><code class="docutils literal notranslate"><span class="pre">Device</span></code>: which primary context is released</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdeviceprimaryctxreset">
+<h2>hipDevicePrimaryCtxReset<a class="headerlink" href="#hipdeviceprimaryctxreset" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv324hipDevicePrimaryCtxReset11hipDevice_t">
+<span id="_CPPv224hipDevicePrimaryCtxReset11hipDevice_t"></span><span id="hipDevicePrimaryCtxReset__hipDevice_t"></span><span class="target" id="group___context_1gac2ca146e5d67b28d870dadd9dc3fc04e"></span>hipError_t <code class="descname">hipDevicePrimaryCtxReset</code><span class="sig-paren">(</span>hipDevice_t <em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv324hipDevicePrimaryCtxReset11hipDevice_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Resets the primary context on the GPU. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">Device</span></code>: which primary context is reset</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdeviceprimaryctxsetflags">
+<h2>hipDevicePrimaryCtxSetFlags<a class="headerlink" href="#hipdeviceprimaryctxsetflags" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv327hipDevicePrimaryCtxSetFlags11hipDevice_tj">
+<span id="_CPPv227hipDevicePrimaryCtxSetFlags11hipDevice_tj"></span><span id="hipDevicePrimaryCtxSetFlags__hipDevice_t.unsigned-i"></span><span class="target" id="group___context_1ga5cd8ba188e628274142dd44d39780436"></span>hipError_t <code class="descname">hipDevicePrimaryCtxSetFlags</code><span class="sig-paren">(</span>hipDevice_t <em>dev</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv327hipDevicePrimaryCtxSetFlags11hipDevice_tj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set flags for the primary context. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorContextAlreadyInUse</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">Device</span></code>: for which the primary context flags are set </li>
+<li><code class="docutils literal notranslate"><span class="pre">New</span></code>: flags for the device</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

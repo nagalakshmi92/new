@@ -1,0 +1,4548 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GCN Native ISA LLVM Code Generator &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>GCN Native ISA LLVM Code Generator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Compiler_SDK/ROCm-Native-ISA.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gcn-native-isa-llvm-code-generator">
+<span id="rocm-native-isa"></span><h1>GCN Native ISA LLVM Code Generator<a class="headerlink" href="#gcn-native-isa-llvm-code-generator" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../ROCm_Tools/hcFFT.html#introduction"><span class="std std-ref">Introduction</span></a></li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#llvm"><span class="std std-ref">LLVM</span></a></dt>
+<dd><ul class="first last">
+<li><a class="reference internal" href="#target-triples"><span class="std std-ref">Target Triples</span></a></li>
+<li><a class="reference internal" href="#processors"><span class="std std-ref">Processors</span></a></li>
+<li><a class="reference internal" href="#address-spaces"><span class="std std-ref">Address Spaces</span></a></li>
+<li><a class="reference internal" href="#memory-scopes"><span class="std std-ref">Memory Scopes</span></a></li>
+<li><a class="reference internal" href="#amdgpu-intrinsics"><span class="std std-ref">AMDGPU Intrinsics</span></a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#code-object"><span class="std std-ref">Code Object</span></a></dt>
+<dd><ul class="first last">
+<li><a class="reference internal" href="#header"><span class="std std-ref">Header</span></a></li>
+<li><a class="reference internal" href="#sections"><span class="std std-ref">Sections</span></a></li>
+<li><a class="reference internal" href="#note-records"><span class="std std-ref">Note Records</span></a></li>
+<li><a class="reference internal" href="#symbols"><span class="std std-ref">Symbols</span></a></li>
+<li><a class="reference internal" href="#relocation-records"><span class="std std-ref">Relocation Records</span></a></li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#dwarf"><span class="std std-ref">DWARF</span></a></dt>
+<dd><ul class="first last">
+<li><a class="reference internal" href="#address-space-mapping"><span class="std std-ref">Address Space Mapping</span></a></li>
+<li><a class="reference internal" href="#register-mapping"><span class="std std-ref">Register Mapping</span></a></li>
+<li><a class="reference internal" href="#source-text"><span class="std std-ref">Source Text</span></a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#code-conventions"><span class="std std-ref">Code Conventions</span></a></dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#amdhsa"><span class="std std-ref">AMDHSA</span></a></dt>
+<dd><ul class="first last">
+<li><a class="reference internal" href="#code-object-metadata"><span class="std std-ref">Code Object Metadata</span></a></li>
+<li><a class="reference internal" href="#kernel-dispatch"><span class="std std-ref">Kernel Dispatch</span></a></li>
+<li><a class="reference internal" href="#memory-spaces"><span class="std std-ref">Memory Spaces</span></a></li>
+<li><a class="reference internal" href="#image-and-samplers"><span class="std std-ref">Image and Samplers</span></a></li>
+<li><a class="reference internal" href="#hsa-signals"><span class="std std-ref">HSA Signals</span></a></li>
+<li><a class="reference internal" href="#hsa-aql-queue"><span class="std std-ref">HSA AQL Queue</span></a></li>
+<li><a class="reference internal" href="#kernel-descriptor"><span class="std std-ref">Kernel Descriptor</span></a></li>
+<li><a class="reference internal" href="#kernel-descriptor-for-gfx6-gfx9"><span class="std std-ref">Kernel Descriptor for GFX6-GFX9</span></a></li>
+<li><a class="reference internal" href="#initial-kernel-execution-state"><span class="std std-ref">Initial Kernel Execution State</span></a></li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#kernel-prolog"><span class="std std-ref">Kernel Prolog</span></a></dt>
+<dd><ul class="first last">
+<li><a class="reference internal" href="#m0"><span class="std std-ref">M0</span></a></li>
+<li><a class="reference internal" href="#flat-scratch"><span class="std std-ref">Flat Scratch</span></a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><a class="reference internal" href="#memory-model"><span class="std std-ref">Memory Model</span></a></li>
+<li><a class="reference internal" href="#trap-handler-abi1"><span class="std std-ref">Trap Handler ABI</span></a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#unspecified-os"><span class="std std-ref">Unspecified OS</span></a></dt>
+<dd><ul class="first last">
+<li><a class="reference internal" href="#trap-handler-abi2"><span class="std std-ref">Trap Handler ABI</span></a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#source-languages"><span class="std std-ref">Source Languages</span></a><ul>
+<li><a class="reference internal" href="#opencl"><span class="std std-ref">OpenCL</span></a></li>
+<li><a class="reference internal" href="#hcc"><span class="std std-ref">HCC</span></a></li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#assembler"><span class="std std-ref">Assembler</span></a></dt>
+<dd><ul class="first last">
+<li><a class="reference internal" href="#operands"><span class="std std-ref">Operands</span></a></li>
+<li><a class="reference internal" href="#instruction-examples"><span class="std std-ref">Instruction Examples</span></a></li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#ds"><span class="std std-ref">DS</span></a></dt>
+<dd><ul class="first last">
+<li><a class="reference internal" href="#flat"><span class="std std-ref">FLAT</span></a></li>
+<li><a class="reference internal" href="#mubuf"><span class="std std-ref">MUBUF</span></a></li>
+<li><a class="reference internal" href="#smrd-smem"><span class="std std-ref">SMRD/SMEM</span></a></li>
+<li><a class="reference internal" href="#sop1"><span class="std std-ref">SOP1</span></a></li>
+<li><a class="reference internal" href="#sop2"><span class="std std-ref">SOP2</span></a></li>
+<li><a class="reference internal" href="#sopc"><span class="std std-ref">SOPC</span></a></li>
+<li><a class="reference internal" href="#sopp"><span class="std std-ref">SOPP</span></a></li>
+<li><a class="reference internal" href="#valu"><span class="std std-ref">VALU</span></a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#hsa-code-object-directives"><span class="std std-ref">HSA Code Object Directives</span></a></dt>
+<dd><ul class="first last">
+<li><a class="reference internal" href="#hsa-code-object-version-major-minor"><span class="std std-ref">.hsa_code_object_version major, minor</span></a></li>
+<li><a class="reference internal" href="#hsa-code-object-isa"><span class="std std-ref">.hsa_code_object_isa [major, minor, stepping, vendor, arch]</span></a></li>
+<li><a class="reference internal" href="#amdgpu-hsa-kernel"><span class="std std-ref">.amdgpu_hsa_kernel (name)</span></a></li>
+<li><a class="reference internal" href="#amd-kernel-code-t"><span class="std std-ref">.amd_kernel_code_t</span></a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-documentation"><span class="std std-ref">Additional Documentation</span></a></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<div class="section" id="introduction">
+<span id="id1"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The AMDGPU backend provides ISA code generation for AMD GPUs, starting with the R600 family up until the current GCN families. It lives in the lib/Target/AMDGPU directory.</p>
+</div>
+<div class="section" id="llvm">
+<span id="id2"></span><h2>LLVM<a class="headerlink" href="#llvm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="target-triples">
+<span id="id3"></span><h3>Target Triples<a class="headerlink" href="#target-triples" title="Permalink to this headline">¶</a></h3>
+<p>Use the clang -target &lt;Architecture&gt;-&lt;Vendor&gt;-&lt;OS&gt;-&lt;Environment&gt; option to specify the target triple:</p>
+<blockquote>
+<div><strong>AMDGPU Target Triples</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="16%" />
+<col width="19%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Architecture</th>
+<th class="head">Vendor</th>
+<th class="head">OS</th>
+<th class="head">Environment</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>r600</td>
+<td>amd</td>
+<td>&lt;empty&gt;</td>
+<td>&lt;empty&gt;</td>
+</tr>
+<tr class="row-odd"><td>amdgcn</td>
+<td>amd</td>
+<td>&lt;empty&gt;</td>
+<td>&lt;empty&gt;</td>
+</tr>
+<tr class="row-even"><td>amdgcn</td>
+<td>amd</td>
+<td>amdhsa</td>
+<td>&lt;empty&gt;</td>
+</tr>
+<tr class="row-odd"><td>amdgcn</td>
+<td>amd</td>
+<td>amdhsa</td>
+<td>opencl</td>
+</tr>
+<tr class="row-even"><td>amdgcn</td>
+<td>amd</td>
+<td>amdhsa</td>
+<td>amdgizcl</td>
+</tr>
+<tr class="row-odd"><td>amdgcn</td>
+<td>amd</td>
+<td>amdhsa</td>
+<td>amdgiz</td>
+</tr>
+<tr class="row-even"><td>amdgcn</td>
+<td>amd</td>
+<td>amdhsa</td>
+<td>hcc</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>r600-amd–</dt>
+<dd>Supports AMD GPUs HD2XXX-HD6XXX for graphics and compute shaders executed on the MESA runtime.</dd>
+<dt>amdgcn-amd–</dt>
+<dd>Supports AMD GPUs GCN GFX6 onwards for graphics and compute shaders executed on the MESA runtime.</dd>
+<dt>amdgcn-amd-amdhsa-</dt>
+<dd>Supports AMD GCN GPUs GFX6 onwards for compute kernels executed on HSA [HSA] compatible runtimes such as AMD’s ROCm [AMD-ROCm].</dd>
+<dt>amdgcn-amd-amdhsa-opencl</dt>
+<dd>Supports AMD GCN GPUs GFX6 onwards for OpenCL compute kernels executed on HSA [HSA] compatible runtimes such as AMD’s ROCm          [AMD-ROCm]. See OpenCL.</dd>
+<dt>amdgcn-amd-amdhsa-amdgizcl</dt>
+<dd>Same as amdgcn-amd-amdhsa-opencl except a different address space mapping is used (see Address Spaces).</dd>
+<dt>amdgcn-amd-amdhsa-amdgiz</dt>
+<dd>Same as amdgcn-amd-amdhsa- except a different address space mapping is used (see Address Spaces).</dd>
+<dt>amdgcn-amd-amdhsa-hcc</dt>
+<dd>Supports AMD GCN GPUs GFX6 onwards for AMD HC language compute kernels executed on HSA [HSA] compatible runtimes such as AMD’s      ROCm [AMD-ROCm]. See HCC.</dd>
+</dl>
+</div>
+<div class="section" id="processors">
+<span id="id4"></span><h3>Processors<a class="headerlink" href="#processors" title="Permalink to this headline">¶</a></h3>
+<p>Use the clang -mcpu &lt;Processor&gt; option to specify the AMD GPU processor. The names from both the Processor and Alternative Processor can be used.</p>
+<p><strong>AMDGPU Processors Processor</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="9%" />
+<col width="13%" />
+<col width="11%" />
+<col width="14%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Processor</th>
+<th class="head">&#160;</th>
+<th class="head">Triple
+Architecture</th>
+<th class="head">dGPU/ APU</th>
+<th class="head">Runtime Support</th>
+<th class="head">Example Products</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>R600</strong></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>r600</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>r630</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>rs880</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>rv670</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>R700</strong></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>rv710</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>rv730</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>rv770</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>Evergreen</strong></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cedar</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>redwood</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>sumo</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>juniper</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cypress</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>Northern Islands</strong></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>barts</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>turks</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>caicos</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cayman</td>
+<td>&#160;</td>
+<td>r600</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><strong>GCN GFX6(Southern Islands (SI))</strong></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>gfx600</td>
+<td>tahiti</td>
+<td>amdgcn</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>gfx601</td>
+<td><ul class="first last simple">
+<li>pitcairn</li>
+<li>verde</li>
+<li>oland</li>
+<li>hainan</li>
+</ul>
+</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>GCN GFX7 (Sea Islands (CI))</strong></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>gfx700</td>
+<td><ul class="first last simple">
+<li>bonaire</li>
+</ul>
+</td>
+<td>amdgcn</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td><ul class="first last simple">
+<li>Radeon HD 7790</li>
+<li>Radeon HD 8770</li>
+<li>R7 260</li>
+<li>R7 260X</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>gfx700</td>
+<td><ul class="first last simple">
+<li>kaveri</li>
+</ul>
+</td>
+<td>amdgcn</td>
+<td>APU</td>
+<td>&#160;</td>
+<td><ul class="first last simple">
+<li>A6-7000</li>
+<li>A6 Pro-7050B</li>
+<li>A8-7100</li>
+<li>A8 Pro-7150B</li>
+<li>A10-7300</li>
+<li>A10 Pro-7350B</li>
+<li>FX-7500</li>
+<li>A8-7200P</li>
+<li>A10-7400P</li>
+<li>FX-7600P</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>gfx701</td>
+<td><ul class="first last simple">
+<li>hawaii</li>
+</ul>
+</td>
+<td>amdgcn</td>
+<td>dGPU</td>
+<td>ROCm</td>
+<td><ul class="first last simple">
+<li>FirePro W8100</li>
+<li>FirePro W9100</li>
+<li>FirePro S9150</li>
+<li>FirePro S9170</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>gfx702</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>dGPU</td>
+<td>ROCm</td>
+<td><ul class="first last simple">
+<li>Radeon R9 290</li>
+<li>Radeon R9 290x</li>
+<li>Radeon R390</li>
+<li>Radeon R390x</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>gfx703</td>
+<td><ul class="first last simple">
+<li>kabini</li>
+<li>mullins</li>
+</ul>
+</td>
+<td>amdgcn</td>
+<td>APU</td>
+<td>&#160;</td>
+<td><ul class="first last simple">
+<li>E1-2100</li>
+<li>E1-2200</li>
+<li>E1-2500</li>
+<li>E2-3000</li>
+<li>E2-3800</li>
+<li>A4-5000</li>
+<li>A4-5100</li>
+<li>A6-5200</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>GCN GFX8 (Volcanic Islands (VI))</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>gfx800</td>
+<td><ul class="first last simple">
+<li>iceland</li>
+</ul>
+</td>
+<td>amdgcn</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td><ul class="first last simple">
+<li>FirePro S7150</li>
+<li>FirePro S7100</li>
+<li>FirePro W7100</li>
+<li>Radeon R285</li>
+<li>Radeon R9 380</li>
+<li>Radeon R9 385</li>
+<li>Mobile FirePro M7170</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>gfx801</td>
+<td><ul class="first last simple">
+<li>carrizo</li>
+</ul>
+</td>
+<td><p class="first">amdgcn</p>
+<p>amdgcn</p>
+<p>amdgcn</p>
+<p class="last">amdgcn</p>
+</td>
+<td><p class="first">APU</p>
+<p>APU</p>
+<p>APU</p>
+<p class="last">APU</p>
+</td>
+<td>ROCm</td>
+<td><ul class="first last simple">
+<li>A6-8500P</li>
+<li>Pro A6-8500B</li>
+<li>A8-8600P</li>
+<li>Pro A8-8600B</li>
+<li>FX-8800P</li>
+<li>Pro A12-8800B</li>
+<li>A10-8700P</li>
+<li>Pro A10-8700B</li>
+<li>A10-8780P</li>
+<li>A10-9600P</li>
+<li>A10-9630P</li>
+<li>A12-9700P</li>
+<li>A12-9730P</li>
+<li>FX-9800P</li>
+<li>FX-9830P</li>
+<li>E2-9010</li>
+<li>A6-9210</li>
+<li>A9-9410</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>gfx802</td>
+<td><ul class="first last simple">
+<li>tonga</li>
+</ul>
+</td>
+<td>amdgcn</td>
+<td>dGPU</td>
+<td>ROCm</td>
+<td>Same as gfx800</td>
+</tr>
+<tr class="row-odd"><td>gfx803</td>
+<td><ul class="first last simple">
+<li>fiji</li>
+<li>polaris10</li>
+<li>polaris11</li>
+</ul>
+</td>
+<td><p class="first">amdgcn</p>
+<p class="last">amdgcn
+amdgcn</p>
+</td>
+<td><p class="first">dGPU</p>
+<p class="last">dGPU
+dGPU</p>
+</td>
+<td><p class="first">ROCm</p>
+<p class="last">ROCm
+ROCm</p>
+</td>
+<td><ul class="first last simple">
+<li>Radeon R9 Nano</li>
+<li>Radeon R9 Fury</li>
+<li>Radeon R9 FuryX</li>
+<li>Radeon Pro Duo</li>
+<li>FirePro S9300x2</li>
+<li>Radeon Instinct MI8</li>
+<li>Radeon RX 470</li>
+<li>Radeon RX 460</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>gfx804</td>
+<td>&#160;</td>
+<td>amdgcn</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td>Same as gfx803</td>
+</tr>
+<tr class="row-odd"><td>gfx810</td>
+<td><ul class="first last simple">
+<li>stoney</li>
+</ul>
+</td>
+<td>amdgcn</td>
+<td>APU</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><strong>GCN GFX9 [AMD-Vega]</strong></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>gfx900</td>
+<td>&#160;</td>
+<td>amdgcn</td>
+<td>dGPU</td>
+<td>&#160;</td>
+<td><ul class="first last simple">
+<li>Readeon vega Frontieredition</li>
+<li>Radeon RX Vega 56</li>
+<li>Radeon RX Vega 64</li>
+<li>Radeon RX Vega 64 Liquid</li>
+<li>Radeon Instinct MI25</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>gfx901</td>
+<td>&#160;</td>
+<td>amdgcn</td>
+<td>dGPU</td>
+<td>ROCm</td>
+<td>Same as gfx900 except
+XNACK is enabled</td>
+</tr>
+<tr class="row-odd"><td>gfx902</td>
+<td>&#160;</td>
+<td>amdgcn</td>
+<td>APU</td>
+<td>&#160;</td>
+<td>TBA</td>
+</tr>
+<tr class="row-even"><td>gfx903</td>
+<td>&#160;</td>
+<td>amdgcn</td>
+<td>APU</td>
+<td>&#160;</td>
+<td>Same as gfx902 except
+XNACK is enabled</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="address-spaces">
+<span id="id5"></span><h3>Address Spaces<a class="headerlink" href="#address-spaces" title="Permalink to this headline">¶</a></h3>
+<p>The AMDGPU backend uses the following address space mappings.</p>
+<p>The memory space names used in the table, aside from the region memory space, is from the OpenCL standard.</p>
+<p>LLVM Address Space number is used throughout LLVM (for example, in LLVM IR).</p>
+<p><strong>Address Space Mapping</strong></p>
+<blockquote>
+<div>Memory Space</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="23%" />
+<col width="19%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">LLVM Address Space</th>
+<th class="head">Current Default</th>
+<th class="head">amdgiz/amdgizcl</th>
+<th class="head">hcc</th>
+<th class="head">Future Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>Private (Scratch)</td>
+<td>Generic (Flat)</td>
+<td>Generic (Flat)</td>
+<td>Generic (Flat)</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>Global</td>
+<td>Global</td>
+<td>Global</td>
+<td>Global</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>Constant</td>
+<td>Constant</td>
+<td>Constant</td>
+<td>Region (GDS)</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>Local (group/LDS)</td>
+<td>Local (group/LDS)</td>
+<td>Local (group/LDS)</td>
+<td>Local (group/LDS)</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>Generic (Flat)</td>
+<td>Region (GDS)</td>
+<td>Region (GDS)</td>
+<td>Constant</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>Region (GDS)</td>
+<td>Private (Scratch)</td>
+<td>Private (Scratch)</td>
+<td>Private (Scratch)</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Current Default</dt>
+<dd>This is the current default address space mapping used for all languages except hcc. This will shortly be deprecated.</dd>
+<dt>amdgiz/amdgizcl</dt>
+<dd>This is the current address space mapping used when amdgiz or amdgizcl is specified as the target triple environment value.</dd>
+<dt>hcc</dt>
+<dd>This is the current address space mapping used when hcc is specified as the target triple environment value.This will shortly be deprecated.</dd>
+<dt>Future Default</dt>
+<dd>This will shortly be the only address space mapping for all languages using AMDGPU backend.</dd>
+</dl>
+</div>
+<div class="section" id="memory-scopes">
+<span id="id6"></span><h3>Memory Scopes<a class="headerlink" href="#memory-scopes" title="Permalink to this headline">¶</a></h3>
+<p>This section provides LLVM memory synchronization scopes supported by the AMDGPU backend memory model when the target triple OS is amdhsa (see Memory Model and Target Triples).</p>
+<p>The memory model supported is based on the HSA memory model [HSA] which is based in turn on HRF-indirect with scope inclusion [HRF]. The happens-before relation is transitive over the synchonizes-with relation independent of scope, and synchonizes-with allows the memory scope instances to be inclusive (see table AMDHSA LLVM Sync Scopes for AMDHSA).</p>
+<p>This is different to the OpenCL [OpenCL] memory model which does not have scope inclusion and requires the memory scopes to exactly match. However, this is conservatively correct for OpenCL.</p>
+<blockquote>
+<div><strong>AMDHSA LLVM Sync Scopes for AMDHSA LLVM Sync Scope</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="95%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">LLVM Sync Scope</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>none</td>
+<td><p class="first">The default: system.
+Synchronizes with, and participates in modification and seq_cst total orderings with, other operations (except                          image operations) for all address spaces (except private, or generic that accesses private) provided the other                          operation’s sync scope is:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>system.</li>
+<li>agent and executed by a thread on the same agent.</li>
+<li>workgroup and executed by a thread in the same workgroup.</li>
+<li>wavefront and executed by a thread in the same wavefront.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>agent</td>
+<td><dl class="first last docutils">
+<dt>Synchronizes with, and participates in modification and seq_cst total orderings with, other operations (except                          image operations) for all address spaces (except private, or generic that accesses private) provided the other                          operation’s sync scope is:</dt>
+<dd><ul class="first last simple">
+<li>system or agent and executed by a thread on the same agent.</li>
+<li>workgroup and executed by a thread in the same workgroup.</li>
+<li>wavefront and executed by a thread in the same wavefront.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td>workgroup</td>
+<td><dl class="first last docutils">
+<dt>Synchronizes with, and participates in modification and seq_cst total orderings with, other operations (except                          image operations) for all address spaces (except private, or generic that accesses private) provided the other                          operation’s sync scope is:</dt>
+<dd><ul class="first last simple">
+<li>system, agent or workgroup and executed by a thread in the same workgroup.</li>
+<li>wavefront and executed by a thread in the same wavefront.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td>wavefront</td>
+<td><dl class="first last docutils">
+<dt>Synchronizes with, and participates in modification and seq_cst total orderings with, other operations (except                          image operations) for all address spaces (except private, or generic that accesses private) provided the other                          operation’s sync scope is:</dt>
+<dd><ul class="first last simple">
+<li>system, agent, workgroup or wavefront and executed by a thread in the same wavefront.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td>singlethread</td>
+<td>Only synchronizes with, and participates in modification and seq_cst total orderings with, other operations (except             image operations) running in the same thread for all address spaces (for example, in signal handlers).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amdgpu-intrinsics">
+<span id="id7"></span><h3>AMDGPU Intrinsics<a class="headerlink" href="#amdgpu-intrinsics" title="Permalink to this headline">¶</a></h3>
+<p>The AMDGPU backend implements the following intrinsics.</p>
+<p>This section is WIP.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="code-object">
+<span id="id8"></span><h2>Code Object<a class="headerlink" href="#code-object" title="Permalink to this headline">¶</a></h2>
+<p>The AMDGPU backend generates a standard ELF [ELF] relocatable code object that can be linked by lld to produce a standard ELF shared code object which can be loaded and executed on an AMDGPU target.</p>
+<div class="section" id="header">
+<span id="id9"></span><h3>Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
+<p>The AMDGPU backend uses the following ELF header:</p>
+<blockquote>
+<div><strong>AMDGPU ELF Header</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>e_ident[EI_CLASS]</td>
+<td>ELFCLASS64</td>
+</tr>
+<tr class="row-odd"><td>e_ident[EI_DATA]</td>
+<td>ELFDATA2LSB</td>
+</tr>
+<tr class="row-even"><td>e_ident[EI_OSABI]</td>
+<td>ELFOSABI_AMDGPU_HSA</td>
+</tr>
+<tr class="row-odd"><td>e_ident[EI_ABIVERSION]</td>
+<td>ELFABIVERSION_AMDGPU_HSA</td>
+</tr>
+<tr class="row-even"><td>e_type</td>
+<td>ET_REL or ET_DYN</td>
+</tr>
+<tr class="row-odd"><td>e_machine</td>
+<td>EM_AMDGPU</td>
+</tr>
+<tr class="row-even"><td>e_entry</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>e_flags</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><strong>AMDGPU ELF Header Enumeration Values</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="59%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>EM_AMDGPU</td>
+<td>224</td>
+</tr>
+<tr class="row-odd"><td>LFOSABI_AMDGPU_HSA</td>
+<td>64</td>
+</tr>
+<tr class="row-even"><td>ELFABIVERSION_AMDGPU_HSA</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>e_ident[EI_CLASS]</dt>
+<dd>The ELF class is always ELFCLASS64. The AMDGPU backend only supports 64 bit applications.</dd>
+<dt>e_ident[EI_DATA]</dt>
+<dd>All AMDGPU targets use ELFDATA2LSB for little-endian byte ordering.</dd>
+<dt>e_ident[EI_OSABI]</dt>
+<dd>The AMD GPU architecture specific OS ABI of ELFOSABI_AMDGPU_HSA is used to specify that the code object conforms to the AMD HSA runtime ABI [HSA].</dd>
+<dt>e_ident[EI_ABIVERSION]</dt>
+<dd>The AMD GPU architecture specific OS ABI version of ELFABIVERSION_AMDGPU_HSA is used to specify the version of AMD HSA runtime ABI to which the code object conforms.</dd>
+</dl>
+<p>e_type</p>
+<blockquote>
+<div><p>Can be one of the following values:
+ET_REL</p>
+<blockquote>
+<div>The type produced by the AMD GPU backend compiler as it is relocatable code object.</div></blockquote>
+<dl class="docutils">
+<dt>ET_DYN</dt>
+<dd>The type produced by the linker as it is a shared code object.</dd>
+</dl>
+<p>The AMD HSA runtime loader requires a ET_DYN code object.</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>e_machine</dt>
+<dd>The value EM_AMDGPU is used for the machine for all members of the AMD GPU architecture family. The specific member is specified in the NT_AMD_AMDGPU_ISA entry in the .note section (see Note Records).</dd>
+<dt>e_entry</dt>
+<dd>The entry point is 0 as the entry points for individual kernels must be selected in order to invoke them through AQL packets.</dd>
+<dt>e_flags</dt>
+<dd>The value is 0 as no flags are used.</dd>
+</dl>
+</div>
+<div class="section" id="sections">
+<span id="id10"></span><h3>Sections<a class="headerlink" href="#sections" title="Permalink to this headline">¶</a></h3>
+<p>An AMDGPU target ELF code object has the standard ELF sections which include:</p>
+<blockquote>
+<div><strong>AMDGPU ELF Sections</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="24%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Attributes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>.bss</td>
+<td>SHT_NOBITS</td>
+<td>SHF_ALLOC + SHF_WRITE</td>
+</tr>
+<tr class="row-odd"><td>.data</td>
+<td>SHT_PROGBITS</td>
+<td>SHF_ALLOC + SHF_WRITE</td>
+</tr>
+<tr class="row-even"><td>.debug_*</td>
+<td>SHT_PROGBITS</td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td>.dynamic</td>
+<td>SHT_DYNAMIC</td>
+<td>SHF_ALLOC</td>
+</tr>
+<tr class="row-even"><td>.dynstr</td>
+<td>SHT_PROGBITS</td>
+<td>SHF_ALLOC</td>
+</tr>
+<tr class="row-odd"><td>.dynsym</td>
+<td>SHT_PROGBITS</td>
+<td>SHF_ALLOC</td>
+</tr>
+<tr class="row-even"><td>.got</td>
+<td>SHT_PROGBITS</td>
+<td>SHF_ALLOC + SHF_WRITE</td>
+</tr>
+<tr class="row-odd"><td>.hash</td>
+<td>SHT_HASH</td>
+<td>SHF_ALLOC</td>
+</tr>
+<tr class="row-even"><td>.note</td>
+<td>SHT_NOTE</td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td>.relaname</td>
+<td>SHT_RELA</td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td>.rela.dyn</td>
+<td>SHT_RELA</td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td>.rodata</td>
+<td>SHT_PROGBITS</td>
+<td>SHF_ALLOC</td>
+</tr>
+<tr class="row-even"><td>.shstrtab</td>
+<td>SHT_STRTAB</td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td>.strtab</td>
+<td>SHT_STRTAB</td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td>.symtab</td>
+<td>SHT_SYMTAB</td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td>.text</td>
+<td>SHT_PROGBITS</td>
+<td>SHF_ALLOC + SHF_EXECINSTR</td>
+</tr>
+</tbody>
+</table>
+<p>These sections have their standard meanings and are only generated if needed.</p>
+<dl class="docutils">
+<dt>.debug*</dt>
+<dd>The standard DWARF sections. See DWARF for information on the DWARF produced by the AMDGPU backend.</dd>
+<dt>.dynamic, .dynstr, .dynsym, .hash</dt>
+<dd>The standard sections used by a dynamic loader.</dd>
+<dt>.note</dt>
+<dd>See Note Records for the note records supported by the AMDGPU backend.</dd>
+<dt>.relaname, .rela.dyn</dt>
+<dd>For relocatable code objects, name is the name of the section that the relocation records apply. For example, .rela.text is the section name for relocation records associated with the .text section.
+For linked shared code objects, .rela.dyn contains all the relocation records from each of the relocatable code object’s .relaname sections.
+See Relocation Records for the relocation records supported by the AMDGPU backend.</dd>
+<dt>.text</dt>
+<dd>The executable machine code for the kernels and functions they call. Generated as position independent code. See Code Conventions for information on conventions used in the isa generation.</dd>
+</dl>
+</div>
+<div class="section" id="note-records">
+<span id="id11"></span><h3>Note Records<a class="headerlink" href="#note-records" title="Permalink to this headline">¶</a></h3>
+<p>As required by ELFCLASS64, minimal zero byte padding must be generated after the name field to ensure the desc field is 4 byte aligned. In addition, minimal zero byte padding must be generated to ensure the desc field size is a multiple of 4 bytes. The sh_addralign field of the .note section must be at least 4 to indicate at least 8 byte alignment.</p>
+<p>The AMDGPU backend code object uses the following ELF note records in the .note section. The Description column specifies the layout of the note record’s desc field. All fields are consecutive bytes. Note records with variable size strings have a corresponding <a href="#id12"><span class="problematic" id="id13">*</span></a>_size field that specifies the number of bytes, including the terminating null character, in the string. The string(s) come immediately after the preceding fields.</p>
+<p>Additional note records can be present.</p>
+<blockquote>
+<div><strong>AMDGPU ELF Note Records</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="34%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“AMD”</td>
+<td>NT_AMD_AMDGPU_HSA_METADATA</td>
+<td>&lt;metadata null terminated string&gt;</td>
+</tr>
+<tr class="row-odd"><td>“AMD”</td>
+<td>NT_AMD_AMDGPU_ISA</td>
+<td>&lt;isa name null terminated string&gt;</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><strong>AMDGPU ELF Note Record Enumeration Values</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="62%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>reserved</td>
+<td>0-9</td>
+</tr>
+<tr class="row-odd"><td>NT_AMD_AMDGPU_HSA_METADATA</td>
+<td>10</td>
+</tr>
+<tr class="row-even"><td>NT_AMD_AMDGPU_ISA</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<p>NT_AMD_AMDGPU_ISA</p>
+<blockquote>
+<div><p>Specifies the instruction set architecture used by the machine code contained in the code object.</p>
+<p>This note record is required for code objects containing machine code for processors matching the amdgcn architecture in table        Processors.</p>
+<p>The null terminated string has the following syntax:</p>
+<blockquote>
+<div>architecture-vendor-os-environment-processor</div></blockquote>
+<p>where:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">architecture</span></code></dt>
+<dd>The architecture from table AMDGPU Target Triples.
+This is always amdgcn when the target triple OS is amdhsa (see Target Triples).</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">vendor</span></code></dt>
+<dd>The vendor from table AMDGPU Target Triples.
+For the AMDGPU backend this is always amd.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">OS</span></code></dt>
+<dd>The OS from table AMDGPU Target Triples.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">environment</span></code></dt>
+<dd>An environment from table AMDGPU Target Triples, or blank if the environment has no affect on the execution of the code                 object.
+For the AMDGPU backend this is currently always blank.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">processor</span></code></dt>
+<dd>The processor from table AMDGPU Processors.</dd>
+</dl>
+</div></blockquote>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">amdgcn</span><span class="o">-</span><span class="n">amd</span><span class="o">-</span><span class="n">amdhsa</span><span class="o">--</span><span class="n">gfx901</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NT_AMD_AMDGPU_HSA_METADATA</span></code></p>
+<blockquote>
+<div>Specifies extensible metadata associated with the code objects executed on HSA [HSA] compatible runtimes such as AMD’s ROCm [AMD-ROCm]. It is required when the target triple OS is amdhsa (see Target Triples). See Code Object Metadata for the syntax of the code object metadata string.</div></blockquote>
+</div>
+<div class="section" id="symbols">
+<span id="id14"></span><h3>Symbols<a class="headerlink" href="#symbols" title="Permalink to this headline">¶</a></h3>
+<p>Symbols include the following:</p>
+<blockquote>
+<div><strong>AMDGPU ELF Symbols</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="20%" />
+<col width="19%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Section</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="3"><cite>link-name</cite></td>
+<td rowspan="3">STT_OBJECT</td>
+<td rowspan="3"><ul class="first last simple">
+<li>.data</li>
+<li>.rodata</li>
+<li>.bss</li>
+</ul>
+</td>
+<td rowspan="3">Global variable</td>
+</tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td><cite>link-name&#64;kd</cite></td>
+<td>STT_OBJECT</td>
+<td><ul class="first last simple">
+<li>.rodata</li>
+</ul>
+</td>
+<td>Kernel descriptor</td>
+</tr>
+<tr class="row-even"><td><cite>link-name</cite></td>
+<td>STT_FUNC</td>
+<td><ul class="first last simple">
+<li>.text</li>
+</ul>
+</td>
+<td>Kernel entry point</td>
+</tr>
+</tbody>
+</table>
+<p>Global variable</p>
+<blockquote>
+<div><p>Global variables both used and defined by the compilation unit.</p>
+<p>If the symbol is defined in the compilation unit then it is allocated in the appropriate section according to if it has initialized data or is readonly.</p>
+<p>If the symbol is external then its section is STN_UNDEF and the loader will resolve relocations using the definition provided by another code object or explicitly defined by the runtime.</p>
+<p>All global symbols, whether defined in the compilation unit or external, are accessed by the machine code indirectly through a GOT table entry. This allows them to be preemptable. The GOT table is only supported when the target triple OS is amdhsa (see Target Triples).</p>
+</div></blockquote>
+<p>Kernel descriptor</p>
+<blockquote>
+<div>Every HSA kernel has an associated kernel descriptor. It is the address of the kernel descriptor that is used in the AQL dispatch packet used to invoke the kernel, not the kernel entry point. The layout of the HSA kernel descriptor is defined in Kernel Descriptor.</div></blockquote>
+<p>Kernel entry point</p>
+<blockquote>
+<div>Every HSA kernel also has a symbol for its machine code entry point.</div></blockquote>
+</div>
+<div class="section" id="relocation-records">
+<span id="id15"></span><h3>Relocation Records<a class="headerlink" href="#relocation-records" title="Permalink to this headline">¶</a></h3>
+<p>AMDGPU backend generates Elf64_Rela relocation records. Supported relocatable fields are:</p>
+<dl class="docutils">
+<dt>word32</dt>
+<dd>This specifies a 32-bit field occupying 4 bytes with arbitrary byte alignment. These values use the same byte order as other word values in the AMD GPU architecture.</dd>
+<dt>word64</dt>
+<dd>This specifies a 64-bit field occupying 8 bytes with arbitrary byte alignment. These values use the same byte order as other word values in the AMD GPU architecture.</dd>
+</dl>
+<p>Following notations are used for specifying relocation calculations:</p>
+<dl class="docutils">
+<dt><strong>A</strong></dt>
+<dd>Represents the addend used to compute the value of the relocatable field.</dd>
+<dt><strong>G</strong></dt>
+<dd>Represents the offset into the global offset table at which the relocation entry’s symbol will reside during execution.</dd>
+<dt><strong>GOT</strong></dt>
+<dd>Represents the address of the global offset table.</dd>
+<dt><strong>P</strong></dt>
+<dd>Represents the place (section offset for et_rel or address for et_dyn) of the storage unit being relocated (computed using r_offset).</dd>
+<dt><strong>S</strong></dt>
+<dd>Represents the value of the symbol whose index resides in the relocation entry.</dd>
+</dl>
+<p>The following relocation types are supported:</p>
+<blockquote>
+<div>AMDGPU ELF Relocation Records</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="10%" />
+<col width="11%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Relocation Type</th>
+<th class="head">Value</th>
+<th class="head">Field</th>
+<th class="head">Calculation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>R_AMDGPU_NONE</td>
+<td>0</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td>R_AMDGPU_ABS32_LO</td>
+<td>1</td>
+<td>word32</td>
+<td>(S + A) &amp; 0xFFFFFFFF</td>
+</tr>
+<tr class="row-even"><td>R_AMDGPU_ABS32_HI</td>
+<td>2</td>
+<td>word32</td>
+<td>(S + A) &gt;&gt; 32</td>
+</tr>
+<tr class="row-odd"><td>R_AMDGPU_ABS64</td>
+<td>3</td>
+<td>word64</td>
+<td>S + A</td>
+</tr>
+<tr class="row-even"><td>R_AMDGPU_REL32</td>
+<td>4</td>
+<td>word32</td>
+<td>S + A - P</td>
+</tr>
+<tr class="row-odd"><td>R_AMDGPU_REL64</td>
+<td>5</td>
+<td>word64</td>
+<td>S + A - P</td>
+</tr>
+<tr class="row-even"><td>R_AMDGPU_ABS32</td>
+<td>6</td>
+<td>word32</td>
+<td>S + A</td>
+</tr>
+<tr class="row-odd"><td>R_AMDGPU_GOTPCREL</td>
+<td>7</td>
+<td>word32</td>
+<td>G + GOT + A - P</td>
+</tr>
+<tr class="row-even"><td>R_AMDGPU_GOTPCREL32_LO</td>
+<td>8</td>
+<td>word32</td>
+<td>(G + GOT + A - P) &amp; 0xFFFFFFFF</td>
+</tr>
+<tr class="row-odd"><td>R_AMDGPU_GOTPCREL32_HI</td>
+<td>9</td>
+<td>word32</td>
+<td>(G + GOT + A - P) &gt;&gt; 32</td>
+</tr>
+<tr class="row-even"><td>R_AMDGPU_REL32_LO</td>
+<td>10</td>
+<td>word32</td>
+<td>(S + A - P) &amp; 0xFFFFFFFF</td>
+</tr>
+<tr class="row-odd"><td>R_AMDGPU_REL32_HI</td>
+<td>11</td>
+<td>word32</td>
+<td>(S + A - P) &gt;&gt; 32</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div></div></blockquote>
+</div>
+<div class="section" id="dwarf">
+<span id="id16"></span><h3>DWARF<a class="headerlink" href="#dwarf" title="Permalink to this headline">¶</a></h3>
+<p>Standard DWARF [DWARF] Version 2 sections can be generated. These contain information that maps the code object executable code and data to the source language constructs. It can be used by tools such as debuggers and profilers.</p>
+<div class="section" id="address-space-mapping">
+<span id="id17"></span><h4>Address Space Mapping<a class="headerlink" href="#address-space-mapping" title="Permalink to this headline">¶</a></h4>
+<p>The following address space mapping is used:</p>
+<blockquote>
+<div>AMDGPU DWARF Address Space Mapping</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">DWARF Address Space</th>
+<th class="head">Memory Space</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>Private (Scratch)</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Local (group/LDS)</td>
+</tr>
+<tr class="row-even"><td>omitted</td>
+<td>lobal</td>
+</tr>
+<tr class="row-odd"><td>omitted</td>
+<td>Constant</td>
+</tr>
+<tr class="row-even"><td>omitted</td>
+<td>Generic (Flat)</td>
+</tr>
+<tr class="row-odd"><td>not supported</td>
+<td>Region (GDS)</td>
+</tr>
+</tbody>
+</table>
+<p>See <code class="docutils literal notranslate"><span class="pre">Address</span> <span class="pre">Spaces</span></code> for information on the memory space terminology used in the table.</p>
+<p>An address_class attribute is generated on pointer type DIEs to specify the DWARF address space of the value of the pointer when it is in the private or local address space. Otherwise the attribute is omitted.</p>
+<p>An XDEREF operation is generated in location list expressions for variables that are allocated in the private and local address space. Otherwise no XDREF is omitted.</p>
+</div>
+<div class="section" id="register-mapping">
+<span id="id18"></span><h4>Register Mapping<a class="headerlink" href="#register-mapping" title="Permalink to this headline">¶</a></h4>
+<p>This section is WIP.</p>
+</div>
+<div class="section" id="source-text">
+<span id="id19"></span><h4>Source Text<a class="headerlink" href="#source-text" title="Permalink to this headline">¶</a></h4>
+<p>This section is WIP.</p>
+</div>
+</div>
+</div>
+<div class="section" id="code-conventions">
+<span id="id20"></span><h2>Code Conventions<a class="headerlink" href="#code-conventions" title="Permalink to this headline">¶</a></h2>
+<p>This section provides code conventions used for each supported target triple OS (see Target Triples).</p>
+<div class="section" id="amdhsa">
+<span id="id21"></span><h3>AMDHSA<a class="headerlink" href="#amdhsa" title="Permalink to this headline">¶</a></h3>
+<p>This section provides code conventions used when the target triple OS is amdhsa (see Target Triples).</p>
+<div class="section" id="code-object-metadata">
+<span id="id22"></span><h4>Code Object Metadata<a class="headerlink" href="#code-object-metadata" title="Permalink to this headline">¶</a></h4>
+<p>The code object metadata specifies extensible metadata associated with the code objects executed on HSA [HSA] compatible runtimes such as AMD’s ROCm [AMD-ROCm]. It is specified by the NT_AMD_AMDGPU_HSA_METADATA note record (see Note Records) and is required when the target triple OS is amdhsa (see Target Triples). It must contain the minimum information necessary to support the ROCM kernel queries. For example, the segment sizes needed in a dispatch packet. In addition, a high level language runtime may require other information to be included. For example, the AMD OpenCL runtime records kernel argument information.</p>
+<p>The metadata is specified as a YAML formatted string (see [YAML] and YAML I/O).</p>
+<p>The metadata is represented as a single YAML document comprised of the mapping defined in table AMDHSA Code Object Metadata Mapping and referenced tables.</p>
+<p>For boolean values, the string values of false and true are used for false and true respectively.</p>
+<p>Additional information can be added to the mappings. To avoid conflicts, any non-AMD key names should be prefixed by “vendor-name.”.</p>
+<blockquote>
+<div>AMDHSA Code Object Metadata Mapping</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="13%" />
+<col width="6%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">String Key</th>
+<th class="head">Value Type</th>
+<th class="head">Required?</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“Version”</td>
+<td>sequence of 2 integers</td>
+<td>Required</td>
+<td><ul class="first last simple">
+<li>The first integer is the major version. Currently 1.</li>
+<li>The second integer is the minor version. Currently 0.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>“Printf”</td>
+<td>sequence of strings</td>
+<td>&#160;</td>
+<td><p class="first">Each string is encoded information about a printf function call.
+The encoded information is organized as fields separated by colon</p>
+<p>(‘:’):ID:N:S[0]:S[1]:…:S[N-1]:FormatString</p>
+<p>where:
+ID</p>
+<blockquote>
+<div>A 32 bit integer as a unique id for each printf function call</div></blockquote>
+<dl class="docutils">
+<dt>N</dt>
+<dd>A 32 bit integer equal to the number of arguments of printf function call minus 1</dd>
+<dt>S[i] (where i = 0, 1, …, N-1)</dt>
+<dd>32 bit integers for the size in bytes of the i-th FormatString argument of the printf function call</dd>
+</dl>
+<p class="last">FormatString
+The format string passed to the printf function call.</p>
+</td>
+</tr>
+<tr class="row-even"><td>“Kernels”</td>
+<td>sequence of mapping</td>
+<td>Required</td>
+<td>Sequence of the mappings for each kernel in the code object. See AMDHSA Code Object Kernel Metadata Mapping for the definition of the mapping.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>AMDHSA Code Object Kernel Metadata Mapping</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="12%" />
+<col width="5%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">String Key</th>
+<th class="head">value Type</th>
+<th class="head">Required?</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“Name”</td>
+<td>string</td>
+<td>Required</td>
+<td>Source name of the kernel.</td>
+</tr>
+<tr class="row-odd"><td>“SymbolName”</td>
+<td>string</td>
+<td>Required</td>
+<td>Name of the kernel descriptor ELF symbol.</td>
+</tr>
+<tr class="row-even"><td>“Language”</td>
+<td>string</td>
+<td>&#160;</td>
+<td>Source language of the kernel. Values include:
+* “OpenCL C”
+* “OpenCL C++”
+* “HCC”
+* “OpenMP”</td>
+</tr>
+<tr class="row-odd"><td>“LanguageVersion”</td>
+<td>sequence of 2 integers</td>
+<td>&#160;</td>
+<td><ul class="first last simple">
+<li>The first integer is the major version.</li>
+<li>The second integer is the minor version.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>“Attrs”</td>
+<td>mapping</td>
+<td>&#160;</td>
+<td>Mapping of kernel attributes. See AMDHSA Code Object Kernel Attribute Metadata Mapping for the mapping definition.</td>
+</tr>
+<tr class="row-odd"><td>“Arguments”</td>
+<td>sequence of mapping</td>
+<td>&#160;</td>
+<td>Sequence of mappings of the kernel arguments. See AMDHSA Code Object Kernel Argument Metadata Mapping for the definition of the mapping.</td>
+</tr>
+<tr class="row-even"><td>“CodeProps”</td>
+<td>mapping</td>
+<td>&#160;</td>
+<td>Mapping of properties related to the kernel code. See AMDHSA Code Object Kernel Code Properties Metadata Mapping for the mapping definition.</td>
+</tr>
+<tr class="row-odd"><td>“DebugProps”</td>
+<td>mapping</td>
+<td>&#160;</td>
+<td>Mapping of properties related to the kernel debugging. See AMDHSA Code Object Kernel Debug Properties Metadata Mapping for the mapping definition.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><strong>AMDHSA Code Object Kernel Attribute Metadata Mapping</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="18%" />
+<col width="8%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">String Key</th>
+<th class="head">Value Type</th>
+<th class="head">Required?</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“ReqdWorkGroupSize”</td>
+<td>sequence of 3 integers</td>
+<td>&#160;</td>
+<td>The dispatch work-group size X,Y,Z must correspond to the specified values.
+Corresponds to the OpenCL reqd_work_group_size attribute.</td>
+</tr>
+<tr class="row-odd"><td>“WorkGroupSizeHint”</td>
+<td>sequence of 3 integers</td>
+<td>&#160;</td>
+<td>The dispatch work-group size X,Y,Z is likely to be the specified values.
+Corresponds to the OpenCL work_group_size_hint attribute.</td>
+</tr>
+<tr class="row-even"><td>“VecTypeHint”</td>
+<td>string</td>
+<td>&#160;</td>
+<td>The name of a scalar or vector type.
+Corresponds to the OpenCL vec_type_hint attribute.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><strong>AMDHSA Code Object Kernel Argument Metadata Mapping</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="3%" />
+<col width="3%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">String Key</th>
+<th class="head">Value Type</th>
+<th class="head">Required?</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“Name”</td>
+<td>string</td>
+<td>&#160;</td>
+<td>Kernel argument name.</td>
+</tr>
+<tr class="row-odd"><td>“TypeName”</td>
+<td>string</td>
+<td>&#160;</td>
+<td>Kernel argument type name.</td>
+</tr>
+<tr class="row-even"><td>“Size”</td>
+<td>integer</td>
+<td>Required</td>
+<td>Kernel argument size in bytes.</td>
+</tr>
+<tr class="row-odd"><td>“Align”</td>
+<td>integer</td>
+<td>Required</td>
+<td>Kernel argument alignment in bytes. Must be a power of two.</td>
+</tr>
+<tr class="row-even"><td>“ValueKind”</td>
+<td>string</td>
+<td>Required</td>
+<td><dl class="first last docutils">
+<dt>Kernel argument kind that specifies how to set up the corresponding argument. Values include :</dt>
+<dd><dl class="first last docutils">
+<dt>“ByValue”</dt>
+<dd>The argument is copied directly into the kernarg.</dd>
+<dt>“GlobalBuffer”</dt>
+<dd>A global address space pointer to the buffer data is passed in the kernarg.</dd>
+<dt>“DynamicSharedPointer”</dt>
+<dd>A group address space pointer to dynamically allocated LDS is passed in the kernarg.</dd>
+<dt>“Sampler”</dt>
+<dd>A global address space pointer to a S# is passed in the kernarg.</dd>
+<dt>“Image”</dt>
+<dd>A global address space pointer to a T# is passed in the kernarg.</dd>
+<dt>“Pipe”</dt>
+<dd>A global address space pointer to an OpenCL pipe is passed in the kernarg.</dd>
+<dt>“Queue”</dt>
+<dd>A global address space pointer to an OpenCL device enqueue queue is passed in the kernarg.</dd>
+<dt>“HiddenGlobalOffsetX”</dt>
+<dd>The OpenCL grid dispatch global offset for the X dimension is passed in the kernarg.</dd>
+<dt>“HiddenGlobalOffsetY”</dt>
+<dd>The OpenCL grid dispatch global offset for the Y dimension is passed in the kernarg.</dd>
+<dt>“HiddenGlobalOffsetZ”</dt>
+<dd>The OpenCL grid dispatch global offset for the Z dimension is passed in the kernarg.</dd>
+<dt>“HiddenNone”</dt>
+<dd>An argument that is not used by the kernel. Space needs to be left for it, but it does not need to be set up.</dd>
+<dt>“HiddenPrintfBuffer”</dt>
+<dd>A global address space pointer to the runtime printf buffer is passed in kernarg.</dd>
+<dt>“HiddenDefaultQueue”</dt>
+<dd>A global address space pointer to the OpenCL device enqueue queue that should be used by the kernel by default is passed in the kernarg.</dd>
+<dt>“HiddenCompletionAction”</dt>
+<dd>TBD</dd>
+</dl>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td>“ValueType”</td>
+<td>Value Type</td>
+<td>Required</td>
+<td><dl class="first last docutils">
+<dt>Kernel argument value type. Only present if “ValueKind” is “ByValue”. For vector data types, the value is for the element type.Values include:</dt>
+<dd><ul class="first last simple">
+<li>“Struct”</li>
+<li>“I8”</li>
+<li>“U8”</li>
+<li>“I16”</li>
+<li>“U16”</li>
+<li>“F16”</li>
+<li>“I32”</li>
+<li>“U32”</li>
+<li>“F32”</li>
+<li>“I64”</li>
+<li>“U64”</li>
+<li>“F64”</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td>“PointeeAlign”</td>
+<td>integer</td>
+<td>&#160;</td>
+<td>Alignment in bytes of pointee type for pointer type kernel argument. Must be a power of 2. Only present if “ValueKind” is “DynamicSharedPointer”.</td>
+</tr>
+<tr class="row-odd"><td>“AddrSpaceQual”</td>
+<td>string</td>
+<td>&#160;</td>
+<td><dl class="first last docutils">
+<dt>Kernel argument address space qualifier. Only present if “ValueKind” is “GlobalBuffer” or “DynamicSharedPointer”.Values are :</dt>
+<dd><ul class="first last simple">
+<li>“Private”</li>
+<li>“Global”</li>
+<li>“Constant”</li>
+<li>“Local”</li>
+<li>“Generic”</li>
+<li>“Region”</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td>“AccQual”</td>
+<td>string</td>
+<td>&#160;</td>
+<td><dl class="first last docutils">
+<dt>Kernel argument access qualifier. Only present if “ValueKind” is “Image” or “Pipe”. Values are :</dt>
+<dd><ul class="first last simple">
+<li>“ReadOnly”</li>
+<li>“WriteOnly”</li>
+<li>“ReadWrite”</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td>“ActualAcc”</td>
+<td>string</td>
+<td>&#160;</td>
+<td><dl class="first last docutils">
+<dt>The actual memory accesses performed by the kernel on the kernel argument.Only present if “ValueKind” is “GlobalBuffer”, “Image”, or “Pipe”. This may be more restrictive than indicated by “AccQual” to reflect what the kernel actual does.If not present then the runtime must assume what is implied by “AccQual” and “IsConst”. Values are :</dt>
+<dd><ul class="first last simple">
+<li>“ReadOnly”</li>
+<li>“WriteOnly”</li>
+<li>“ReadWrite”</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td>“IsConst”</td>
+<td>boolean</td>
+<td>&#160;</td>
+<td>Indicates if the kernel argument is const qualified. Only present if “ValueKind” is “GlobalBuffer”.</td>
+</tr>
+<tr class="row-odd"><td>“IsRestrict”</td>
+<td>boolean</td>
+<td>&#160;</td>
+<td>Indicates if the kernel argument is restrict qualified. Only present if “ValueKind” is “GlobalBuffer”.</td>
+</tr>
+<tr class="row-even"><td>“IsVolatile”</td>
+<td>boolean</td>
+<td>&#160;</td>
+<td>Indicates if the kernel argument is volatile qualified. Only present if “ValueKind” is “GlobalBuffer”.</td>
+</tr>
+<tr class="row-odd"><td>“IsPipe”</td>
+<td>boolean</td>
+<td>&#160;</td>
+<td>Indicates if the kernel argument is pipe qualified. Only present if “ValueKind” is “Pipe”.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><strong>AMDHSA Code Object Kernel Code Properties Metadata Mapping</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="7%" />
+<col width="6%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">String Key</th>
+<th class="head">Value Type</th>
+<th class="head">Required?</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“KernargSegmentSize”</td>
+<td>integer</td>
+<td>Required</td>
+<td>The size in bytes of the kernarg segment that holds the values of the arguments to the kernel.</td>
+</tr>
+<tr class="row-odd"><td>“GroupSegmentFixedSize”</td>
+<td>integer</td>
+<td>Required</td>
+<td>The amount of group segment memory required by a work-group in bytes.
+This does not include any dynamically allocated group segment memory that may be added when the kernel is dispatched.</td>
+</tr>
+<tr class="row-even"><td>“PrivateSegmentFixedSize”</td>
+<td>integer</td>
+<td>Required</td>
+<td><dl class="first last docutils">
+<dt>The amount of fixed private address space memory required for a work-item in bytes.</dt>
+<dd>If IsDynamicCallstack is 1 then additional space must be added to this value for the call stack.</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td>“KernargSegmentAlign”</td>
+<td>integer</td>
+<td>Required</td>
+<td>The maximum byte alignment of arguments in the kernarg segment. Must be a power of 2.</td>
+</tr>
+<tr class="row-even"><td>“WavefrontSize”</td>
+<td>integer</td>
+<td>Required</td>
+<td>Wavefront size. Must be a power of 2.</td>
+</tr>
+<tr class="row-odd"><td>“NumSGPRs”</td>
+<td>integer</td>
+<td>&#160;</td>
+<td><p class="first">Number of scalar registers used by a wavefront for GFX6-GFX9.
+This includes the special SGPRs for VCC, Flat Scratch (GFX7-GFX9) and XNACK (for GFX8-GFX9).</p>
+<blockquote class="last">
+<div>It does not include the 16 SGPR added if a trap handler is enabled. It is not rounded up to the allocation granularity.</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>“NumVGPRs”</td>
+<td>integer</td>
+<td>&#160;</td>
+<td>Number of vector registers used by each work-item for GFX6-GFX9</td>
+</tr>
+<tr class="row-odd"><td>“MaxFlatWorkgroupSize”</td>
+<td>integer</td>
+<td>&#160;</td>
+<td>Maximum flat work-group size supported by the kernel in work-items.</td>
+</tr>
+<tr class="row-even"><td>“IsDynamicCallStack”</td>
+<td>boolean</td>
+<td>&#160;</td>
+<td>Indicates if the generated machine code is using a dynamically sized call stack.</td>
+</tr>
+<tr class="row-odd"><td>“IsXNACKEnabled”</td>
+<td>boolean</td>
+<td>&#160;</td>
+<td>Indicates if the generated machine code is capable of supporting XNACK.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><strong>AMDHSA Code Object Kernel Debug Properties Metadata Mapping</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="16%" />
+<col width="15%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">String Key</th>
+<th class="head">Value Type</th>
+<th class="head">Required?</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“DebuggerABIVersion”</td>
+<td>string</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>“ReservedNumVGPRs”</td>
+<td>integer</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>“ReservedFirstVGPR”</td>
+<td>integer</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>“PrivateSegmentBufferSGPR”</td>
+<td>integer</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>“WavefrontPrivateSegmentOffsetSGPR”</td>
+<td>integer</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="kernel-dispatch">
+<span id="id23"></span><h4>Kernel Dispatch<a class="headerlink" href="#kernel-dispatch" title="Permalink to this headline">¶</a></h4>
+<p>The HSA architected queuing language (AQL) defines a user space memory interface that can be used to control the dispatch of kernels, in an agent independent way. An agent can have zero or more AQL queues created for it using the ROCm runtime, in which AQL packets (all of which are 64 bytes) can be placed. See the HSA Platform System Architecture Specification [HSA] for the AQL queue mechanics and packet layouts.</p>
+<p>The packet processor of a kernel agent is responsible for detecting and dispatching HSA kernels from the AQL queues associated with it. For AMD GPUs the packet processor is implemented by the hardware command processor (CP), asynchronous dispatch controller (ADC) and shader processor input controller (SPI).</p>
+<p>The ROCm runtime can be used to allocate an AQL queue object. It uses the kernel mode driver to initialize and register the AQL queue with CP.</p>
+<p>To dispatch a kernel the following actions are performed. This can occur in the CPU host program, or from an HSA kernel executing on a GPU.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>A pointer to an AQL queue for the kernel agent on which the kernel is to be executed is obtained.</li>
+<li>A pointer to the kernel descriptor (see Kernel Descriptor) of the kernel to execute is obtained. It must be for a kernel that is contained in a code object that that was loaded by the ROCm runtime on the kernel agent with which the AQL queue is associated.</li>
+<li>Space is allocated for the kernel arguments using the ROCm runtime allocator for a memory region with the kernarg property for the kernel agent that will execute the kernel. It must be at least 16 byte aligned.</li>
+<li>Kernel argument values are assigned to the kernel argument memory allocation. The layout is defined in the HSA Programmer’s Language Reference [HSA]. For AMDGPU the kernel execution directly accesses the kernel argument memory in the same way constant memory is accessed. (Note that the HSA specification allows an implementation to copy the kernel argument contents to another location that is accessed by the kernel.)</li>
+<li>An AQL kernel dispatch packet is created on the AQL queue. The ROCm runtime api uses 64 bit atomic operations to reserve space in the AQL queue for the packet. The packet must be set up, and the final write must use an atomic store release to set the packet kind to ensure the packet contents are visible to the kernel agent. AQL defines a doorbell signal mechanism to notify the kernel agent that the AQL queue has been updated. These rules, and the layout of the AQL queue and kernel dispatch packet is defined in the HSA System Architecture Specification [HSA].</li>
+<li>A kernel dispatch packet includes information about the actual dispatch, such as grid and work-group size, together with information from the code object about the kernel, such as segment sizes. The ROCm runtime queries on the kernel symbol can be used to obtain the code object values which are recorded in the Code Object Metadata.</li>
+<li>CP executes micro-code and is responsible for detecting and setting up the GPU to execute the wavefronts of a kernel dispatch.</li>
+<li>CP ensures that when the a wavefront starts executing the kernel machine code, the scalar general purpose registers (SGPR) and vector general purpose registers (VGPR) are set up as required by the machine code. The required setup is defined in the Kernel Descriptor. The initial register state is defined in Initial Kernel Execution State.</li>
+<li>The prolog of the kernel machine code (see Kernel Prolog) sets up the machine state as necessary before continuing executing the machine code that corresponds to the kernel.</li>
+<li>When the kernel dispatch has completed execution, CP signals the completion signal specified in the kernel dispatch packet if not 0.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="memory-spaces">
+<span id="id24"></span><h4>Memory Spaces<a class="headerlink" href="#memory-spaces" title="Permalink to this headline">¶</a></h4>
+<p>The memory space properties are:</p>
+<blockquote>
+<div>AMDHSA Memory Spaces Memory Space</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="20%" />
+<col width="18%" />
+<col width="16%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">HSA Segment Name</th>
+<th class="head">Hardware Name</th>
+<th class="head">Address Size</th>
+<th class="head">NULL Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Private</td>
+<td>private</td>
+<td>scratch</td>
+<td>32</td>
+<td>0x00000000</td>
+</tr>
+<tr class="row-odd"><td>Local</td>
+<td>group</td>
+<td>LDS</td>
+<td>32</td>
+<td>0xFFFFFFFF</td>
+</tr>
+<tr class="row-even"><td>Global</td>
+<td>global</td>
+<td>global</td>
+<td>64</td>
+<td>0x0000000000000000</td>
+</tr>
+<tr class="row-odd"><td>Constant</td>
+<td>constant</td>
+<td>same as global</td>
+<td>64</td>
+<td>0x0000000000000000</td>
+</tr>
+<tr class="row-even"><td>Generic</td>
+<td>flat</td>
+<td>flat</td>
+<td>64</td>
+<td>0x0000000000000000</td>
+</tr>
+<tr class="row-odd"><td>Region</td>
+<td>N/A</td>
+<td>GDS</td>
+<td>32</td>
+<td><cite>not implemented for AMDHSA</cite></td>
+</tr>
+</tbody>
+</table>
+<p>The global and constant memory spaces both use global virtual addresses, which are the same virtual address space used by the CPU. However, some virtual addresses may only be accessible to the CPU, some only accessible by the GPU, and some by both.</p>
+<p>Using the constant memory space indicates that the data will not change during the execution of the kernel. This allows scalar read instructions to be used. The vector and scalar L1 caches are invalidated of volatile data before each kernel dispatch execution to allow constant memory to change values between kernel dispatches.</p>
+<p>The local memory space uses the hardware Local Data Store (LDS) which is automatically allocated when the hardware creates work-groups of wavefronts, and freed when all the wavefronts of a work-group have terminated. The data store (DS) instructions can be used to access it.</p>
+<p>The private memory space uses the hardware scratch memory support. If the kernel uses scratch, then the hardware allocates memory that is accessed using wavefront lane dword (4 byte) interleaving. The mapping used from private address to physical address is:</p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">wavefront-scratch-base</span> <span class="pre">+</span> <span class="pre">(private-address</span> <span class="pre">*</span> <span class="pre">wavefront-size</span> <span class="pre">*</span> <span class="pre">4)</span> <span class="pre">+</span> <span class="pre">(wavefront-lane-id</span> <span class="pre">*</span> <span class="pre">4)</span></code></div></blockquote>
+<p>There are different ways that the wavefront scratch base address is determined by a wavefront (see <cite>Initial Kernel Execution State</cite> ). This memory can be accessed in an interleaved manner using buffer instruction with the scratch buffer descriptor and per wave scratch offset, by the scratch instructions, or by flat instructions. If each lane of a wavefront accesses the same private address, the interleaving results in adjacent dwords being accessed and hence requires fewer cache lines to be fetched. Multi-dword access is not supported except by flat and scratch instructions in GFX9.</p>
+<p>The generic address space uses the hardware flat address support available in GFX7-GFX9. This uses two fixed ranges of virtual addresses (the private and local appertures), that are outside the range of addressible global memory, to map from a flat address to a private or local address.</p>
+<p>FLAT instructions can take a flat address and access global, private (scratch) and group (LDS) memory depending in if the address is within one of the apperture ranges. Flat access to scratch requires hardware aperture setup and setup in the kernel prologue (see Flat Scratch). Flat access to LDS requires hardware aperture setup and M0 (GFX7-GFX8) register setup (see M0).</p>
+<p>To convert between a segment address and a flat address the base address of the appertures address can be used. For GFX7-GFX8 these are available in the HSA AQL Queue the address of which can be obtained with Queue Ptr SGPR (see Initial Kernel Execution State). For GFX9 the appature base addresses are directly available as inline constant registers SRC_SHARED_BASE/LIMIT and SRC_PRIVATE_BASE/LIMIT. In 64 bit address mode the apperture sizes are 2^32 bytes and the base is aligned to 2^32 which makes it easier to convert from flat to segment or segment to flat.</p>
+</div>
+<div class="section" id="image-and-samplers">
+<span id="id25"></span><h4>Image and Samplers<a class="headerlink" href="#image-and-samplers" title="Permalink to this headline">¶</a></h4>
+<p>Image and sample handles created by the ROCm runtime are 64 bit addresses of a hardware 32 byte V# and 48 byte S# object respectively. In order to support the HSA query_sampler operations two extra dwords are used to store the HSA BRIG enumeration values for the queries that are not trivially deducible from the S# representation.</p>
+</div>
+<div class="section" id="hsa-signals">
+<span id="id26"></span><h4>HSA Signals<a class="headerlink" href="#hsa-signals" title="Permalink to this headline">¶</a></h4>
+<p>HSA signal handles created by the ROCm runtime are 64 bit addresses of a structure allocated in memory accessible from both the CPU and GPU. The structure is defined by the ROCm runtime and subject to change between releases (see [AMD-ROCm-github]).</p>
+</div>
+<div class="section" id="hsa-aql-queue">
+<span id="id27"></span><h4>HSA AQL Queue<a class="headerlink" href="#hsa-aql-queue" title="Permalink to this headline">¶</a></h4>
+<p>The HSA AQL queue structure is defined by the ROCm runtime and subject to change between releases (see [AMD-ROCm-github]). For some processors it contains fields needed to implement certain language features such as the flat address aperture bases. It also contains fields used by CP such as managing the allocation of scratch memory.</p>
+</div>
+<div class="section" id="kernel-descriptor">
+<span id="id28"></span><h4>Kernel Descriptor<a class="headerlink" href="#kernel-descriptor" title="Permalink to this headline">¶</a></h4>
+<p>A kernel descriptor consists of the information needed by CP to initiate the execution of a kernel, including the entry point address of the machine code that implements the kernel.</p>
+</div>
+<div class="section" id="kernel-descriptor-for-gfx6-gfx9">
+<span id="id29"></span><h4>Kernel Descriptor for GFX6-GFX9<a class="headerlink" href="#kernel-descriptor-for-gfx6-gfx9" title="Permalink to this headline">¶</a></h4>
+<p>CP microcode requires the Kernel descritor to be allocated on 64 byte alignment.</p>
+<blockquote>
+<div>Kernel Descriptor for GFX6-GFX9</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="9%" />
+<col width="13%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bits</th>
+<th class="head">Size</th>
+<th class="head">Field Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>31:0</td>
+<td>4 bytes</td>
+<td>group_segment_fixed_size</td>
+<td>The amount of fixed local address space memory required for a work-group in bytes. This does not include any dynamically allocated local address space memory that may be added when the kernel is dispatched.</td>
+</tr>
+<tr class="row-odd"><td>63:32</td>
+<td>4 bytes</td>
+<td>private_segment_fixed_size</td>
+<td>The amount of fixed private address space memory required for a work-item in bytes. If is_dynamic_callstack is 1 then additional space must be added to this value for the call stack.</td>
+</tr>
+<tr class="row-even"><td>95:64</td>
+<td>4 bytes</td>
+<td>max_flat_workgroup_size</td>
+<td>Maximum flat work-group size supported by the kernel in work-items.</td>
+</tr>
+<tr class="row-odd"><td>96</td>
+<td>1 bit</td>
+<td>is_dynamic_call_stack</td>
+<td>Indicates if the generated machine code is using a dynamically sized call stack.</td>
+</tr>
+<tr class="row-even"><td>97</td>
+<td>1 bit</td>
+<td>is_xnack_enabled</td>
+<td>Indicates if the generated machine code is capable of suppoting XNACK.</td>
+</tr>
+<tr class="row-odd"><td>127:98</td>
+<td>30 bits</td>
+<td>&#160;</td>
+<td>Reserved. Must be 0.</td>
+</tr>
+<tr class="row-even"><td>191:128</td>
+<td>8 bytes</td>
+<td>kernel_code_entry_byte_offset</td>
+<td>Byte offset (possibly negative) from base address of kernel descriptor to kernel’s entry point instruction which must be 256 byte aligned.</td>
+</tr>
+<tr class="row-odd"><td>383:192</td>
+<td>24 bytes</td>
+<td>&#160;</td>
+<td>Reserved. Must be 0.</td>
+</tr>
+<tr class="row-even"><td>415:384</td>
+<td>4 bytes</td>
+<td>compute_pgm_rsrc1</td>
+<td>Compute Shader (CS) program settings used by CP to set up COMPUTE_PGM_RSRC1 configuration register. See compute_pgm_rsrc1 for GFX6-GFX9.</td>
+</tr>
+<tr class="row-odd"><td>447:416</td>
+<td>4 bytes</td>
+<td>compute_pgm_rsrc2</td>
+<td>Compute Shader (CS) program settings used by CP to set up COMPUTE_PGM_RSRC2 configuration register. See compute_pgm_rsrc2 for GFX6-GFX9.</td>
+</tr>
+<tr class="row-even"><td>448</td>
+<td>1 bit</td>
+<td>enable_sgpr_private_segment _buffer</td>
+<td><p class="first">Enable the setup of the SGPR user data registers (see Initial Kernel Execution State).</p>
+<p class="last">The total number of SGPR user data registers requested must not exceed 16 and match value in compute_pgm_rsrc2.user_sgpr.user_sgpr_count. Any requests beyond 16 will be ignored.</p>
+</td>
+</tr>
+<tr class="row-odd"><td>449</td>
+<td>1 bit</td>
+<td>enable_sgpr_dispatch_ptr</td>
+<td>see above</td>
+</tr>
+<tr class="row-even"><td>450</td>
+<td>1 bit</td>
+<td>enable_sgpr_queue_ptr</td>
+<td>see above</td>
+</tr>
+<tr class="row-odd"><td>451</td>
+<td>1 bit</td>
+<td>enable_sgpr_kernarg_segment_ptr</td>
+<td>see above</td>
+</tr>
+<tr class="row-even"><td>452</td>
+<td>1 bit</td>
+<td>enable_sgpr_dispatch_id</td>
+<td>see above</td>
+</tr>
+<tr class="row-odd"><td>453</td>
+<td>1 bit</td>
+<td>enable_sgpr_flat_scratch_init</td>
+<td>see above</td>
+</tr>
+<tr class="row-even"><td>454</td>
+<td>1 bit</td>
+<td>enable_sgpr_private_segment _size</td>
+<td>see above</td>
+</tr>
+<tr class="row-odd"><td>455</td>
+<td>1 bit</td>
+<td>enable_sgpr_grid_workgroup _count_X</td>
+<td>Not implemented in CP and should always be 0.</td>
+</tr>
+<tr class="row-even"><td>456</td>
+<td>1 bit</td>
+<td>enable_sgpr_grid_workgroup _count_Y</td>
+<td>Not implemented in CP and should always be 0.</td>
+</tr>
+<tr class="row-odd"><td>457</td>
+<td>1 bit</td>
+<td>enable_sgpr_grid_workgroup _count_Z</td>
+<td>Not implemented in CP and should always be 0.</td>
+</tr>
+<tr class="row-even"><td>463:458</td>
+<td>6 bits</td>
+<td>&#160;</td>
+<td>Reserved. Must be 0.</td>
+</tr>
+<tr class="row-odd"><td>511:464</td>
+<td>4 bytes</td>
+<td>&#160;</td>
+<td>Reserved. Must be 0.</td>
+</tr>
+<tr class="row-even"><td>512</td>
+<td><strong>Total size 64 bytes.</strong></td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><strong>compute_pgm_rsrc1 for GFX6-GFX9</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="2%" />
+<col width="7%" />
+<col width="10%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bits</th>
+<th class="head">Size</th>
+<th class="head">Field Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>5:0</td>
+<td>6 bits</td>
+<td>granulated_workitem_vgpr_count</td>
+<td><dl class="first docutils">
+<dt>Number of vector registers used by each work-item, granularity is device specific:</dt>
+<dd><dl class="first last docutils">
+<dt>GFX6-9 roundup</dt>
+<dd>((max-vgpg + 1) / 4) - 1</dd>
+</dl>
+</dd>
+</dl>
+<p class="last">Used by CP to set up COMPUTE_PGM_RSRC1.VGPRS.</p>
+</td>
+</tr>
+<tr class="row-odd"><td>9:6</td>
+<td>4 bits</td>
+<td>granulated_wavefront_sgpr_count</td>
+<td><p class="first">Number of scalar registers used by a wavefront, granularity is device specific:
+GFX6-8 roundup</p>
+<blockquote>
+<div>((max-sgpg + 1) / 8) - 1</div></blockquote>
+<dl class="docutils">
+<dt>GFX9 roundup</dt>
+<dd>((max-sgpg+1)/16) - 1</dd>
+</dl>
+<p>Includes the special SGPRs for VCC, Flat Scratch (for GFX7 onwards) and XNACK (for GFX8 onwards).
+It does not include the 16 SGPR added if a trap handler is enabled.</p>
+<blockquote class="last">
+<div>Used by CP to set up COMPUTE_PGM_RSRC1.SGPRS.</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>11:10</td>
+<td>2 bits</td>
+<td>priority</td>
+<td><p class="first">Must be 0.
+Start executing wavefront at the specified priority.</p>
+<blockquote class="last">
+<div>CP is responsible for filling in COMPUTE_PGM_RSRC1.PRIORITY.</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>13:12</td>
+<td>2 bits</td>
+<td>float_mode_round_32</td>
+<td><dl class="first docutils">
+<dt>Wavefront starts execution with specified rounding mode for single (32 bit) floating point precision floating point operations.</dt>
+<dd>Floating point rounding mode values are defined in Floating Point Rounding Mode Enumeration Values.</dd>
+</dl>
+<p class="last">Used by CP to set up <code class="docutils literal notranslate"><span class="pre">COMPUTE_PGM_RSRC1.FLOAT_MODE.</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td>15:14</td>
+<td>2 bits</td>
+<td>float_mode_round_16_64</td>
+<td>Wavefront starts execution with specified rounding denorm mode for half/double (16 and 64 bit)  floating point precision floating point operations.
+Floating point rounding mode values are defined in Floating Point Rounding Mode Enumeration Values.Used by CP to set up <code class="docutils literal notranslate"><span class="pre">COMPUTE_PGM_RSRC1.FLOAT_MODE.</span></code></td>
+</tr>
+<tr class="row-odd"><td>17:16</td>
+<td>2 bits</td>
+<td>float_mode_denorm_32</td>
+<td>Wavefront starts execution with specified denorm mode for single (32 bit) floating point precision floating point operations.
+Floating point denorm mode values are defined in Floating Point Denorm Mode Enumeration Values.
+Used by CP to set up <code class="docutils literal notranslate"><span class="pre">COMPUTE_PGM_RSRC1.FLOAT_MODE.</span></code></td>
+</tr>
+<tr class="row-even"><td>19:18</td>
+<td>2 bits</td>
+<td>float_mode_denorm_16_64</td>
+<td>Wavefront starts execution with specified denorm mode for half/double (16 and 64 bit) floating point precision floating point operations.
+Floating point denorm mode values are defined in Floating Point Denorm Mode Enumeration Values.
+Used by CP to set up <code class="docutils literal notranslate"><span class="pre">COMPUTE_PGM_RSRC1.FLOAT_MODE.</span></code></td>
+</tr>
+<tr class="row-odd"><td>20</td>
+<td>1 bit</td>
+<td>priv</td>
+<td>Must be 0.
+Start executing wavefront in privilege trap handler mode.
+CP is responsible for filling in <code class="docutils literal notranslate"><span class="pre">COMPUTE_PGM_RSRC1.PRIV.</span></code></td>
+</tr>
+<tr class="row-even"><td>21</td>
+<td>1 bit</td>
+<td>enable_dx10_clamp</td>
+<td>Wavefront starts execution with DX10 clamp mode enabled.
+Used by the vector ALU to force DX-10 style treatment of NaN’s (when set, clamp NaN to zero, otherwise pass NaN through).
+Used by CP to set up`` COMPUTE_PGM_RSRC1.DX10_CLAMP.``</td>
+</tr>
+<tr class="row-odd"><td>22</td>
+<td>1 bit</td>
+<td>debug_mode</td>
+<td>Must be 0.
+Start executing wavefront in single step mode.
+CP is responsible for filling in <code class="docutils literal notranslate"><span class="pre">COMPUTE_PGM_RSRC1.DEBUG_MODE.</span></code></td>
+</tr>
+<tr class="row-even"><td>23</td>
+<td>1 bit</td>
+<td>enable_ieee_mode</td>
+<td>Wavefront starts execution with IEEE mode enabled. Floating point opcodes that support exception flag gathering will quiet and propagate signaling-NaN inputs per IEEE 754-2008. Min_dx10 and max_dx10 become IEEE 754-2008 compliant due to signaling-NaN propagation and quieting.
+Used by CP to set up COMPUTE_PGM_RSRC1.IEEE_MODE.</td>
+</tr>
+<tr class="row-odd"><td>24</td>
+<td>1 bit</td>
+<td>bulky</td>
+<td>Must be 0.
+Only one work-group allowed to execute on a compute unit.
+CP is responsible for filling in <code class="docutils literal notranslate"><span class="pre">COMPUTE_PGM_RSRC1.BULKY.</span></code></td>
+</tr>
+<tr class="row-even"><td>25</td>
+<td>1 bit</td>
+<td>cdbg_user</td>
+<td>Must be 0.
+Flag that can be used to control debugging code.
+CP is responsible for filling in <code class="docutils literal notranslate"><span class="pre">COMPUTE_PGM_RSRC1.CDBG_USER.</span></code></td>
+</tr>
+<tr class="row-odd"><td>31:26</td>
+<td>6 bits</td>
+<td>&#160;</td>
+<td>Reserved. Must be 0.</td>
+</tr>
+<tr class="row-even"><td>32</td>
+<td><strong>Total size 4 bytes</strong></td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><strong>compute_pgm_rsrc2 for GFX6-GFX9</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="8%" />
+<col width="18%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bits</th>
+<th class="head">Size</th>
+<th class="head">Field Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>1 bit</td>
+<td>enable_sgpr_private_segment _wave_offset</td>
+<td>Enable the setup of the SGPR wave scratch offset system register (see Initial Kernel Execution State).
+Used by CP to set up COMPUTE_PGM_RSRC2.SCRATCH_EN.</td>
+</tr>
+<tr class="row-odd"><td>5:1</td>
+<td>5 bits</td>
+<td>user_sgpr_count</td>
+<td><p class="first">The total number of SGPR user data registers requested.
+This number must match the number of user data registers enabled.</p>
+<blockquote class="last">
+<div>Used by CP to set up COMPUTE_PGM_RSRC2.USER_SGPR.</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>1 bit</td>
+<td>enable_trap_handler</td>
+<td>Set to 1 if code contains a TRAP instruction which requires a trap handler to be enabled.
+CP sets COMPUTE_PGM_RSRC2.TRAP_PRESENT if the runtime has installed a trap handler regardless of the setting of this field.</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>1 bit</td>
+<td>enable_sgpr_workgroup_id_x</td>
+<td>Enable the setup of the system SGPR register for the work-group id in the X dimension (see Initial Kernel Execution State).Used by CP to set up COMPUTE_PGM_RSRC2.TGID_X_EN.</td>
+</tr>
+<tr class="row-even"><td>8</td>
+<td>1 bit</td>
+<td>enable_sgpr_workgroup_id_y</td>
+<td><dl class="first last docutils">
+<dt>Enable the setup of the system SGPR register for the work-group id in the Y dimension</dt>
+<dd>(see Initial Kernel Execution State).Used by CP to set up COMPUTE_PGM_RSRC2.TGID_Y_EN.</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td>9</td>
+<td>1 bit</td>
+<td>enable_sgpr_workgroup_id_z</td>
+<td><p class="first">Enable the setup of the system SGPR register for the work-group id in the Z dimension
+(see Initial Kernel Execution State).</p>
+<p class="last">Used by CP to set up COMPUTE_PGM_RSRC2.TGID_Z_EN.</p>
+</td>
+</tr>
+<tr class="row-even"><td>10</td>
+<td>1 bit</td>
+<td>enable_sgpr_workgroup_info</td>
+<td>Enable the setup of the system SGPR register for work-group information (see Initial Kernel Execution State).
+Used by CP to set up COMPUTE_PGM_RSRC2.TGID_SIZE_EN.</td>
+</tr>
+<tr class="row-odd"><td>12:11</td>
+<td>2 bits</td>
+<td>enable_vgpr_workitem_id</td>
+<td><p class="first">Enable the setup of the VGPR system registers used for the work-item ID.</p>
+<p class="last">System VGPR Work-Item ID Enumeration Values defines the values.
+Used by CP to set up COMPUTE_PGM_RSRC2.TIDIG_CMP_CNT.</p>
+</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>1 bit</td>
+<td>enable_exception_address_watch</td>
+<td>Must be 0.
+Wavefront starts execution with address watch exceptions enabled which are generated when L1 has witnessed a thread access an address of interest.
+CP is responsible for filling in the address watch bit in COMPUTE_PGM_RSRC2.EXCP_EN_MSB according to what the runtime requests.</td>
+</tr>
+<tr class="row-odd"><td>14</td>
+<td>1 bit</td>
+<td>enable_exception_memory</td>
+<td>Must be 0.
+Wavefront starts execution with memory violation exceptions exceptions enabled
+which are generated when a memory violation has occurred for this wave from L1 or LDS
+(write-to-read-only-memory, mis-aligned atomic, LDS address out of range, illegal address, etc.).
+CP sets the memory violation bit in COMPUTE_PGM_RSRC2.EXCP_EN_MSB according to what the runtime requests.</td>
+</tr>
+<tr class="row-even"><td>23:15</td>
+<td>9 bits</td>
+<td>granulated_lds_size</td>
+<td><p class="first">Must be 0.
+CP uses the rounded value from the dispatch packet, not this value, as the dispatch may contain dynamically allocated group segment memory. CP writes directly to COMPUTE_PGM_RSRC2.LDS_SIZE.
+Amount of group segment (LDS) to allocate for each work-group. Granularity is device specific:</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>GFX6:</dt>
+<dd>roundup(lds-size / (64 * 4))</dd>
+<dt>GFX7-GFX9:</dt>
+<dd>roundup(lds-size / (128 * 4))</dd>
+</dl>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>24</td>
+<td>1 bit</td>
+<td>enable_exception_ieee_754_fp _invalid_operation</td>
+<td>Wavefront starts execution with specified exceptions enabled.
+Used by CP to set up COMPUTE_PGM_RSRC2.EXCP_EN (set from bits 0..6).
+IEEE 754 FP Invalid Operation</td>
+</tr>
+<tr class="row-even"><td>25</td>
+<td>1 bit</td>
+<td>enable_exception_fp_denormal _source</td>
+<td>FP Denormal one or more input operands is a denormal number</td>
+</tr>
+<tr class="row-odd"><td>26</td>
+<td>1 bit</td>
+<td>enable_exception_ieee_754_fp _division_by_zero</td>
+<td>IEEE 754 FP Division by Zero</td>
+</tr>
+<tr class="row-even"><td>27</td>
+<td>1 bit</td>
+<td>enable_exception_ieee_754_fp _overflow</td>
+<td>IEEE 754 FP FP Overflow</td>
+</tr>
+<tr class="row-odd"><td>28</td>
+<td>1 bit</td>
+<td>enable_exception_ieee_754_fp _underflow</td>
+<td>IEEE 754 FP Underflow</td>
+</tr>
+<tr class="row-even"><td>29</td>
+<td>1 bit</td>
+<td>enable_exception_ieee_754_fp _inexact</td>
+<td>IEEE 754 FP Inexact</td>
+</tr>
+<tr class="row-odd"><td>30</td>
+<td>1 bit</td>
+<td>enable_exception_int_divide_by _zero</td>
+<td>Integer Division by Zero (rcp_iflag_f32 instruction only)</td>
+</tr>
+<tr class="row-even"><td>31</td>
+<td>1 bit</td>
+<td>&#160;</td>
+<td>Reserved. Must be 0.</td>
+</tr>
+<tr class="row-odd"><td>32</td>
+<td>Total size 4 bytes.</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div>Floating Point Rounding Mode Enumeration Values</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="54%" />
+<col width="10%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Enumeration Name</th>
+<th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>AMD_FLOAT_ROUND_MODE_NEAR_EVEN</td>
+<td>0</td>
+<td>Round Ties To Even</td>
+</tr>
+<tr class="row-odd"><td>AMD_FLOAT_ROUND_MODE_PLUS_INFINITY</td>
+<td>1</td>
+<td>Round Toward +infinity</td>
+</tr>
+<tr class="row-even"><td>AMD_FLOAT_ROUND_MODE_MINUS_INFINITY</td>
+<td>2</td>
+<td>Round Toward -infinity</td>
+</tr>
+<tr class="row-odd"><td>AMD_FLOAT_ROUND_MODE_ZERO</td>
+<td>3</td>
+<td>Round Toward 0</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div>Floating Point Denorm Mode</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="9%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Enumeration Values Enumeration Name</th>
+<th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>AMD_FLOAT_DENORM_MODE_FLUSH_SRC_DST</td>
+<td>0</td>
+<td>Flush Source and Destination Denorms</td>
+</tr>
+<tr class="row-odd"><td>AMD_FLOAT_DENORM_MODE_FLUSH_DST</td>
+<td>1</td>
+<td>Flush Output Denorms</td>
+</tr>
+<tr class="row-even"><td>AMD_FLOAT_DENORM_MODE_FLUSH_SRC</td>
+<td>2</td>
+<td>Flush Source Denorms</td>
+</tr>
+<tr class="row-odd"><td>AMD_FLOAT_DENORM_MODE_FLUSH_NONE</td>
+<td>3</td>
+<td>No Flush</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div>System VGPR Work-Item ID</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="8%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Enumeration Values Enumeration Name</th>
+<th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>AMD_SYSTEM_VGPR_WORKITEM_ID_X</td>
+<td>0</td>
+<td>Set work-item X dimension ID.</td>
+</tr>
+<tr class="row-odd"><td>AMD_SYSTEM_VGPR_WORKITEM_ID_X_Y</td>
+<td>1</td>
+<td>Set work-item X and Y dimensions ID.</td>
+</tr>
+<tr class="row-even"><td>AMD_SYSTEM_VGPR_WORKITEM_ID_X_Y_Z</td>
+<td>2</td>
+<td>Set work-item X, Y and Z dimensions ID.</td>
+</tr>
+<tr class="row-odd"><td>AMD_SYSTEM_VGPR_WORKITEM_ID_UNDEFINED</td>
+<td>3</td>
+<td>Undefined.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="initial-kernel-execution-state">
+<span id="id30"></span><h4>Initial Kernel Execution State<a class="headerlink" href="#initial-kernel-execution-state" title="Permalink to this headline">¶</a></h4>
+<p>This section defines the register state that will be set up by the packet processor prior to the start of execution of every wavefront. This is limited by the constraints of the hardware controllers of CP/ADC/SPI.</p>
+<p>The order of the SGPR registers is defined, but the compiler can specify which ones are actually setup in the kernel descriptor using the enable_sgpr_* bit fields (see Kernel Descriptor). The register numbers used for enabled registers are dense starting at SGPR0: the first enabled register is SGPR0, the next enabled register is SGPR1 etc.; disabled registers do not have an SGPR number.</p>
+<p>The initial SGPRs comprise up to 16 User SRGPs that are set by CP and apply to all waves of the grid. It is possible to specify more than 16 User SGPRs using the enable_sgpr_* bit fields, in which case only the first 16 are actually initialized. These are then immediately followed by the System SGPRs that are set up by ADC/SPI and can have different values for each wave of the grid dispatch.</p>
+<p>SGPR register initial state is defined in SGPR Register Set Up Order.</p>
+<blockquote>
+<div>SGPR Register Set Up Order</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="25%" />
+<col width="5%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">SGPR Order</th>
+<th class="head">Name (kernel descriptor enable field)</th>
+<th class="head">Number of SGPRs</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>First</td>
+<td>Private Segment Buffer (enable_sgpr_private _segment_buffer)</td>
+<td>4</td>
+<td>V# that can be used, together with Scratch Wave Offset as an offset, to access the private memory space using a segment address.
+CP uses the value provided by the runtime.</td>
+</tr>
+<tr class="row-odd"><td>then</td>
+<td>Dispatch Ptr (enable_sgpr_dispatch_ptr)</td>
+<td>2</td>
+<td>64 bit address of AQL dispatch packet for kernel dispatch actually executing.</td>
+</tr>
+<tr class="row-even"><td>then</td>
+<td>Queue Ptr (enable_sgpr_queue_ptr)</td>
+<td>2</td>
+<td>64 bit address of amd_queue_t object for AQL queue on which the dispatch packet was queued.</td>
+</tr>
+<tr class="row-odd"><td>then</td>
+<td>Kernarg Segment Ptr (enable_sgpr_kernarg _segment_ptr)</td>
+<td>2</td>
+<td><p class="first">64 bit address of Kernarg segment. This is directly copied from the kernarg_address in the kernel dispatch packet.</p>
+<p class="last">Having CP load it once avoids loading it at the beginning of every wavefront.</p>
+</td>
+</tr>
+<tr class="row-even"><td>then</td>
+<td>Dispatch Id (enable_sgpr_dispatch_id)</td>
+<td>2</td>
+<td>64 bit Dispatch ID of the dispatch packet being executed.</td>
+</tr>
+<tr class="row-odd"><td>then</td>
+<td>Flat Scratch Init (enable_sgpr_flat_scratch _init)</td>
+<td>2</td>
+<td><dl class="first docutils">
+<dt>This is 2 SGPRs:</dt>
+<dd><dl class="first docutils">
+<dt>GFX6</dt>
+<dd>Not supported.</dd>
+</dl>
+<p>GFX7-GFX8
+The first SGPR is a 32 bit byte offset from SH_HIDDEN_PRIVATE_BASE_VIMID to per SPI base of memory for scratch for the queue executing the kernel dispatch. CP obtains this from the runtime.
+(The Scratch Segment Buffer base address is SH_HIDDEN_PRIVATE_BASE_VIMID plus this offset.) The value of Scratch Wave Offset must be added to this offset by the kernel machine code, right shifted by 8, and moved to the FLAT_SCRATCH_HI SGPR register.
+FLAT_SCRATCH_HI corresponds to SGPRn-4 on GFX7, and SGPRn-6 on GFX8 (where SGPRn is the highest numbered SGPR allocated to the wave).
+FLAT_SCRATCH_HI is multiplied by 256 (as it is in units of 256 bytes) and added to SH_HIDDEN_PRIVATE_BASE_VIMID to calculate the per wave FLAT SCRATCH BASE in flat memory instructions that access the scratch apperture.</p>
+<p class="last">The second SGPR is 32 bit byte size of a single work-item’s scratch memory usage.
+CP obtains this from the runtime, and it is always a multiple of DWORD. CP checks that the value in the kernel dispatch packet Private Segment Byte Size is not larger, and requests the runtime to increase the queue’s scratch size if necessary.
+The kernel code must move it to FLAT_SCRATCH_LO which is SGPRn-3 on GFX7 and SGPRn-5 on GFX8. FLAT_SCRATCH_LO is used as the FLAT SCRATCH SIZE in flat memory instructions.
+Having CP load it once avoids loading it at the beginning of every wavefront. GFX9 This is the 64 bit base address of the per SPI scratch backing memory managed by SPI for the queue executing the kernel dispatch. CP obtains this from the runtime
+(and divides it if there are multiple Shader Arrays each with its own SPI).
+The value of Scratch Wave Offset must be added by the kernel machine code and the result moved to the FLAT_SCRATCH SGPR which is SGPRn-6 and SGPRn-5.
+It is used as the FLAT SCRATCH BASE in flat memory instructions. then Private Segment Size 1 The 32 bit byte size of a (enable_sgpr_private single work-item’s scratch_segment_size) memory allocation.
+This is the value from the kernel dispatch packet Private Segment Byte Size rounded up by CP to a multiple of DWORD.
+Having CP load it once avoids loading it at the beginning of every wavefront.</p>
+</dd>
+</dl>
+<p class="last">This is not used for GFX7-GFX8 since it is the same value as the second SGPR of Flat Scratch Init.
+However, it may be needed for GFX9 which changes the meaning of the Flat Scratch Init value.</p>
+</td>
+</tr>
+<tr class="row-even"><td>then</td>
+<td>Grid Work-Group Count X (enable_sgpr_grid _workgroup_count_X)</td>
+<td>1</td>
+<td>32 bit count of the number of work-groups in the X dimension for the grid being executed.
+Computed from the fields in the kernel dispatch packet as ((grid_size.x + workgroup_size.x - 1) / workgroup_size.x).</td>
+</tr>
+<tr class="row-odd"><td>then</td>
+<td>Grid Work-Group Count Y (enable_sgpr_grid _workgroup_count_Y &amp;&amp; less than 16 previous SGPRs)</td>
+<td>1</td>
+<td>32 bit count of the number of work-groups in the Y dimension for the grid being executed.
+Computed from the fields in the kernel dispatch packet as ((grid_size.y + workgroup_size.y - 1) / workgroupSize.y).
+Only initialized if &lt;16 previous SGPRs initialized.</td>
+</tr>
+<tr class="row-even"><td>then</td>
+<td>Grid Work-Group Count Z (enable_sgpr_grid _workgroup_count_Z &amp;&amp; less than 16 previous SGPRs)</td>
+<td>1</td>
+<td>32 bit count of the number of work-groups in the Z dimension for the grid being executed.
+Computed from the fields in the kernel dispatch packet as ((grid_size.z + workgroup_size.z - 1) / workgroupSize.z).
+Only initialized if &lt;16 previous SGPRs initialized.</td>
+</tr>
+<tr class="row-odd"><td>then</td>
+<td>Work-Group Id X (enable_sgpr_workgroup_id _X)</td>
+<td>1</td>
+<td>32 bit work-group id in X dimension of grid for wavefront.</td>
+</tr>
+<tr class="row-even"><td>then</td>
+<td>Work-Group Id Y (enable_sgpr_workgroup_id _Y)</td>
+<td>1</td>
+<td>32 bit work-group id in Y dimension of grid for wavefront.</td>
+</tr>
+<tr class="row-odd"><td>then</td>
+<td>Work-Group Id Z (enable_sgpr_workgroup_id _Z)</td>
+<td>1</td>
+<td>32 bit work-group id in Z dimension of grid for wavefront.</td>
+</tr>
+<tr class="row-even"><td>then</td>
+<td>Work-Group Info (enable_sgpr_workgroup _info)</td>
+<td>1</td>
+<td>{first_wave, 14’b0000, ordered_append_term[10:0], threadgroup_size_in_waves[5:0]}</td>
+</tr>
+<tr class="row-odd"><td>then</td>
+<td>Scratch Wave Offset (enable_sgpr_private _segment_wave_offset)</td>
+<td>1</td>
+<td>32 bit byte offset from base of scratch base of queue executing the kernel dispatch.
+Must be used as an offset with Private segment address when using Scratch Segment Buffer.
+It must be used to set up FLAT SCRATCH for flat addressing (see Flat Scratch).</td>
+</tr>
+</tbody>
+</table>
+<p>The order of the VGPR registers is defined, but the compiler can specify which ones are actually setup in the kernel descriptor using the enable_vgpr* bit fields (see Kernel Descriptor). The register numbers used for enabled registers are dense starting at VGPR0: the first enabled register is VGPR0, the next enabled register is VGPR1 etc.; disabled registers do not have a VGPR number.</p>
+<p>VGPR register initial state is defined in VGPR Register Set Up Order.</p>
+<blockquote>
+<div>VGPR Register Set Up Order</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="32%" />
+<col width="12%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">VGPR Order</th>
+<th class="head">Name (kernel descriptor enable field)</th>
+<th class="head">Number of VGPRs</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>First</td>
+<td>Work-Item Id X (Always initialized)</td>
+<td>1</td>
+<td>32 bit work item id in X dimension of work-group for wavefront lane.</td>
+</tr>
+<tr class="row-odd"><td>then</td>
+<td>Work-Item Id Y (enable_vgpr_workitem_id &gt; 0)</td>
+<td>1</td>
+<td>32 bit work item id in Y dimension of work-group for wavefront lane.</td>
+</tr>
+<tr class="row-even"><td>then</td>
+<td>Work-Item Id Z (enable_vgpr_workitem_id &gt; 1)</td>
+<td>1</td>
+<td>32 bit work item id in Z dimension of work-group for wavefront lane.</td>
+</tr>
+</tbody>
+</table>
+<p>The setting of registers is is done by GPU CP/ADC/SPI hardware as follows:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>SGPRs before the Work-Group Ids are set by CP using the 16 User Data registers.</li>
+<li>Work-group Id registers X, Y, Z are set by ADC which supports any combination including none.</li>
+<li>Scratch Wave Offset is set by SPI in a per wave basis which is why its value cannot included with the flat scratch init value which is per queue.</li>
+<li>The VGPRs are set by SPI which only supports specifying either (X), (X, Y) or (X, Y, Z).</li>
+</ol>
+</div></blockquote>
+<p>Flat Scratch register pair are adjacent SGRRs so they can be moved as a 64 bit value to the hardware required SGPRn-3 and SGPRn-4 respectively.</p>
+<p>The global segment can be accessed either using buffer instructions (GFX6 which has V# 64 bit address support), flat instructions (GFX7-9), or global instructions (GFX9).</p>
+<p>If buffer operations are used then the compiler can generate a V# with the following properties:</p>
+<blockquote>
+<div><ul class="simple">
+<li>base address of 0</li>
+<li>no swizzle</li>
+<li>ATC: 1 if IOMMU present (such as APU)</li>
+<li>ptr64: 1</li>
+<li>MTYPE set to support memory coherence that matches the runtime (such as CC for APU and NC for dGPU).</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="kernel-prolog">
+<span id="id31"></span><h4>Kernel Prolog<a class="headerlink" href="#kernel-prolog" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="m0">
+<span id="id32"></span><h5>M0<a class="headerlink" href="#m0" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>GFX6-GFX8</dt>
+<dd>The M0 register must be initialized with a value at least the total LDS size if the kernel may access LDS via DS or flat operations. Total LDS size is available in dispatch packet. For M0, it is also possible to use maximum possible value of LDS for given target (0x7FFF for GFX6 and 0xFFFF for GFX7-GFX8).</dd>
+<dt>GFX9</dt>
+<dd>The M0 register is not used for range checking LDS accesses and so does not need to be initialized in the prolog.</dd>
+</dl>
+</div>
+<div class="section" id="flat-scratch">
+<span id="id33"></span><h5>Flat Scratch<a class="headerlink" href="#flat-scratch" title="Permalink to this headline">¶</a></h5>
+<p>If the kernel may use flat operations to access scratch memory, the prolog code must set up FLAT_SCRATCH register pair (FLAT_SCRATCH_LO/FLAT_SCRATCH_HI which are in SGPRn-4/SGPRn-3). Initialization uses Flat Scratch Init and Scratch Wave Offset SGPR registers (see Initial Kernel Execution State):</p>
+<dl class="docutils">
+<dt>GFX6</dt>
+<dd>Flat scratch is not supported.</dd>
+<dt>GFX7-8</dt>
+<dd><ol class="first last arabic simple">
+<li>The low word of Flat Scratch Init is 32 bit byte offset from SH_HIDDEN_PRIVATE_BASE_VIMID to the base of scratch backing memory being managed by SPI for the queue executing the kernel dispatch. This is the same value used in the Scratch Segment Buffer V# base address. The prolog must add the value of Scratch Wave Offset to get the wave’s byte scratch backing memory offset from SH_HIDDEN_PRIVATE_BASE_VIMID. Since FLAT_SCRATCH_LO is in units of 256 bytes, the offset must be right shifted by 8 before moving into FLAT_SCRATCH_LO.</li>
+<li>The second word of Flat Scratch Init is 32 bit byte size of a single work-items scratch memory usage. This is directly loaded from the kernel dispatch packet Private Segment Byte Size and rounded up to a multiple of DWORD. Having CP load it once avoids loading it at the beginning of every wavefront. The prolog must move it to FLAT_SCRATCH_LO for use as FLAT SCRATCH SIZE.</li>
+</ol>
+</dd>
+<dt>GFX9</dt>
+<dd>The Flat Scratch Init is the 64 bit address of the base of scratch backing memory being managed by SPI for the queue executing the kernel dispatch. The prolog must add the value of Scratch Wave Offset and moved to the FLAT_SCRATCH pair for use as the flat scratch base in flat memory instructions.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="memory-model">
+<span id="id34"></span><h4>Memory Model<a class="headerlink" href="#memory-model" title="Permalink to this headline">¶</a></h4>
+<p>This section describes the mapping of LLVM memory model onto AMDGPU machine code (see Memory Model for Concurrent Operations). The implementation is WIP.</p>
+<p>The AMDGPU backend supports the memory synchronization scopes specified in Memory Scopes.</p>
+<p>The code sequences used to implement the memory model are defined in table AMDHSA Memory Model Code Sequences GFX6-GFX9.</p>
+<p>The sequences specify the order of instructions that a single thread must execute. The s_waitcnt and buffer_wbinvl1_vol are defined with respect to other memory instructions executed by the same thread. This allows them to be moved earlier or later which can allow them to be combined with other instances of the same instruction, or hoisted/sunk out of loops to improve performance. Only the instructions related to the memory model are given; additional s_waitcnt instructions are required to ensure registers are defined before being used. These may be able to be combined with the memory model s_waitcnt instructions as described above.</p>
+<p>The AMDGPU memory model supports both the HSA [HSA] memory model, and the OpenCL [OpenCL] memory model. The HSA memory model uses a single happens-before relation for all address spaces (see Address Spaces). The OpenCL memory model which has separate happens-before relations for the global and local address spaces, and only a fence specifying both global and local address space joins the relationships. Since the LLVM memfence instruction does not allow an address space to be specified the OpenCL fence has to convervatively assume both local and global address space was specified. However, optimizations can often be done to eliminate the additional <code class="docutils literal notranslate"><span class="pre">s_waitcnt</span></code> instructions when there are no intervening corresponding <code class="docutils literal notranslate"><span class="pre">ds/flat_load/store/atomic</span> <span class="pre">memory</span></code> instructions. The code sequences in the table indicate what can be omitted for the OpenCL memory. The target triple environment is used to determine if the source language is OpenCL (see OpenCL).</p>
+<p>ds/flat_load/store/atomic instructions to local memory are termed LDS operations.</p>
+<p>buffer/global/flat_load/store/atomic instructions to global memory are termed vector memory operations.</p>
+<p>For GFX6-GFX9:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Each agent has multiple compute units (CU).</li>
+<li>Each CU has multiple SIMDs that execute wavefronts.</li>
+<li>The wavefronts for a single work-group are executed in the same CU but may be executed by different SIMDs.</li>
+<li>Each CU has a single LDS memory shared by the wavefronts of the work-groups executing on it.</li>
+<li>All LDS operations of a CU are performed as wavefront wide operations in a global order and involve no caching. Completion is reported to a wavefront in execution order.</li>
+<li>The LDS memory has multiple request queues shared by the SIMDs of a CU. Therefore, the LDS operations performed by different waves of a work-group can be reordered relative to each other, which can result in reordering the visibility of vector memory operations with respect to LDS operations of other wavefronts in the same work-group. A s_waitcnt lgkmcnt(0) is required to ensure synchronization between LDS operations and vector memory operations between waves of a work-group, but not between operations performed by the same wavefront.</li>
+<li>The vector memory operations are performed as wavefront wide operations and completion is reported to a wavefront in execution order. The exception is that for GFX7-9 flat_load/store/atomic instructions can report out of vector memory order if they access LDS memory, and out of LDS operation order if they access global memory.</li>
+<li>The vector memory operations access a vector L1 cache shared by all wavefronts on a CU. Therefore, no special action is required for coherence between wavefronts in the same work-group. A buffer_wbinvl1_vol is required for coherence between waves executing in different work-groups as they may be executing on different CUs.</li>
+<li>The scalar memory operations access a scalar L1 cache shared by all wavefronts on a group of CUs. The scalar and vector L1 caches are not coherent. However, scalar operations are used in a restricted way so do not impact the memory model. See Memory Spaces.</li>
+<li>The vector and scalar memory operations use an L2 cache shared by all CUs on the same agent.</li>
+<li>The L2 cache has independent channels to service disjoint ranges of virtual addresses.</li>
+<li>Each CU has a separate request queue per channel. Therefore, the vector and scalar memory operations performed by waves executing in different work-groups (which may be executing on different CUs) of an agent can be reordered relative to each other. A s_waitcnt vmcnt(0) is required to ensure synchronization between vector memory operations of different CUs. It ensures a previous vector memory operation has completed before executing a subsequent vector memory or LDS operation and so can be used to meet the requirements of acquire and release.</li>
+<li>The L2 cache can be kept coherent with other agents on some targets, or ranges of virtual addresses can be set up to bypass it to ensure system coherence.</li>
+</ul>
+</div></blockquote>
+<p>Private address space uses buffer_load/store using the scratch V# (GFX6-8), or scratch_load/store (GFX9). Since only a single thread is accessing the memory, atomic memory orderings are not meaningful and all accesses are treated as non-atomic.</p>
+<p>Constant address space uses buffer/global_load instructions (or equivalent scalar memory instructions). Since the constant address space contents do not change during the execution of a kernel dispatch it is not legal to perform stores, and atomic memory orderings are not meaningful and all access are treated as non-atomic.</p>
+<p>A memory synchronization scope wider than work-group is not meaningful for the group (LDS) address space and is treated as work-group.</p>
+<p>The memory model does not support the region address space which is treated as non-atomic.</p>
+<p>Acquire memory ordering is not meaningful on store atomic instructions and is treated as non-atomic.</p>
+<p>Release memory ordering is not meaningful on load atomic instructions and is treated a non-atomic.</p>
+<p>Acquire-release memory ordering is not meaningful on load or store atomic instructions and is treated as acquire and release respectively.</p>
+<p>AMDGPU backend only uses scalar memory operations to access memory that is proven to not change during the execution of the kernel dispatch. This includes constant address space and global address space for program scope const variables. Therefore the kernel machine code does not have to maintain the scalar L1 cache to ensure it is coherent with the vector L1 cache. The scalar and vector L1 caches are invalidated between kernel dispatches by CP since constant address space data may change between kernel dispatch executions. See Memory Spaces.</p>
+<p>The one execption is if scalar writes are used to spill SGPR registers. In this case the AMDGPU backend ensures the memory location used to spill is never accessed by vector memory operations at the same time. If scalar writes are used then a s_dcache_wb is inserted before the s_endpgm and before a function return since the locations may be used for vector memory instructions by a future wave that uses the same scratch area, or a function call that creates a frame at the same address, respectively. There is no need for a s_dcache_inv as all scalar writes are write-before-read in the same thread.</p>
+<p>Scratch backing memory (which is used for the private address space) is accessed with MTYPE NC_NV (non-coherenent non-volatile). Since the private address space is only accessed by a single thread, and is always write-before-read, there is never a need to invalidate these entries from the L1 cache. Hence all cache invalidates are done as <a href="#id35"><span class="problematic" id="id36">*</span></a>_vol to only invalidate the volatile cache lines.</p>
+<p>On dGPU the kernarg backing memory is accessed as UC (uncached) to avoid needing to invalidate the L2 cache. This also causes it to be treated as non-volatile and so is not invalidated by <a href="#id37"><span class="problematic" id="id38">*</span></a>_vol. On APU it is accessed as CC (cache coherent) and so the L2 cache will coherent with the CPU and other agents.</p>
+<blockquote>
+<div><strong>AMDHSA Memory Model Code Sequences GFX6-GFX9</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="8%" />
+<col width="9%" />
+<col width="8%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">LLVM Instr</th>
+<th class="head">LLVM Memory Ordering</th>
+<th class="head">LLVM Memory Sync Scope</th>
+<th class="head">AMDGPU Address Space</th>
+<th class="head">AMDGPU Machine Code</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="5"><strong>Non-Atomic</strong></td>
+</tr>
+<tr class="row-odd"><td>Load</td>
+<td>none</td>
+<td>none</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>generic</li>
+</ul>
+</td>
+<td><dl class="first last docutils">
+<dt>non-volatile</dt>
+<dd><ol class="first last arabic simple">
+<li>buffer/global/flat_load</li>
+</ol>
+</dd>
+<dt>volatile</dt>
+<dd><ol class="first last arabic simple" start="2">
+<li>buffer/global/flat_load  glc=1</li>
+</ol>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td>Load</td>
+<td>none</td>
+<td>none</td>
+<td><ul class="first last simple">
+<li>Local</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>ds_load</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>store</td>
+<td>none</td>
+<td>none</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>buffer/global/flat_store</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>store</td>
+<td>none</td>
+<td>none</td>
+<td><ul class="first last simple">
+<li>local</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>ds_store</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td colspan="5"><strong>Unordered Atomic</strong></td>
+</tr>
+<tr class="row-even"><td>load atomic</td>
+<td>unordered</td>
+<td>any</td>
+<td>any</td>
+<td>Same as non-atomic</td>
+</tr>
+<tr class="row-odd"><td>store atomic</td>
+<td>unordered</td>
+<td>any</td>
+<td>any</td>
+<td>Same as non-atomic</td>
+</tr>
+<tr class="row-even"><td>atomicrmw</td>
+<td>unordered</td>
+<td>any</td>
+<td>any</td>
+<td>Same as monotonic atomic.</td>
+</tr>
+<tr class="row-odd"><td colspan="5"><strong>Monotonic Atomic</strong></td>
+</tr>
+<tr class="row-even"><td>load atomic</td>
+<td>monotonic</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>buffer/global/flat_load</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>load atomic</td>
+<td>monotonic</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>local</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>ds_load</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>load atomic</td>
+<td>monotonic</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>buffer/global/flat_load glc=1</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>store atomic</td>
+<td>monotonic</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+<li>workgroup</li>
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>buffer/global/flat_store</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>store atomic</td>
+<td>monotonic</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>local</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>ds_store</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>atomicrmw</td>
+<td>monotonic</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+<li>workgroup</li>
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>buffer/global/flat_atomic</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>atomicrmw</td>
+<td>monotonic</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>local</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>ds_atomic</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td colspan="5"><strong>Acquire Atomic</strong></td>
+</tr>
+<tr class="row-even"><td>load atomic</td>
+<td>acquire</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>local</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>buffer/global/ds/flat_load</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>load atomic</td>
+<td>acquire</td>
+<td><ul class="first last simple">
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>buffer/global_load</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>load atomic</td>
+<td>acquire</td>
+<td><ul class="first last simple">
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>local</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>ds/flat_load</li>
+<li>s_waitcnt lgkmcnt(0)</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>If OpenCL, omit waitcnt.</li>
+<li>Must happen before any following global/generic load/load atomic/store/store atomic/atomicrmw.</li>
+<li>Ensures any following global data read is no older than the load atomic value being acquired.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>load atomic</td>
+<td>acquire</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>buffer/global_load glc=1</li>
+<li>s_waitcnt vmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Must happen before following buffer_wbinvl1_vol.</li>
+<li>Ensures the load has completed before invalidating the cache.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>buffer_wbinvl1_vol</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Must happen before any following global/generic load/load atomic/atomicrmw.</li>
+<li>Ensures that following loads will not see stale global data.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>load atomic</td>
+<td>acquire</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>flat_load glc=1</li>
+<li>s_waitcnt vmcnt(0) &amp; lgkmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If OpenCL omit lgkmcnt(0).</li>
+<li>Must happen before following buffer_wbinvl1_vol.</li>
+<li>Ensures the flat_load has completed before invalidating the cache.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>buffer_wbinvl1_vol</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Must happen before any following global/generic load/load atomic/atomicrmw.</li>
+<li>Ensures that following loads will not see stale global data</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>atomicrmw</td>
+<td>acquire</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>local</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>buffer/global/ds/flat_atomic</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>atomicrmw</td>
+<td>acquire</td>
+<td><ul class="first last simple">
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>buffer/global_atomic</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>atomicrmw</td>
+<td>acquire</td>
+<td><ul class="first last simple">
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first simple">
+<li>local</li>
+</ul>
+<p class="last"><a href="#id39"><span class="problematic" id="id40">*</span></a>generic</p>
+</td>
+<td><ol class="first arabic simple">
+<li>ds/flat_atomic</li>
+<li>waitcnt lgkmcnt(0)</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>If OpenCL, omit waitcnt.</li>
+<li>Must happen before any following global/generic load/load atomic/store/store atomic/atomicrmw.</li>
+<li>Ensures any following global data read is no older than the atomicrmw value being acquired.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>atomicrmw</td>
+<td>acquire</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>buffer/global_atomic</li>
+<li>s_waitcnt vmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Must happen before following buffer_wbinvl1_vol.</li>
+<li>Ensures the atomicrmw has completed before invalidating the cache.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>buffer_wbinvl1_vol</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Must happen before any following global/generic load/load atomic/atomicrmw.</li>
+<li>Ensures that following loads will not see stale global data.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>atomicrmw</td>
+<td>acquire</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>flat_atomic</li>
+<li>s_waitcnt vmcnt(0) &amp; lgkmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If OpenCL, omit lgkmcnt(0).</li>
+<li>Must happen before following buffer_wbinvl1_vol.</li>
+<li>Ensures the atomicrmw has completed before invalidating the cache.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>buffer_wbinvl1_vol</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Must happen before any following global/generic load/load atomic/atomicrmw.</li>
+<li>Ensures that following loads will not see stale global data.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>fence</td>
+<td>acquire</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+</ul>
+</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td>fence</td>
+<td>acquire</td>
+<td><ul class="first last simple">
+<li>workgroup</li>
+</ul>
+</td>
+<td>none</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt lgkmcnt(0)</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>If OpenCL and address space is not generic, omit waitcnt.</dt>
+<dd>However, since LLVM currently has no address space on the fence need to conservatively always generate.
+If fence had an address space then set to address space of OpenCL fence flag, or to generic if both local and global flags are specified.</dd>
+</dl>
+</li>
+<li>Must happen after any preceding local/generic load atomic/atomicrmw with
+an equal or wider sync scope and memory ordering stronger than unordered (this is termed the fence-paired-atomic).</li>
+<li>Must happen before any following global/generic load/load atomic/store/store atomic/atomicrmw.</li>
+<li>Ensures any following global data read is no older than the value read by the fence-paired-atomic.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>fence</td>
+<td>acquire</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td>none</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt vmcnt(0) &amp; lgkmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If OpenCL and address space is not generic, omit lgkmcnt(0).
+However, since LLVM currently has no address space on the fence need to conservatively always generate (see comment for previous fence).</li>
+<li>Could be split into separate s_waitcnt vmcnt(0) and s_waitcnt lgkmcnt(0) to allow them to be independently moved according to the following rules.</li>
+<li>s_waitcnt vmcnt(0) must happen after any preceding global/generic load atomic/atomicrmw with
+an equal or wider sync scope and memory ordering stronger than unordered (this is termed the fence-paired-atomic).</li>
+<li>s_waitcnt lgkmcnt(0) must happen after any preceding group/generic load atomic/atomicrmw with an equal or
+wider sync scope and memory ordering stronger than unordered (this is termed the fence-paired-atomic).</li>
+<li>Must happen before the following buffer_wbinvl1_vol.</li>
+<li>Ensures that the fence-paired atomic has completed before invalidating the cache.
+Therefore any following locations read must be no older than the value read by the fence-paired-atomic.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>buffer_wbinvl1_vol</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Must happen before any following global/generic load/load atomic/store/store atomic/atomicrmw.</li>
+<li>Ensures that following loads will not see stale global data.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td colspan="5"><strong>Release Atomic</strong></td>
+</tr>
+<tr class="row-even"><td>store atomic</td>
+<td>release</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>local</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>buffer/global/ds/flat_store</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>store atomic</td>
+<td>release</td>
+<td><ul class="first last simple">
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt lgkmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If OpenCL, omit waitcnt.</li>
+<li>Must happen after any preceding local/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>Must happen before the following store.</li>
+<li>Ensures that all memory operations to local have completed before performing the store that is being released.</li>
+</ul>
+</div></blockquote>
+<ol class="last arabic simple" start="2">
+<li>buffer/global/flat_store</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>store atomic</td>
+<td>release</td>
+<td><ul class="first last simple">
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>local</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>ds_store</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>store atomic</td>
+<td>release</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt vmcnt(0) &amp; lgkmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If OpenCL, omit lgkmcnt(0).</li>
+<li>Could be split into separate s_waitcnt vmcnt(0) and s_waitcnt lgkmcnt(0) to allow them to be independently moved according to the following rules.</li>
+<li>s_waitcnt vmcnt(0) must happen after any preceding global/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>s_waitcnt lgkmcnt(0) must happen after any preceding local/generic load/store/load atomic/store atomic/atomicrmw.</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Must happen before the following store.</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Ensures that all memory operations to global have completed before performing the store that is being released.</li>
+</ul>
+</div></blockquote>
+<ol class="last arabic simple" start="2">
+<li>buffer/global/ds/flat_store</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>atomicrmw</td>
+<td>release</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>local</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>buffer/global/ds/flat_atomic</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>atomicrmw</td>
+<td>release</td>
+<td><ul class="first last simple">
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt lgkmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If OpenCL, omit waitcnt.</li>
+<li>Must happen after any preceding local/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>Must happen before the following atomicrmw.</li>
+<li>Ensures that all memory operations to local have completed before performing the atomicrmw that is being released.</li>
+</ul>
+</div></blockquote>
+<ol class="last arabic simple" start="2">
+<li>buffer/global/flat_atomic</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>atomicrmw</td>
+<td>release</td>
+<td><ul class="first last simple">
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>local</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>ds_atomic</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>atomicrmw</td>
+<td>release</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt vmcnt(0) &amp; lgkmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If OpenCL, omit lgkmcnt(0).</li>
+<li>Could be split into separate s_waitcnt vmcnt(0) and s_waitcnt lgkmcnt(0) to allow them to be independently moved according to the following rules.</li>
+<li>s_waitcnt vmcnt(0) must happen after any preceding global/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>s_waitcnt lgkmcnt(0) must happen after any preceding local/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>Must happen before the following atomicrmw.</li>
+<li>Ensures that all memory operations to global and local have completed before performing the atomicrmw that is being released.</li>
+</ul>
+</div></blockquote>
+<ol class="last arabic simple" start="2">
+<li>buffer/global/ds/flat_atomic*</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>fence</td>
+<td>release</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+</ul>
+</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td>fence</td>
+<td>release</td>
+<td><ul class="first last simple">
+<li>workgroup</li>
+</ul>
+</td>
+<td>none</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt lgkmcnt(0)</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>If OpenCL and address space is not generic, omit waitcnt.
+However, since LLVM currently has no address space on the fence need to conservatively always generate (see comment for previous fence).</li>
+<li>Must happen after any preceding local/generic load/load atomic/store/store atomic/atomicrmw.</li>
+<li>Must happen before any following store atomic/atomicrmw with an equal or
+wider sync scope and memory ordering stronger than unordered (this is termed the fence-paired-atomic).</li>
+<li>Ensures that all memory operations to local have completed before performing the following fence-paired-atomic.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>fence</td>
+<td>release</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td>none</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt vmcnt(0) &amp; lgkmcnt(0)</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>If OpenCL and address space is not generic, omit lgkmcnt(0).
+However, since LLVM currently has no address space on the fence need to conservatively always generate (see comment for previous fence).</li>
+<li>Could be split into separate s_waitcnt vmcnt(0) and s_waitcnt lgkmcnt(0) to allow them to be independently moved according to the following rules.</li>
+<li>s_waitcnt vmcnt(0) must happen after any preceding global/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>s_waitcnt lgkmcnt(0) must happen after any preceding local/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li><dl class="first docutils">
+<dt>Must happen before any following store atomic/atomicrmw with an equal or wider sync scope and memory ordering stronger than unordered</dt>
+<dd>(this is termed the fence-paired-atomic).</dd>
+</dl>
+</li>
+<li>Ensures that all memory operations to global have completed before performing the following fence-paired-atomic.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td colspan="5"><strong>Acquire-Release Atomic</strong></td>
+</tr>
+<tr class="row-even"><td>atomicrmw</td>
+<td>acq_rel</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>local</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first last arabic simple">
+<li>buffer/global/ds/flat_atomic</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>atomicrmw</td>
+<td>acq_rel</td>
+<td><ul class="first last simple">
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt lgkmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If OpenCL, omit waitcnt.</li>
+<li>Must happen after any preceding local/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>Must happen before the following atomicrmw.</li>
+<li>Ensures that all memory operations to local have completed before performing the atomicrmw that is being released.</li>
+</ul>
+</div></blockquote>
+<ol class="last arabic simple" start="2">
+<li>buffer/global_atomic</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>atomicrmw</td>
+<td>acq_rel</td>
+<td><ul class="first last simple">
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>local</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>ds_atomic</li>
+<li>s_waitcnt lgkmcnt(0)</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>If OpenCL, omit waitcnt.</li>
+<li>Must happen before any following global/generic load/load atomic/store/store atomic/atomicrmw.</li>
+<li>Ensures any following global data read is no older than the load atomic value being acquired.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>atomicrmw</td>
+<td>acq_rel</td>
+<td><a href="#id41"><span class="problematic" id="id42">*</span></a>workgroup</td>
+<td><ul class="first last simple">
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt lgkmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If OpenCL, omit waitcnt.</li>
+<li>Must happen after any preceding local/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>Must happen before the following atomicrmw.</li>
+<li>Ensures that all memory operations to local have completed before performing the atomicrmw that is being released.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>flat_atomic</li>
+<li>s_waitcnt lgkmcnt(0)</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>If OpenCL, omit waitcnt.</li>
+<li>Must happen before any following global/generic load/load atomic/store/store atomic/atomicrmw.</li>
+<li>Ensures any following global data read is no older than the load atomic value being acquired.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>atomicrmw</td>
+<td>acq_rel</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt vmcnt(0) &amp; lgkmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If OpenCL, omit lgkmcnt(0).</li>
+<li>Could be split into separate s_waitcnt vmcnt(0) and s_waitcnt lgkmcnt(0) to allow them to be independently moved according to the following rules.</li>
+<li>s_waitcnt vmcnt(0) must happen after any preceding global/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>s_waitcnt lgkmcnt(0) must happen after any preceding local/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>Must happen before the following atomicrmw.</li>
+<li>Ensures that all memory operations to global have completed before performing the atomicrmw that is being released.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>buffer/global_atomic</li>
+<li>s_waitcnt vmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Must happen before following buffer_wbinvl1_vol.</li>
+<li>Ensures the atomicrmw has completed before invalidating the cache.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>buffer_wbinvl1_vol</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Must happen before any following global/generic load/load atomic/atomicrmw.</li>
+<li>Ensures that following loads will not see stale global data.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>atomicrmw</td>
+<td>acq_rel</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt vmcnt(0) &amp; lgkmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If OpenCL, omit lgkmcnt(0).</li>
+<li>Could be split into separate s_waitcnt vmcnt(0) and s_waitcnt lgkmcnt(0) to allow them to be independently moved according to the following rules.</li>
+<li>s_waitcnt vmcnt(0) must happen after any preceding global/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>s_waitcnt lgkmcnt(0) must happen after any preceding local/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>Must happen before the following atomicrmw.</li>
+<li>Ensures that all memory operations to global have completed before performing the atomicrmw that is being released.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>flat_atomic</li>
+<li>s_waitcnt vmcnt(0) &amp; lgkmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If OpenCL, omit lgkmcnt(0).</li>
+<li>Must happen before following buffer_wbinvl1_vol.</li>
+<li>Ensures the atomicrmw has completed before invalidating the cache.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>buffer_wbinvl1_vol</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Must happen before any following global/generic load/load atomic/atomicrmw.</li>
+<li>Ensures that following loads will not see stale global data.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>fence</td>
+<td>acq_rel</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+</ul>
+</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td>fence</td>
+<td>acq_rel</td>
+<td><ul class="first last simple">
+<li>workgroup</li>
+</ul>
+</td>
+<td>none</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt lgkmcnt(0)</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>If OpenCL and address space is not generic, omit waitcnt.
+However, since LLVM currently has no address space on the fence need to conservatively always generate (see comment for previous fence).</li>
+<li>Must happen after any preceding local/generic load/load atomic/store/store atomic/atomicrmw.</li>
+<li>Must happen before any following global/generic load/load atomic/store/store atomic/atomicrmw.</li>
+<li>Ensures that all memory operations to local have completed before performing any following global memory operations.</li>
+<li>Ensures that the preceding local/generic load atomic/atomicrmw with an equal or wider sync scope and memory ordering stronger than unordered
+(this is termed the fence-paired-atomic) has completed before following global memory operations.This satisfies the requirements of acquire.</li>
+<li>Ensures that all previous memory operations have completed before a following local/generic store atomic/atomicrmw with an equal or
+wider sync scope and memory ordering stronger than unordered (this is termed the fence-paired-atomic). This satisfies the requirements of release.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>fence</td>
+<td>acq_rel</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td>none</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt vmcnt(0) &amp; lgkmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If OpenCL and address space is not generic, omit lgkmcnt(0).
+However, since LLVM currently has no address space on the fence need to conservatively always generate (see comment for previous fence).</li>
+<li>Could be split into separate s_waitcnt vmcnt(0) and s_waitcnt lgkmcnt(0) to allow them to be independently moved according to the following rules.</li>
+<li>s_waitcnt vmcnt(0) must happen after any preceding global/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>s_waitcnt lgkmcnt(0) must happen after any preceding local/generic load/store/load atomic/store atomic/atomicrmw.</li>
+<li>Must happen before the following buffer_wbinvl1_vol.</li>
+<li><dl class="first docutils">
+<dt>Ensures that the preceding global/local/generic load atomic/atomicrmw with an equal or wider sync scope and</dt>
+<dd>memory ordering stronger than unordered (this is termed the fence-paired-atomic) has completed before invalidating the cache.
+This satisfies the requirements of acquire.</dd>
+</dl>
+</li>
+<li>Ensures that all previous memory operations have completed before a following global/local/generic store atomic/atomicrmw with
+an equal or wider sync scope and memory ordering stronger than unordered (this is termed the fence-paired-atomic).This satisfies the requirements of release.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>buffer_wbinvl1_vol</li>
+</ol>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Must happen before any following global/generic load/load atomic/store/store atomic/atomicrmw.</li>
+<li>Ensures that following loads will not see stale global data. This satisfies the requirements of acquire.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td colspan="5"><strong>Sequential Consistent Atomic</strong></td>
+</tr>
+<tr class="row-even"><td>load atomic</td>
+<td>seq_cst</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+<li>workgroup</li>
+</ul>
+</td>
+<td><a href="#id43"><span class="problematic" id="id44">*</span></a>global
+* local
+* generic</td>
+<td>Same as corresponding load atomic acquire.</td>
+</tr>
+<tr class="row-odd"><td>load atomic</td>
+<td>seq_cst</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>local</li>
+<li>generic</li>
+</ul>
+</td>
+<td><ol class="first arabic simple">
+<li>s_waitcnt vmcnt(0)</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Must happen after preceding global/generic load atomic/store atomic/atomicrmw with memory ordering of seq_cst and with equal or wider sync scope.
+(Note that seq_cst fences have their own s_waitcnt vmcnt(0) and so do not need to be considered.)</li>
+<li>Ensures any preceding sequential consistent global memory instructions have completed before executing this sequentially consistent instruction.
+This prevents reordering a seq_cst store followed by a seq_cst load (Note that seq_cst is stronger than acquire/release as the reordering of load acquire
+followed by a store release is prevented by the waitcnt vmcnt(0) of the release, but there is nothing preventing a store release followed by load acquire from competing out of order.)</li>
+</ul>
+</div></blockquote>
+<p class="last">2.Following instructions same as corresponding load atomic acquire.</p>
+</td>
+</tr>
+<tr class="row-even"><td>store atomic</td>
+<td>seq_cst</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>local</li>
+<li>generic</li>
+</ul>
+</td>
+<td>Same as corresponding store atomic release.</td>
+</tr>
+<tr class="row-odd"><td>store atomic</td>
+<td>seq_cst</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>generic</li>
+</ul>
+</td>
+<td>Sameas corresponding store atomic release.</td>
+</tr>
+<tr class="row-even"><td>atomicrmw</td>
+<td>seq_cst</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+<li>workgroup</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>local</li>
+<li>generic</li>
+</ul>
+</td>
+<td>Same as corresponding atomicrmw acq_rel.</td>
+</tr>
+<tr class="row-odd"><td>atomicrmw</td>
+<td>seq_cst</td>
+<td><ul class="first last simple">
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>global</li>
+<li>generic</li>
+</ul>
+</td>
+<td>Same as corresponding atomicrmw acq_rel.</td>
+</tr>
+<tr class="row-even"><td>fence</td>
+<td>seq_cst</td>
+<td><ul class="first last simple">
+<li>singlethread</li>
+<li>wavefront</li>
+<li>workgroup</li>
+<li>agent</li>
+<li>system</li>
+</ul>
+</td>
+<td>none</td>
+<td>Same as corresponding fence acq_rel.</td>
+</tr>
+</tbody>
+</table>
+<p>The memory order also adds the single thread optimization constrains defined in table AMDHSA Memory Model Single Thread Optimization Constraints GFX6-GFX9.</p>
+<blockquote>
+<div>AMDHSA Memory Model Single Thread Optimization Constraints GFX6-GFX9</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="94%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">LLVM Memory</th>
+<th class="head">Optimization Constraints</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Ordering</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>unordered</td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td>monotonic</td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td>acquire</td>
+<td><ul class="first last simple">
+<li>If a load atomic/atomicrmw then no following load/load atomic/store/ store atomic/atomicrmw/fence instruction can be moved before the acquire.</li>
+<li>If a fence then same as load atomic, plus no preceding associated fence-paired-atomic can be moved after the fence.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>release</td>
+<td><ul class="first last simple">
+<li>If a store atomic/atomicrmw then no preceding load/load atomic/store/ store atomic/atomicrmw/fence instruction can be moved after the release.</li>
+<li>If a fence then same as store atomic, plus no following associated fence-paired-atomic can be moved before the fence.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>acq_rel</td>
+<td>Same constraints as both acquire and release.</td>
+</tr>
+<tr class="row-even"><td>seq_cst</td>
+<td><ul class="first last simple">
+<li>If a load atomic then same constraints as acquire, plus no preceding sequentially consistent load atomic/store atomic/atomicrmw/fence instruction can be moved after the seq_cst.</li>
+<li>If a store atomic then the same constraints as release, plus no following sequentially consistent load atomic/store atomic/atomicrmw/fence instruction can be moved before the seq_cst.</li>
+<li>If an atomicrmw/fence then same constraints as acq_rel.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="trap-handler-abi">
+<span id="trap-handler-abi1"></span><h4>Trap Handler ABI<a class="headerlink" href="#trap-handler-abi" title="Permalink to this headline">¶</a></h4>
+<p>For code objects generated by AMDGPU backend for HSA [HSA] compatible runtimes (such as ROCm [AMD-ROCm]), the runtime installs a trap handler that supports the s_trap instruction with the following usage:</p>
+<p>AMDGPU Trap Handler for AMDHSA OS</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="11%" />
+<col width="15%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Usage</th>
+<th class="head">Code Sequence</th>
+<th class="head">Trap Handler Inputs</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>reserved</td>
+<td>s_trap 0x00</td>
+<td>&#160;</td>
+<td>Reserved by hardware.</td>
+</tr>
+<tr class="row-odd"><td>debugtrap(arg)</td>
+<td>s_trap 0x01</td>
+<td><dl class="first last docutils">
+<dt>SGPR0-1:</dt>
+<dd>queue_ptr</dd>
+<dt>VGPR0:</dt>
+<dd>arg</dd>
+</dl>
+</td>
+<td>Reserved for HSA debugtrap intrinsic (not implemented).</td>
+</tr>
+<tr class="row-even"><td>llvm.trap</td>
+<td>s_trap 0x02</td>
+<td><dl class="first last docutils">
+<dt>SGPR0-1:</dt>
+<dd>queue_ptr</dd>
+</dl>
+</td>
+<td>Causes dispatch to be terminated and its associated queue put into the error state.</td>
+</tr>
+<tr class="row-odd"><td>llvm.debugtrap</td>
+<td>s_trap 0x03</td>
+<td>SGPR0-1:queue_ptr</td>
+<td>If debugger not installed handled same as llvm.trap.</td>
+</tr>
+<tr class="row-even"><td>debugger breakpoint</td>
+<td>s_trap 0x07</td>
+<td>&#160;</td>
+<td>Reserved for debugger breakpoints.</td>
+</tr>
+<tr class="row-odd"><td>debugger</td>
+<td>s_trap 0x08</td>
+<td>&#160;</td>
+<td>Reserved for debugger.</td>
+</tr>
+<tr class="row-even"><td>debugger</td>
+<td>s_trap 0xfe</td>
+<td>&#160;</td>
+<td>Reserved for debugger.</td>
+</tr>
+<tr class="row-odd"><td>debugger</td>
+<td>s_trap 0xff</td>
+<td>&#160;</td>
+<td>Reserved for debugger.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="unspecified-os">
+<span id="id45"></span><h3>Unspecified OS<a class="headerlink" href="#unspecified-os" title="Permalink to this headline">¶</a></h3>
+<p>This section provides code conventions used when the target triple OS is empty (see Target Triples).</p>
+<div class="section" id="trap-handler-abi2">
+<span id="id46"></span><h4>Trap Handler ABI<a class="headerlink" href="#trap-handler-abi2" title="Permalink to this headline">¶</a></h4>
+<p>For code objects generated by AMDGPU backend for non-amdhsa OS, the runtime does not install a trap handler. The llvm.trap and llvm.debugtrap instructions are handled as follows:</p>
+<p>AMDGPU Trap Handler for Non-AMDHSA OS</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="16%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Usage</th>
+<th class="head">Code Sequence</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>llvm.trap</td>
+<td>s_endpgm</td>
+<td>Causes wavefront to be terminated.</td>
+</tr>
+<tr class="row-odd"><td>llvm.debugtrap</td>
+<td>none</td>
+<td>Compiler warning given that there is no trap handler installed.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="source-languages">
+<span id="id47"></span><h2>Source Languages<a class="headerlink" href="#source-languages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="opencl">
+<span id="id48"></span><h3>OpenCL<a class="headerlink" href="#opencl" title="Permalink to this headline">¶</a></h3>
+<p>When generating code for the OpenCL language the target triple environment should be opencl or amdgizcl (see Target Triples).</p>
+<p>When the language is OpenCL the following differences occur:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>The OpenCL memory model is used (see Memory Model).</li>
+<li>The AMDGPU backend adds additional arguments to the kernel.</li>
+<li>Additional metadata is generated (Code Object Metadata).</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="hcc">
+<span id="id49"></span><h3>HCC<a class="headerlink" href="#hcc" title="Permalink to this headline">¶</a></h3>
+<p>When generating code for the OpenCL language the target triple environment should be hcc (see Target Triples).</p>
+<p>When the language is OpenCL the following differences occur:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>The HSA memory model is used (see Memory Model).</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="assembler">
+<span id="id50"></span><h3>Assembler<a class="headerlink" href="#assembler" title="Permalink to this headline">¶</a></h3>
+<p>AMDGPU backend has LLVM-MC based assembler which is currently in development. It supports AMDGCN GFX6-GFX8.</p>
+<p>This section describes general syntax for instructions and operands. For more information about instructions, their semantics and supported combinations of operands, refer to one of instruction set architecture manuals [AMD-Souther-Islands], [AMD-Sea-Islands], [AMD-Volcanic-Islands] and [AMD-Vega].</p>
+<p>An instruction has the following syntax (register operands are normally comma-separated while extra operands are space-separated):</p>
+<p>&lt;opcode&gt; &lt;register_operand0&gt;, … &lt;extra_operand0&gt; …</p>
+<div class="section" id="operands">
+<span id="id51"></span><h4>Operands<a class="headerlink" href="#operands" title="Permalink to this headline">¶</a></h4>
+<p>The following syntax for register operands is supported:</p>
+<blockquote>
+<div><ul class="simple">
+<li>SGPR registers: s0, … or s[0], …</li>
+<li>VGPR registers: v0, … or v[0], …</li>
+<li>TTMP registers: ttmp0, … or ttmp[0], …</li>
+<li>Special registers: exec (exec_lo, exec_hi), vcc (vcc_lo, vcc_hi), flat_scratch (flat_scratch_lo, flat_scratch_hi)</li>
+<li>Special trap registers: tba (tba_lo, tba_hi), tma (tma_lo, tma_hi)</li>
+<li>Register pairs, quads, etc: s[2:3], v[10:11], ttmp[5:6], s[4:7], v[12:15], ttmp[4:7], s[8:15], …</li>
+<li>Register lists: [s0, s1], [ttmp0, ttmp1, ttmp2, ttmp3]</li>
+<li>Register index expressions: v[2*2], s[1-1:2-1]</li>
+<li>‘off’ indicates that an operand is not enabled</li>
+</ul>
+</div></blockquote>
+<p>The following extra operands are supported:</p>
+<blockquote>
+<div><ul class="simple">
+<li>offset, offset0, offset1</li>
+<li>idxen, offen bits</li>
+<li>glc, slc, tfe bits</li>
+<li>waitcnt: integer or combination of counter values</li>
+<li><dl class="first docutils">
+<dt>VOP3 modifiers:</dt>
+<dd><ul class="first last">
+<li>abs (| <a href="#id52"><span class="problematic" id="id53">|</span></a>), neg (-)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DPP modifiers:</dt>
+<dd><ul class="first last">
+<li>row_shl, row_shr, row_ror, row_rol</li>
+<li>row_mirror, row_half_mirror, row_bcast</li>
+<li>wave_shl, wave_shr, wave_ror, wave_rol, quad_perm</li>
+<li>row_mask, bank_mask, bound_ctrl</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>SDWA modifiers:</dt>
+<dd><ul class="first last">
+<li>dst_sel, src0_sel, src1_sel (BYTE_N, WORD_M, DWORD)</li>
+<li>dst_unused (UNUSED_PAD, UNUSED_SEXT, UNUSED_PRESERVE)</li>
+<li>abs, neg, sext</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="instruction-examples">
+<span id="id54"></span><h4>Instruction Examples<a class="headerlink" href="#instruction-examples" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="ds">
+<span id="id55"></span><h4>DS<a class="headerlink" href="#ds" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds_add_u32</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v4</span> <span class="n">offset</span><span class="p">:</span><span class="mi">16</span>
+<span class="n">ds_write_src2_b64</span> <span class="n">v2</span> <span class="n">offset0</span><span class="p">:</span><span class="mi">4</span> <span class="n">offset1</span><span class="p">:</span><span class="mi">8</span>
+<span class="n">ds_cmpst_f32</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v4</span><span class="p">,</span> <span class="n">v6</span>
+<span class="n">ds_min_rtn_f64</span> <span class="n">v</span><span class="p">[</span><span class="mi">8</span><span class="p">:</span><span class="mi">9</span><span class="p">],</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>For full list of supported instructions, refer to “LDS/GDS instructions” in ISA Manual.</p>
+<div class="section" id="flat">
+<span id="id56"></span><h5>FLAT<a class="headerlink" href="#flat" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flat_load_dword</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">flat_store_dwordx3</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">flat_atomic_swap</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span> <span class="n">v5</span> <span class="n">glc</span>
+<span class="n">flat_atomic_cmpswap</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="n">glc</span> <span class="n">slc</span>
+<span class="n">flat_atomic_fmax_x2</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="n">glc</span>
+</pre></div>
+</div>
+<p>For full list of supported instructions, refer to “FLAT instructions” in ISA Manual.</p>
+</div>
+<div class="section" id="mubuf">
+<span id="id57"></span><h5>MUBUF<a class="headerlink" href="#mubuf" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">buffer_load_dword</span> <span class="n">v1</span><span class="p">,</span> <span class="n">off</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">],</span> <span class="n">s1</span>
+<span class="n">buffer_store_dwordx4</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span> <span class="n">v2</span><span class="p">,</span> <span class="n">ttmp</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">],</span> <span class="n">s1</span> <span class="n">offen</span> <span class="n">offset</span><span class="p">:</span><span class="mi">4</span> <span class="n">glc</span> <span class="n">tfe</span>
+<span class="n">buffer_store_format_xy</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">off</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">],</span> <span class="n">s1</span>
+<span class="n">buffer_wbinvl1</span>
+<span class="n">buffer_atomic_inc</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">8</span><span class="p">:</span><span class="mi">11</span><span class="p">],</span> <span class="n">s4</span> <span class="n">idxen</span> <span class="n">offset</span><span class="p">:</span><span class="mi">4</span> <span class="n">slc</span>
+</pre></div>
+</div>
+<p>For full list of supported instructions, refer to “MUBUF Instructions” in ISA Manual.</p>
+</div>
+<div class="section" id="smrd-smem">
+<span id="id58"></span><h5>SMRD/SMEM<a class="headerlink" href="#smrd-smem" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s_load_dword</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="mh">0xfc</span>
+<span class="n">s_load_dwordx8</span> <span class="n">s</span><span class="p">[</span><span class="mi">8</span><span class="p">:</span><span class="mi">15</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">s4</span>
+<span class="n">s_load_dwordx16</span> <span class="n">s</span><span class="p">[</span><span class="mi">88</span><span class="p">:</span><span class="mi">103</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">s4</span>
+<span class="n">s_dcache_inv_vol</span>
+<span class="n">s_memtime</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>For full list of supported instructions, refer to “Scalar Memory Operations” in ISA Manual.</p>
+</div>
+<div class="section" id="sop1">
+<span id="id59"></span><h5>SOP1<a class="headerlink" href="#sop1" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s_mov_b32</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span>
+<span class="n">s_mov_b64</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span> <span class="mh">0x80000000</span>
+<span class="n">s_cmov_b32</span> <span class="n">s1</span><span class="p">,</span> <span class="mi">200</span>
+<span class="n">s_wqm_b64</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">s_bcnt0_i32_b64</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">s_swappc_b64</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">s_cbranch_join</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>For full list of supported instructions, refer to “SOP1 Instructions” in ISA Manual.</p>
+</div>
+<div class="section" id="sop2">
+<span id="id60"></span><h5>SOP2<a class="headerlink" href="#sop2" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s_add_u32</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span>
+<span class="n">s_and_b64</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">s_cselect_b32</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span>
+<span class="n">s_andn2_b32</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s4</span><span class="p">,</span> <span class="n">s6</span>
+<span class="n">s_lshr_b64</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="n">s6</span>
+<span class="n">s_ashr_i32</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s4</span><span class="p">,</span> <span class="n">s6</span>
+<span class="n">s_bfm_b64</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">s4</span><span class="p">,</span> <span class="n">s6</span>
+<span class="n">s_bfe_i64</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="n">s6</span>
+<span class="n">s_cbranch_g_fork</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>For full list of supported instructions, refer to “SOP2 Instructions” in ISA Manual.</p>
+</div>
+<div class="section" id="sopc">
+<span id="id61"></span><h5>SOPC<a class="headerlink" href="#sopc" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s_cmp_eq_i32</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span>
+<span class="n">s_bitcmp1_b32</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span>
+<span class="n">s_bitcmp0_b64</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">s4</span>
+<span class="n">s_setvskip</span> <span class="n">s3</span><span class="p">,</span> <span class="n">s5</span>
+</pre></div>
+</div>
+<p>For full list of supported instructions, refer to “SOPC Instructions” in ISA Manual.</p>
+</div>
+<div class="section" id="sopp">
+<span id="id62"></span><h5>SOPP<a class="headerlink" href="#sopp" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s_barrier</span>
+<span class="n">s_nop</span> <span class="mi">2</span>
+<span class="n">s_endpgm</span>
+<span class="n">s_waitcnt</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">Wait</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">counters</span> <span class="n">to</span> <span class="n">be</span> <span class="mi">0</span>
+<span class="n">s_waitcnt</span> <span class="n">vmcnt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">expcnt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">lgkmcnt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">;</span> <span class="n">Equivalent</span> <span class="n">to</span> <span class="n">above</span>
+<span class="n">s_waitcnt</span> <span class="n">vmcnt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">;</span> <span class="n">Wait</span> <span class="k">for</span> <span class="n">vmcnt</span> <span class="n">counter</span> <span class="n">to</span> <span class="n">be</span> <span class="mf">1.</span>
+<span class="n">s_sethalt</span> <span class="mi">9</span>
+<span class="n">s_sleep</span> <span class="mi">10</span>
+<span class="n">s_sendmsg</span> <span class="mh">0x1</span>
+<span class="n">s_sendmsg</span> <span class="n">sendmsg</span><span class="p">(</span><span class="n">MSG_INTERRUPT</span><span class="p">)</span>
+<span class="n">s_trap</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>For full list of supported instructions, refer to “SOPP Instructions” in ISA Manual.</p>
+<p>Unless otherwise mentioned, little verification is performed on the operands of SOPP Instructions, so it is up to the programmer to be familiar with the range or acceptable values.</p>
+</div>
+<div class="section" id="valu">
+<span id="id63"></span><h5>VALU<a class="headerlink" href="#valu" title="Permalink to this headline">¶</a></h5>
+<p>For vector ALU instruction opcodes (VOP1, VOP2, VOP3, VOPC, VOP_DPP, VOP_SDWA), the assembler will automatically use optimal encoding based on its operands. To force specific encoding, one can add a suffix to the opcode of the instruction:</p>
+<blockquote>
+<div><ul class="simple">
+<li>_e32 for 32-bit VOP1/VOP2/VOPC</li>
+<li>_e64 for 64-bit VOP3</li>
+<li>_dpp for VOP_DPP</li>
+<li>_sdwa for VOP_SDWA</li>
+</ul>
+</div></blockquote>
+<p>VOP1/VOP2/VOP3/VOPC examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">v_mov_b32</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span>
+<span class="n">v_mov_b32_e32</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span>
+<span class="n">v_nop</span>
+<span class="n">v_cvt_f64_i32_e32</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">v2</span>
+<span class="n">v_floor_f32_e32</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span>
+<span class="n">v_bfrev_b32_e32</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span>
+<span class="n">v_add_f32_e32</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v3</span>
+<span class="n">v_mul_i32_i24_e64</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">v_mul_i32_i24_e32</span> <span class="n">v1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">v3</span>
+<span class="n">v_mul_i32_i24_e32</span> <span class="n">v1</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="n">v3</span>
+<span class="n">v_addc_u32</span> <span class="n">v1</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v3</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">v_max_f16_e32</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v3</span>
+</pre></div>
+</div>
+<p>VOP_DPP examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">v_mov_b32</span> <span class="n">v0</span><span class="p">,</span> <span class="n">v0</span> <span class="n">quad_perm</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">v_sin_f32</span> <span class="n">v0</span><span class="p">,</span> <span class="n">v0</span> <span class="n">row_shl</span><span class="p">:</span><span class="mi">1</span> <span class="n">row_mask</span><span class="p">:</span><span class="mh">0xa</span> <span class="n">bank_mask</span><span class="p">:</span><span class="mh">0x1</span> <span class="n">bound_ctrl</span><span class="p">:</span><span class="mi">0</span>
+<span class="n">v_mov_b32</span> <span class="n">v0</span><span class="p">,</span> <span class="n">v0</span> <span class="n">wave_shl</span><span class="p">:</span><span class="mi">1</span>
+<span class="n">v_mov_b32</span> <span class="n">v0</span><span class="p">,</span> <span class="n">v0</span> <span class="n">row_mirror</span>
+<span class="n">v_mov_b32</span> <span class="n">v0</span><span class="p">,</span> <span class="n">v0</span> <span class="n">row_bcast</span><span class="p">:</span><span class="mi">31</span>
+<span class="n">v_mov_b32</span> <span class="n">v0</span><span class="p">,</span> <span class="n">v0</span> <span class="n">quad_perm</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="n">row_mask</span><span class="p">:</span><span class="mh">0xa</span> <span class="n">bank_mask</span><span class="p">:</span><span class="mh">0x1</span> <span class="n">bound_ctrl</span><span class="p">:</span><span class="mi">0</span>
+<span class="n">v_add_f32</span> <span class="n">v0</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="o">|</span><span class="n">v0</span><span class="o">|</span> <span class="n">row_shl</span><span class="p">:</span><span class="mi">1</span> <span class="n">row_mask</span><span class="p">:</span><span class="mh">0xa</span> <span class="n">bank_mask</span><span class="p">:</span><span class="mh">0x1</span> <span class="n">bound_ctrl</span><span class="p">:</span><span class="mi">0</span>
+<span class="n">v_max_f16</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v3</span> <span class="n">row_shl</span><span class="p">:</span><span class="mi">1</span> <span class="n">row_mask</span><span class="p">:</span><span class="mh">0xa</span> <span class="n">bank_mask</span><span class="p">:</span><span class="mh">0x1</span> <span class="n">bound_ctrl</span><span class="p">:</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>VOP_SDWA examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">v_mov_b32</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="n">dst_sel</span><span class="p">:</span><span class="n">BYTE_0</span> <span class="n">dst_unused</span><span class="p">:</span><span class="n">UNUSED_PRESERVE</span> <span class="n">src0_sel</span><span class="p">:</span><span class="n">DWORD</span>
+<span class="n">v_min_u32</span> <span class="n">v200</span><span class="p">,</span> <span class="n">v200</span><span class="p">,</span> <span class="n">v1</span> <span class="n">dst_sel</span><span class="p">:</span><span class="n">WORD_1</span> <span class="n">dst_unused</span><span class="p">:</span><span class="n">UNUSED_PAD</span> <span class="n">src0_sel</span><span class="p">:</span><span class="n">BYTE_1</span> <span class="n">src1_sel</span><span class="p">:</span><span class="n">DWORD</span>
+<span class="n">v_sin_f32</span> <span class="n">v0</span><span class="p">,</span> <span class="n">v0</span> <span class="n">dst_unused</span><span class="p">:</span><span class="n">UNUSED_PAD</span> <span class="n">src0_sel</span><span class="p">:</span><span class="n">WORD_1</span>
+<span class="n">v_fract_f32</span> <span class="n">v0</span><span class="p">,</span> <span class="o">|</span><span class="n">v0</span><span class="o">|</span> <span class="n">dst_sel</span><span class="p">:</span><span class="n">DWORD</span> <span class="n">dst_unused</span><span class="p">:</span><span class="n">UNUSED_PAD</span> <span class="n">src0_sel</span><span class="p">:</span><span class="n">WORD_1</span>
+<span class="n">v_cmpx_le_u32</span> <span class="n">vcc</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="n">src0_sel</span><span class="p">:</span><span class="n">BYTE_2</span> <span class="n">src1_sel</span><span class="p">:</span><span class="n">WORD_0</span>
+</pre></div>
+</div>
+<p>For full list of supported instructions, refer to “Vector ALU instructions”.</p>
+</div>
+</div>
+<div class="section" id="hsa-code-object-directives">
+<span id="id64"></span><h4>HSA Code Object Directives<a class="headerlink" href="#hsa-code-object-directives" title="Permalink to this headline">¶</a></h4>
+<p>AMDGPU ABI defines auxiliary data in output code object. In assembly source, one can specify them with assembler directives.</p>
+<div class="section" id="hsa-code-object-version-major-minor">
+<span id="id65"></span><h5>.hsa_code_object_version major, minor<a class="headerlink" href="#hsa-code-object-version-major-minor" title="Permalink to this headline">¶</a></h5>
+<p>major and minor are integers that specify the version of the HSA code object that will be generated by the assembler.</p>
+</div>
+<div class="section" id="hsa-code-object-isa-major-minor-stepping-vendor-arch">
+<span id="hsa-code-object-isa"></span><h5>.hsa_code_object_isa [major, minor, stepping, vendor, arch]<a class="headerlink" href="#hsa-code-object-isa-major-minor-stepping-vendor-arch" title="Permalink to this headline">¶</a></h5>
+<p>major, minor, and stepping are all integers that describe the instruction set architecture (ISA) version of the assembly program.</p>
+<p>vendor and arch are quoted strings. vendor should always be equal to “AMD” and arch should always be equal to “AMDGPU”.</p>
+<p>By default, the assembler will derive the ISA version, vendor, and arch from the value of the -mcpu option that is passed to the assembler.</p>
+</div>
+<div class="section" id="amdgpu-hsa-kernel-name">
+<span id="amdgpu-hsa-kernel"></span><h5>.amdgpu_hsa_kernel (name)<a class="headerlink" href="#amdgpu-hsa-kernel-name" title="Permalink to this headline">¶</a></h5>
+<p>This directives specifies that the symbol with given name is a kernel entry point (label) and the object should contain corresponding symbol of type STT_AMDGPU_HSA_KERNEL.</p>
+</div>
+<div class="section" id="amd-kernel-code-t">
+<span id="id66"></span><h5>.amd_kernel_code_t<a class="headerlink" href="#amd-kernel-code-t" title="Permalink to this headline">¶</a></h5>
+<p>This directive marks the beginning of a list of key / value pairs that are used to specify the amd_kernel_code_t object that will be emitted by the assembler. The list must be terminated by the .end_amd_kernel_code_t directive. For any amd_kernel_code_t values that are unspecified a default value will be used. The default value for all keys is 0, with the following exceptions:</p>
+<blockquote>
+<div><ul class="simple">
+<li>kernel_code_version_major defaults to 1.</li>
+<li>machine_kind defaults to 1.</li>
+<li>machine_version_major, machine_version_minor, and machine_version_stepping are derived from the value of the -mcpu option that is passed to the assembler.</li>
+<li>kernel_code_entry_byte_offset defaults to 256.</li>
+<li>wavefront_size defaults to 6.</li>
+<li>kernarg_segment_alignment, group_segment_alignment, and private_segment_alignment default to 4. Note that alignments are specified as a power of two, so a value of n means an alignment of 2^ n.</li>
+</ul>
+</div></blockquote>
+<p>The .amd_kernel_code_t directive must be placed immediately after the function label and before any instructions.</p>
+<p>For a full list of amd_kernel_code_t keys, refer to AMDGPU ABI document, comments in lib/Target/AMDGPU/AmdKernelCodeT.h and test/CodeGen/AMDGPU/hsa.s.</p>
+<p>Here is an example of a minimal amd_kernel_code_t specification:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">hsa_code_object_version</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span>
+<span class="o">.</span><span class="n">hsa_code_object_isa</span>
+
+<span class="o">.</span><span class="n">hsatext</span>
+<span class="o">.</span><span class="n">globl</span>  <span class="n">hello_world</span>
+<span class="o">.</span><span class="n">p2align</span> <span class="mi">8</span>
+<span class="o">.</span><span class="n">amdgpu_hsa_kernel</span> <span class="n">hello_world</span>
+
+<span class="n">hello_world</span><span class="p">:</span>
+
+   <span class="o">.</span><span class="n">amd_kernel_code_t</span>
+      <span class="n">enable_sgpr_kernarg_segment_ptr</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="n">is_ptr64</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="n">compute_pgm_rsrc1_vgprs</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="n">compute_pgm_rsrc1_sgprs</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="n">compute_pgm_rsrc2_user_sgpr</span> <span class="o">=</span> <span class="mi">2</span>
+      <span class="n">kernarg_segment_byte_size</span> <span class="o">=</span> <span class="mi">8</span>
+      <span class="n">wavefront_sgpr_count</span> <span class="o">=</span> <span class="mi">2</span>
+      <span class="n">workitem_vgpr_count</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="o">.</span><span class="n">end_amd_kernel_code_t</span>
+
+  <span class="n">s_load_dwordx2</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="mh">0x0</span>
+  <span class="n">v_mov_b32</span> <span class="n">v0</span><span class="p">,</span> <span class="mf">3.14159</span>
+  <span class="n">s_waitcnt</span> <span class="n">lgkmcnt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="n">v_mov_b32</span> <span class="n">v1</span><span class="p">,</span> <span class="n">s0</span>
+  <span class="n">v_mov_b32</span> <span class="n">v2</span><span class="p">,</span> <span class="n">s1</span>
+  <span class="n">flat_store_dword</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">v0</span>
+  <span class="n">s_endpgm</span>
+<span class="o">.</span><span class="n">Lfunc_end0</span><span class="p">:</span>
+     <span class="o">.</span><span class="n">size</span>   <span class="n">hello_world</span><span class="p">,</span> <span class="o">.</span><span class="n">Lfunc_end0</span><span class="o">-</span><span class="n">hello_world</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="additional-documentation">
+<span id="id67"></span><h5>Additional Documentation<a class="headerlink" href="#additional-documentation" title="Permalink to this headline">¶</a></h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

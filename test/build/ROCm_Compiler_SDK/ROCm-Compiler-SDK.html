@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ROCm Compiler SDK &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ROCm System Management" href="../ROCm_System_Managment/ROCm-System-Managment.html" />
+    <link rel="prev" title="ROCm Libraries" href="../ROCm_Libraries/ROCm_Libraries.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ROCm Compiler SDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gcn-native-isa-llvm-code-generator">GCN Native ISA LLVM Code Generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rocm-code-object-format">ROCm Code Object Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rocm-device-library">ROCm Device Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">OVERVIEW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building">BUILDING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-bitcode-libraries">USING BITCODE LIBRARIES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing">TESTING</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rocr-runtime">ROCr Runtime</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hsa-runtime-api-and-runtime-for-rocm">HSA Runtime API and runtime for ROCm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#source-code">Source code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#binaries-for-ubuntu-fedora-and-installation-instructions">Binaries for Ubuntu &amp; Fedora and installation instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#infrastructure">Infrastructure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample">Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>ROCm Compiler SDK</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Compiler_SDK/ROCm-Compiler-SDK.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rocm-compiler-sdk">
+<span id="id1"></span><h1>ROCm Compiler SDK<a class="headerlink" href="#rocm-compiler-sdk" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gcn-native-isa-llvm-code-generator">
+<h2>GCN Native ISA LLVM Code Generator<a class="headerlink" href="#gcn-native-isa-llvm-code-generator" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="ROCm-Native-ISA.html#rocm-native-isa"><span class="std std-ref">GCN Native ISA LLVM Code Generator</span></a></li>
+</ul>
+</div>
+<div class="section" id="rocm-code-object-format">
+<h2>ROCm Code Object Format<a class="headerlink" href="#rocm-code-object-format" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="ROCm-Codeobj-format.html#rocm-codeobj-format"><span class="std std-ref">ROCm Code Object Format</span></a></li>
+</ul>
+</div>
+<div class="section" id="rocm-device-library">
+<h2>ROCm Device Library<a class="headerlink" href="#rocm-device-library" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overview">
+<h3>OVERVIEW<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<p>This repository contains the following libraries:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="68%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Comments</th>
+<th class="head">Dependencies</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>irif</td>
+<td>Interface to LLVM IR</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>ocml</td>
+<td>Open Compute Math library(<a class="reference internal" href="ocml.html#ocml"><span class="std std-ref">documentation</span></a>)</td>
+<td>irif</td>
+</tr>
+<tr class="row-even"><td>oclc</td>
+<td>Open Compute library controls (documentation)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>ockl</td>
+<td>Open Compute Kernel library.</td>
+<td>irif</td>
+</tr>
+<tr class="row-even"><td>opencl</td>
+<td>OpenCL built-in library</td>
+<td>ocml, ockl</td>
+</tr>
+<tr class="row-odd"><td>hc</td>
+<td>Heterogeneous Compute built-in library</td>
+<td>ocml, ockl</td>
+</tr>
+</tbody>
+</table>
+<p>All libraries are compiled to LLVM Bitcode which can be linked. Note that libraries use specific AMDGPU intrinsics.</p>
+</div>
+<div class="section" id="building">
+<h3>BUILDING<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h3>
+<p>To build it, use RadeonOpenCompute LLVM/LLD/Clang. Default branch on these repositories is “amd-common”, which may contain AMD-specific codes yet upstreamed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">llvm</span><span class="o">.</span><span class="n">git</span> <span class="n">llvm_amd</span><span class="o">-</span><span class="n">common</span>
+<span class="n">cd</span> <span class="n">llvm_amd</span><span class="o">-</span><span class="n">common</span><span class="o">/</span><span class="n">tools</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">lld</span><span class="o">.</span><span class="n">git</span> <span class="n">lld</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">clang</span><span class="o">.</span><span class="n">git</span> <span class="n">clang</span>
+<span class="n">cd</span> <span class="o">..</span>
+<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> \
+   <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> \
+   <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">rocm</span><span class="o">/</span><span class="n">llvm</span> \
+   <span class="o">-</span><span class="n">DLLVM_TARGETS_TO_BUILD</span><span class="o">=</span><span class="s2">&quot;AMDGPU;X86&quot;</span> \
+   <span class="o">..</span>
+</pre></div>
+</div>
+<p>Testing also requires amdhsacod utility from ROCm Runtime.</p>
+<p>Use out-of-source CMake build and create separate directory to run CMake.</p>
+<p>The following build steps are performed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mkdir -p build
+cd build
+export LLVM_BUILD=... (path to LLVM build)
+CC=$LLVM_BUILD/bin/clang cmake -DLLVM_DIR=$LLVM_BUILD -DAMDHSACOD=$HSA_DIR/bin/x86_64/amdhsacod ..
+make
+</pre></div>
+</div>
+<p>It is also possible to use compiler that only has AMDGPU target enabled if you build prepare-builtins separately with host compiler and pass explicit target option to CMake:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export LLVM_BUILD=... (path to LLVM build)
+# Build prepare-builtins
+cd utils
+mkdir build
+cd build
+cmake -DLLVM_DIR=$LLVM_BUILD ..
+make
+# Build bitcode libraries
+cd ../..
+mkdir build
+cd build
+CC=$LLVM_BUILD/bin/clang cmake -DLLVM_DIR=$LLVM_BUILD -DAMDHSACOD=$HSA_DIR/bin/x86_64/amdhsacod -DCMAKE_C_FLAGS=&quot;-target amdgcn--amdhsa&quot;       DCMAKE_CXX_FLAGS=&quot;-target amdgcn--amdhsa&quot; -DPREPARE_BUILTINS=`cd ../utils/build/prepare-builtins/; pwd`/prepare-builtins ..
+</pre></div>
+</div>
+<p>To install artifacts: make install</p>
+<p>To run offline tests: make test</p>
+<p>To create packages for the library: make package</p>
+</div>
+<div class="section" id="using-bitcode-libraries">
+<h3>USING BITCODE LIBRARIES<a class="headerlink" href="#using-bitcode-libraries" title="Permalink to this headline">¶</a></h3>
+<p>The bitcode libraries should be linked to user bitcode (obtained from source) before final code generation with llvm-link or -mlink-bitcode-file option of clang.</p>
+<p>For OpenCL, the list of bitcode libraries includes opencl, its dependencies (ocml, ockl, irif) and oclc control libraries selected according to OpenCL compilation mode. Assuming that the build of this repository was done in /srv/git/ROCm-Device-Libs/build, the following command line shows how to compile simple OpenCL source test.cl into code object test.so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clang</span> <span class="o">-</span><span class="n">x</span> <span class="n">cl</span> <span class="o">-</span><span class="n">Xclang</span> <span class="o">-</span><span class="n">finclude</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">header</span> \
+    <span class="o">-</span><span class="n">target</span> <span class="n">amdgcn</span><span class="o">--</span><span class="n">amdhsa</span> <span class="o">-</span><span class="n">mcpu</span><span class="o">=</span><span class="n">fiji</span> \
+    <span class="o">-</span><span class="n">Xclang</span> <span class="o">-</span><span class="n">mlink</span><span class="o">-</span><span class="n">bitcode</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">Xclang</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">ROCm</span><span class="o">-</span><span class="n">Device</span><span class="o">-</span><span class="n">Libs</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">opencl</span><span class="o">/</span><span class="n">opencl</span><span class="o">.</span><span class="n">amdgcn</span><span class="o">.</span><span class="n">bc</span> \
+    <span class="o">-</span><span class="n">Xclang</span> <span class="o">-</span><span class="n">mlink</span><span class="o">-</span><span class="n">bitcode</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">Xclang</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">ROCm</span><span class="o">-</span><span class="n">Device</span><span class="o">-</span><span class="n">Libs</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">ocml</span><span class="o">/</span><span class="n">ocml</span><span class="o">.</span><span class="n">amdgcn</span><span class="o">.</span><span class="n">bc</span> \
+    <span class="o">-</span><span class="n">Xclang</span> <span class="o">-</span><span class="n">mlink</span><span class="o">-</span><span class="n">bitcode</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">Xclang</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">ROCm</span><span class="o">-</span><span class="n">Device</span><span class="o">-</span><span class="n">Libs</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">ockl</span><span class="o">/</span><span class="n">ockl</span><span class="o">.</span><span class="n">amdgcn</span><span class="o">.</span><span class="n">bc</span> \
+    <span class="o">-</span><span class="n">Xclang</span> <span class="o">-</span><span class="n">mlink</span><span class="o">-</span><span class="n">bitcode</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">Xclang</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">ROCm</span><span class="o">-</span><span class="n">Device</span><span class="o">-</span><span class="n">Libs</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">oclc</span><span class="o">/</span><span class="n">oclc_correctly_rounded_sqrt_off</span><span class="o">.</span><span class="n">amdgcn</span><span class="o">.</span><span class="n">bc</span> \
+    <span class="o">-</span><span class="n">Xclang</span> <span class="o">-</span><span class="n">mlink</span><span class="o">-</span><span class="n">bitcode</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">Xclang</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">ROCm</span><span class="o">-</span><span class="n">Device</span><span class="o">-</span><span class="n">Libs</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">oclc</span><span class="o">/</span><span class="n">oclc_daz_opt_off</span><span class="o">.</span><span class="n">amdgcn</span><span class="o">.</span><span class="n">bc</span> \
+    <span class="o">-</span><span class="n">Xclang</span> <span class="o">-</span><span class="n">mlink</span><span class="o">-</span><span class="n">bitcode</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">Xclang</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">ROCm</span><span class="o">-</span><span class="n">Device</span><span class="o">-</span><span class="n">Libs</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">oclc</span><span class="o">/</span><span class="n">oclc_finite_only_off</span><span class="o">.</span><span class="n">amdgcn</span><span class="o">.</span><span class="n">bc</span> \
+    <span class="o">-</span><span class="n">Xclang</span> <span class="o">-</span><span class="n">mlink</span><span class="o">-</span><span class="n">bitcode</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">Xclang</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">ROCm</span><span class="o">-</span><span class="n">Device</span><span class="o">-</span><span class="n">Libs</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">oclc</span><span class="o">/</span><span class="n">oclc_isa_version_803</span><span class="o">.</span><span class="n">amdgcn</span><span class="o">.</span><span class="n">bc</span> \
+    <span class="o">-</span><span class="n">Xclang</span> <span class="o">-</span><span class="n">mlink</span><span class="o">-</span><span class="n">bitcode</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">Xclang</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">ROCm</span><span class="o">-</span><span class="n">Device</span><span class="o">-</span><span class="n">Libs</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">oclc</span><span class="o">/</span><span class="n">oclc_unsafe_math_off</span><span class="o">.</span><span class="n">amdgcn</span><span class="o">.</span><span class="n">bc</span> \
+    <span class="o">-</span><span class="n">Xclang</span> <span class="o">-</span><span class="n">mlink</span><span class="o">-</span><span class="n">bitcode</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">Xclang</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">ROCm</span><span class="o">-</span><span class="n">Device</span><span class="o">-</span><span class="n">Libs</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">irif</span><span class="o">/</span><span class="n">irif</span><span class="o">.</span><span class="n">amdgcn</span><span class="o">.</span><span class="n">bc</span> \
+    <span class="n">test</span><span class="o">.</span><span class="n">cl</span> <span class="o">-</span><span class="n">o</span> <span class="n">test</span><span class="o">.</span><span class="n">so</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing">
+<h3>TESTING<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
+<p>Currently all tests are offline:</p>
+<blockquote>
+<div><ul class="simple">
+<li>OpenCL source is compiled to LLVM bitcode</li>
+<li>Test bitcode is linked to library bitcode with llvm-link</li>
+<li>Clang OpenCL compiler is run on resulting bitcode, producing code object.</li>
+<li>Resulting code object is passed to llvm-objdump and amdhsacod -test.</li>
+</ul>
+</div></blockquote>
+<p>The output of tests (which includes AMDGPU disassembly) can be displayed by running ctest -VV in build directory.</p>
+<p>Tests for OpenCL conformance kernels can be enabled by specifying -DOCL_CONFORMANCE_HOME= to CMake, for example, cmake … -DOCL_CONFORMANCE_HOME=/srv/hsa/drivers/opencl/tests/extra/hsa/ocl/conformance/1.2</p>
+</div>
+</div>
+<div class="section" id="rocr-runtime">
+<h2>ROCr Runtime<a class="headerlink" href="#rocr-runtime" title="Permalink to this headline">¶</a></h2>
+<p>Github link of ROCr Runtime check <a class="reference external" href="https://github.com/RadeonOpenCompute/ROCR-Runtime">Here</a></p>
+<div class="section" id="hsa-runtime-api-and-runtime-for-rocm">
+<h3>HSA Runtime API and runtime for ROCm<a class="headerlink" href="#hsa-runtime-api-and-runtime-for-rocm" title="Permalink to this headline">¶</a></h3>
+<p>This repository includes the user-mode API interfaces and libraries necessary for host applications to launch compute kernels to available HSA ROCm kernel agents. Reference source code for the core runtime is also available.
+Initial target platform requirements</p>
+<blockquote>
+<div><ul class="simple">
+<li>CPU: Intel Haswell or newer, Core i5, Core i7, Xeon E3 v4 &amp; v5; Xeon E5 v3</li>
+<li>GPU: Fiji ASIC (AMD R9 Nano, R9 Fury and R9 Fury X)</li>
+<li>GPU: Polaris ASIC (AMD RX480)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="source-code">
+<h3>Source code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
+<p>The HSA core runtime source code for the ROCR runtime is located in the src subdirectory. Please consult the associated README.md file for contents and build instructions.</p>
+</div>
+<div class="section" id="binaries-for-ubuntu-fedora-and-installation-instructions">
+<h3>Binaries for Ubuntu &amp; Fedora and installation instructions<a class="headerlink" href="#binaries-for-ubuntu-fedora-and-installation-instructions" title="Permalink to this headline">¶</a></h3>
+<p>Pre-built binaries are available for installation from the ROCm package repository. For ROCR, they include:</p>
+<p>Core runtime package:</p>
+<blockquote>
+<div><ul class="simple">
+<li>HSA include files to support application development on the HSA runtime for the ROCR runtime</li>
+<li>A 64-bit version of AMD’s HSA core runtime for the ROCR runtime</li>
+</ul>
+</div></blockquote>
+<p>Runtime extension package:</p>
+<blockquote>
+<div><ul class="simple">
+<li>A 64-bit version of AMD’s finalizer extension for ROCR runtime</li>
+<li>A 64-bit version of AMD’s runtime tools library</li>
+<li>A 64-bit version of AMD’s runtime image library, which supports the HSAIL image implementation only.</li>
+</ul>
+</div></blockquote>
+<p>The contents of these packages are installed in /opt/rocm/hsa and /opt/rocm by default. The core runtime package depends on the hsakmt-roct-dev package</p>
+<p>Installation instructions can be found in the <a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html">ROCm Documentation</a></p>
+</div>
+<div class="section" id="infrastructure">
+<h3>Infrastructure<a class="headerlink" href="#infrastructure" title="Permalink to this headline">¶</a></h3>
+<p>The HSA runtime is a thin, user-mode API that exposes the necessary interfaces to access and interact with graphics hardware driven by the AMDGPU driver set and the ROCK kernel driver. Together they enable programmers to directly harness the power of AMD discrete graphics devices by allowing host applications to launch compute kernels directly to the graphics hardware.</p>
+<p>The capabilities expressed by the HSA Runtime API are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Error handling</li>
+<li>Runtime initialization and shutdown</li>
+<li>System and agent information</li>
+<li>Signals and synchronization</li>
+<li>Architected dispatch</li>
+<li>Memory management</li>
+<li>HSA runtime fits into a typical software architecture stack.</li>
+</ul>
+</div></blockquote>
+<p>The HSA runtime provides direct access to the graphics hardware to give the programmer more control of the execution. An example of low level hardware access is the support of one or more user mode queues provides programmers with a low-latency kernel dispatch interface, allowing them to develop customized dispatch algorithms specific to their application.</p>
+<p>The HSA Architected Queuing Language is an open standard, defined by the HSA Foundation, specifying the packet syntax used to control supported AMD/ATI Radeon (c) graphics devices. The AQL language supports several packet types, including packets that can command the hardware to automatically resolve inter-packet dependencies (barrier AND &amp; barrier OR packet), kernel dispatch packets and agent dispatch packets.</p>
+<p>In addition to user mode queues and AQL, the HSA runtime exposes various virtual address ranges that can be accessed by one or more of the system’s graphics devices, and possibly the host. The exposed virtual address ranges either support a fine grained or a coarse grained access. Updates to memory in a fine grained region are immediately visible to all devices that can access it, but only one device can have access to a coarse grained allocation at a time. Ownership of a coarse grained region can be changed using the HSA runtime memory APIs, but this transfer of ownership must be explicitly done by the host application.</p>
+<p>Programmers should consult the HSA Runtime Programmer’s Reference Manual for a full description of the HSA Runtime APIs, AQL and the HSA memory policy.</p>
+</div>
+<div class="section" id="sample">
+<h3>Sample<a class="headerlink" href="#sample" title="Permalink to this headline">¶</a></h3>
+<p>The simplest way to check if the kernel, runtime and base development environment are installed correctly is to run a simple sample. A modified version of the vector_copy sample was taken from the HSA-Runtime-AMD repository and added to the ROCR repository to facilitate this. Build the sample and run it, using this series of commands:</p>
+<p>cd ROCR-Runtime/sample &amp;&amp; make &amp;&amp; ./vector_copy</p>
+<p>If the sample runs without generating errors, the installation is complete.</p>
+</div>
+<div class="section" id="known-issues">
+<h3>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>The image extension is currently not supported for discrete GPUs. An image extension library is not provided in the binary         package. The standard hsa_ext_image.h extension include file is provided for reference.</li>
+<li>Each HSA process creates and internal DMA queue, but there is a system-wide limit of four DMA queues. The fifth simultaneous         HSA process will fail hsa_init() with HSA_STATUS_ERROR_OUT_OF_RESOURCES. To run an unlimited number of simultaneous HSA               processes, set the environment variable HSA_ENABLE_SDMA=0.</li>
+</ul>
+</div></blockquote>
+<p><strong>Disclaimer</strong></p>
+<p>The information contained herein is for informational purposes only, and is subject to change without notice. While every precaution has been taken in the preparation of this document, it may contain technical inaccuracies, omissions and typographical errors, and AMD is under no obligation to update or otherwise correct this information. Advanced Micro Devices, Inc. makes no representations or warranties with respect to the accuracy or completeness of the contents of this document, and assumes no liability of any kind, including the implied warranties of noninfringement, merchantability or fitness for particular purposes, with respect to the operation or use of AMD hardware, software or other products described herein. No license, including implied or arising by estoppel, to any intellectual property rights is granted by this document. Terms and limitations applicable to the purchase or use of AMD’s products are as set forth in a signed agreement between the parties or in AMD’s Standard Terms and Conditions of Sale.</p>
+<p>AMD, the AMD Arrow logo, and combinations thereof are trademarks of Advanced Micro Devices, Inc. Other product names used in this publication are for identification purposes only and may be trademarks of their respective companies.</p>
+<p>Copyright (c) 2014-2016 Advanced Micro Devices, Inc. All rights reserved.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ROCm_System_Managment/ROCm-System-Managment.html" class="btn btn-neutral float-right" title="ROCm System Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../ROCm_Libraries/ROCm_Libraries.html" class="btn btn-neutral" title="ROCm Libraries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,541 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Device management &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Device management</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/ROCm_API_References/HIP_API/Device-management.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="device-management">
+<span id="id1"></span><h1>Device management<a class="headerlink" href="#device-management" title="Permalink to this headline">¶</a></h1>
+<p>Device management types and functions.</p>
+<div class="section" id="hipdevicesynchronize">
+<h2>hipDeviceSynchronize<a class="headerlink" href="#hipdevicesynchronize" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv320hipDeviceSynchronizev">
+<span id="_CPPv220hipDeviceSynchronizev"></span><span id="hipDeviceSynchronize__void"></span><span class="target" id="group___device_1gaefdc2847fb1d6c3fb1354e827a191ebd"></span>hipError_t <code class="descname">hipDeviceSynchronize</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv320hipDeviceSynchronizev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Waits on all active streams on current device. </p>
+<p>When this command is invoked, the host thread gets blocked until all the commands associated with streams associated with the device. HIP does not support multiple blocking modes (yet!).</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___device_1ga43c1e7f15925eeb762195ccb5e063eae"><span class="std std-ref">hipSetDevice</span></a>, <a class="reference internal" href="#group___device_1ga8d57161ae56a8edc46eeda447417bf6c"><span class="std std-ref">hipDeviceReset</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicereset">
+<h2>hipDeviceReset<a class="headerlink" href="#hipdevicereset" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv314hipDeviceResetv">
+<span id="_CPPv214hipDeviceResetv"></span><span id="hipDeviceReset__void"></span><span class="target" id="group___device_1ga8d57161ae56a8edc46eeda447417bf6c"></span>hipError_t <code class="descname">hipDeviceReset</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv314hipDeviceResetv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The state of current device is discarded and updated to a fresh state. </p>
+<p>Calling this function deletes all streams created, memory allocated, kernels running, events created. Make sure that no other thread is using the device or streams, memory, kernels, events associated with the current device.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___device_1gaefdc2847fb1d6c3fb1354e827a191ebd"><span class="std std-ref">hipDeviceSynchronize</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipsetdevice">
+<h2>hipSetDevice<a class="headerlink" href="#hipsetdevice" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv312hipSetDevicei">
+<span id="_CPPv212hipSetDevicei"></span><span id="hipSetDevice__i"></span><span class="target" id="group___device_1ga43c1e7f15925eeb762195ccb5e063eae"></span>hipError_t <code class="descname">hipSetDevice</code><span class="sig-paren">(</span>int <em>deviceId</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv312hipSetDevicei" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set default device to be used for subsequent hip API calls from this thread. </p>
+<p><p>Sets </p>
+<code class="docutils literal notranslate"><span class="pre">device</span></code> as the default device for the calling host thread. Valid device id’s are 0… (<a class="reference internal" href="#group___device_1ga8555d5c76d88c50ddbf54ae70b568394"><span class="std std-ref">hipGetDeviceCount()</span></a>-1).<dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">deviceId</span></code>: Valid device in range 0…<a class="reference internal" href="#group___device_1ga8555d5c76d88c50ddbf54ae70b568394"><span class="std std-ref">hipGetDeviceCount()</span></a>.</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>Many HIP APIs implicitly use the “default device” :</p>
+<p><ul class="simple">
+<li>Any device memory subsequently allocated from this host thread (using hipMalloc) will be allocated on device.</li>
+<li>Any streams or events created from this host thread will be associated with device.</li>
+<li>Any kernels launched from this host thread (using hipLaunchKernel) will be executed on device (unless a specific stream is specified, in which case the device associated with that stream will be used).</li>
+</ul>
+</p>
+<p>This function may be called from any host thread. Multiple host threads may use the same device. This function does no synchronization with the previous or new device, and has very little runtime overhead. Applications can use hipSetDevice to quickly switch the default device before making a HIP runtime call which uses the default device.</p>
+<p>The default device is stored in thread-local-storage for each thread. Thread-pool implementations may inherit the default device of the previous thread. A good practice is to always call hipSetDevice at the start of HIP coding sequency to establish a known standard device.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidDevice, #hipErrorDeviceAlreadyInUse</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___device_1ga7e0e2e8c5f78e3c7449764657c254e0a"><span class="std std-ref">hipGetDevice</span></a>, <a class="reference internal" href="#group___device_1ga8555d5c76d88c50ddbf54ae70b568394"><span class="std std-ref">hipGetDeviceCount</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipgetdevice">
+<h2>hipGetDevice<a class="headerlink" href="#hipgetdevice" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv312hipGetDevicePi">
+<span id="_CPPv212hipGetDevicePi"></span><span id="hipGetDevice__iP"></span><span class="target" id="group___device_1ga7e0e2e8c5f78e3c7449764657c254e0a"></span>hipError_t <code class="descname">hipGetDevice</code><span class="sig-paren">(</span>int *<em>deviceId</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv312hipGetDevicePi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the default device id for the calling host thread. </p>
+<p><p>HIP maintains an default device for each thread using thread-local-storage. This device is used implicitly for HIP runtime APIs called by this thread. hipGetDevice returns in * </p>
+<code class="docutils literal notranslate"><span class="pre">device</span></code> the default device for the calling host thread.<dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">device</span></code>: *device is written with the default device</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___device_1ga43c1e7f15925eeb762195ccb5e063eae"><span class="std std-ref">hipSetDevice</span></a>, hipGetDevicesizeBytes </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipgetdevicecount">
+<h2>hipGetDeviceCount<a class="headerlink" href="#hipgetdevicecount" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv317hipGetDeviceCountPi">
+<span id="_CPPv217hipGetDeviceCountPi"></span><span id="hipGetDeviceCount__iP"></span><span class="target" id="group___device_1ga8555d5c76d88c50ddbf54ae70b568394"></span>hipError_t <code class="descname">hipGetDeviceCount</code><span class="sig-paren">(</span>int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv317hipGetDeviceCountPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return number of compute-capable devices. </p>
+<p><p>Returns in </p>
+<code class="docutils literal notranslate"><span class="pre">*count</span></code> the number of devices that have ability to run compute commands. If there are no such devices, then <a class="reference internal" href="#group___device_1ga8555d5c76d88c50ddbf54ae70b568394"><span class="std std-ref">hipGetDeviceCount</span></a> will return #hipErrorNoDevice. If 1 or more devices can be found, then hipGetDeviceCount returns #hipSuccess. <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorNoDevice</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">[output]</span></code>: count Returns number of compute-capable devices.</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicegetattribute">
+<h2>hipDeviceGetAttribute<a class="headerlink" href="#hipdevicegetattribute" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv321hipDeviceGetAttributePi20hipDeviceAttribute_ti">
+<span id="_CPPv221hipDeviceGetAttributePi20hipDeviceAttribute_ti"></span><span id="hipDeviceGetAttribute__iP.hipDeviceAttribute_t.i"></span><span class="target" id="group___device_1ga7080a145a4239a7276e0dc22062026c1"></span>hipError_t <code class="descname">hipDeviceGetAttribute</code><span class="sig-paren">(</span>int *<em>pi</em>, hipDeviceAttribute_t <em>attr</em>, int <em>deviceId</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv321hipDeviceGetAttributePi20hipDeviceAttribute_ti" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Query for a specific device attribute. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidDevice, #hipErrorInvalidValue </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pi</span></code>: pointer to value to return </li>
+<li><code class="docutils literal notranslate"><span class="pre">attr</span></code>: attribute to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">deviceId</span></code>: which device to query for information</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipgetdeviceproperties">
+<h2>hipGetDeviceProperties<a class="headerlink" href="#hipgetdeviceproperties" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv322hipGetDevicePropertiesP15hipDeviceProp_ti">
+<span id="_CPPv222hipGetDevicePropertiesP15hipDeviceProp_ti"></span><span id="hipGetDeviceProperties__hipDeviceProp_tP.i"></span><span class="target" id="group___device_1ga32208513b7cd491f0cb5fc884053f790"></span>hipError_t <code class="descname">hipGetDeviceProperties</code><span class="sig-paren">(</span>hipDeviceProp_t *<em>prop</em>, int <em>deviceId</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv322hipGetDevicePropertiesP15hipDeviceProp_ti" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns device properties. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidDevice </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">prop</span></code>: written with device properties </li>
+<li><code class="docutils literal notranslate"><span class="pre">deviceId</span></code>: which device to query for information</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>Populates hipGetDeviceProperties with information for the specified device. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicesetcacheconfig">
+<h2>hipDeviceSetCacheConfig<a class="headerlink" href="#hipdevicesetcacheconfig" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv323hipDeviceSetCacheConfig14hipFuncCache_t">
+<span id="_CPPv223hipDeviceSetCacheConfig14hipFuncCache_t"></span><span id="hipDeviceSetCacheConfig__hipFuncCache_t"></span><span class="target" id="group___device_1gaada3d30a46ae06f68cf1574f496b86ee"></span>hipError_t <code class="descname">hipDeviceSetCacheConfig</code><span class="sig-paren">(</span>hipFuncCache_t <em>cacheConfig</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv323hipDeviceSetCacheConfig14hipFuncCache_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set L1/Shared cache partition. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInitializationError Note: AMD devices and some Nvidia GPUS do not support reconfigurable cache. This hint is ignored on those architectures. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">cacheConfig</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicegetcacheconfig">
+<h2>hipDeviceGetCacheConfig<a class="headerlink" href="#hipdevicegetcacheconfig" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv323hipDeviceGetCacheConfigP14hipFuncCache_t">
+<span id="_CPPv223hipDeviceGetCacheConfigP14hipFuncCache_t"></span><span id="hipDeviceGetCacheConfig__hipFuncCache_tP"></span><span class="target" id="group___device_1ga37057f9830ad6fab7ce5f05f6d3c89ab"></span>hipError_t <code class="descname">hipDeviceGetCacheConfig</code><span class="sig-paren">(</span>hipFuncCache_t *<em>cacheConfig</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv323hipDeviceGetCacheConfigP14hipFuncCache_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set Cache configuration for a specific function. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInitializationError Note: AMD devices and some Nvidia GPUS do not support reconfigurable cache. This hint is ignored on those architectures. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">cacheConfig</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicegetlimit">
+<h2>hipDeviceGetLimit<a class="headerlink" href="#hipdevicegetlimit" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv317hipDeviceGetLimitP6size_t10hipLimit_t">
+<span id="_CPPv217hipDeviceGetLimitP6size_t10hipLimit_t"></span><span id="hipDeviceGetLimit__sP.hipLimit_t"></span><span class="target" id="group___device_1ga8edc85bb9637d6b1eda0d064d141a255"></span>hipError_t <code class="descname">hipDeviceGetLimit</code><span class="sig-paren">(</span>size_t *<em>pValue</em>, <em class="property">enum</em> hipLimit_t <em>limit</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv317hipDeviceGetLimitP6size_t10hipLimit_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get Resource limits of current device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorUnsupportedLimit, #hipErrorInvalidValue Note: Currently, only hipLimitMallocHeapSize is available </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pValue</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">limit</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipfuncsetcacheconfig">
+<h2>hipFuncSetCacheConfig<a class="headerlink" href="#hipfuncsetcacheconfig" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv321hipFuncSetCacheConfigPKv14hipFuncCache_t">
+<span id="_CPPv221hipFuncSetCacheConfigPKv14hipFuncCache_t"></span><span id="hipFuncSetCacheConfig__voidCP.hipFuncCache_t"></span><span class="target" id="group___device_1gafdb33ef569eb89808fc5178d04b508ba"></span>hipError_t <code class="descname">hipFuncSetCacheConfig</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>func</em>, hipFuncCache_t <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv321hipFuncSetCacheConfigPKv14hipFuncCache_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set Cache configuration for a specific function. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInitializationError Note: AMD devices and some Nvidia GPUS do not support reconfigurable cache. This hint is ignored on those architectures. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">config;</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicegetsharedmemconfig">
+<h2>hipDeviceGetSharedMemConfig<a class="headerlink" href="#hipdevicegetsharedmemconfig" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv327hipDeviceGetSharedMemConfigP18hipSharedMemConfig">
+<span id="_CPPv227hipDeviceGetSharedMemConfigP18hipSharedMemConfig"></span><span id="hipDeviceGetSharedMemConfig__hipSharedMemConfigP"></span><span class="target" id="group___device_1ga1bb08f774a34a468d969a8a04791c9bb"></span>hipError_t <code class="descname">hipDeviceGetSharedMemConfig</code><span class="sig-paren">(</span>hipSharedMemConfig *<em>pConfig</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv327hipDeviceGetSharedMemConfigP18hipSharedMemConfig" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns bank width of shared memory for current device. </p>
+<p><p>Note: AMD devices and some Nvidia GPUS do not support shared cache banking, and the hint is ignored on those architectures. </p>
+<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInitializationError</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pConfig</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicesetsharedmemconfig">
+<h2>hipDeviceSetSharedMemConfig<a class="headerlink" href="#hipdevicesetsharedmemconfig" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv327hipDeviceSetSharedMemConfig18hipSharedMemConfig">
+<span id="_CPPv227hipDeviceSetSharedMemConfig18hipSharedMemConfig"></span><span id="hipDeviceSetSharedMemConfig__hipSharedMemConfig"></span><span class="target" id="group___device_1ga9b1f279084e76691cedfbfadf9c717ee"></span>hipError_t <code class="descname">hipDeviceSetSharedMemConfig</code><span class="sig-paren">(</span>hipSharedMemConfig <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv327hipDeviceSetSharedMemConfig18hipSharedMemConfig" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The bank width of shared memory on current device is set. </p>
+<p><p>Note: AMD devices and some Nvidia GPUS do not support shared cache banking, and the hint is ignored on those architectures. </p>
+<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInitializationError</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">config</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipsetdeviceflags">
+<h2>hipSetDeviceFlags<a class="headerlink" href="#hipsetdeviceflags" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv317hipSetDeviceFlagsj">
+<span id="_CPPv217hipSetDeviceFlagsj"></span><span id="hipSetDeviceFlags__unsigned"></span><span class="target" id="group___device_1ga6e54db382768827e84725632018307aa"></span>hipError_t <code class="descname">hipSetDeviceFlags</code><span class="sig-paren">(</span>unsigned <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv317hipSetDeviceFlagsj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The current device behavior is changed according the flags passed. </p>
+<p><p>hipDeviceMapHost : Allow mapping host memory. On ROCM, this is always allowed and the flag is ignored. hipDeviceLmemResizeToMax : </p>
+<dl class="docutils">
+<dt><strong>Warning</strong></dt>
+<dd>ROCm silently ignores this flag.</dd>
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidDevice, #hipErrorSetOnActiveProcess </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: The schedule flags impact how HIP waits for the completion of a command running on a device. hipDeviceScheduleSpin : HIP runtime will actively spin in the thread which submitted the work until the command completes. This offers the lowest latency, but will consume a CPU core and may increase power. hipDeviceScheduleYield : The HIP runtime will yield the CPU to system so that other tasks can use it. This may increase latency to detect the completion but will consume less power and is friendlier to other tasks in the system. hipDeviceScheduleBlockingSync : On ROCm platform, this is a synonym for hipDeviceScheduleYield. hipDeviceScheduleAuto : Use a hueristic to select between Spin and Yield modes. If the number of HIP contexts is greater than the number of logical processors in the system, use Spin scheduling. Else use Yield scheduling.</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipchoosedevice">
+<h2>hipChooseDevice<a class="headerlink" href="#hipchoosedevice" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv315hipChooseDevicePiPK15hipDeviceProp_t">
+<span id="_CPPv215hipChooseDevicePiPK15hipDeviceProp_t"></span><span id="hipChooseDevice__iP.hipDeviceProp_tCP"></span><span class="target" id="group___device_1gaf1e365e1d17cf40644d1470de4817c8e"></span>hipError_t <code class="descname">hipChooseDevice</code><span class="sig-paren">(</span>int *<em>device</em>, <em class="property">const</em> hipDeviceProp_t *<em>prop</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv315hipChooseDevicePiPK15hipDeviceProp_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Device which matches hipDeviceProp_t is returned. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">device</span></code>: ID </li>
+<li><code class="docutils literal notranslate"><span class="pre">device</span></code>: properties pointer</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

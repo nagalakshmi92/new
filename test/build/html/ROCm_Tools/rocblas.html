@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>rocBLAS &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>rocBLAS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Tools/rocblas.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rocblas">
+<span id="id1"></span><h1>rocBLAS<a class="headerlink" href="#rocblas" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/rocBLAS">rocBLAS Github link</a></li>
+</ul>
+</div></blockquote>
+<p>A BLAS implementation on top of AMD’s Radeon Open Compute <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html">ROCm</a> runtime and toolchains. rocBLAS is implemented in the <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Programming_Guides/Programming-Guides.html#hip-programing-guide">HIP</a> programming language and optimized for AMD’s latest discrete GPUs.</p>
+<div class="section" id="installing-pre-built-packages">
+<h2>Installing pre-built packages<a class="headerlink" href="#installing-pre-built-packages" title="Permalink to this headline">¶</a></h2>
+<p>Download pre-built packages either from <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installation-guide-ubuntu">ROCm’s package servers</a> or by clicking the github releases tab and manually downloading, which could be newer. Release notes are available for each release on the releases tab.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">rocblas</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="quickstart-rocblas-build">
+<h2>Quickstart rocBLAS build<a class="headerlink" href="#quickstart-rocblas-build" title="Permalink to this headline">¶</a></h2>
+<p><strong>Bash helper build script (Ubuntu only)</strong></p>
+<p>The root of this repository has a helper bash script install.sh to build and install rocBLAS on Ubuntu with a single command. It does not take a lot of options and hard-codes configuration that can be specified through invoking cmake directly, but it’s a great way to get started quickly and can serve as an example of how to build/install. A few commands in the script need sudo access, so it may prompt you for a password.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">install</span> <span class="o">-</span><span class="n">h</span> <span class="o">--</span> <span class="n">shows</span> <span class="n">help</span>
+<span class="o">./</span><span class="n">install</span> <span class="o">-</span><span class="nb">id</span> <span class="o">--</span> <span class="n">build</span> <span class="n">library</span><span class="p">,</span> <span class="n">build</span> <span class="n">dependencies</span> <span class="ow">and</span> <span class="n">install</span> <span class="p">(</span><span class="o">-</span><span class="n">d</span> <span class="n">flag</span> <span class="n">only</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">passed</span> <span class="n">once</span> <span class="n">on</span> <span class="n">a</span> <span class="n">system</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="manual-build-all-supported-platforms">
+<h2>Manual build (all supported platforms)<a class="headerlink" href="#manual-build-all-supported-platforms" title="Permalink to this headline">¶</a></h2>
+<p>If you use a distro other than Ubuntu, or would like more control over the build process, the <a class="reference internal" href="rocblaswiki.html#rocblaswiki"><span class="std std-ref">rocblas build wiki</span></a> has helpful information on how to configure cmake and manually build.</p>
+<p><strong>Functions supported</strong></p>
+<p>A list of exported functions from rocblas can be found on the wiki</p>
+</div>
+<div class="section" id="rocblas-interface-examples">
+<h2>rocBLAS interface examples<a class="headerlink" href="#rocblas-interface-examples" title="Permalink to this headline">¶</a></h2>
+<p>In general, the rocBLAS interface is compatible with CPU oriented <a class="reference external" href="http://www.netlib.org/blas/">Netlib BLAS</a> and the cuBLAS-v2 API, with the explicit exception that traditional BLAS interfaces do not accept handles. The cuBLAS’ cublasHandle_t is replaced with rocblas_handle everywhere. Thus, porting a CUDA application which originally calls the cuBLAS API to a HIP application calling rocBLAS API should be relatively straightforward. For example, the rocBLAS SGEMV interface is</p>
+</div>
+<div class="section" id="gemv-api">
+<h2>GEMV API<a class="headerlink" href="#gemv-api" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rocblas_status</span>
+<span class="n">rocblas_sgemv</span><span class="p">(</span><span class="n">rocblas_handle</span> <span class="n">handle</span><span class="p">,</span>
+              <span class="n">rocblas_operation</span> <span class="n">trans</span><span class="p">,</span>
+              <span class="n">rocblas_int</span> <span class="n">m</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">n</span><span class="p">,</span>
+              <span class="n">const</span> <span class="nb">float</span><span class="o">*</span> <span class="n">alpha</span><span class="p">,</span>
+              <span class="n">const</span> <span class="nb">float</span><span class="o">*</span> <span class="n">A</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">lda</span><span class="p">,</span>
+              <span class="n">const</span> <span class="nb">float</span><span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">incx</span><span class="p">,</span>
+              <span class="n">const</span> <span class="nb">float</span><span class="o">*</span> <span class="n">beta</span><span class="p">,</span>
+              <span class="nb">float</span><span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">incy</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="batched-and-strided-gemm-api">
+<h2>Batched and strided GEMM API<a class="headerlink" href="#batched-and-strided-gemm-api" title="Permalink to this headline">¶</a></h2>
+<p>rocBLAS GEMM can process matrices in batches with regular strides. There are several permutations of these API’s, the following is an example that takes everything</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rocblas_status</span>
+<span class="n">rocblas_sgemm_strided_batched</span><span class="p">(</span>
+    <span class="n">rocblas_handle</span> <span class="n">handle</span><span class="p">,</span>
+    <span class="n">rocblas_operation</span> <span class="n">transa</span><span class="p">,</span> <span class="n">rocblas_operation</span> <span class="n">transb</span><span class="p">,</span>
+    <span class="n">rocblas_int</span> <span class="n">m</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">n</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">k</span><span class="p">,</span>
+    <span class="n">const</span> <span class="nb">float</span><span class="o">*</span> <span class="n">alpha</span><span class="p">,</span>
+    <span class="n">const</span> <span class="nb">float</span><span class="o">*</span> <span class="n">A</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">ls_a</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">ld_a</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">bs_a</span><span class="p">,</span>
+    <span class="n">const</span> <span class="nb">float</span><span class="o">*</span> <span class="n">B</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">ls_b</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">ld_b</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">bs_b</span><span class="p">,</span>
+    <span class="n">const</span> <span class="nb">float</span><span class="o">*</span> <span class="n">beta</span><span class="p">,</span>
+          <span class="nb">float</span><span class="o">*</span> <span class="n">C</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">ls_c</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">ld_c</span><span class="p">,</span> <span class="n">rocblas_int</span> <span class="n">bs_c</span><span class="p">,</span>
+    <span class="n">rocblas_int</span> <span class="n">batch_count</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>rocBLAS assumes matrices A and vectors x, y are allocated in GPU memory space filled with data. Users are responsible for copying data from/to the host and device memory. HIP provides memcpy style API’s to facilitate data management.</p>
+</div>
+<div class="section" id="asynchronous-api">
+<h2>Asynchronous API<a class="headerlink" href="#asynchronous-api" title="Permalink to this headline">¶</a></h2>
+<p>Except a few routines (like TRSM) having memory allocation inside preventing asynchronicity, most of the library routines (like BLAS-1 SCAL, BLAS-2 GEMV, BLAS-3 GEMM) are configured to operate in asynchronous fashion with respect to CPU, meaning these library functions return immediately.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

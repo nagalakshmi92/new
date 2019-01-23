@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Memory hooks &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Memory hooks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Remote_Device_Programming/Memoryhooks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="memory-hooks">
+<span id="memoryhooks"></span><h1>Memory hooks<a class="headerlink" href="#memory-hooks" title="Permalink to this headline">¶</a></h1>
+<p>UCX includes the libucm library, which provides methods to intercept events which map and unmap memory to/from the current process. These may be used by transports to optimize their handling of user-allocated memory, for example:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Maintain memory registration cache (and get notification when cached memory is unmapped)</li>
+<li>Modify the way memory is allocated (e.g hugepages, MAP_PRIVATE vs MAP_SHARED)</li>
+</ul>
+</div></blockquote>
+<div class="section" id="events-api">
+<h2>Events API<a class="headerlink" href="#events-api" title="Permalink to this headline">¶</a></h2>
+<p>libucm API allows registering for the following events:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>UCM_EVENT_MMAP</td>
+<td>mmap() is called</td>
+</tr>
+<tr class="row-even"><td>UCM_EVENT_MUNMAP</td>
+<td>munmap() is called</td>
+</tr>
+<tr class="row-odd"><td>UCM_EVENT_MREMAP</td>
+<td>mremap() is called</td>
+</tr>
+<tr class="row-even"><td>UCM_EVENT_SHMAT</td>
+<td>shmat() is called</td>
+</tr>
+<tr class="row-odd"><td>UCM_EVENT_SHMDT</td>
+<td>shmdt() is called</td>
+</tr>
+<tr class="row-even"><td>UCM_EVENT_SBRK</td>
+<td>sbrk() is called</td>
+</tr>
+<tr class="row-odd"><td>UCM_EVENT_VM_MAPPED</td>
+<td>memory is mapped to the process</td>
+</tr>
+<tr class="row-even"><td>UCM_EVENT_VM_UNMAPPED</td>
+<td>memory is unmapped from the process</td>
+</tr>
+</tbody>
+</table>
+<p>An event handler may modify the parameters, set the result, or do nothing and continue to the next handler.</p>
+</div>
+<div class="section" id="installing-the-hooks">
+<h2>Installing the hooks<a class="headerlink" href="#installing-the-hooks" title="Permalink to this headline">¶</a></h2>
+<p>We use the following algorithm to install the memory hooks:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Install hooks for mmap/munmap/mremap/shmat/shmdt/sbrk</li>
+<li>libucm contains symbols with these names. If libucm is loaded before any other implementation of those functions (for example, by      using LD_PRELOAD), nothing else should be done here. This is detected by calling the functions and checking if the events work.</li>
+<li>If this didn’t work, modify the relocation tables or all currently loaded objects (and objects that will be loaded in the           future*) to point to our implementation of these functions.</li>
+<li>TBD modify the loaded code of glibc to call our hooks (IBM’s method)</li>
+<li>Test events again. If this failed, notify the user we can’t install memory events.</li>
+<li>Install hooks for malloc/free/realloc/memalign</li>
+<li>Sometimes it’s enough to have hooks for mmap/… to get those events when they are called from malloc/… as well. So first we do     some memory allocations and check if we are able to get all events this way.</li>
+<li>If we can’t, install legacy malloc hooks (__malloc_hook).
+We have our own implementation of heap manager in libucm - ptmalloc3. After we replace the original heap manager, we keep track     of which pointers were allocated by our library, so we would know ignore all others (since they were allocated by the previous          heap manager). Also, we can’t restore the previous state, so libucm.so is marked as ‘nodelete’.</li>
+<li>If the former didn’t work, modify the relocation tables to point to our implementation of malloc (and friends).</li>
+<li>If even that didn’t work, notify the user we can’t install memory events.</li>
+<li>If one of the methods was successful, modify the relocation tables to point to our versions of malloc_trim, malloc_stats,          mallinfo, and so on.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="thread-safety">
+<h2>Thread safety<a class="headerlink" href="#thread-safety" title="Permalink to this headline">¶</a></h2>
+<p>Memory events and API calls are thread safe.</p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>libucm has a simple standalone configuration manager, with following settings:</p>
+</div>
+<div class="section" id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
+<p>libucm has a standalone logger which support minimal set of formatting specifiers, and is malloc-safe.</p>
+</div>
+<div class="section" id="external-references">
+<h2>External references<a class="headerlink" href="#external-references" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://stackoverflow.com/questions/17803456/an-alternative-for-the-deprecated-malloc-hook-functionality-of-glibc">Glibc malloc hooks</a></li>
+<li><a class="reference external" href="https://code.google.com/archive/p/valgrind-variant/source#1175">Valgrind malloc hooks</a></li>
+</ul>
+</div></blockquote>
+<p>We also install relocation table hook for dlopen() to install all existing relocation patches to objects loaded in the future.</p>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

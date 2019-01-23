@@ -1,0 +1,561 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BLAS 2 functions &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>BLAS 2 functions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_API_References/BLAS2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="blas-2-functions">
+<span id="blas2"></span><h1>BLAS 2 functions<a class="headerlink" href="#blas-2-functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gemv-general-matrix-vector-multiplication">
+<h2>GEMV - General matrix-Vector multiplication<a class="headerlink" href="#gemv-general-matrix-vector-multiplication" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasCgemv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDgemv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasSgemv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZgemv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="symv-symmetric-matrix-vector-multiplication">
+<h2>SYMV - Symmetric matrix-Vector multiplication<a class="headerlink" href="#symv-symmetric-matrix-vector-multiplication" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDsymv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasSsymv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="hemv-hermitian-matrix-vector-multiplication">
+<h2>HEMV - Hermitian matrix-vector multiplication<a class="headerlink" href="#hemv-hermitian-matrix-vector-multiplication" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasChemv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZhemv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="trmv-triangular-matrix-vector-multiply">
+<h2>TRMV - Triangular matrix vector multiply<a class="headerlink" href="#trmv-triangular-matrix-vector-multiply" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasCtrmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDtrmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasStrmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZtrmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="trsv-triangular-matrix-vector-solve">
+<h2>TRSV - Triangular matrix vector Solve<a class="headerlink" href="#trsv-triangular-matrix-vector-solve" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasCtrsv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDtrsv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasStrsv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZtrsv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="ger-general-matrix-rank-1-operation">
+<h2>GER - General matrix rank 1 operation<a class="headerlink" href="#ger-general-matrix-rank-1-operation" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDger” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasSger” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="geru-general-matrix-rank-1-operation">
+<h2>GERU - General matrix rank 1 operation<a class="headerlink" href="#geru-general-matrix-rank-1-operation" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasCgeru” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZgeru” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="gerc-general-matrix-rank-1-operation">
+<h2>GERC - General matrix rank 1 operation<a class="headerlink" href="#gerc-general-matrix-rank-1-operation" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasCgerc” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZgerc” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="syr-symmetric-rank-1-update">
+<h2>SYR - Symmetric rank 1 update<a class="headerlink" href="#syr-symmetric-rank-1-update" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDsyr” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasSsyr” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="her-hermitian-rank-1-operation">
+<h2>HER - Hermitian rank 1 operation<a class="headerlink" href="#her-hermitian-rank-1-operation" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasCher” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZher” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="syr2-symmetric-rank-2-update">
+<h2>SYR2 - Symmetric rank 2 update<a class="headerlink" href="#syr2-symmetric-rank-2-update" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDsyr2” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasSsyr2” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="her2-hermitian-rank-2-update">
+<h2>HER2 - Hermitian rank 2 update<a class="headerlink" href="#her2-hermitian-rank-2-update" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasCher2” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZher2” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="tpmv-triangular-packed-matrix-vector-multiply">
+<h2>TPMV - Triangular packed matrix-vector multiply<a class="headerlink" href="#tpmv-triangular-packed-matrix-vector-multiply" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasCtpmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDtpmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasStpmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZtpmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="tpsv-triangular-packed-matrix-vector-solve">
+<h2>TPSV - Triangular packed matrix vector solve<a class="headerlink" href="#tpsv-triangular-packed-matrix-vector-solve" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasCtpsv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasStpsv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZtpsv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="spmv-symmetric-packed-matrix-vector-multiply">
+<h2>SPMV - Symmetric packed matrix vector multiply<a class="headerlink" href="#spmv-symmetric-packed-matrix-vector-multiply" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDspmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasSspmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="hpmv-hermitian-packed-matrix-vector-multiplication">
+<h2>HPMV - Hermitian packed matrix-vector multiplication<a class="headerlink" href="#hpmv-hermitian-packed-matrix-vector-multiplication" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasChpmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZhpmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="spr-symmetric-packed-matrix-rank-1-update">
+<h2>SPR - Symmetric packed matrix rank 1 update<a class="headerlink" href="#spr-symmetric-packed-matrix-rank-1-update" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDspr” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasSspr” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="hpr-hermitian-packed-matrix-rank-1-update">
+<h2>HPR - Hermitian packed matrix rank 1 update<a class="headerlink" href="#hpr-hermitian-packed-matrix-rank-1-update" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasChpr” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZhpr” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="spr2-symmetric-packed-matrix-rank-2-update">
+<h2>SPR2 - Symmetric packed matrix rank 2 update<a class="headerlink" href="#spr2-symmetric-packed-matrix-rank-2-update" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDspr2” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasSspr2” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="hpr2-hermitian-packed-matrix-rank-2-update">
+<h2>HPR2 - Hermitian packed matrix rank 2 update<a class="headerlink" href="#hpr2-hermitian-packed-matrix-rank-2-update" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasChpr2” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZhpr2” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="gbmv-general-banded-matrix-vector-multiplication">
+<h2>GBMV - General banded matrix-vector multiplication<a class="headerlink" href="#gbmv-general-banded-matrix-vector-multiplication" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasCgbmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDgbmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasSgbmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZgbmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="tbmv-triangular-banded-matrix-vector-multiply">
+<h2>TBMV - Triangular banded matrix vector multiply<a class="headerlink" href="#tbmv-triangular-banded-matrix-vector-multiply" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasCtbmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDtbmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasStbmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZtbmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="sbmv-symmetric-banded-matrix-vector-multiplication">
+<h2>SBMV - Symmetric banded matrix-vector multiplication<a class="headerlink" href="#sbmv-symmetric-banded-matrix-vector-multiplication" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDsbmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasSsbmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="hbmv-hermitian-banded-matrix-vector-multiplication">
+<h2>HBMV - Hermitian banded matrix-vector multiplication<a class="headerlink" href="#hbmv-hermitian-banded-matrix-vector-multiplication" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasChbmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZhbmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="tbsv-solving-triangular-banded-matrix">
+<h2>TBSV - Solving triangular banded matrix<a class="headerlink" href="#tbsv-solving-triangular-banded-matrix" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasCtbsv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasDtbsv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasStbsv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clblasZtbsv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

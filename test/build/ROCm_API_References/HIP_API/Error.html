@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Error Handling &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Error Handling</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/ROCm_API_References/HIP_API/Error.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="error-handling">
+<span id="error"></span><h1>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h1>
+<p>Error Handling types and functions.</p>
+<div class="section" id="hipgetlasterror">
+<h2>hipGetLastError<a class="headerlink" href="#hipgetlasterror" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv315hipGetLastErrorv">
+<span id="_CPPv215hipGetLastErrorv"></span><span id="hipGetLastError__void"></span><span class="target" id="group___error_1ga533daeb9114d7fc2db8d867adf9e419b"></span>hipError_t <code class="descname">hipGetLastError</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv315hipGetLastErrorv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return last error returned by any HIP runtime API call and resets the stored error code to #hipSuccess. </p>
+<p><p>Returns the last error that has been returned by any of the runtime calls in the same host thread, and then resets the saved error to #hipSuccess.</p>
+<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>return code from last HIP called from the active host thread</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___error_1ga1421a2ee561f30d5b1dbed3ecb28b264"><span class="std std-ref">hipGetErrorString</span></a>, <a class="reference internal" href="#group___error_1ga533daeb9114d7fc2db8d867adf9e419b"><span class="std std-ref">hipGetLastError</span></a>, hipPeakAtLastError, hipError_t </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hippeekatlasterror">
+<h2>hipPeekAtLastError<a class="headerlink" href="#hippeekatlasterror" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv318hipPeekAtLastErrorv">
+<span id="_CPPv218hipPeekAtLastErrorv"></span><span id="hipPeekAtLastError__void"></span><span class="target" id="group___error_1ga1dd660bc739f7e13edd34615660f0148"></span>hipError_t <code class="descname">hipPeekAtLastError</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv318hipPeekAtLastErrorv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return last error returned by any HIP runtime API call. </p>
+<p><p>Returns the last error that has been returned by any of the runtime calls in the same host thread. Unlike hipGetLastError, this function does not reset the saved error code.</p>
+<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___error_1ga1421a2ee561f30d5b1dbed3ecb28b264"><span class="std std-ref">hipGetErrorString</span></a>, <a class="reference internal" href="#group___error_1ga533daeb9114d7fc2db8d867adf9e419b"><span class="std std-ref">hipGetLastError</span></a>, hipPeakAtLastError, hipError_t </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipgeterrorname">
+<h2>hipGetErrorName<a class="headerlink" href="#hipgeterrorname" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv315hipGetErrorName10hipError_t">
+<span id="_CPPv215hipGetErrorName10hipError_t"></span><span id="hipGetErrorName__hipError_t"></span><span class="target" id="group___error_1ga88c474d77635523dbf6ca67be7b56999"></span><em class="property">const</em> char *<code class="descname">hipGetErrorName</code><span class="sig-paren">(</span>hipError_t <em>hip_error</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv315hipGetErrorName10hipError_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return name of the specified error code in text form. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>const char pointer to the NULL-terminated error name</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___error_1ga1421a2ee561f30d5b1dbed3ecb28b264"><span class="std std-ref">hipGetErrorString</span></a>, <a class="reference internal" href="#group___error_1ga533daeb9114d7fc2db8d867adf9e419b"><span class="std std-ref">hipGetLastError</span></a>, hipPeakAtLastError, hipError_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">hip_error</span></code>: Error code to convert to name. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipgeterrorstring">
+<h2>hipGetErrorString<a class="headerlink" href="#hipgeterrorstring" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv317hipGetErrorString10hipError_t">
+<span id="_CPPv217hipGetErrorString10hipError_t"></span><span id="hipGetErrorString__hipError_t"></span><span class="target" id="group___error_1ga1421a2ee561f30d5b1dbed3ecb28b264"></span><em class="property">const</em> char *<code class="descname">hipGetErrorString</code><span class="sig-paren">(</span>hipError_t <em>hipError</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv317hipGetErrorString10hipError_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return handy text string message to explain the error which occurred. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>const char pointer to the NULL-terminated error string</dd>
+<dt><strong>Warning</strong></dt>
+<dd>: on HCC, this function returns the name of the error (same as hipGetErrorName)</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___error_1ga88c474d77635523dbf6ca67be7b56999"><span class="std std-ref">hipGetErrorName</span></a>, <a class="reference internal" href="#group___error_1ga533daeb9114d7fc2db8d867adf9e419b"><span class="std std-ref">hipGetLastError</span></a>, hipPeakAtLastError, hipError_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">hipError</span></code>: Error code to convert to string. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

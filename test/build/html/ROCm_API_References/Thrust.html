@@ -1,0 +1,872 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Thrust &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Thrust</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_API_References/Thrust.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="thrust">
+<span id="hip-thrust"></span><h1>Thrust<a class="headerlink" href="#thrust" title="Permalink to this headline">¶</a></h1>
+<p>HIP back-end for Thrust</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Thrust is a parallel algorithm library. This library has been ported to HIP/ROCm platform. This repository contains the HIP port of Thrust. The HIP ported library works on both HIP/CUDA and HIP/ROCm platforms.</p>
+</div>
+<div class="section" id="pre-requisites">
+<h2>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="hardware">
+<h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
+<p>For detailed ROCm Hardware requirements and other details please follow up on this page <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#supported-cpus">ROCm hardware requiremnets</a></p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>AMD ROCm Installation</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget -qO - http://repo.radeon.com/rocm/apt/debian/rocm.gpg.key | sudo apt-key add -
+$ sudo sh -c &#39;echo deb [arch=amd64] http://repo.radeon.com/rocm/apt/debian/ xenial main &gt; /etc/apt/sources.list.d/rocm.list&#39;
+$ sudo apt-get update
+$ sudo apt install rocm-dkms
+</pre></div>
+</div>
+<p>Thrust Build Steps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/ROCmSoftwarePlatform/Thrust.git
+$ cd Thrust
+</pre></div>
+</div>
+<p>For <strong>NVCC</strong> or <strong>HCC</strong> platform, build application using hipcc compiler.</p>
+<p>Follow the below steps to generate executables</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set HIP_PLATFORM to either NVCC or HCC depending on the platform being used</p>
+</div>
+<p>Steps to follow:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export HIP_PLATFORM=hcc (For HCC Platform )
+$ export HIP_PLATFORM=nvcc ( For NVCC Platform)
+$ cd examples
+$ ./cu_to_cpp.sh
+$ ./script_compile_testing_hcc.sh
+</pre></div>
+</div>
+<p>To execute applications:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd Thrust/
+$ ./script_run_hcc.sh foldername (eg:examples/testing/performance)
+</pre></div>
+</div>
+</div>
+<div class="section" id="sample-applications">
+<h2>Sample applications<a class="headerlink" href="#sample-applications" title="Permalink to this headline">¶</a></h2>
+<p>Here is a sample output of some applications exercising thrust API’s :</p>
+<p>transform_iterator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./transform_iterator.out
+values : 2 5 7 1 6 0 3 8
+clamped values : 2 5 5 1 5 1 3 5
+sum of clamped values : 27
+sequence : 0 1 2 3 4 5 6 7 8 9
+clamped sequence : 1 1 2 3 4 5 5 5 5 5
+negated sequence : -1 -1 -2 -3 -4 -5 -5 -5 -5 -5
+negated values : -2 -5 -7 -1 -6 0 -3 -8
+</pre></div>
+</div>
+<p>sort:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./sort.out
+sorting integers
+ 79 78 62 78 94 40 86 57 40 16 28 54 77 87 93 98
+ 16 28 40 40 54 57 62 77 78 78 79 86 87 93 94 98
+
+sorting integers (descending)
+ 79 78 62 78 94 40 86 57 40 16 28 54 77 87 93 98
+ 98 94 93 87 86 79 78 78 77 62 57 54 40 40 28 16
+
+sorting integers (user-defined comparison)
+ 79 78 62 78 94 40 86 57 40 16 28 54 77 87 93 98
+ 16 28 40 40 54 62 78 78 86 94 98 57 77 79 87 93
+
+sorting floats
+ 7.5 7.5 6.0 7.5 9.0 4.0 8.5 5.5 4.0 1.5 2.5 5.0 7.5 8.5 9.0 9.5
+ 1.5 2.5 4.0 4.0 5.0 5.5 6.0 7.5 7.5 7.5 7.5 8.5 8.5 9.0 9.0 9.5
+
+sorting pairs
+ (7,7) (5,7) (9,3) (8,5) (3,0) (2,4) (7,8) (9,9) (7,1) (1,9) (0,5) (3,6) (8,0) (7,6) (4,2) (8,3)
+ (0,5) (1,9) (2,4) (3,0) (3,6) (4,2) (5,7) (7,1) (7,6) (7,7) (7,8) (8,0) (8,3) (8,5) (9,3) (9,9)
+
+key-value sorting
+ (79, 0) (78, 1) (62, 2) (78, 3) (94, 4) (40, 5) (86, 6) (57, 7) (40, 8) (16, 9) (28,10) (54,11) (77,12) (87,13) (93,14) (98,15)
+ (16, 9) (28,10) (40, 5) (40, 8) (54,11) (57, 7) (62, 2) (77,12) (78, 1) (78, 3) (79, 0) (86, 6) (87,13) (93,14) (94, 4) (98,15)
+
+key-value sorting (descending)
+ (79, 0) (78, 1) (62, 2) (78, 3) (94, 4) (40, 5) (86, 6) (57, 7) (40, 8) (16, 9) (28,10) (54,11) (77,12) (87,13) (93,14) (98,15)
+ (98,15) (94, 4) (93,14) (87,13) (86, 6) (79, 0) (78, 1) (78, 3) (77,12) (62, 2) (57, 7) (54,11) (40, 5) (40, 8) (28,10) (16, 9)
+</pre></div>
+</div>
+<p>expand:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./expand.out
+Expanding values according to counts
+counts 3 5 2 0 1 3 4 2 4
+values 1 2 3 4 5 6 7 8 9
+output 1 1 1 2 2 2 2 2 3 3 5 6 6 6 7 7 7 7 8 8 9 9 9 9
+</pre></div>
+</div>
+</div>
+<div class="section" id="unit-test">
+<h2>Unit Test<a class="headerlink" href="#unit-test" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">The test suite consists of unit tests.</div>
+<div class="line">Run the following commands to perform unit testing of different components of Thrust.</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set HIP_PLATFORM to either NVCC or HCC depending on the platform being used</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd Thrust/testing
+$ ./cu_to_cpp.sh
+$ ./script_compile_testing_hcc.sh
+</pre></div>
+</div>
+<p>To execute unit tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd Thrust/
+$ ./script_run_hcc.sh testing/
+</pre></div>
+</div>
+<p>Sample output of transform and Max element test cases</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">transform</span><span class="o">.</span><span class="n">out</span>
+<span class="n">Running</span> <span class="mi">34</span> <span class="n">unit</span> <span class="n">tests</span><span class="o">.</span>
+<span class="o">..................................</span>
+<span class="n">Totals</span><span class="p">:</span> <span class="mi">0</span> <span class="n">failures</span><span class="p">,</span> <span class="mi">0</span> <span class="n">known</span> <span class="n">failures</span><span class="p">,</span> <span class="mi">0</span> <span class="n">errors</span><span class="p">,</span> <span class="ow">and</span> <span class="mi">34</span> <span class="n">passes</span><span class="o">.</span>
+<span class="n">Time</span><span class="p">:</span> <span class="mf">0.366667</span> <span class="n">minutes</span>
+
+<span class="o">./</span><span class="n">max_element</span><span class="o">.</span><span class="n">out</span>
+<span class="n">Running</span> <span class="mi">7</span> <span class="n">unit</span> <span class="n">tests</span><span class="o">.</span>
+<span class="o">..................................</span>
+<span class="n">Totals</span><span class="p">:</span> <span class="mi">0</span> <span class="n">failures</span><span class="p">,</span> <span class="mi">0</span> <span class="n">known</span> <span class="n">failures</span><span class="p">,</span> <span class="mi">0</span> <span class="n">errors</span><span class="p">,</span> <span class="ow">and</span> <span class="mi">7</span> <span class="n">passes</span><span class="o">.</span>
+<span class="n">Time</span><span class="p">:</span> <span class="mf">0.0166667</span> <span class="n">minutes</span>
+</pre></div>
+</div>
+<p><strong>Performance Tests</strong></p>
+<p>Run the following commands to exercise Performance tests in Thrust</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set HIP_PLATFORM to either NVCC or HCC depending on the platform being used</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd Thrust/performance
+$ ./script_compile_performance.sh
+</pre></div>
+</div>
+<p>To execute performance tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd Thrust/
+$ ./script_run_hcc.sh performance/
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>./adjacent_difference.cpp.out
+
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;testsuite name=&quot;adjacent_difference&quot;&gt;
+&lt;platform&gt;
+&lt;device name=&quot;Device 6863&quot;&gt;
+&lt;property name=&quot;revision&quot; value=&quot;3.0&quot;/&gt;
+&lt;property name=&quot;global memory&quot; value=&quot;17163091968&quot; units=&quot;bytes&quot;/&gt;
+&lt;property name=&quot;multiprocessors&quot; value=&quot;64&quot;/&gt;
+&lt;property name=&quot;cores&quot; value=&quot;512&quot;/&gt;
+&lt;property name=&quot;constant memory&quot; value=&quot;16384&quot; units=&quot;bytes&quot;/&gt;
+&lt;property name=&quot;shared memory per block&quot; value=&quot;65536&quot; units=&quot;bytes&quot;/&gt;
+&lt;property name=&quot;warp size&quot; value=&quot;64&quot;/&gt;
+&lt;property name=&quot;max threads per block&quot; value=&quot;1024&quot;/&gt;
+&lt;property name=&quot;clock rate&quot; value=&quot;1.6&quot; units=&quot;GHz&quot;/&gt;
+&lt;/device&gt;
+&lt;compilation&gt;
+&lt;property name=&quot;host compiler&quot; value=&quot;GCC 40201&quot;/&gt;
+&lt;property name=&quot;__DATE__&quot; value=&quot;May 15 2018&quot;/&gt;
+&lt;property name=&quot;__TIME__&quot; value=&quot;20:32:34&quot;/&gt;
+&lt;/compilation&gt;
+&lt;/platform&gt;
+&lt;test name=&quot;adjacent_difference_int_16777216&quot;&gt;
+&lt;variable name=&quot;InputType&quot; value=&quot;int&quot;/&gt;
+&lt;variable name=&quot;InputSize&quot; value=&quot;16777216&quot;/&gt;
+&lt;result name=&quot;Time&quot; value=&quot;0.000607142&quot; units=&quot;seconds&quot;/&gt;
+&lt;result name=&quot;Throughput&quot; value=&quot;27.6331&quot; units=&quot;GOp/s&quot;/&gt;
+&lt;result name=&quot;Bandwidth&quot; value=&quot;221.065&quot; units=&quot;GBytes/s&quot;/&gt;
+&lt;status result=&quot;Success&quot; message=&quot;&quot;/&gt;
+&lt;/test&gt;
+&lt;/testsuite&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="known-issues">
+<h2>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+<p>Currently thrust::sort and thrust::stable_sort_by_key are not supported on HIP/CUDA path. Due to this, the applications exercising these API’s will display slight deviation from desired output on HIP/CUDA.</p>
+<p>see this <a class="reference external" href="https://github.com/ROCmSoftwarePlatform/cub-hip/issues/9">Ticket</a>.</p>
+<p>There is a corner case issue while exercising API’s in bucker_sort2d application on HIP/ROCm path.</p>
+</div>
+<div class="section" id="dependency">
+<h2>Dependency<a class="headerlink" href="#dependency" title="Permalink to this headline">¶</a></h2>
+<p>There exists a dependency on hipified version of cub to generate executables. The hipified cub is available as cub-hip in <a class="reference external" href="https://github.com/ROCmSoftwarePlatform/cub-hip/tree/cubhip_mxnet">https://github.com/ROCmSoftwarePlatform/cub-hip/tree/cubhip_mxnet</a></p>
+<p>Credentials may be required to clone cub-hip. The hipified cub should be placed according to the directory structure mentioned above.</p>
+</div>
+<div class="section" id="api-s-supported">
+<h2>API’s supported<a class="headerlink" href="#api-s-supported" title="Permalink to this headline">¶</a></h2>
+<p>A list of <a href="#id1"><span class="problematic" id="id2">`</span></a>Thrust API’s supported on HIP/CUDA and HIP/ROCm.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="63%" />
+<col width="15%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><dl class="first last docutils">
+<dt>Serial</dt>
+<dd>No.</dd>
+</dl>
+</td>
+<td>Thrust API</td>
+<td>HIP/CUDA</td>
+<td>HIP/ROCm</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>thrust::binary_function</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>thrust::max</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>thrust::default_random_engine</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>thrust::uniform_int_distribution</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>thrust::tuple</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>thrust::uniform_real_distribution</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>thrust::host_vector</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>thrust::generate</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>thrust::lower_bound</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>10</td>
+<td>thrust::upper_bound</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>11</td>
+<td>thrust::gather</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>12</td>
+<td>thrust::make_transform_output_iterator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>thrust::reduce</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>14</td>
+<td>thrust::device_malloc</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>15</td>
+<td>thrust::raw_pointer_cast</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>16</td>
+<td>thrust::device_free</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>thrust::sort</td>
+<td>Known issue</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>18</td>
+<td>thrust::device_pointer_cast</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>19</td>
+<td>thrust::for_each</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>20</td>
+<td>thrust::make_transform_iterator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>21</td>
+<td>thrust::placeholders</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>22</td>
+<td>thrust::multiplies</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>23</td>
+<td>thrust::remove_if</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>24</td>
+<td>thrust::raw_reference_cast</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>25</td>
+<td>thrust::device_system_tag</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>26</td>
+<td>thrust::make_permutation_iterator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>27</td>
+<td>thrust::merge_by_key</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>28</td>
+<td>thrust::negate</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>29</td>
+<td>thrust::device_execution_policy</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>30</td>
+<td>thrust::zip_iterator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>31</td>
+<td>thrust::unique</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>32</td>
+<td>thrust::advance</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>33</td>
+<td>thrust::device_ptr</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>34</td>
+<td>thrust::make_zip_iterator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>35</td>
+<td>thrust::copy</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>36</td>
+<td>thrust::stable_sort_by_key</td>
+<td>Known issue</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>37</td>
+<td>thrust::sequence</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>38</td>
+<td>thrust::inner_product</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>39</td>
+<td>thrust::plus</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>40</td>
+<td>thrust::distance</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>41</td>
+<td>thrust::transform</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>42</td>
+<td>thrust::inclusive_scan_by_key</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>43</td>
+<td>thrust::exclusive_scan</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>44</td>
+<td>thrust::inclusive_scan</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>45</td>
+<td>thrust::iterator_difference</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>46</td>
+<td>thrust::device_vector</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>47</td>
+<td>thrust::unary_function</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>48</td>
+<td>thrust::get&lt;&gt;</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>49</td>
+<td>thrust::transform_iterator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>50</td>
+<td>thrust::permutation_iterator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>51</td>
+<td>thrust::make_tuple</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>52</td>
+<td>thrust::fill</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>53</td>
+<td>thrust::transform_reduce</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>54</td>
+<td>thrust::counting_iterator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>55</td>
+<td>thrust::maximum</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>56</td>
+<td>thrust::identity</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>57</td>
+<td>thrust::equal_to</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>58</td>
+<td>thrust::not_equal_to</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>59</td>
+<td>thrust::reduce_by_key</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>60</td>
+<td>thrust::system_error</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>61</td>
+<td>thrust::cuda_category</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>62</td>
+<td>thrust::minstd_rand</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>63</td>
+<td>thrust::cuda::par</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>64</td>
+<td>thrust::system::cuda::experimental::pinned_allocator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>65</td>
+<td>thrust::make_reverse_iterator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>66</td>
+<td>thrust::constant_iterator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>67</td>
+<td>thrust::scatter_if</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>68</td>
+<td>thrust::tabulate</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>69</td>
+<td>thrust::reverse_iterator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>70</td>
+<td>thrust::make_counting_iterator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>71</td>
+<td>thrust::make_pair</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>72</td>
+<td>thrust::pair</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>73</td>
+<td>thrust:sort_by_key</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>74</td>
+<td>thrust::copy_if</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>75</td>
+<td>thrust::find_if</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>76</td>
+<td>thrust::find</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>77</td>
+<td>thrust::max_element</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>78</td>
+<td>thrust::normal_distribution</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>79</td>
+<td>thrust::min</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>80</td>
+<td>thrust::greater&lt;&gt;</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>81</td>
+<td>thrust::make_constant_iterator</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>82</td>
+<td>thrust::unique_by_key</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>83</td>
+<td>thrust::partition_copy</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>84</td>
+<td>thrust::unique_copy</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>85</td>
+<td>thrust::reverse</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="github">
+<h2>Github<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h2>
+<p>For Github repository click here : <a class="reference external" href="https://github.com/ROCmSoftwarePlatform/Thrust">Thrust</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

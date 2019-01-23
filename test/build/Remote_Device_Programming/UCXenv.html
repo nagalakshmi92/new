@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>UCX environment parameters &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>UCX environment parameters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Remote_Device_Programming/UCXenv.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ucx-environment-parameters">
+<span id="ucxenv"></span><h1>UCX environment parameters<a class="headerlink" href="#ucx-environment-parameters" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setting-the-transports-to-use">
+<h2>Setting the transports to use<a class="headerlink" href="#setting-the-transports-to-use" title="Permalink to this headline">¶</a></h2>
+<p>UCX_TLS variable controls the transports to use.
+In addition to the built-in transports it’s possible to use aliases which specify multiple transports.
+Using a prefix before a transport name treats it as an explicit transport name rather than an alias.
+Currently supported aliases:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>all</td>
+<td>use all the available transports.</td>
+</tr>
+<tr class="row-even"><td>sm / shm</td>
+<td>all shared memory transports.</td>
+</tr>
+<tr class="row-odd"><td>mm</td>
+<td>shared memory transports - only memory mappers.</td>
+</tr>
+<tr class="row-even"><td>ugni</td>
+<td>ugni_rdma and ugni_udt.</td>
+</tr>
+<tr class="row-odd"><td>rc</td>
+<td>rc and ud.</td>
+</tr>
+<tr class="row-even"><td>rc_x</td>
+<td>rc with accelerated verbs and ud.</td>
+</tr>
+<tr class="row-odd"><td>ud_x</td>
+<td>ud with accelerated verbs.</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<blockquote>
+<div><ul class="simple">
+<li>UCX_TLS=rc will select rc and ud</li>
+<li>UCX_TLS=rc,cm will select rc, ud, and cm</li>
+<li>UCX_TLS=rc,cm will select rc and cm</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="setting-the-devices-to-use">
+<h2>Setting the devices to use<a class="headerlink" href="#setting-the-devices-to-use" title="Permalink to this headline">¶</a></h2>
+<p>In order to specify the devices to use for the run, please use the following environment parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li>UCX_NET_DEVICES for specifying the network devices. For example: mlx5_1:1 , mlx5_1:1 GEMINI</li>
+<li>UCX_SHM_DEVICES for specifying the shared memory devices. For example: sysv , knem</li>
+<li>UCX_ACC_DEVICES for specifying the acceleration devices. For example: gpu0</li>
+</ul>
+</div></blockquote>
+<p>The following command line will use the rc_x and mm transports, and their corresponding devices will be mlx5_0:1 and sysv.
+mpirun -mca pml ucx -x UCX_TLS=rc_x,mm -x UCX_NET_DEVICES=mlx5_0:1 -x UCX_SHM_DEVICES=sysv …</p>
+<p>This way, for instance, making the choice for the HCA to use doesn’t affect the devices used for the shared memory UCTs.</p>
+<p>If one or more of these environment variables are not set, their default values will be used.
+The current default for each of them is ‘all’, which means to use all available devices and all available transports.</p>
+<p>The following command shows the default values of these (as well as all other) environment parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./bin/ucx_info -f
+</pre></div>
+</div>
+<p>For these specific ones:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./bin/ucx_info -f | grep DEVICES
+UCX_NET_DEVICES=all
+UCX_SHM_DEVICES=all
+UCX_ACC_DEVICES=all
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

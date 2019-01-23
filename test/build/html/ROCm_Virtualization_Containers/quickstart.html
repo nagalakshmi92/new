@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>quick start guide &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>quick start guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Virtualization_Containers/quickstart.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quick-start-guide">
+<span id="quickstart"></span><h1>quick start guide<a class="headerlink" href="#quick-start-guide" title="Permalink to this headline">¶</a></h1>
+<p>The following instructions assume a fresh/blank machine to be prepared for the ROCm + Docker environment; no additional software has been installed other than the typical stock package updating.</p>
+<p>It is my recommendation to install the rocm kernel first. Depending on how distribution release cycles lines up, the rocm kernel is often newer than the stock kernel shipping in most linux distributions. The newer kernel often supports newer AMD hardware better, and stock video resolutions and hardware acceleration performance are typically improved. As of the time of this writing, ROCm officially supports Ubuntu and Fedora Linux distributions. The following asciicast demonstrates updating the kernel on Ubuntu 14.04. More detailed instructions can be found on the Radeon Open Compute website:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#ubuntu-install">Installing ROCK kernel</a> on Ubuntu</li>
+</ul>
+<div class="section" id="step-1-install-rocm-kernel">
+<h2>Step 1: Install rocm-kernel<a class="headerlink" href="#step-1-install-rocm-kernel" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">qO</span> <span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">packages</span><span class="o">.</span><span class="n">amd</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rocm</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span><span class="n">rocm</span><span class="o">.</span><span class="n">gpg</span><span class="o">.</span><span class="n">key</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">add</span> <span class="o">-</span>
+<span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;echo deb [arch=amd64] http://packages.amd.com/rocm/apt/debian/ trusty main  </span><span class="se">\</span>
+<span class="s1">  &gt; /etc/apt/sources.list.d/rocm.list&#39;</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">rocm</span><span class="o">-</span><span class="n">kernel</span>
+</pre></div>
+</div>
+<p>Make sure to reboot the machine after installing the ROCm kernel package to force the new kernel to load on reboot. You can verify the ROCm kernel is loaded by typing the following command at a prompt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uname</span> <span class="o">-</span><span class="n">r</span>
+</pre></div>
+</div>
+<p>Printed on the screen should be a string that’s obviously the new ROCm kernel, such as : 4.6.0-kfd-compute-rocm-rel-1.4-16. In this case, it is plain to see that the rocm compute kernel is based off of the linux 4.6.0 kernel.</p>
+</div>
+<div class="section" id="step-2-install-docker">
+<h2>Step 2: Install docker<a class="headerlink" href="#step-2-install-docker" title="Permalink to this headline">¶</a></h2>
+<p>After verifying the new kernel is running, next install the docker engine. Manual instructions to install docker on various distro’s can be found on the <a class="reference external" href="https://docs.docker.com/engine/installation/">docker website</a> , but perhaps the simplest method is to use a bash script available from docker itself. If it’s OK in your organization to run a bash script on your machine downloaded from the internet, open a bash prompt and execute the following line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">sSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">get</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span> <span class="o">|</span> <span class="n">sh</span>
+</pre></div>
+</div>
+<p>The above script looks at the linux distribution and the installed kernel, and installs docker appropriately. The script will output a warning message on a ROCm platform saying that it does not recognize the rocm kernel; this is normal and can be safely ignored. The script does proper docker installation without recognizing the kernel.</p>
+</div>
+<div class="section" id="step-3-verify-change-the-docker-device-storage-driver">
+<h2>Step 3: Verify/Change the docker device storage driver<a class="headerlink" href="#step-3-verify-change-the-docker-device-storage-driver" title="Permalink to this headline">¶</a></h2>
+<p>The docker device storage driver manages how docker accesses images and containers. There are many available, and <a class="reference external" href="https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/">documentation and thorough descriptions</a> on storage driver architecture can be found on the official docker website. It is possible to check which storage driver docker is using by issuing a</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">info</span>
+</pre></div>
+</div>
+<p>command at the command prompt and looking for the ‘Storage Driver: ‘ output. It is hard to predict what storage driver Docker will choose as default on install, and defaults change over time, but in our experience we have run into a problems with the ‘devicemapper’ storage driver with large image sizes. The ‘devicemapper’ storage driver imposes limitations on the maximum size images and containers can be. If you work in a field of ‘big data’, such as in DNN applications, the 10 GB default limit of ‘devicemapper’ is limiting. There are two options available if you run into this limit:</p>
+<dl class="docutils">
+<dt>1.Switch to a different storage driver</dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>AMD recommends using ‘overlay2’, whose dependencies are met by the ROCm kernel and should be available</dt>
+<dd><ul class="first last">
+<li>overlay2 provides for unlimited image size</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>If ‘overlay2’ is not an option, storage drivers can be chosen at service startup time with the –storage-driver=&lt;name&gt; option</li>
+</ul>
+</dd>
+</dl>
+<ol class="arabic simple" start="2">
+<li>If you must stick with ‘devicemapper’, pass the ‘devicemapper’ configuration variable –dm.basesize on service startup to increase    the potential image maximum</li>
+</ol>
+<p>The downside to switching to the ‘overlay2’ storage driver after creating and working with ‘devicemapper’ images is that existing images need to be recreated. As such, we recommend verifying that docker be set up using the ‘overlay2’ storage driver before engaging in significant work.</p>
+</div>
+<div class="section" id="step-4a-build-rocm-container-using-docker-cli">
+<h2>Step 4a: Build ROCm container using docker CLI<a class="headerlink" href="#step-4a-build-rocm-container-using-docker-cli" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Clone and build the container</li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  git clone https://github.com/RadeonOpenCompute/ROCm-docker
+  cd ROCm-docker
+  sudo docker build -t rocm/rocm-terminal rocm-terminal
+  sudo docker run -it --rm --device=&quot;/dev/kfd&quot; rocm/rocm-terminal
+  (optional) Step 4b: Build ROCm container using docker-compose
+
+
+* Clone and build the container using `docker-compose &lt;https://docs.docker.com/compose/install/&gt;`_
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">ROCm</span><span class="o">-</span><span class="n">docker</span>
+<span class="n">cd</span> <span class="n">ROCm</span><span class="o">-</span><span class="n">docker</span>
+<span class="n">sudo</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="n">rocm</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-5-verify-successful-build-of-rocm-docker-container">
+<h2>Step 5: Verify successful build of ROCm-docker container<a class="headerlink" href="#step-5-verify-successful-build-of-rocm-docker-container" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Verify a working container-based ROCm software stack</li>
+<li><dl class="first docutils">
+<dt>After step #2 or #3, a bash login prompt to a running docker container should be available</dt>
+<dd><ul class="first last">
+<li>hcc –version should display version information of the AMD heterogeneous compiler</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Execute sample application</dt>
+<dd><ul class="first last">
+<li>cd /opt/rocm/hsa/sample</li>
+<li>sudo make</li>
+<li>./vector-copy</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Text displaying successful creation of a GPU device, successful kernel compilation and successful shutdown should be printed to       stdout</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

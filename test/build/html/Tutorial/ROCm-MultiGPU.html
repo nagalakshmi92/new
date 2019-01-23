@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MultiGPU In-node and Out of Node P2P Solutions &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>MultiGPU In-node and Out of Node P2P Solutions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Tutorial/ROCm-MultiGPU.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="multigpu-in-node-and-out-of-node-p2p-solutions">
+<span id="rocm-multigpu"></span><h1>MultiGPU In-node and Out of Node P2P Solutions<a class="headerlink" href="#multigpu-in-node-and-out-of-node-p2p-solutions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="in-node">
+<h2>In-node<a class="headerlink" href="#in-node" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Large BAR support BAR = Base Address Register Making the GPU memory visible <span class="xref std std-ref">BAR 1 Region Suppoted in Radeon Instinct MI25,MI8, MI6</span></li>
+<li>ROCr Base driver has P2P API support</li>
+<li><a class="reference external" href="http://www.hsafoundation.com/html_spec111/HSA_Library.htm#Runtime/Topics/02_Core/hsa_iterate_agents.htm%3FTocPath%3DHSA%2520Runtime%2520Programmer%25E2%2580%2599s%2520Reference%2520Manual%2520Version%25201.1.1%2520%7CChapter%25202.%2520HSA%2520Core%2520Programming%2520Guide%7C2.3%2520System%2520and%2520agent%2520information%7C2.3.1%2520System%2520and%2520agent%2520information%2520API%7C_____18">ROCr (HSA) AGENT API with Peer to Peer support</a>.</li>
+<li><a class="reference external" href="https://scchan.github.io/hcc/classhc_1_1accelerator.html#aebd49b998f9421bd032ea450cbafd247">HCC Language Runtime support of P2P  ROCr Agent API</a>.</li>
+<li><a class="reference external" href="http://rocm-developer-tools.github.io/HIP/group__PeerToPeer.html">HIP Language Runtime support of P2P  P2P API’s model after CUDA P2P API’s</a>.</li>
+<li><dl class="first docutils">
+<dt>OpenCL Language Runtime P2P API       Peer-to-Peer API  with Autocopy support over Intel QPI bus</dt>
+<dd><ul class="first last">
+<li>API name -  clEnqueueBufferCopyP2PAMD</li>
+<li>Releasing in OpenCL with ROCm 1.6.2</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>HIP based Communication Primitives Helper Library to make it easier to use P2P - In Development</li>
+<li>ROCr level IPC        Inter Process Communication     API</li>
+<li>IPC is Supported in HIP API</li>
+</ul>
+</div>
+<div class="section" id="out-of-node">
+<h2>Out of Node<a class="headerlink" href="#out-of-node" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/ROCnRDMA">Remote DMA technology  ( RDMA) Peer-to-Peer bridge driver for PeerDirect</a>.</li>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/ROCnRDMA">libibverbs Linux RDMA library YES -since ROCm 1.0</a>.</li>
+<li><a class="reference external" href="https://community.mellanox.com/docs/DOC-2486">PeerDirect Mellanox Peer API for Infiniband</a>.</li>
+</ul>
+</div>
+<div class="section" id="standard-frameworks-for-out-of-node-communication">
+<h2>Standard Frameworks for Out of Node Communication<a class="headerlink" href="#standard-frameworks-for-out-of-node-communication" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://www.openucx.org./">OpenUCX UCX is a communication library implementing high-performance messaging for MPI/PGAS frameworks - In Development</a> <a class="reference external" href="https://github.com/openucx/ucx/tree/master/src/uct/rocm">Source for ROCm</a>.</li>
+<li><a class="reference external" href="https://github.com/openucx/ucx/wiki/OpenMPI-and-OpenSHMEM-installation-with-UCX">OpenMPI Open MPI Project is an open source Message Passing Interface https://www.open-mpi.org In Development</a>.</li>
+<li><a class="reference external" href="https://www.mpich.org/about/overview/">MPICH MPICH is a high-performance and widely portable implementation of the Message Passing Interface (MPI) standard (MPI-1, MPI-2 and MPI-3)</a> <a class="reference external" href="https://www.mpich.org/2016/08/30/mpich-3-3a1-released/">In Development</a>.</li>
+<li><a class="reference external" href="https://github.com/openucx/ucx/wiki/OpenMPI-and-OpenSHMEM-installation-with-UCX">OpenSHMEM    Partitioned Global Address Space &amp; Communication Library - In Development</a>.</li>
+<li><a class="reference external" href="https://github.com/ROCm-Developer-Tools/OSU_Microbenchmarks">OSU benchmark to test performance</a>.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

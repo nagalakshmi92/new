@@ -1,0 +1,979 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>documentation &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Compiler_SDK/ocml.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="documentation">
+<span id="ocml"></span><h1>documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ocml-user-guide">
+<h2>OCML User Guide<a class="headerlink" href="#ocml-user-guide" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-is-ocml">
+<h3>What Is OCML<a class="headerlink" href="#what-is-ocml" title="Permalink to this headline">¶</a></h3>
+<p>OCML is an LLVM-IR bitcode library designed to relieve language compiler and runtime implementers of the burden of implementing efficient and accurate mathematical functions. It is essentially a “libm” in intermediate representation with a fixed, simple API that can be linked in to supply the implementations of most standard low-level mathematical functions provided by the language.</p>
+</div>
+<div class="section" id="using-ocml">
+<h3>Using OCML<a class="headerlink" href="#using-ocml" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="standard-usage">
+<h3>Standard Usage<a class="headerlink" href="#standard-usage" title="Permalink to this headline">¶</a></h3>
+<p>OCML is expected to be used in a standard LLVM compilation flow as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Compile source modules to LLVM-IR bitcode (clang)</li>
+<li>Link program bitcode, “wrapper” bitcode, OCML bitcode, and OCML control functions (llvm-link)</li>
+<li>Generic optimizations (opt)</li>
+<li>Code generation (llc)</li>
+</ul>
+</div></blockquote>
+<p>Here, “wrapper” bitcode denotes a thin library responsible for mapping mangled built-in function calls as produced by clang to the OCML API. An example in C might look like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inline</span> <span class="nb">float</span> <span class="n">sqrt</span><span class="p">(</span><span class="nb">float</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">__ocml_sqrt_f32</span><span class="p">(</span><span class="n">x</span><span class="p">);</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>The next section describes OCML controls and how to make them.</p>
+</div>
+<div class="section" id="controls">
+<h3>Controls<a class="headerlink" href="#controls" title="Permalink to this headline">¶</a></h3>
+<p>OCML supports a number of controls that are provided by linking in specifically named inline functions. These functions are inlined at optimization time and result in specific paths taken with no control flow overhead. These functions all have the form (in C)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span><span class="p">((</span><span class="n">always_inline</span><span class="p">,</span> <span class="n">const</span><span class="p">))</span> <span class="nb">int</span>
+<span class="n">__oclc_control</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+<span class="p">{</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span> <span class="o">//</span> <span class="ow">or</span> <span class="mi">0</span> <span class="n">to</span> <span class="n">disable</span>
+</pre></div>
+</div>
+<p>The currently supported control are</p>
+<blockquote>
+<div>finite_only_opt - floating point Inf and NaN are never expected to be consumed or produced
+unsafe_math_opt - lower accuracy results may be produced with higher performance
+daz_opt - subnormal values consumed and produced may be flushed to zero
+correctly_rounded_sqrt32 - float square root must be correctly rounded
+ISA_version - an integer representation of the ISA version of the target device</div></blockquote>
+</div>
+<div class="section" id="versioning">
+<h3>Versioning<a class="headerlink" href="#versioning" title="Permalink to this headline">¶</a></h3>
+<p>OCML ships as a single LLVM-IR bitcode file named</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ocml</span><span class="o">-</span><span class="p">{</span><span class="n">LLVM</span> <span class="n">rev</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">OCLM</span> <span class="n">rev</span><span class="p">}</span><span class="o">.</span><span class="n">bc</span>
+</pre></div>
+</div>
+<p>where {LLVM rev} is the version of LLVM used to create the file, of the form X.Y, e.g. 3.8, and {OCML rev} is the OCML library version of the form X.Y, currently 0.9.</p>
+</div>
+<div class="section" id="tables">
+<h3>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h3>
+<p>Some OCML functions require access to tables of constants. These tables are currently named with the prefix __ocmltbl_ and are placed in LLVM address space 2.</p>
+</div>
+<div class="section" id="naming-convention">
+<h3>Naming convention<a class="headerlink" href="#naming-convention" title="Permalink to this headline">¶</a></h3>
+<p>OCML functions follow a simple naming convention:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">__ocml_</span><span class="p">{</span><span class="n">function</span><span class="p">}</span><span class="n">_</span><span class="p">{</span><span class="nb">type</span> <span class="n">suffix</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>where {function} is generally the familiar libm name of the function, and {type suffix} indicates the type of the floating point arguments or results, and is one of</p>
+<blockquote>
+<div>f16 – 16 bit floating point (half precision)
+f32 – 32 bit floating point (single precision)
+f64 – 64 bit floating point (double precision)</div></blockquote>
+<p>For example, __ocml_sqrt_f32 is the name of the OCML single precision square root function.</p>
+<p>OCML does not currently support higher than double precision due to the lack of support on most devices.</p>
+</div>
+<div class="section" id="supported-functions">
+<h3>Supported functions<a class="headerlink" href="#supported-functions" title="Permalink to this headline">¶</a></h3>
+<p>The following table contains a list of {function} currently supported by OCML, a brief description of each, and the maximum relative error in ULPs for each floating point type. A “c” in the last 3 columns indicates that the function is required to be correctly rounded.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="60%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>{function}</td>
+<td>Description</td>
+<td>f32 max err</td>
+<td>f64 max err</td>
+<td>f16 max err</td>
+</tr>
+<tr class="row-even"><td>acos</td>
+<td>arc cosine</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>acosh</td>
+<td>arc hyperbolic cosine</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>acospi</td>
+<td>arc cosine / π</td>
+<td>5</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>add_{rm}</td>
+<td>add with specific rounding mode</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-even"><td>asin</td>
+<td>arc sine</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>asinh</td>
+<td>arc hyperbolic sin</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>asinpi</td>
+<td>arc sine / pi</td>
+<td>5</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>atan2</td>
+<td>two argument arc tangent</td>
+<td>6</td>
+<td>6</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>atan2pi</td>
+<td>two argument arc tangent / pi</td>
+<td>6</td>
+<td>6</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>atan</td>
+<td>single argument arc tangent</td>
+<td>5</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>atanh</td>
+<td>arc hyperbolic tangent</td>
+<td>5</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>atanpi</td>
+<td>single argument arc tangent / pi</td>
+<td>5</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>cbrt</td>
+<td>cube root</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>ceil</td>
+<td>round upwards to integer</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-even"><td>copysign</td>
+<td>copy sign of second argument to absolute value of first</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>cos</td>
+<td>cosine</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>cosh</td>
+<td>hyperbolic cosine</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>cospi</td>
+<td>cosine of argument times pi</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>div_{rm}</td>
+<td>correctly rounded division with specific rounding mode</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-odd"><td>erf</td>
+<td>error function</td>
+<td>16</td>
+<td>16</td>
+<td>4</td>
+</tr>
+<tr class="row-even"><td>erfc</td>
+<td>complementary error function</td>
+<td>16</td>
+<td>16</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>erfcinv</td>
+<td>inverse complementary error function</td>
+<td>7</td>
+<td>8</td>
+<td>3</td>
+</tr>
+<tr class="row-even"><td>erfcx</td>
+<td>scaled error function</td>
+<td>6</td>
+<td>6</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>erfinv</td>
+<td>inverse error function</td>
+<td>3</td>
+<td>8</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>exp10</td>
+<td>10x</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>exp2</td>
+<td>2x</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>exp</td>
+<td>ex</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>expm1</td>
+<td>ex - 1, accurate at 0</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>fabs</td>
+<td>absolute value</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>fdim</td>
+<td>positive difference</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-even"><td>floor</td>
+<td>round downwards to integer</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-odd"><td>fma[_{rm}]</td>
+<td>fused (i.e. singly rounded) multiply-add, with optional specific rounding</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-even"><td>fmax</td>
+<td>maximum, avoids NaN</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>fmin</td>
+<td>minimum, avoids NaN</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>fmod</td>
+<td>floating point remainder</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>fpclassify</td>
+<td>classify floating point</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>fract</td>
+<td>fractional part</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-odd"><td>frexp</td>
+<td>extract significand and exponent</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>hypot</td>
+<td>length, with overflow control</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>i0</td>
+<td>modified Bessel function of the first kind, order 0, I0</td>
+<td>6</td>
+<td>6</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>i1</td>
+<td>modified Bessel function of the first kind, order 1, I1</td>
+<td>6</td>
+<td>6</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>ilogb</td>
+<td>extract exponent</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>isfinite</td>
+<td>tests finiteness</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>isinf</td>
+<td>test for Inf</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>isnan</td>
+<td>test for NaN</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>isnormal</td>
+<td>test for normal</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>j0</td>
+<td>Bessel function of the first kind, order 0, J0</td>
+<td>6 (&lt;12)</td>
+<td>6 (&lt;12)</td>
+<td>2 (&lt;12)</td>
+</tr>
+<tr class="row-odd"><td>j1</td>
+<td>Bessel function of the first kind, order 1, J1</td>
+<td>6 (&lt;12)</td>
+<td>6 (&lt;12)</td>
+<td>2 (&lt;12)</td>
+</tr>
+<tr class="row-even"><td>ldexp</td>
+<td>multiply by 2 raised to an integral power</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-odd"><td>len3</td>
+<td>three argument hypot</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>len4</td>
+<td>four argument hypot</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>lgamma</td>
+<td>log Γ function</td>
+<td>6(&gt;0)</td>
+<td>4(&gt;0)</td>
+<td>3(&gt;0)</td>
+</tr>
+<tr class="row-even"><td>lgamma_r</td>
+<td>log Γ function with sign</td>
+<td>6(&gt;0)</td>
+<td>4(&gt;0)</td>
+<td>3(&gt;0)</td>
+</tr>
+<tr class="row-odd"><td>log10</td>
+<td>log base 10</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>log1p</td>
+<td>log base e accurate near 1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>log2</td>
+<td>log base 2</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>log</td>
+<td>log base e</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>logb</td>
+<td>extract exponent</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>mad</td>
+<td>multiply-add, implementation defined if fused</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-odd"><td>max</td>
+<td>maximum without special NaN handling</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>maxmag</td>
+<td>maximum magnitude</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>min</td>
+<td>minimum without special NaN handling</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>minmag</td>
+<td>minimum magnitude</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>modf</td>
+<td>extract integer and fraction</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>mul_{rm}</td>
+<td>multiply with specific rounding mode</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-odd"><td>nan</td>
+<td>produce a NaN with a specific payload</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>ncdf</td>
+<td>standard normal cumulateive distribution function</td>
+<td>16</td>
+<td>16</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>ncdfinv</td>
+<td>inverse standard normal cumulative distribution function</td>
+<td>16</td>
+<td>16</td>
+<td>4</td>
+</tr>
+<tr class="row-even"><td>nearbyint</td>
+<td>round to nearest integer (see also rint)</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>nextafter</td>
+<td>next closest value above or below</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>pow</td>
+<td>general power</td>
+<td>16</td>
+<td>16</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>pown</td>
+<td>power with integral exponent</td>
+<td>16</td>
+<td>16</td>
+<td>4</td>
+</tr>
+<tr class="row-even"><td>powr</td>
+<td>power with positive floating point exponent</td>
+<td>16</td>
+<td>16</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>rcbrt</td>
+<td>reciprocal cube root</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>remainder</td>
+<td>floating point remainder</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>remquo</td>
+<td>floating point remainder and lowest integral quotient bits</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>rhypot</td>
+<td>reciprocal hypot</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>rint</td>
+<td>round to nearest integer</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-even"><td>rlen3</td>
+<td>reciprocal len3</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>rlen4</td>
+<td>reciprocal len4</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>rootn</td>
+<td>nth root</td>
+<td>16</td>
+<td>16</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>round</td>
+<td>round to integer, always away from 0</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-even"><td>rsqrt</td>
+<td>reciprocal square root</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>scalb</td>
+<td>multiply by 2 raised to a power</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-even"><td>scalbn</td>
+<td>multiply by 2 raised to an integral power (see also ldexp)</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-odd"><td>signbit</td>
+<td>nonzero if argument has sign bit set</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>sin</td>
+<td>sine function</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>sincos</td>
+<td>simultaneous sine and cosine evaluation</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>sincospi</td>
+<td>sincos function of argument times pi</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>sinh</td>
+<td>hyperbolic sin</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>sinpi</td>
+<td>sine of argument times pi</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>sqrt</td>
+<td>square root</td>
+<td>3/c</td>
+<td>3/c</td>
+<td>c</td>
+</tr>
+<tr class="row-even"><td>sub_{rm}</td>
+<td>subtract with specific rounding mode</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-odd"><td>tan</td>
+<td>tangent</td>
+<td>5</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>tanh</td>
+<td>hyperbolic tangent</td>
+<td>5</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>tanpi</td>
+<td>tangent of argument times pi</td>
+<td>6</td>
+<td>6</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>tgamma</td>
+<td>true Γ function</td>
+<td>16</td>
+<td>16</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>trunc</td>
+<td>round to integer, towards zero</td>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-even"><td>y0</td>
+<td>Bessel function of the second kind, order 0, Y0</td>
+<td>2 (&lt;12)</td>
+<td>6 (&lt;12)</td>
+<td>6 (&lt;12)</td>
+</tr>
+<tr class="row-odd"><td>y1</td>
+<td>Bessel function of the second kind, order 1, Y1</td>
+<td>2 (&lt;12)</td>
+<td>6 (&lt;12)</td>
+<td>6 (&lt;12)</td>
+</tr>
+</tbody>
+</table>
+<p>For the functions supporting specific roundings, the rounding mode {rm} can be one of</p>
+<blockquote>
+<div><ul class="simple">
+<li>rte – round towards nearest even</li>
+<li>rtp – round towards positive infinity</li>
+<li>rtn – round towards negative infinity</li>
+<li>rtz – round towards zero</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

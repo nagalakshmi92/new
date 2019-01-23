@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>clSPARSE &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>clSPARSE</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Tools/clSPARSE.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="clsparse">
+<span id="clsparse1"></span><h1>clSPARSE<a class="headerlink" href="#clsparse" title="Permalink to this headline">¶</a></h1>
+<p>For Github repository <a class="reference external" href="https://github.com/clMathLibraries/clSPARSE">clSPARSE</a></p>
+<p>an OpenCL™ library implementing Sparse linear algebra routines. This project is a result of a collaboration between <a class="reference external" href="http://www.amd.com/en">AMD Inc.</a> and <a class="reference external" href="http://www.vratis.com/">Vratis Ltd.</a>.</p>
+<div class="section" id="what-s-new-in-clsparse-v0-10-1">
+<h2>What’s new in clSPARSE v0.10.1<a class="headerlink" href="#what-s-new-in-clsparse-v0-10-1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>bug fix release</dt>
+<dd><ul class="first last">
+<li>Fixes for travis builds</li>
+<li>Fix to the matrix market reader in the cuSPARSE benchmark to synchronize with the regular MM reader</li>
+<li>Replace cl.hpp with cl2.hpp (thanks to arrayfire)</li>
+<li><dl class="first docutils">
+<dt>Fixes for the Nvidia platform; tested 352.79</dt>
+<dd><ul class="first last">
+<li>Fixed buffer overruns in CSR-Adaptive kernels</li>
+<li>Fix invalid memory access on Nvidia GPUs in CSR-Adaptive SpMV kernel</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="clsparse-features">
+<h2>clSPARSE features<a class="headerlink" href="#clsparse-features" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Sparse Matrix - dense Vector multiply (SpM-dV)</li>
+<li>Sparse Matrix - dense Matrix multiply (SpM-dM)</li>
+<li>Sparse Matrix - Sparse Matrix multiply Sparse Matrix Multiply(SpGEMM) - Single Precision</li>
+<li>Iterative conjugate gradient solver (CG)</li>
+<li>Iterative biconjugate gradient stabilized solver (BiCGStab)</li>
+<li>Dense to CSR conversions (&amp; converse)</li>
+<li>COO to CSR conversions (&amp; converse)</li>
+<li>Functions to read matrix market files in COO or CSR format</li>
+</ul>
+</div></blockquote>
+<p>True in spirit with the other clMath libraries, clSPARSE exports a “C” interface to allow projects to build wrappers around clSPARSE in any language they need. A great deal of thought and effort went into designing the API’s to make them less ‘cluttered’ compared to the older clMath libraries. OpenCL state is not explicitly passed through the API, which enables the library to be forward compatible when users are ready to switch from OpenCL 1.2 to OpenCL 2.0 3</p>
+</div>
+<div class="section" id="google-groups">
+<h2>Google Groups<a class="headerlink" href="#google-groups" title="Permalink to this headline">¶</a></h2>
+<p>Two mailing lists have been created for the clMath projects:</p>
+<p><a class="reference external" href="mailto:clmath&#37;&#52;&#48;googlegroups&#46;com">clmath<span>&#64;</span>googlegroups<span>&#46;</span>com</a> - group whose focus is to answer questions on using the library or reporting issues</p>
+<p><a class="reference external" href="mailto:clmath-developers&#37;&#52;&#48;googlegroups&#46;com">clmath-developers<span>&#64;</span>googlegroups<span>&#46;</span>com</a> - group whose focus is for developers interested in contributing to the library code itself</p>
+</div>
+<div class="section" id="api-semantic-versioning">
+<h2>API semantic versioning<a class="headerlink" href="#api-semantic-versioning" title="Permalink to this headline">¶</a></h2>
+<p>Good software is typically the result of iteration and feedback. clSPARSE follows the <a class="reference external" href="http://semver.org/">semantic</a> versioning guidelines, and while the major version number remains ‘0’, the public API should not be considered stable. We release clSPARSE as beta software (0.y.z) early to the community to elicit feedback and comment. This comes with the expectation that with feedback, we may incorporate breaking changes to the API that might require early users to recompile, or rewrite portions of their code as we iterate on the design.</p>
+</div>
+<div class="section" id="clsparse-wiki">
+<h2>clSPARSE Wiki<a class="headerlink" href="#clsparse-wiki" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/clMathLibraries/clSPARSE/wiki">project wiki</a> contains helpful documentation.
+A <a class="reference external" href="https://github.com/clMathLibraries/clSPARSE/wiki/Build">build primer</a> is available, which describes how to use cmake to generate platforms specific build files</p>
+</div>
+<div class="section" id="samples">
+<h2>Samples<a class="headerlink" href="#samples" title="Permalink to this headline">¶</a></h2>
+<p>clSPARSE contains a directory of simple <a class="reference external" href="https://github.com/clMathLibraries/clSPARSE/tree/master/samples">OpenCL samples</a> that demonstrate the use of the API in both C and C++. The <a class="reference external" href="https://blog.kitware.com/wp-content/uploads/2016/01/kitware_quarterly1009.pdf">superbuild</a> script for clSPARSE also builds the samples as an external project, to demonstrate how an application would find and link to clSPARSE with cmake.</p>
+</div>
+<div class="section" id="clsparse-library-documentation">
+<h2>clSPARSE library documentation<a class="headerlink" href="#clsparse-library-documentation" title="Permalink to this headline">¶</a></h2>
+<p>API documentation is available at <a class="reference external" href="http://clmathlibraries.github.io/clSPARSE/">http://clmathlibraries.github.io/clSPARSE/</a>. The samples give an excellent starting point to basic library operations.</p>
+</div>
+<div class="section" id="contributing-code">
+<h2>Contributing code<a class="headerlink" href="#contributing-code" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to and read the <a class="reference external" href="https://github.com/clMathLibraries/clSPARSE/blob/master/CONTRIBUTING.md">Contributing</a> document for guidelines on how to contribute code to this open source project. Code in the /master branch is considered to be stable and new library releases are made when commits are merged into /master. Active development and pull-requests should be made to the develop branch.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>clSPARSE is licensed under the <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>, Version 2.0</p>
+</div>
+<div class="section" id="compiling-for-windows">
+<h2>Compiling for Windows<a class="headerlink" href="#compiling-for-windows" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Windows® 7/8</li>
+<li>Visual Studio 2013 and above</li>
+<li>CMake 2.8.12 (download from <a class="reference external" href="http://www.cmake.org/download/">Kitware</a>)</li>
+<li>Solution (.sln) or</li>
+<li>Nmake makefiles</li>
+<li>An OpenCL SDK, such as APP SDK 3.0</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="compiling-for-linux">
+<h2>Compiling for Linux<a class="headerlink" href="#compiling-for-linux" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>GCC 4.8 and above</li>
+<li>CMake 2.8.12 (install with distro package manager )</li>
+<li><dl class="first docutils">
+<dt>Unix makefiles or</dt>
+<dd><ul class="first last">
+<li>KDevelop or</li>
+<li>QT Creator</li>
+<li>An OpenCL SDK, such as APP SDK 3.0</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="compiling-for-mac-osx">
+<h2>Compiling for Mac OSX<a class="headerlink" href="#compiling-for-mac-osx" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>CMake 2.8.12 (install via brew)</li>
+<li>Unix makefiles or</li>
+<li>XCode</li>
+<li>An OpenCL SDK (installed via xcode-select –install)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="bench-test-infrastructure-dependencies">
+<h2>Bench &amp; Test infrastructure dependencies<a class="headerlink" href="#bench-test-infrastructure-dependencies" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Googletest v1.7</li>
+<li>Boost v1.58</li>
+<li>Footnotes</li>
+</ul>
+</div></blockquote>
+<p>[1]: Changed to reflect CppCoreGuidelines: <a class="reference external" href="http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines.html#a-namerf-out-multia-f21-to-return-multiple-out-values-prefer-returning-a-tuple-or-struct">F.21</a></p>
+<p>[2]: Changed to reflect CppCoreGuidelines: <a class="reference external" href="http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines.html#a-namerl-namea-nl8-use-a-consistent-naming-style">NL.8</a></p>
+<p>[3]: OpenCL 2.0 support is not yet fully implemented; only the interfaces have been designed</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

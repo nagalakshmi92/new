@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>rocFFT API design &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>rocFFT API design</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Tools/rocFFTAPI.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rocfft-api-design">
+<span id="rocfftapi"></span><h1>rocFFT API design<a class="headerlink" href="#rocfft-api-design" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this document, I attempt to explain the rationale behind the design of rocFFT API. In designing the rocFFT API, I studied other popular FFT libraries to understand and compare their interfaces and usage. These include FFTW, Intel MKL FFT, Nvidia cuFFT, and our own clFFT. At the beginning, my desire was to create an interface closely resembling FFTW given its wide adoption. But after writing some preliminary interface code, I dropped that idea for a number of reasons. I should note though, that the overall usage structure (with 2 distinct stages: an initial plan definition stage, and a subsequent execution stage) still remain the same in rocFFT, similar to clFFT and rooted in FFTW. With the current design of rocFFT, my approach has been to take clFFT’s API and substantially improve it based on user experience and feedback. At the same time, I am making the usage as simple as possible and intuitive for the common cases. Some of the main reasons for my approach are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>FFTW duplicates every function for each FP precision, this is cumbersome</li>
+<li>it is designed for CPU, doesn’t take into account GPU programming constraints</li>
+<li>three levels of planning interfaces (basic, advanced, guru) may be good to target a wide variety of users; not necessary given our     goals</li>
+<li>it is always possible to provide an exact drop-in replacement FFTW API as an additional/separate interface in rocFFT in the future</li>
+<li>similarity with clFFT API helps with continuity for current OpenCL users looking to switch to ROC</li>
+<li>C API is only the first step; we will define a C++ interface layer on top</li>
+<li>clFFT’s custom data layout specification falls at a level between the advanced and guru interface of FFTW; and is plenty powerful;    no user has ever asked for guru level functionality</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="plan-definition">
+<h2>Plan definition<a class="headerlink" href="#plan-definition" title="Permalink to this headline">¶</a></h2>
+<p>There is a single step (as opposed to 2 steps in clFFT) to create a plan object in rocFFT.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rocfft_status</span> <span class="n">rocfft_plan_create</span><span class="p">(</span>       <span class="n">rocfft_plan</span> <span class="o">*</span><span class="n">plan</span><span class="p">,</span>
+                                      <span class="n">rocfft_result_placement</span> <span class="n">placement</span><span class="p">,</span>
+                                      <span class="n">rocfft_transform_type</span> <span class="n">transform_type</span><span class="p">,</span> <span class="n">rocfft_precision</span> <span class="n">precision</span><span class="p">,</span>
+                                      <span class="n">size_t</span> <span class="n">dimensions</span><span class="p">,</span> <span class="n">const</span> <span class="n">size_t</span> <span class="o">*</span><span class="n">lengths</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">number_of_transforms</span><span class="p">,</span>
+                                      <span class="n">const</span> <span class="n">rocfft_plan_description</span> <span class="n">description</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>Here, ‘plan’ parameter is a pointer to an internal object created by library that holds plan information. The ‘placement’ parameter specific whether results are written back to the input buffer (in-place) or not (not in-place). The parameters ‘transform_type’ and ‘precision’ specify the fundamental type and precision of the transform. ‘dimensions’ specify the number of dimensions in the data. Valid values are 1, 2 and 3. The ‘lengths’ array specifies size in each dimension. Unless custom strides are specified, the data is assumed to be packed. It is important to note that lengths[0] specifies the size of the dimension where consecutive elements are contiguous in memory. The lengths[1], if applicable, is the next higher dimension and so on. The ‘number_of_transforms’ parameter specifies how many transforms (of the same kind) needs to be computed. By specifying a value greater than 1, an array of transforms can be computed. The ‘description’ parameter can be set to NULL if no further specification is necessary. Or a description object, set up using other api functions, can be passed in to specify more plan properties.</p>
+<p>To specify data layout in detail, the following function can be used to set up the description object to be passed subsequently to ‘rocfft_plan_create’. This function can be used to specify input and output array types. Not all combinations of array types are supported and error code will be returned for unsupported cases. Additionally, input and output buffer offsets can be specified using this function. The function can be used to specify custom layout of data, with the ability to specify stride between consecutive elements in all dimensions. Also, distance between transform array members can be specified. The library will choose appropriate defaults if offsets/strides are set to NULL and/or distances set to 0.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rocfft_status</span> <span class="n">rocfft_plan_description_set_data_layout</span><span class="p">(</span>       <span class="n">rocfft_plan_description</span> <span class="n">description</span><span class="p">,</span>
+                                                      <span class="n">rocfft_array_type</span> <span class="n">in_array_type</span><span class="p">,</span> <span class="n">rocfft_array_type</span> <span class="n">out_array_type</span><span class="p">,</span>
+                                                      <span class="n">const</span> <span class="n">size_t</span> <span class="o">*</span><span class="n">in_offsets</span><span class="p">,</span> <span class="n">const</span> <span class="n">size_t</span> <span class="o">*</span><span class="n">out_offsets</span><span class="p">,</span>
+                                                      <span class="n">size_t</span> <span class="n">in_strides_size</span><span class="p">,</span> <span class="n">const</span> <span class="n">size_t</span> <span class="o">*</span><span class="n">in_strides</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">in_distance</span><span class="p">,</span>
+                                                      <span class="n">size_t</span> <span class="n">out_strides_size</span><span class="p">,</span> <span class="n">const</span> <span class="n">size_t</span> <span class="o">*</span><span class="n">out_strides</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">out_distance</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>The following function can be used to change the default device or add a set of devices for which the plan has to be created.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rocfft_status</span> <span class="n">rocfft_plan_description_set_devices</span><span class="p">(</span>   <span class="n">rocfft_plan_description</span> <span class="n">description</span><span class="p">,</span>
+                                                <span class="n">void</span> <span class="o">*</span><span class="n">devices</span><span class="p">,</span>
+                                                <span class="n">size_t</span> <span class="n">number_of_devices</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>To destruct a plan after it is no longer needed, the following function can be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rocfft_status</span> <span class="n">rocfft_plan_destroy</span><span class="p">(</span> <span class="n">rocfft_plan</span> <span class="n">plan</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>The following functions can be used to create and destroy description objects.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rocfft_status</span> <span class="n">rocfft_plan_description_create</span><span class="p">(</span><span class="n">rocfft_plan_description</span> <span class="o">*</span><span class="n">description</span><span class="p">);</span>
+<span class="n">rocfft_status</span> <span class="n">rocfft_plan_description_destroy</span><span class="p">(</span><span class="n">rocfft_plan_description</span> <span class="n">description</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="execution-of-plan">
+<h2>Execution of plan<a class="headerlink" href="#execution-of-plan" title="Permalink to this headline">¶</a></h2>
+<p>After a plan is created, the library can be instructed to execute that plan on input/output data using the function shown below. If the transform is in-place, only the input buffer is needed and the output buffer parameter can be set to NULL. For not in-place transforms, output buffers have to be specified. The final parameter in this function is an execution_info object. This parameter serves as both a way for the user to control execution related things, as well as for the library to pass any information back to the user.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rocfft_status</span> <span class="n">rocfft_execute</span><span class="p">(</span>   <span class="n">const</span> <span class="n">rocfft_plan</span> <span class="n">plan</span><span class="p">,</span>
+                                <span class="n">rocfft_buffer</span> <span class="o">*</span><span class="n">in_buffer</span><span class="p">,</span>
+                                <span class="n">rocfft_buffer</span> <span class="o">*</span><span class="n">out_buffer</span><span class="p">,</span>
+                                <span class="n">rocfft_execution_info</span> <span class="n">info</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>The following functions can be used to create and destroy execution_info objects.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rocfft_status</span> <span class="n">rocfft_execution_info_create</span><span class="p">(</span><span class="n">rocfft_execution_info</span> <span class="o">*</span><span class="n">info</span><span class="p">);</span>
+<span class="n">rocfft_status</span> <span class="n">rocfft_execution_info_destroy</span><span class="p">(</span><span class="n">rocfft_execution_info</span> <span class="n">info</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>As an example of the usage of execution_info object, consider the following functions.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rocfft_status</span> <span class="n">rocfft_execution_info_set_mode</span><span class="p">(</span> <span class="n">rocfft_execution_info</span> <span class="n">info</span><span class="p">,</span> <span class="n">rocfft_execution_mode</span> <span class="n">mode</span> <span class="p">);</span>
+<span class="n">rocfft_status</span> <span class="n">rocfft_execution_info_set_work_buffer</span><span class="p">(</span> <span class="n">rocfft_execution_info</span> <span class="n">info</span><span class="p">,</span> <span class="n">rocfft_buffer</span> <span class="n">work_buffer</span> <span class="p">);</span>
+<span class="n">rocfft_status</span> <span class="n">rocfft_execution_info_set_stream</span><span class="p">(</span><span class="n">rocfft_execution_info</span> <span class="n">info</span><span class="p">,</span> <span class="n">void</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rocfft_status</span> <span class="n">rocfft_execution_info_get_events</span><span class="p">(</span> <span class="n">const</span> <span class="n">rocfft_execution_info</span> <span class="n">info</span><span class="p">,</span>
+                                                <span class="n">void</span> <span class="o">**</span><span class="n">events</span><span class="p">,</span>
+                                                <span class="n">size_t</span> <span class="n">number_of_events</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In the function ‘rocfft_execution_info_set_mode’ shown above, the execution_info object is used to control the execution mode. Appropriate enumeration value can be specified to control blocking/non-blocking behavior. It serves as an input to the library and has to be called before a call to the rocfft_execute function. This is applicable to all of the set functions shown above. The function ‘rocfft_execution_info_set_work_buffer’ can be used to pass buffers created by the user to the library if for any reason user does not prefer library allocating/freeing device memory from inside ‘rocfft_execute’ function. The function ‘rocfft_execution_info_set_stream’ can be used to set the underlying device queue/stream where the library computations would be inserted. The library assumes user has created such a stream in the program and merely assigns work to the stream. The function ‘rocfft_execution_info_get_events’ can be used to get handles to events the library created around one or more kernel launches inside the library. Needless to say, this function and other get functions are called after a call to ‘rocfft_execute’.</p>
+</div>
+<div class="section" id="enumeration-types-and-values">
+<h2>Enumeration types and values<a class="headerlink" href="#enumeration-types-and-values" title="Permalink to this headline">¶</a></h2>
+<p>Documentation is TBD.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Status</span> <span class="o">&amp;</span> <span class="n">error</span> <span class="n">message</span>
+<span class="n">typedef</span> <span class="n">enum</span> <span class="n">rocfft_status_e</span>
+<span class="p">{</span>
+        <span class="n">rocfft_status_success</span><span class="p">,</span>
+        <span class="n">rocfft_status_failure</span><span class="p">,</span>
+<span class="p">}</span> <span class="n">rocfft_status</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">Type</span> <span class="n">of</span> <span class="n">transform</span>
+<span class="n">typedef</span> <span class="n">enum</span> <span class="n">rocfft_transform_type_e</span>
+<span class="p">{</span>
+      <span class="n">rocfft_transform_type_complex_forward</span><span class="p">,</span>
+      <span class="n">rocfft_transform_type_complex_inverse</span><span class="p">,</span>
+      <span class="n">rocfft_transform_type_real_forward</span><span class="p">,</span>
+      <span class="n">rocfft_transform_type_real_inverse</span><span class="p">,</span>
+<span class="p">}</span> <span class="n">rocfft_transform_type</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">Precision</span>
+<span class="n">typedef</span> <span class="n">enum</span> <span class="n">rocfft_precision_e</span>
+<span class="p">{</span>
+      <span class="n">rocfft_precision_single</span><span class="p">,</span>
+      <span class="n">rocfft_precision_double</span><span class="p">,</span>
+<span class="p">}</span> <span class="n">rocfft_precision</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">Element</span> <span class="nb">type</span>
+<span class="n">typedef</span> <span class="n">enum</span> <span class="n">rocfft_element_type_e</span>
+<span class="p">{</span>
+      <span class="n">rocfft_element_type_complex_single</span><span class="p">,</span>
+      <span class="n">rocfft_element_type_complex_double</span><span class="p">,</span>
+      <span class="n">rocfft_element_type_single</span><span class="p">,</span>
+      <span class="n">rocfft_element_type_double</span><span class="p">,</span>
+      <span class="n">rocfft_element_type_byte</span><span class="p">,</span>
+<span class="p">}</span> <span class="n">rocfft_element_type</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">Result</span> <span class="n">placement</span>
+<span class="n">typedef</span> <span class="n">enum</span> <span class="n">rocfft_result_placement_e</span>
+<span class="p">{</span>
+      <span class="n">rocfft_placement_inplace</span><span class="p">,</span>
+      <span class="n">rocfft_placement_notinplace</span><span class="p">,</span>
+<span class="p">}</span> <span class="n">rocfft_result_placement</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">Array</span> <span class="nb">type</span>
+<span class="n">typedef</span> <span class="n">enum</span> <span class="n">rocfft_array_type_e</span>
+<span class="p">{</span>
+      <span class="n">rocfft_array_type_complex_interleaved</span><span class="p">,</span>
+      <span class="n">rocfft_array_type_complex_planar</span><span class="p">,</span>
+      <span class="n">rocfft_array_type_real</span><span class="p">,</span>
+      <span class="n">rocfft_array_type_hermitian_interleaved</span><span class="p">,</span>
+      <span class="n">rocfft_array_type_hermitian_planar</span><span class="p">,</span>
+<span class="p">}</span> <span class="n">rocfft_array_type</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">Execution</span> <span class="n">mode</span>
+<span class="n">typedef</span> <span class="n">enum</span> <span class="n">rocfft_execution_mode_e</span>
+<span class="p">{</span>
+      <span class="n">rocfft_exec_mode_nonblocking</span><span class="p">,</span>
+      <span class="n">rocfft_exec_mode_nonblocking_with_flush</span><span class="p">,</span>
+      <span class="n">rocfft_exec_mode_blocking</span><span class="p">,</span>
+<span class="p">}</span> <span class="n">rocfft_execution_mode</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage-of-the-api">
+<h2>Usage of the API<a class="headerlink" href="#usage-of-the-api" title="Permalink to this headline">¶</a></h2>
+<p>To give an idea of how the library API is intended to be used, the following sequence of function calls and pseudo-code is provided.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">initialize</span> <span class="nb">input</span>
+<span class="o">...</span>
+
+<span class="o">//</span> <span class="n">setup</span> <span class="n">description</span> <span class="k">if</span> <span class="n">needed</span>
+<span class="n">rocfft_plan_description</span> <span class="n">description</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">rocfft_plan_description_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">description</span><span class="p">);</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">rocfft_plan_description_set_data_layout</span><span class="p">(</span><span class="o">&amp;</span><span class="n">description</span><span class="p">,</span> <span class="o">...</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">create</span> <span class="n">plan</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">rocfft_plan_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">plan</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">description</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">create</span> <span class="n">execution_info</span> <span class="k">as</span> <span class="n">needed</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">rocfft_execution_info_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">execution_info</span><span class="p">);</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">rocfft_execution_info_set_mode</span><span class="p">(</span><span class="n">execution_info</span><span class="p">,</span> <span class="n">rocfft_exec_mode_blocking</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">execute</span> <span class="n">the</span> <span class="n">plan</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">rocfft_execute</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">buffer_a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">buffer_b</span><span class="p">,</span> <span class="n">execution_info</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">analyze</span> <span class="n">results</span>
+<span class="o">...</span>
+
+<span class="o">//</span> <span class="n">destruct</span> <span class="n">library</span> <span class="n">objects</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">rocfft_plan_description_destroy</span><span class="p">(</span><span class="n">description</span><span class="p">);</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">rocfft_execution_info_destroy</span><span class="p">(</span><span class="n">execution_info</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">destruct</span> <span class="n">plan</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">rocfft_plan_destroy</span><span class="p">(</span><span class="n">plan</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

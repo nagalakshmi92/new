@@ -1,0 +1,571 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quick Start Guide &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Current Release Notes" href="Current_Release_Notes/Current-Release-Notes.html" />
+    <link rel="prev" title="Welcome to ROCm Platform" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Current Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Installation Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Programming Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">ROCm GPU Tunning Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">GCN ISA Manuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">ROCm API References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">ROCm Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">ROCm Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">ROCm Compiler SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">ROCm System Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">Remote Device Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id17">Deep Learning on ROCm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">System Level Debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id19">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">ROCm Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Quick Start Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ROCm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quick-start-guide">
+<span id="guidedintro"></span><h1>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Current_Release_Notes/Current-Release-Notes.html#current-release-notes">Current Release Notes</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Current_Release_Notes/Current-Release-Notes.html#rocm-1-8-what-new">Release Notes</a></div>
+<div class="line">The Release Notes for the ROCm Latest version.</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installation-guide">Installation Guide</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installing-from-amd-rocm-repositories">Installing from AMD ROCm repositories</a></div>
+<div class="line">This guide discusses how to install and check for correct operation of ROCm using AMD ROCm Repository.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#ubuntu-support-installing-from-a-debian-repository">Installing from a Debian repository</a></div>
+<div class="line">This guide discusses how to install and check for correct operation of ROCm using Debian repository on Ubuntu.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#centos-rhel-7-both-7-4-and-7-5-support">Installing from an yum repository</a></div>
+<div class="line">This guide describes how to install and check for correct operation of ROCm using yum on RHEL and CentOS 7.5.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#getting-rocm-source-code">Getting ROCm source code</a></div>
+<div class="line">This guide discusses how to modifying the open source code base and rebuilding the components of ROCm latest version.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/ROCk-kernel.html#rock-kernel">Installing ROCk-Kernel only</a></div>
+<div class="line">This guide discusses how to install ROCm Kernel into the system.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/FAQ-on-Installation.html#faq-on-installation">FAQ on Installation</a></div>
+<div class="line">This section provides answers for various frequently asked questions regarding the installation steps and issues that can be faced during installation.</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Programming_Guides/Programming-Guides.html#programming-guide">Programming Guide</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">This guide provides a detailed discussion of the ROCm programming model and programming interface. It then describes the hardware implementation and provides guidance on how to achieve maximum performance.</div>
+<div class="line">The appendices include a list of all ROCm-enabled devices, detailed description of all extensions to the C language, listings of supported mathematical functions, C++ features supported in host and device code, technical specifications of various devices, and concludes by introducing the low-level driver API.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Programming_Guides/Programming-Guides.html#rocm-languages">ROCm Languages</a></div>
+<div class="line">This guide provides information on different ROCm languages. ROCm stack offers multiple programming-language choices which can be found in this section.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Programming_Guides/Programming-Guides.html#hc-programing-guide">HC Programing Guide</a></div>
+<div class="line">This guide provides a detailed discussion of The Heterogeneous Compute programming installation requirements methods to install on various platfroms and How to build it from source</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Programming_Guides/Programming-Guides.html#hc-best-practices">HC Best Practices</a></div>
+<div class="line">This section deals with detailed working with HCC, build the program, Build-in Macros, HCC Profiler mode and API Documentaion.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Programming_Guides/Programming-Guides.html#hip-programing-guide">HIP Programing Guide</a></div>
+<div class="line">This guide provides a detailed discussion of The HIP programming, installation requirements methods to install on various platfroms and How to build it from source</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Programming_Guides/Programming-Guides.html#hip-best-practices">HIP Best Practices</a></div>
+<div class="line">This section Provides details regarding variou concepts of HIP Poring, Debugging, Bugs, FAQ and other aspects of the HIP.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Programming_Guides/Programming-Guides.html#opencl-programing-guide">OpenCL Programing Guide</a></div>
+<div class="line">This guide provides a detailed discussion of The OpenCL Architecture, AMD Implementation, Profiling, and other aspects of Opencl.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Programming_Guides/Programming-Guides.html#opencl-best-practices">OpenCL Best Practices</a></div>
+<div class="line">This section provides information on Perfromance and optimization for various device types such as GCN devices.</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html#rocm-gpu-tunning-guides">ROCm GPU Tunning Guides</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html#gfx7-tuning-guide">GFX7 Tuning Guide</a></div>
+<div class="line">– In-Progress</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html#gfx8-tuning-guide">GFX8 Tuning Guide</a></div>
+<div class="line">– In-Progress</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html#vega-tuning-guide">Vega Tuning Guide</a></div>
+<div class="line">– In-Progress</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/GCN_ISA_Manuals/GCN-ISA-Manuals.html#gcn-isa-manuals">GCN ISA Manuals</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/GCN_ISA_Manuals/GCN-ISA-Manuals.html#gcn-1-1">GCN 1.1</a></div>
+<div class="line">This Section Gives Information on ISA Manual for Hawaii (Sea Islands Series Instruction Set Architecture)</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/GCN_ISA_Manuals/GCN-ISA-Manuals.html#gcn-2-0">GCN 2.0</a></div>
+<div class="line">This Section Gives Information on ISA Manual for Fiji and Polaris (AMD Accelerated Parallel Processing technology)</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/GCN_ISA_Manuals/GCN-ISA-Manuals.html#vega">Vega</a></div>
+<div class="line">This section provides “Vega” Instruction Set Architecture, Program Organization, Mode register and more details.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/GCN_ISA_Manuals/GCN-ISA-Manuals.html#inline-gcn-isa-assembly-guide">Inline GCN ISA Assembly Guide</a></div>
+<div class="line">This section covers various concepts of AMDGCN Assembly, DS Permute Instructions, Parameters to a Kernel, GPR Counting.</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_API_References/ROCm-API-References.html#rocm-api-references">ROCm API References</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Here API References are listed out for users</div>
+<div class="line"><br /></div>
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_API_References/ROCm-API-References.html#rocr-system-runtime-api">ROCr System Runtime API</a></div>
+<div class="line">ROCr System Runtime API Details are listed here</div>
+<div class="line"><br /></div>
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_API_References/ROCm-API-References.html#hcc-language-runtime-api">HCC Language Runtime API</a></div>
+<div class="line">HCC Language Runtime APIDetails are listed here</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_API_References/ROCm-API-References.html#hip-language-runtime-api">HIP Language Runtime API</a></div>
+<div class="line">HIP Language Runtime API Details are listed here</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_API_References/ROCm-API-References.html#hip-math-api">HIP Math API</a></div>
+<div class="line">Here HIP Math API are listed with sample working classes</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_API_References/ROCm-API-References.html#thrust-api-documentation">Thrust API Documentation</a></div>
+<div class="line">Here you can find all the Details on installation and working of Thrust Library and Thrust API List</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_API_References/ROCm-API-References.html#math-library-api-s">Math Library API’s</a></div>
+<div class="line">HIP MAth API with hcRNG, clBLAS, clSPARSE API’s.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_API_References/ROCm-API-References.html#deep-learning-api-s">Deep Learning API’s</a></div>
+<div class="line">Here we have MIOpen API and MIOpenGEMM API listed.</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/ROCm-Tools.html#rocm-tools">ROCm Tools</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/ROCm-Tools.html#hcc">HCC</a></div>
+<div class="line">Complete description of Heterogeneous Compute Compiler has been listed and documented.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/ROCm-Tools.html#gcn-assembler-and-disassembler">GCN Assembler and Disassembler</a></div>
+<div class="line">This Section provieds details regarding GCN in-detail.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/ROCm-Tools.html#gcn-assembler-tools">GCN Assembler Tools</a></div>
+<div class="line">In this Section there are useful items related to AMDGPU ISA assembler has been documented.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/ROCm-Tools.html#rocm-gdb">ROCm-GDB</a></div>
+<div class="line">Complete Documentaion of ROCm-GDB tool has been Documented here.Installtion, Build steps and working of Debugger and API related to it has been documented.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/ROCm-Tools.html#rocm-profiler">ROCm-Profiler</a></div>
+<div class="line">This section gives Details on Radeon Compute Profiler is a performance analysis tool, here we have details on how to clone and use it.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/ROCm-Tools.html#codexl">CodeXL</a></div>
+<div class="line">This section provides details on CodeXL, a comprehensive tool suite. here Documentaion of Installation and builds and other details related to Codexl is done.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/ROCm-Tools.html#gpuperfapi">GPUperfAPI</a></div>
+<div class="line">This section provieds details related to GPU Performance API. Content related to how to clone, system requiments and source code directory layout can be found.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/ROCm-Tools.html#rocm-binary-utilities">ROCm Binary Utilities</a></div>
+<div class="line">– In-progess</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/ROCm_Libraries/ROCm-Libraries.html">ROCm Libraries</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/rocFFT.html#rocfft">rocFFT</a></div>
+<div class="line">This section provides details on rocFFT,it is a AMD’s software library and also be compiled with the CUDA compiler using HIP tools for running on Nvidia GPU devices.</div>
+</div>
+<p><a href="#id9"><span class="problematic" id="id10">|</span></a><a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/rocblas.html#rocblas">rocBLAS</a>
+| This section provieds details on rocBLAS,It is a library for BLAS on ROCm.rocBLAS is implemented in the HIP programming language and optimized for AMD’s latest discrete GPUs.</p>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/hipBLAS.html#hip8las">hipBLAS</a></div>
+<div class="line">This section provides details on hipBLAS,It is a BLAS marshalling library, with multiple supported backends.hipBLAS exports an interface that does not require the client to change.Currently,it supports :ref:<a href="#id11"><span class="problematic" id="id12">`</span></a>rocblas`and cuBLAS as backends.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/hcRNG.html#hcrng">hcRNG</a></div>
+<div class="line">This section provieds details on hcRNG.It is a software library ,where uniform random number generators targeting the AMD heterogeneous hardware via HCC compiler runtime is implemented..</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/hipeigen.html#hipeigen">hipeigen</a></div>
+<div class="line">This section provieds details on Eigen.It is a C++ template library which provides linear algebra for  matrices, vectors, numerical solvers, and related algorithms.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/clFFT.html#c1fft">clFFT</a></div>
+<div class="line">This section provieds details on clFFT.It is a software library which contains  FFT functions written in OpenCL,and clFFt also supports running on CPU devices to facilitate debugging and heterogeneous programming.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/clBLA.html#clbla">clBLAS</a></div>
+<div class="line">This section provieds details on clBLAS.It makes easier for developers to utilize the inherent performance and power efficiency benefits of heterogeneous computing.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/clSPARSE.html#clsparse1">clSPARSE</a></div>
+<div class="line">This section provides details on clSPARSE,It is an OpenCL library which implements Sparse linear algebra routines.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/clRNG.html#cl1rng">clRNG</a></div>
+<div class="line">This section provides details on clRNG,This is a  library  for uniform random number generation in OpenCL..</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/hcFFT.html#hcfft">hcFFT</a></div>
+<div class="line">This section provides details on hcFFT,It hosts the HCC based FFT Library and  targets  GPU acceleration of FFT routines on AMD devices.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://rocm-documentation.readthedocs.io/en/latest/ROCm_Tools/tensile.html#tensile">Tensile</a></div>
+<div class="line">This section provieds details on Tensile.It is a tool for creating a benchmark-driven backend library for GEMMs,N-dimensional tensor contractions and  multiplies two multi-dimensional objects together on a GPU..</div>
+</div>
+</div>
+<div class="section" id="id13">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Compiler_SDK/ROCm-Compiler-SDK.html#rocm-compiler-sdk">ROCm Compiler SDK</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Compiler_SDK/ROCm-Compiler-SDK.html#gcn-native-isa-llvm-code-generator">GCN Native ISA LLVM Code Generator</a></div>
+<div class="line">This section provide complete description on LLVM such as introduction, Code Object, Code conventions, Source languages, etc.,</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Compiler_SDK/ROCm-Compiler-SDK.html#rocm-code-object-format">ROCm Code Object Format</a></div>
+<div class="line">This section describes about application binary interface (ABI) provided by the AMD, implementation of the HSA runtime. it also provides details on Kernel, AMD Queue and Signals.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Compiler_SDK/ROCm-Compiler-SDK.html#roc-device-library">ROCm Device Library</a></div>
+<div class="line">Here we have instruction related to ROCm Device Library overview,Building and Testing related information with respect to Device Library.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Compiler_SDK/ROCm-Compiler-SDK.html#rocr-runtime">ROCr Runtime</a></div>
+<div class="line">This section refers the user-mode API interfaces and libraries necessary for host applications to launch compute kernels to available HSA ROCm kernel agents. we can find installation details and Infrastructure details related to ROCr.</div>
+</div>
+</div>
+<div class="section" id="id14">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_System_Managment/ROCm-System-Managment.html#rocm-system-management">ROCm System Management</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_System_Managment/ROCm-System-Managment.html#rocm-smi">ROCm-SMI</a></div>
+<div class="line">ROCm System Management Interface a complete guide to use and work with rocm-smi tool.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_System_Managment/ROCm-System-Managment.html#sysfs-interface">SYSFS Interface</a></div>
+<div class="line">This section provides information on sysfs file structure where all detailes related to file structure related to system are captured in sysfs.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_System_Managment/ROCm-System-Managment.html#kfd-topology">KFD Topology</a></div>
+<div class="line">KFD Kernel Topology is the system file structure wich describes about AMD GPU related information such as nodes, Memory, Cache and IO-links.</div>
+</div>
+</div>
+<div class="section" id="id15">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html#rocm-virtualization-containers">ROCm Virtualization &amp; Containers</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html#pcie-passthrough-on-kvm">PCIe Passthrough on KVM</a></div>
+<div class="line">Here PCIe Passthrough on KVM is described. A KVM-based instructions assume a headless host with an input/output memory management unit (IOMMU) to pass peripheral devices such as a GPU to guest virtual machines.more information can be found on the same here.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html#rocm-docker">ROCm-Docker</a></div>
+<div class="line">A framework for building the software layers defined in the Radeon Open Compute Platform into portable docker images. Detailed Information related to ROCm-Docker can be found.</div>
+</div>
+</div>
+<div class="section" id="id16">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Remote_Device_Programming/Remote-Device-Programming.html#remote-device-programming">Remote Device Programming</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Remote_Device_Programming/Remote-Device-Programming.html#rocnrdma">ROCnRDMA</a></div>
+<div class="line">ROCmRDMA is the solution designed to allow third-party kernel drivers to utilize DMA access to the GPU memory. Complete indoemation related to ROCmRDMA is Documented here.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Remote_Device_Programming/Remote-Device-Programming.html#ucx">UCX</a></div>
+<div class="line">This section gives information related to UCX, How to install, Running UCX and much more</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Remote_Device_Programming/Remote-Device-Programming.html#mpi">MPI</a></div>
+<div class="line">This section gives information related to MPI.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Remote_Device_Programming/Remote-Device-Programming.html#ipc">IPC</a></div>
+<div class="line">This section gives information related to IPC.</div>
+</div>
+</div>
+<div class="section" id="id17">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Deep_learning/Deep-learning.html#deep-learning-on-rocm">Deep Learning on ROCm</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">This section provides details on ROCm Deep Learning concepts.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Deep_learning/Deep-learning.html#porting-from-cudnn-to-miopen">Porting from cuDNN to MIOpen</a></div>
+<div class="line">The porting guide highlights the key differences between the current cuDNN and MIOpen APIs.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Deep_learning/Deep-learning.html#deep-learning-framework-support-for-rocm">Deep Learning Framework support for ROCm</a></div>
+<div class="line">This section provides detailed chart of Frameworks supported by ROCm and repository details.</div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Deep_learning/Deep-learning.html#tutorials">Tutorials</a></div>
+<div class="line">Here Tutorials on different DeepLearning Frameworks are documented.</div>
+</div>
+</div>
+<div class="section" id="id18">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Other_Solutions/Other-Solutions.html#system-level-debug">System Level Debug</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Other_Solutions/Other-Solutions.html#rocm-language-system-level-debug-flags-and-environment-variables">ROCm Language &amp; System Level Debug, Flags and Environment Variables</a></div>
+<div class="line">Here in this section we have details regardinf various system related debugs and commands for isssues faced while using ROCm.</div>
+</div>
+</div>
+<div class="section" id="id19">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Tutorial/Tutorial.html#tutorial">Tutorial</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">This section Provide details related to few Concepts of HIP and other sections.</div>
+</div>
+</div>
+<div class="section" id="id20">
+<h2><a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/ROCm_Glossary/ROCm-Glossary.html#rocm-glossary">ROCm Glossary</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">ROCm Glossary gives highlight concept and their main concept of how they work.</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Current_Release_Notes/Current-Release-Notes.html" class="btn btn-neutral float-right" title="Current Release Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to ROCm Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

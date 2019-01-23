@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Device Memory Access &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Device Memory Access</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/ROCm_API_References/HIP_API/Device-Memory-Access.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="device-memory-access">
+<span id="id1"></span><h1>Device Memory Access<a class="headerlink" href="#device-memory-access" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hipdevicecanaccesspeer">
+<h2>hipDeviceCanAccessPeer<a class="headerlink" href="#hipdevicecanaccesspeer" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv322hipDeviceCanAccessPeerPiii">
+<span id="_CPPv222hipDeviceCanAccessPeerPiii"></span><span id="hipDeviceCanAccessPeer__iP.i.i"></span><span class="target" id="group___peer_to_peer_1ga0a1c9ccd775758d9d7d5b5a1f525b719"></span>hipError_t <code class="descname">hipDeviceCanAccessPeer</code><span class="sig-paren">(</span>int *<em>canAccessPeer</em>, int <em>deviceId</em>, int <em>peerDeviceId</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv322hipDeviceCanAccessPeerPiii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Determine if a device can access a peer’s memory. </p>
+<p><p>Returns “1” in </p>
+<code class="docutils literal notranslate"><span class="pre">canAccessPeer</span></code> if the specified <code class="docutils literal notranslate"><span class="pre">device</span></code> is capable of directly accessing memory physically located on peerDevice , or “0” if not.<dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">canAccessPeer</span></code>: Returns the peer access capability (0 or 1) </li>
+<li><code class="docutils literal notranslate"><span class="pre">device</span></code>: - device from where memory may be accessed. </li>
+<li><code class="docutils literal notranslate"><span class="pre">peerDevice</span></code>: - device where memory is physically located</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>Returns “0” in <code class="docutils literal notranslate"><span class="pre">canAccessPeer</span></code> if deviceId == peerDeviceId, and both are valid devices : a device is not a peer of itself.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, </dd>
+<dt><strong>Return</strong></dt>
+<dd>#hipErrorInvalidDevice if deviceId or peerDeviceId are not valid devices </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdeviceenablepeeraccess">
+<h2>hipDeviceEnablePeerAccess<a class="headerlink" href="#hipdeviceenablepeeraccess" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv325hipDeviceEnablePeerAccessij">
+<span id="_CPPv225hipDeviceEnablePeerAccessij"></span><span id="hipDeviceEnablePeerAccess__i.unsigned-i"></span><span class="target" id="group___peer_to_peer_1ga0caca59034134d7a7bb893cc1caa653e"></span>hipError_t <code class="descname">hipDeviceEnablePeerAccess</code><span class="sig-paren">(</span>int <em>peerDeviceId</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv325hipDeviceEnablePeerAccessij" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Enable direct access from current device’s virtual address space to memory allocations physically located on a peer device. </p>
+<p>Memory which already allocated on peer device will be mapped into the address space of the current device. In addition, all future memory allocations on peerDeviceId will be mapped into the address space of the current device when the memory is allocated. The peer memory remains accessible from the current device until a call to hipDeviceDisablePeerAccess or hipDeviceReset.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipErrorPeerAccessAlreadyEnabled if peer access is already enabled for this device. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">peerDeviceId</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: Returns #hipSuccess, #hipErrorInvalidDevice, #hipErrorInvalidValue, </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicedisablepeeraccess">
+<h2>hipDeviceDisablePeerAccess<a class="headerlink" href="#hipdevicedisablepeeraccess" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv326hipDeviceDisablePeerAccessi">
+<span id="_CPPv226hipDeviceDisablePeerAccessi"></span><span id="hipDeviceDisablePeerAccess__i"></span><span class="target" id="group___peer_to_peer_1ga85030c72824fb60aaddc7374ab60481b"></span>hipError_t <code class="descname">hipDeviceDisablePeerAccess</code><span class="sig-paren">(</span>int <em>peerDeviceId</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv326hipDeviceDisablePeerAccessi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Disable direct access from current device’s virtual address space to memory allocations physically located on a peer device. </p>
+<p>Returns hipErrorPeerAccessNotEnabled if direct access to memory on peerDevice has not yet been enabled from the current device.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorPeerAccessNotEnabled </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">peerDeviceId</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemgetaddressrange">
+<h2>hipMemGetAddressRange<a class="headerlink" href="#hipmemgetaddressrange" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv321hipMemGetAddressRangeP14hipDeviceptr_tP6size_t14hipDeviceptr_t">
+<span id="_CPPv221hipMemGetAddressRangeP14hipDeviceptr_tP6size_t14hipDeviceptr_t"></span><span id="hipMemGetAddressRange__hipDeviceptr_tP.sP.hipDeviceptr_t"></span><span class="target" id="group___peer_to_peer_1gac7d9132f6e3d102e9b512020e5654f38"></span>hipError_t <code class="descname">hipMemGetAddressRange</code><span class="sig-paren">(</span>hipDeviceptr_t *<em>pbase</em>, size_t *<em>psize</em>, hipDeviceptr_t <em>dptr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv321hipMemGetAddressRangeP14hipDeviceptr_tP6size_t14hipDeviceptr_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get information on memory allocations. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidDevicePointer</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="Context-Management.html#group___context_1gab6dbcff5c5b1249a5ac5cf39ae9d08bc"><span class="std std-ref">hipCtxCreate</span></a>, <a class="reference internal" href="Context-Management.html#group___context_1ga9a65fe43238ef303a6d97826c05fd14e"><span class="std std-ref">hipCtxDestroy</span></a>, <a class="reference internal" href="Context-Management.html#group___context_1ga12a7a993e10f775fbf61a0b14288ed1b"><span class="std std-ref">hipCtxGetFlags</span></a>, <a class="reference internal" href="Context-Management.html#group___context_1ga2cc4ea5a6b78d9d7990a88a7863467d4"><span class="std std-ref">hipCtxPopCurrent</span></a>, <a class="reference internal" href="Context-Management.html#group___context_1ga741786101d348fdbfa1f64546860357a"><span class="std std-ref">hipCtxGetCurrent</span></a>, <a class="reference internal" href="Context-Management.html#group___context_1ga834a192f70c2bfc0269c309436776feb"><span class="std std-ref">hipCtxSetCurrent</span></a>, <a class="reference internal" href="Context-Management.html#group___context_1ga9c9d92f29d68cacdea4c062c97e50a8a"><span class="std std-ref">hipCtxPushCurrent</span></a>, hipCtxSetCacheConfig, <a class="reference internal" href="Context-Management.html#group___context_1gad45cd968e8e3dcfd24ef050cab2f41c8"><span class="std std-ref">hipCtxSynchronize</span></a>, <a class="reference internal" href="Context-Management.html#group___context_1ga8aa32cf64272da929f23ecbafefefcee"><span class="std std-ref">hipCtxGetDevice</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pbase</span></code>: - BAse pointer address </li>
+<li><code class="docutils literal notranslate"><span class="pre">psize</span></code>: - Size of allocation </li>
+<li><code class="docutils literal notranslate"><span class="pre">dptr-</span></code>: Device Pointer</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpypeer">
+<h2>hipMemcpyPeer<a class="headerlink" href="#hipmemcpypeer" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv313hipMemcpyPeerPviPKvi6size_t">
+<span id="_CPPv213hipMemcpyPeerPviPKvi6size_t"></span><span id="hipMemcpyPeer__voidP.i.voidCP.i.s"></span><span class="target" id="group___peer_to_peer_1ga5512f45e25c08052667c8ffe7162333b"></span>hipError_t <code class="descname">hipMemcpyPeer</code><span class="sig-paren">(</span>void *<em>dst</em>, int <em>dstDeviceId</em>, <em class="property">const</em> void *<em>src</em>, int <em>srcDeviceId</em>, size_t <em>sizeBytes</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv313hipMemcpyPeerPviPKvi6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copies memory from one device to memory on another device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInvalidDevice </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: - Destination device pointer. </li>
+<li><code class="docutils literal notranslate"><span class="pre">dstDeviceId</span></code>: - Destination device </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: - Source device pointer </li>
+<li><code class="docutils literal notranslate"><span class="pre">srcDeviceId</span></code>: - Source device </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: - Size of memory copy in bytes</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmemcpypeerasync">
+<h2>hipMemcpyPeerAsync<a class="headerlink" href="#hipmemcpypeerasync" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<span class="target" id="group___peer_to_peer_1ga6f500e146a98bb41a5972fe091fcc4b6"></span><code class="descname">hipError_t hipMemcpyPeerAsync(void * dst, int dstDeviceId, const void * src, int srcDevice, size_t sizeBytes, hipStream_t stream  __dparm0)</code></dt>
+<dd><p>Copies memory from one device to memory on another device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInvalidDevice </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dst</span></code>: - Destination device pointer. </li>
+<li><code class="docutils literal notranslate"><span class="pre">dstDevice</span></code>: - Destination device </li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code>: - Source device pointer </li>
+<li><code class="docutils literal notranslate"><span class="pre">srcDevice</span></code>: - Source device </li>
+<li><code class="docutils literal notranslate"><span class="pre">sizeBytes</span></code>: - Size of memory copy in bytes </li>
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: - Stream identifier</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

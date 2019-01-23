@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ROCk-Kernel-Driver &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>ROCk-Kernel-Driver</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Installation_Guide/ROCK-Kernel-Driver_readme.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rock-kernel-driver">
+<span id="opencomute-kernel-deriver"></span><h1>ROCk-Kernel-Driver<a class="headerlink" href="#rock-kernel-driver" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="amd-radeon-open-compute-kernel-driver">
+<h2>AMD Radeon Open Compute Kernel driver<a class="headerlink" href="#amd-radeon-open-compute-kernel-driver" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-s-new-in-this-tree">
+<h3>What’s New in this tree ?<a class="headerlink" href="#what-s-new-in-this-tree" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>dGPU support for Fiji</li>
+<li>device and host memory support</li>
+<li>multiple GPU support</li>
+<li>host memory allocations are shared between GPUs</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="known-issues">
+<h3>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>On consumer grade products (Nano, Fury, Fury X), thermal control is not working correctly. As a workaround, fans are hardcoded to 100% to prevent overheating.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="package-contents">
+<h3>Package Contents<a class="headerlink" href="#package-contents" title="Permalink to this headline">¶</a></h3>
+<p>The kernel image is built from a source tree based on the 4.13 upstream release plus:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Features in the HSA kernel driver (“amdkfd”) that are not yet upstreamed to the mainline Linux kernel.</li>
+<li>Changes in the AMDGPU kernel driver (“amdgpu”) that may not yet be upstreamed to the mainline Linux kernel.</li>
+</ul>
+</div></blockquote>
+<p><strong>Note regarding libhsakmt compatibility</strong></p>
+<p>Please note that the libhsakmt library in this repository is NOT compatible with amdkfd that is distributed as part of the mainline Linux kernel from 3.19 and onward.</p>
+</div>
+<div class="section" id="target-platform">
+<h3>Target Platform<a class="headerlink" href="#target-platform" title="Permalink to this headline">¶</a></h3>
+<p>This release is intended for use with any hardware configuration that contains only Carrizo APU, or configurations which contain an Intel Haswell or newer CPU plus Fiji dGPUs.</p>
+<p>APU motherboards must support run latest BIOS version and have the IOMMU enabled in the BIOS.</p>
+<p>The following is a reference hardware configuration that was used for testing purposes:</p>
+<p>dGPU Config:</p>
+<blockquote>
+<div><ul class="simple">
+<li>CPU: Intel i7-4790</li>
+<li>Motherboard: ASUS Z97-PRO</li>
+<li>Memory: G.Skill Ripjaws 4 32GB RAM (4 x 8GB)</li>
+<li>OS: Ubuntu 14.04.03 64-bit edition</li>
+<li>dGPU: ASUS R9 Nano</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="installing-and-configuring-the-kernel">
+<h3>Installing and configuring the kernel<a class="headerlink" href="#installing-and-configuring-the-kernel" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Binary packages are no longer part of this git repository. Please refer to the <a class="reference external" href="https://github.com/RadeonOpenCompute/ROCm/wiki">ROCm project</a> for instructions on configuring the AMD apt/yum package server</p>
+</div>
+<p>Config files for building the kernel
+The configuration used to build our kernel can be re-created by running: <cite>make rock-rel_defconfig</cite></p>
+<p>This config is based on the Ubuntu 14.04 build patches by Canonical.</p>
+<dl class="docutils">
+<dt><strong>Obtaining kernel and libhsakmt source code</strong></dt>
+<dd><ul class="first last simple">
+<li>Source code used to build the kernel is in this repo. Source code to build libhsakmt is in the <a class="reference external" href="https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface">ROCT-Thunk-Interface</a> repository</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="license">
+<h2>LICENSE<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>The following lists the different licenses that apply to the different components in this repository:</p>
+<div class="line-block">
+<div class="line">The Linux kernel images are covered by the modified GPL license in COPYING</div>
+<div class="line">The firmware image is covered by the license in LICENSE.ucode</div>
+</div>
+<p>Link to go directly to the repository <a class="reference external" href="https://github.com/RadeonOpenCompute/ROCK-Kernel-Driver/tree/roc-1.7.x">ROCK-Kernel-Driver</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,708 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1.0 Current Release Notes &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>1.0 Current Release Notes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/outline.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="current-release-notes">
+<span id="rocm-release-notes"></span><h1>1.0 Current Release Notes<a class="headerlink" href="#current-release-notes" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="installation-guide">
+<h1>2.0 Installation Guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="quick-start-guide">
+<h2>2.1 Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="installation-guide-ubuntu">
+<h2>2.2 Installation Guide Ubuntu<a class="headerlink" href="#installation-guide-ubuntu" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="installation-guide-fedora">
+<h2>2.3 Installation Guide Fedora<a class="headerlink" href="#installation-guide-fedora" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="programing-guides">
+<span id="rocm-programing-guide"></span><h1>3.0 Programing Guides<a class="headerlink" href="#programing-guides" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hc-programing-guide">
+<h2>3.1 HC Programing Guide<a class="headerlink" href="#hc-programing-guide" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="programing-model">
+<h3>3.1.1 Programing Model<a class="headerlink" href="#programing-model" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="lowerroman simple">
+<li>Kernels</li>
+<li>Thread Hierarchy</li>
+<li>Memory Hierarchy</li>
+<li>Heterogeneous Programing</li>
+<li>Compute Capability</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="programing-interface">
+<h3>3.1.2 Programing Interface<a class="headerlink" href="#programing-interface" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="lowerroman simple">
+<li>Compilation with HCC</li>
+<li>HC C++ Runtime</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="performance-guidelines">
+<h3>3.1.3 Performance Guidelines<a class="headerlink" href="#performance-guidelines" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="language-extensions">
+<h3>3.1.4 Language Extensions<a class="headerlink" href="#language-extensions" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="mathematical-functions">
+<h3>3.1.5 Mathematical Functions<a class="headerlink" href="#mathematical-functions" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="textures">
+<h3>3.1.6 Textures<a class="headerlink" href="#textures" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="environment-variables">
+<h3>3.1.6 Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="hc-best-practices">
+<h2>3.2 HC Best Practices<a class="headerlink" href="#hc-best-practices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="assessing-your-application">
+<h3>3.2.1 Assessing Your Application<a class="headerlink" href="#assessing-your-application" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="heterogeneous-computing">
+<h3>3.2.2 Heterogeneous Computing<a class="headerlink" href="#heterogeneous-computing" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="application-profiling">
+<h3>3.2.3 Application Profiling<a class="headerlink" href="#application-profiling" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="parallelizing-your-application">
+<h3>3.2.4 Parallelizing your Application<a class="headerlink" href="#parallelizing-your-application" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="getting-started-with-your-first-application">
+<h3>3.2.5 Getting Started with your First Application<a class="headerlink" href="#getting-started-with-your-first-application" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="driving-application-correctness">
+<h3>3.2.6 Driving Application Correctness<a class="headerlink" href="#driving-application-correctness" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="optimizing-your-application">
+<h3>3.2.7 Optimizing your Application<a class="headerlink" href="#optimizing-your-application" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="performance-metrics">
+<h3>3.2.8 Performance Metrics<a class="headerlink" href="#performance-metrics" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="memory-optimizations">
+<h3>3.2.9 Memory Optimizations<a class="headerlink" href="#memory-optimizations" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="gpu-device-architecture-software-optimizations">
+<h3>3.2.10 GPU Device Architecture Software Optimizations<a class="headerlink" href="#gpu-device-architecture-software-optimizations" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="instruction-level-optimizations">
+<h3>3.2.11 Instruction Level Optimizations<a class="headerlink" href="#instruction-level-optimizations" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="control-flow">
+<h3>3.2.12 Control Flow<a class="headerlink" href="#control-flow" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="deploying-hcc-application">
+<h3>3.2.13 Deploying HCC Application<a class="headerlink" href="#deploying-hcc-application" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="recommended-best-practices">
+<h3>3.2.14 Recommended Best Practices<a class="headerlink" href="#recommended-best-practices" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="hcc-compiler-switches">
+<h3>3.2.115 HCC compiler switches<a class="headerlink" href="#hcc-compiler-switches" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="hip-programing-guide">
+<h2>3.3 HIP Programing Guide<a class="headerlink" href="#hip-programing-guide" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>3.3.1 Programing Model<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="lowerroman simple">
+<li>Kernels</li>
+<li>Thread Hierarchy</li>
+<li>Memory Hierarchy</li>
+<li>Heterogeneous Programing</li>
+<li>Compute Capability</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h3>3.3.2 Programing Interface<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="lowerroman simple">
+<li>Compilation with HCC</li>
+<li>HC C++ Runtime</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h3>3.3.3 Performance Guidelines<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id4">
+<h3>3.3.4 Language Extensions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id5">
+<h3>3.3.5 Mathematical Functions<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3>3.3.6 Textures<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id7">
+<h3>3.3.7 Environment Variables<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="hip-best-practices">
+<h2>3.4 HIP Best Practices<a class="headerlink" href="#hip-best-practices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h3>3.4.1 Assessing Your Application<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id9">
+<h3>3.4.2 Heterogeneous Computing<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id10">
+<h3>3.4.3 Application Profiling<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id11">
+<h3>3.4.4 Parallelizing your Application<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id12">
+<h3>3.4.5 Getting Started with your First application<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id13">
+<h3>3.4.6 Driving Application Correctness<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id14">
+<h3>3.4.7 Optimizing your Application<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id15">
+<h3>3.4.8 Performance Metrics<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id16">
+<h3>3.4.9 Memory Optimizations<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id17">
+<h3>3.4.10 GPU Device Architecture Software Optimizations<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id18">
+<h3>3.4.11 Instruction Level Optimizations<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id19">
+<h3>3.4.12 Control Flow<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="deploying-hip-application">
+<h3>3.4.13 Deploying HIP Application<a class="headerlink" href="#deploying-hip-application" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id20">
+<h3>3.4.14 Recommended Best Practices<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id21">
+<h3>3.4.15 HCC compiler switches<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="opencl-programing-guide">
+<h2>3.5 OpenCL Programing Guide<a class="headerlink" href="#opencl-programing-guide" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id22">
+<h3>3.5.1 Programing Model<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="lowerroman simple">
+<li>Kernels</li>
+<li>Thread Hierarchy</li>
+<li>Memory Hierarchy</li>
+<li>Heterogeneous Programing</li>
+<li>Compute Capability</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id23">
+<h3>3.5.2 Programing Interface<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="lowerroman simple">
+<li>Compilation with OpenCL</li>
+<li>OpenCL Runtime</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id24">
+<h3>3.5.3 Performance Guidelines<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id25">
+<h3>3.5.4 Language Extensions<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id26">
+<h3>3.5.5 Mathematical Functions<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id27">
+<h3>3.5.6 Textures<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id28">
+<h3>3.57 Environment Variables<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="opencl-best-practices">
+<h2>3.6 OpenCL Best Practices<a class="headerlink" href="#opencl-best-practices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id29">
+<h3>3.6.1 Assessing Your Application<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id30">
+<h3>3.6.2 Heterogeneous Computing<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id31">
+<h3>3.6.3 Application Profiling<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id32">
+<h3>3.6.4 Parallelizing your Application<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id33">
+<h3>3.6.5 Getting Started with your First application<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id34">
+<h3>3.6.6 Driving Application Correctness<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id35">
+<h3>3.6.7 Optimizing your Application<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id36">
+<h3>3.6.8 Performance Metrics<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id37">
+<h3>3.6.9 Memory Optimizations<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id38">
+<h3>3.6.10 GPU Device Architecture Software Optimizations<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id39">
+<h3>3.6.11 Instruction Level Optimizations<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id40">
+<h3>3.6.12 Control Flow<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="deploying-opencl-application">
+<h3>3.6.13 Deploying OpenCL Application<a class="headerlink" href="#deploying-opencl-application" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id41">
+<h3>3.6.14 Recommended Best Practices<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="opencl-compiler-switches">
+<h3>3.6.15 OpenCL compiler switches<a class="headerlink" href="#opencl-compiler-switches" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="section" id="rocm-gpu-tunning-guides">
+<span id="rocm-hardware-tunning-guides"></span><h1>4.0 ROCm GPU Tunning Guides<a class="headerlink" href="#rocm-gpu-tunning-guides" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gfx7-tuning-guide">
+<h2>4.1 GFX7 Tuning Guide<a class="headerlink" href="#gfx7-tuning-guide" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="gfx8-tuning-guide">
+<h2>4.2 GFX8 Tuning Guide<a class="headerlink" href="#gfx8-tuning-guide" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="gfx9-tuning-guide">
+<h2>4.3 GFX9 Tuning Guide<a class="headerlink" href="#gfx9-tuning-guide" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="gcn-isa-manuals">
+<span id="id42"></span><h1>5.0 GCN ISA Manuals<a class="headerlink" href="#gcn-isa-manuals" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gcn-1-1-hawaii">
+<h2>5.1 GCN 1.1 Hawaii<a class="headerlink" href="#gcn-1-1-hawaii" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="gcn-2-0-fiji-and-polaris">
+<h2>5.2 GCN 2.0 Fiji and Polaris<a class="headerlink" href="#gcn-2-0-fiji-and-polaris" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="gcn-vega">
+<h2>5.2 GCN - Vega<a class="headerlink" href="#gcn-vega" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="inline-gcn-isa-assembly-guide">
+<h2>5.4 Inline GCN ISA Assembly Guide<a class="headerlink" href="#inline-gcn-isa-assembly-guide" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="rocm-api-references">
+<span id="rocm-api-refernces"></span><h1>6.0 ROCm API References<a class="headerlink" href="#rocm-api-references" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rocr-system-runtime-api">
+<h2>6.1 ROCr System Runtime API<a class="headerlink" href="#rocr-system-runtime-api" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="hcc-language-runtime-api">
+<h2>6.2 HCC Language Runtime API<a class="headerlink" href="#hcc-language-runtime-api" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="hip-language-runtime-api">
+<h2>6.3 HIP Language Runtime API<a class="headerlink" href="#hip-language-runtime-api" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="hip-device-runtime-api">
+<h2>6.4 HIP Device Runtime API<a class="headerlink" href="#hip-device-runtime-api" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="hip-math-api">
+<h2>6.5 HIP Math API<a class="headerlink" href="#hip-math-api" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="math-libarary-api-s">
+<h2>6.6 Math Libarary API’s<a class="headerlink" href="#math-libarary-api-s" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rocblas">
+<h3>6.6.1 rocBLAS<a class="headerlink" href="#rocblas" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="rocfft">
+<h3>6.6.2 rocFFT<a class="headerlink" href="#rocfft" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="hcrand">
+<h3>6.6.3 hcRAND<a class="headerlink" href="#hcrand" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="hssparse">
+<h3>6.6.4 hsSPARSE<a class="headerlink" href="#hssparse" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="clblas">
+<h3>6.6.5 clBLAS<a class="headerlink" href="#clblas" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="clfft">
+<h3>6.6.6 clFFT<a class="headerlink" href="#clfft" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="clsparse">
+<h3>6.6.7 clSPARSE<a class="headerlink" href="#clsparse" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="clrand">
+<h3>6.6.8 clRAND<a class="headerlink" href="#clrand" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="deep-learning-api-s">
+<h2>6.7 Deep Learning API’s<a class="headerlink" href="#deep-learning-api-s" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="miopen">
+<h3>6.7.1 MIOpen<a class="headerlink" href="#miopen" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="section" id="rocm-tools">
+<span id="id43"></span><h1>7.0 ROCm Tools<a class="headerlink" href="#rocm-tools" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hcc">
+<h2>7.1 HCC<a class="headerlink" href="#hcc" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="gcn-assembler-and-disassembler">
+<h2>7.2 GCN Assembler and Disassembler<a class="headerlink" href="#gcn-assembler-and-disassembler" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="gcn-assembler-tools">
+<h2>7.3 GCN Assembler Tools<a class="headerlink" href="#gcn-assembler-tools" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="rocm-gdb">
+<h2>7.4 ROCm-GDB<a class="headerlink" href="#rocm-gdb" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="rocm-debugger-api">
+<h2>7.5 ROCm Debugger API<a class="headerlink" href="#rocm-debugger-api" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="rocm-profiler">
+<h2>7.6 ROCm-Profiler<a class="headerlink" href="#rocm-profiler" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="codexl">
+<h2>7.7 CodeXL<a class="headerlink" href="#codexl" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="gpuperfapi">
+<h2>7.8 GPUperfAPI<a class="headerlink" href="#gpuperfapi" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="rocm-binary-utilities">
+<h2>7.9 ROCm Binary Utilities<a class="headerlink" href="#rocm-binary-utilities" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="rocm-compiler-sdk">
+<span id="id44"></span><h1>8.0 ROCm Compiler SDK<a class="headerlink" href="#rocm-compiler-sdk" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gcn-native-isa-llvm-code-generator">
+<h2>8.1 GCN Native ISA LLVM Code Generator<a class="headerlink" href="#gcn-native-isa-llvm-code-generator" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="rocm-code-object-format">
+<h2>8.2 ROCm Code Object Format<a class="headerlink" href="#rocm-code-object-format" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="roc-device-library">
+<h2>8.3 ROC Device Library<a class="headerlink" href="#roc-device-library" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>OCML</li>
+<li>OKML</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="rocr-runtime">
+<h2>8.4 ROCr Runtime<a class="headerlink" href="#rocr-runtime" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="introduction">
+<h3>8.4.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id45">
+<h3>8.4.2 Programing Model<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="lowerroman simple">
+<li>Initialization and agent discovery</li>
+<li>Queues and AQL Packets</li>
+<li>Signals and packet launch</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="programing-guide">
+<h3>8.4.3 Programing Guide<a class="headerlink" href="#programing-guide" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="lowerroman simple">
+<li>Initialization and shut down</li>
+<li>Runtime Notifications</li>
+<li>System and agent information</li>
+<li>Signals</li>
+<li>Queues</li>
+<li>Architected Queuing Language Packets</li>
+<li>Memory</li>
+<li>Code Object Loading</li>
+<li>Common definitions</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="best-practices-mapping-programing-language-to-rocr-runtime">
+<h3>8.4.4 Best Practices Mapping Programing Language to ROCr runtime<a class="headerlink" href="#best-practices-mapping-programing-language-to-rocr-runtime" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="section" id="rocm-system-managment">
+<span id="id46"></span><h1>9.0 ROCM System Managment<a class="headerlink" href="#rocm-system-managment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rocm-smi">
+<h2>9.1 ROCm-SMI<a class="headerlink" href="#rocm-smi" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="programing-rocm-smi">
+<h2>9.2 Programing ROCm-SMI<a class="headerlink" href="#programing-rocm-smi" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="sysfs-interface">
+<h2>9.3 SYSFS Interface<a class="headerlink" href="#sysfs-interface" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="rocm-virtualization-containers">
+<span id="rocm-virtualization-guide"></span><h1>10 ROCm Virtualization &amp; Containers<a class="headerlink" href="#rocm-virtualization-containers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="kvm-passthrough">
+<h2>10.1 KVM Passthrough<a class="headerlink" href="#kvm-passthrough" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="rocm-docker">
+<h2>10.2 ROCm-Docker<a class="headerlink" href="#rocm-docker" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="remote-device-programing">
+<span id="rocm-remote-device-programing"></span><h1>11 Remote Device Programing<a class="headerlink" href="#remote-device-programing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rocnrdma">
+<h2>11.1 ROCnRDMA<a class="headerlink" href="#rocnrdma" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="ucx">
+<h2>11.2 UCX<a class="headerlink" href="#ucx" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="mpi">
+<h2>11.3 MPI<a class="headerlink" href="#mpi" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="ipc">
+<h2>11.4 IPC<a class="headerlink" href="#ipc" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="other-solutions">
+<span id="rocm-other-guide"></span><h1>12 Other Solutions<a class="headerlink" href="#other-solutions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rocr-error-codes">
+<h2>12.1 ROCr Error Codes<a class="headerlink" href="#rocr-error-codes" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="rocm-glossary">
+<span id="id47"></span><h1>13 ROCm Glossary<a class="headerlink" href="#rocm-glossary" title="Permalink to this headline">¶</a></h1>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

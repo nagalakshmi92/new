@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hcFFT &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>hcFFT</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Tools/hcFFT.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hcfft">
+<span id="id1"></span><h1>hcFFT<a class="headerlink" href="#hcfft" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="tensile.html#home"><span class="std std-ref">HOME</span></a></li>
+<li><a class="reference internal" href="#examples"><span class="std std-ref">Examples</span></a></li>
+<li><a class="reference internal" href="tensile.html#installation"><span class="std std-ref">Installation</span></a></li>
+<li><a class="reference internal" href="#introduction"><span class="std std-ref">Introduction</span></a></li>
+<li><a class="reference internal" href="#keyfeature"><span class="std std-ref">KeyFeature</span></a></li>
+<li><a class="reference internal" href="#prerequisites"><span class="std std-ref">Prerequisites</span></a></li>
+<li><a class="reference internal" href="#testedenvironments"><span class="std std-ref">Tested Environments</span></a></li>
+</ul>
+</div></blockquote>
+<div class="section" id="home">
+<span id="id2"></span><h2>HOME<a class="headerlink" href="#home" title="Permalink to this headline">¶</a></h2>
+<p>welcome to the hcFFT wiki!</p>
+</div>
+<div class="section" id="examples">
+<span id="id3"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>FFT 1D R2C example:</p>
+<p>file: hcfft_1D_R2C.cpp</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!c++
+
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &quot;hcfft.h&quot;
+#include &quot;hc_am.hpp&quot;
+#include &quot;hcfftlib.h&quot;
+
+int main(int argc, char* argv[]) {
+  int N = argc &gt; 1 ? atoi(argv[1]) : 1024;
+  // HCFFT work flow
+  hcfftHandle plan;
+  hcfftResult status  = hcfftPlan1d(&amp;plan, N, HCFFT_R2C);
+  assert(status == HCFFT_SUCCESS);
+  int Rsize = N;
+  int Csize = (N / 2) + 1;
+  hcfftReal* input = (hcfftReal*)calloc(Rsize, sizeof(hcfftReal));
+  int seed = 123456789;
+  srand(seed);
+
+  // Populate the input
+  for(int i = 0; i &lt; Rsize ; i++) {
+    input[i] = rand();
+  }
+
+  hcfftComplex* output = (hcfftComplex*)calloc(Csize, sizeof(hcfftComplex));
+
+  std::vector&lt;hc::accelerator&gt; accs = hc::accelerator::get_all();
+  assert(accs.size() &amp;&amp; &quot;Number of Accelerators == 0!&quot;);
+  hc::accelerator_view accl_view = accs[1].get_default_view();
+
+  hcfftReal* idata = hc::am_alloc(Rsize * sizeof(hcfftReal), accs[1], 0);
+  accl_view.copy(input, idata, sizeof(hcfftReal) * Rsize);
+  hcfftComplex* odata = hc::am_alloc(Csize * sizeof(hcfftComplex), accs[1], 0);
+  accl_view.copy(output,  odata, sizeof(hcfftComplex) * Csize);
+  status = hcfftExecR2C(plan, idata, odata);
+  assert(status == HCFFT_SUCCESS);
+  accl_view.copy(odata, output, sizeof(hcfftComplex) * Csize);
+  status =  hcfftDestroy(plan);
+  assert(status == HCFFT_SUCCESS);
+  free(input);
+  free(output);
+  hc::am_free(idata);
+  hc::am_free(odata);
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li>Compiling the example code:</li>
+</ul>
+<p>Assuming the library and compiler installation is followed as in installation.</p>
+<p>/opt/rocm/hcc/bin/clang++ <cite>/opt/rocm/hcc/bin/hcc-config –cxxflags –ldflags</cite> -lhc_am -lhcfft -I../lib/include -L../build/lib/src hcfft_1D_R2C.cpp</p>
+</div>
+<div class="section" id="installation">
+<span id="id4"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The following are the steps to use the library</p>
+<blockquote>
+<div><ul class="simple">
+<li>ROCM 1.5 Kernel, Driver and Compiler Installation (if not done until now)</li>
+<li>Library installation.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="rocm-1-5-installation">
+<h3>ROCM 1.5 Installation<a class="headerlink" href="#rocm-1-5-installation" title="Permalink to this headline">¶</a></h3>
+<p>To Know more about ROCM refer
+<a class="reference external" href="https://github.com/RadeonOpenCompute/ROCm/blob/master/README.md">https://github.com/RadeonOpenCompute/ROCm/blob/master/README.md</a></p>
+<p><strong>a. Installing Debian ROCM repositories</strong></p>
+<p>Before proceeding, make sure to completely uninstall any pre-release ROCm packages.</p>
+<p>Refer <a class="reference external" href="https://github.com/RadeonOpenCompute/ROCm#removing-pre-release-packages">https://github.com/RadeonOpenCompute/ROCm#removing-pre-release-packages</a> for instructions to remove pre-release ROCM packages.</p>
+<p>Steps to install rocm package are,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">qO</span> <span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">packages</span><span class="o">.</span><span class="n">amd</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rocm</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span><span class="n">rocm</span><span class="o">.</span><span class="n">gpg</span><span class="o">.</span><span class="n">key</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">add</span> <span class="o">-</span>
+
+<span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;echo deb [arch=amd64] http://packages.amd.com/rocm/apt/debian/ xenial main &gt; /etc/apt/sources.list.d/rocm.list&#39;</span>
+
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">rocm</span>
+</pre></div>
+</div>
+<p>Then, make the ROCm kernel your default kernel. If using grub2 as your bootloader, you can edit the GRUB_DEFAULT variable in the following file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">vi</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">default</span><span class="o">/</span><span class="n">grub</span>
+
+<span class="n">sudo</span> <span class="n">update</span><span class="o">-</span><span class="n">grub</span>
+</pre></div>
+</div>
+<p>and Reboot the system</p>
+<p><strong>b. Verifying the Installation</strong></p>
+<p>Once Reboot, to verify that the ROCm stack completed successfully you can execute HSA vector_copy sample application:</p>
+<blockquote>
+<div><ul class="simple">
+<li>cd /opt/rocm/hsa/sample</li>
+<li>make</li>
+<li>./vector_copy</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="library-installation">
+<h3>Library Installation<a class="headerlink" href="#library-installation" title="Permalink to this headline">¶</a></h3>
+<p><strong>a. Install using Prebuilt debian</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ROCmSoftwarePlatform</span><span class="o">/</span><span class="n">hcFFT</span><span class="o">/</span><span class="n">blob</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">pre</span><span class="o">-</span><span class="n">builds</span><span class="o">/</span><span class="n">hcfft</span><span class="o">-</span><span class="n">master</span><span class="o">-</span><span class="mi">87</span><span class="n">a37f5</span><span class="o">-</span><span class="n">Linux</span><span class="o">.</span><span class="n">deb</span>
+<span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span> <span class="n">hcfft</span><span class="o">-</span><span class="n">master</span><span class="o">-</span><span class="mi">87</span><span class="n">a37f5</span><span class="o">-</span><span class="n">Linux</span><span class="o">.</span><span class="n">deb</span>
+</pre></div>
+</div>
+<p><strong>b. Build debian from source</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ROCmSoftwarePlatform</span><span class="o">/</span><span class="n">hcFFT</span><span class="o">.</span><span class="n">git</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">hcFFT</span>
+
+<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">&amp;&amp;</span> <span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>build.sh execution builds the library and generates a debian under build directory.</p>
+<p><strong>c. Install CPU based FFTW3 library</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">fftw3</span> <span class="n">fftw3</span><span class="o">-</span><span class="n">dev</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="introduction">
+<span id="id5"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This repository hosts the HCC based FFT Library, that targets GPU acceleration of FFT routines on AMD devices. To know what HCC compiler features, refer <a class="reference external" href="https://github.com/RadeonOpenCompute/hcc">here</a>.</p>
+<p>The following are the sub-routines that are implemented</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>R2C : Transforms Real valued input in Time domain to Complex valued output in Frequency domain.</li>
+<li>C2R : Transforms Complex valued input in Frequency domain to Real valued output in Real domain.</li>
+<li>C2C : Transforms Complex valued input in Frequency domain to Complex valued output in Real domain or vice versa</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="keyfeature">
+<span id="id6"></span><h2>KeyFeature<a class="headerlink" href="#keyfeature" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Support 1D, 2D and 3D Fast Fourier Transforms</li>
+<li>Supports R2C, C2R, C2C, D2Z, Z2D and Z2Z Transforms</li>
+<li>Support Out-Of-Place data storage</li>
+<li>Ability to Choose desired target accelerator</li>
+<li>Single and Double precision</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="prerequisites">
+<span id="id7"></span><h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>This section lists the known set of hardware and software requirements to build this library</p>
+<div class="section" id="hardware">
+<h3>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>CPU: mainstream brand, Better if with &gt;=4 Cores Intel Haswell based CPU</li>
+<li>System Memory &gt;= 4GB (Better if &gt;10GB for NN application over multiple GPUs)</li>
+<li>Hard Drive &gt; 200GB (Better if SSD or NVMe driver for NN application over multiple GPUs)</li>
+<li>Minimum GPU Memory (Global) &gt; 2GB</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="gpu-cards-supported">
+<h3>GPU cards supported<a class="headerlink" href="#gpu-cards-supported" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>dGPU: AMD R9 Fury X, R9 Fury, R9 Nano</li>
+<li>APU: AMD Kaveri or Carrizo</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="amd-driver-and-runtime">
+<h3>AMD Driver and Runtime<a class="headerlink" href="#amd-driver-and-runtime" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Radeon Open Compute Kernel (ROCK) driver : <a class="reference external" href="https://github.com/RadeonOpenCompute/ROCK-Kernel-Driver">https://github.com/RadeonOpenCompute/ROCK-Kernel-Driver</a></li>
+<li>HSA runtime API and runtime for Boltzmann: <a class="reference external" href="https://github.com/RadeonOpenCompute/ROCR-Runtime">https://github.com/RadeonOpenCompute/ROCR-Runtime</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="system-software">
+<h3>System software<a class="headerlink" href="#system-software" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Ubuntu 14.04 trusty and later</li>
+<li>GCC 4.6 and later</li>
+<li>CPP 4.6 and later (come with GCC package)</li>
+<li>python 2.7 and later</li>
+<li>python-pip</li>
+<li>BeautifulSoup4 (installed using python-pip)</li>
+<li>HCC 0.9 from here</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="tools-and-misc">
+<h3>Tools and Misc<a class="headerlink" href="#tools-and-misc" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>git 1.9 and later</li>
+<li>cmake 2.6 and later (2.6 and 2.8 are tested)</li>
+<li>firewall off</li>
+<li>root privilege or user account in sudo group</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="ubuntu-packages">
+<h3>Ubuntu Packages<a class="headerlink" href="#ubuntu-packages" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>libc6-dev-i386</li>
+<li>liblapack-dev</li>
+<li>graphicsmagick</li>
+<li>libblas-dev</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="tested-environments">
+<span id="testedenvironments"></span><h2>Tested Environments<a class="headerlink" href="#tested-environments" title="Permalink to this headline">¶</a></h2>
+<p>This sections enumerates the list of tested combinations of Hardware and system softwares.</p>
+<div class="section" id="driver-versions">
+<h3>Driver versions<a class="headerlink" href="#driver-versions" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>Boltzmann Early Release Driver + dGPU</dt>
+<dd><ul class="first last">
+<li>Radeon Open Compute Kernel (ROCK) driver : <a class="reference external" href="https://github.com/RadeonOpenCompute/ROCK-Kernel-Driver">https://github.com/RadeonOpenCompute/ROCK-Kernel-Driver</a></li>
+<li>HSA runtime API and runtime for Boltzmann: <a class="reference external" href="https://github.com/RadeonOpenCompute/ROCR-Runtime">https://github.com/RadeonOpenCompute/ROCR-Runtime</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Traditional HSA driver + APU (Kaveri)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="gpu-cards">
+<h3>GPU Cards<a class="headerlink" href="#gpu-cards" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Radeon R9 Nano</li>
+<li>Radeon R9 FuryX</li>
+<li>Radeon R9 Fury</li>
+<li>Kaveri and Carizo APU</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="server-system">
+<h3>Server System<a class="headerlink" href="#server-system" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Supermicro SYS 2028GR-THT 6 R9 NANO</li>
+<li>Supermicro SYS-1028GQ-TRT 4 R9 NANO</li>
+<li>Supermicro SYS-7048GR-TR Tower 4 R9 NANO</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

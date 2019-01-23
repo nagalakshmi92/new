@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Table Comparing Syntax for Different Compute APIs &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Table Comparing Syntax for Different Compute APIs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Programming_Guides/HIP-Terms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="table-comparing-syntax-for-different-compute-apis">
+<span id="hip-terms"></span><h1>Table Comparing Syntax for Different Compute APIs<a class="headerlink" href="#table-comparing-syntax-for-different-compute-apis" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="11%" />
+<col width="11%" />
+<col width="25%" />
+<col width="25%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Term</th>
+<th class="head">CUDA</th>
+<th class="head">HIP</th>
+<th class="head">HC</th>
+<th class="head">C++AMP</th>
+<th class="head">OpenCL</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Device</td>
+<td>int deviceId</td>
+<td>int deviceId</td>
+<td>hc::accelerator</td>
+<td>concurrency::accelerator</td>
+<td>cl_device</td>
+</tr>
+<tr class="row-odd"><td>Queue</td>
+<td>cudaStream_t</td>
+<td>hipStream_t</td>
+<td>hc::accelerator_view</td>
+<td>concurrency::accelerator_view</td>
+<td>cl_command_queue</td>
+</tr>
+<tr class="row-even"><td>Event</td>
+<td>cudaEvent_t</td>
+<td>hipEvent_t</td>
+<td>hc::completion_future</td>
+<td>concurrency::completion_future</td>
+<td>cl_event</td>
+</tr>
+<tr class="row-odd"><td>Memory</td>
+<td>void *</td>
+<td>void *</td>
+<td>void *  ;   hc::array  ;   hc::array_view</td>
+<td>concurrency::array  ;   concurrency::array_view</td>
+<td>cl_mem</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>grid</td>
+<td>grid</td>
+<td>extent</td>
+<td>extent</td>
+<td>NDRange</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>block</td>
+<td>block</td>
+<td>tile</td>
+<td>tile</td>
+<td>work-group</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>thread</td>
+<td>thread</td>
+<td>thread</td>
+<td>thread</td>
+<td>work-item</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>warp</td>
+<td>warp</td>
+<td>wavefront</td>
+<td>N/A</td>
+<td>sub-group</td>
+</tr>
+<tr class="row-even"><td>Thread-index</td>
+<td>threadIdx.x</td>
+<td>hipThreadIdx_x</td>
+<td>t_idx.local[0]</td>
+<td>t_idx.local[0]</td>
+<td>get_local_id(0)</td>
+</tr>
+<tr class="row-odd"><td>Block-index</td>
+<td>blockIdx.x</td>
+<td>hipBlockIdx_x</td>
+<td>t_idx.tile[0]</td>
+<td>t_idx.tile[0]</td>
+<td>get_group_id(0)</td>
+</tr>
+<tr class="row-even"><td>Block-dim</td>
+<td>blockDim.x</td>
+<td>hipBlockDim_x</td>
+<td>t_ext.tile_dim[0]</td>
+<td>t_idx.tile_dim0</td>
+<td>get_local_size(0)</td>
+</tr>
+<tr class="row-odd"><td>Grid-dim</td>
+<td>gridDim.x</td>
+<td>hipGridDim_x</td>
+<td>t_ext[0]</td>
+<td>t_ext[0]</td>
+<td>get_global_size(0)</td>
+</tr>
+<tr class="row-even"><td>Device Kernel</td>
+<td>__global__</td>
+<td>__global__</td>
+<td>lambda inside   hc::parallel_for_each or [[hc]]</td>
+<td>restrict(amp)</td>
+<td>__kernel</td>
+</tr>
+<tr class="row-odd"><td>Device Function</td>
+<td>__device__</td>
+<td>__device__</td>
+<td>[[hc]]   (detected automatically in many case)</td>
+<td>restrict(amp)</td>
+<td>Implied in device compilation</td>
+</tr>
+<tr class="row-even"><td>Host Function</td>
+<td>__host_   (default)</td>
+<td>__host_   (default)</td>
+<td>[[cpu]]   (default)</td>
+<td>restrict(cpu)   (default)</td>
+<td>Implied in host compilation.</td>
+</tr>
+<tr class="row-odd"><td>Host + Device Function</td>
+<td>__host__
+__device__</td>
+<td>__host__
+__device__</td>
+<td>[[hc]] [[cpu]]</td>
+<td>restrict(amp,cpu)</td>
+<td>No equivalent</td>
+</tr>
+<tr class="row-even"><td>Kernel Launch</td>
+<td>&lt;&lt;&lt; &gt;&gt;&gt;</td>
+<td>hipLaunchKernel</td>
+<td>hc::parallel_for_each</td>
+<td>concurrency::parallel_for_each</td>
+<td>clEnqueueNDRangeKernel</td>
+</tr>
+<tr class="row-odd"><td>Global Memory</td>
+<td>__global__</td>
+<td>__global__</td>
+<td>Unnecessary / Implied</td>
+<td>Unnecessary / Implied</td>
+<td>__global__</td>
+</tr>
+<tr class="row-even"><td>Group Memory</td>
+<td>__shared__</td>
+<td>__shared__</td>
+<td>tile_static</td>
+<td>tile_static</td>
+<td>__local</td>
+</tr>
+<tr class="row-odd"><td>Constant</td>
+<td>__constant__</td>
+<td>__constant__</td>
+<td>Unnecessary / Implied</td>
+<td>Unnecessary / Implied</td>
+<td>__constant</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>__syncthreads</td>
+<td>__syncthreads</td>
+<td>tile_static.barrier()</td>
+<td>t_idx.barrier()</td>
+<td>barrier(CLK_LOCAL_MEMFENCE)</td>
+</tr>
+<tr class="row-odd"><td>Atomic Builtins</td>
+<td>atomicAdd</td>
+<td>atomicAdd</td>
+<td>hc::atomic_fetch_add</td>
+<td>concurrency::atomic_fetch_add</td>
+<td>atomic_add</td>
+</tr>
+<tr class="row-even"><td>Precise Math</td>
+<td>cos(f)</td>
+<td>cos(f)</td>
+<td>hc::precise_math::cos(f)</td>
+<td>concurrency::precise_math::cos(f)</td>
+<td>cos(f)</td>
+</tr>
+<tr class="row-odd"><td>Fast Math</td>
+<td>__cos(f)</td>
+<td>__cos(f)</td>
+<td>hc::fast_math::cos(f)</td>
+<td>concurrency::fast_math::cos(f)</td>
+<td>native_cos(f)</td>
+</tr>
+<tr class="row-even"><td>Vector</td>
+<td>float4</td>
+<td>float4</td>
+<td>hc::short_vector::float4</td>
+<td>concurrency::graphics::float_4</td>
+<td>float4</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>For HC and C++AMP, assume a captured tiled_ext named “t_ext” and captured extent named “ext”. These languages use captured variables to pass information to the kernel rather than using special built-in functions so the exact variable name may vary.</li>
+<li>The indexing functions (starting with thread-index) show the terminology for a 1D grid. Some APIs use reverse order of xyz / 012 indexing for 3D grids.</li>
+<li>HC allows tile dimensions to be specified at runtime while C++AMP requires that tile dimensions be specified at compile-time. Thus hc syntax for tile dims is <code class="docutils literal notranslate"><span class="pre">t_ext.tile_dim[0]</span></code> while C++AMP is <code class="docutils literal notranslate"><span class="pre">t_ext.tile_dim0</span></code>.</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

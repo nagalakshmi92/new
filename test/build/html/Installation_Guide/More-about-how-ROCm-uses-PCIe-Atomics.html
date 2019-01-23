@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>More about how ROCm uses PCIe Atomics &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>More about how ROCm uses PCIe Atomics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Installation_Guide/More-about-how-ROCm-uses-PCIe-Atomics.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="more-about-how-rocm-uses-pcie-atomics">
+<span id="id1"></span><h1>More about how ROCm uses PCIe Atomics<a class="headerlink" href="#more-about-how-rocm-uses-pcie-atomics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rocm-pcie-feature-and-overview-bar-memory">
+<h2>ROCm PCIe Feature and Overview BAR Memory<a class="headerlink" href="#rocm-pcie-feature-and-overview-bar-memory" title="Permalink to this headline">¶</a></h2>
+<p>ROCm is an extension of HSA platform architecture, so it shares the queueing model, memory model, signaling and synchronization protocols. Platform atomics are integral to perform queuing and signaling memory operations where there may be multiple-writers across CPU and GPU agents.</p>
+<p>The full list of HSA system architecture platform requirements are here: <a class="reference external" href="http://www.hsafoundation.com/html/HSA_Library.htm#SysArch/Topics/01_Overview/list_of_requirements.htm">HSA Sys Arch Features</a>.</p>
+<p>The ROCm Platform uses the new PCI Express 3.0 (PCIe 3.0) features for Atomic Read-Modify-Write Transactions which extends inter-processor synchronization mechanisms to IO to support the defined set of HSA capabilities needed for queuing and signaling memory operations.</p>
+<p>The new PCIe AtomicOps operate as completers for CAS(Compare and Swap), FetchADD, SWAP atomics. The AtomicsOps are initiated by the
+I/O device which support 32-bit, 64-bit and 128-bit operand which target address have to be naturally aligned to operation sizes.</p>
+<p>For ROCm the Platform atomics are used in ROCm in the following ways:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Update HSA queue’s read_dispatch_id: 64 bit atomic add used by the command processor on the GPU agent to update the packet ID it     processed.</li>
+<li>Update HSA queue’s write_dispatch_id: 64 bit atomic add used by the CPU and GPU agent to support multi-writer queue insertions.</li>
+<li>Update HSA Signals – 64bit atomic ops are used for CPU &amp; GPU synchronization.</li>
+</ul>
+</div></blockquote>
+<p>The PCIe 3.0 AtomicOp feature allows atomic transactions to be requested by, routed through and completed by PCIe components. Routing and completion does not require software support. Component support for each is detectable via the DEVCAP2 register. Upstream bridges need to have AtomicOp routing enabled or the Atomic Operations will fall even though PCIe endpoint and PCIe I/O Devices has the capability to Atomics Operations.</p>
+<p>To do AtomicOp routing capability between two or more Root Ports, each associated Root Port must indicate that capability via the AtomicOp Routing Supported bit in the Device Capabilities 2 register.</p>
+<p>If your system has a PCIe Express Switch it needs to support AtomicsOp routing. Again AtomicOp requests are permitted only if a component’s DEVCTL2.ATOMICOP_REQUESTER_ENABLE field is set. These requests can only be serviced if the upstream components support AtomicOp completion and/or routing to a component which does. AtomicOp Routing Support=1 Routing is supported, AtomicOp Routing Support=0 routing is not supported.</p>
+<p>Atomic Operation is a Non-Posted transaction supporting 32-bit and 64-bit address formats, there must be a response for Completion containing the result of the operation. Errors associated with the operation (uncorrectable error accessing the target location or carrying out the Atomic operation) are signaled to the requester by setting the Completion Status field in the completion descriptor, they are set to to Completer Abort (CA) or Unsupported Request (UR).</p>
+<p>To understand more about how PCIe Atomic operations work <a class="reference external" href="https://pcisig.com/sites/default/files/specification_documents/ECN_Atomic_Ops_080417.pdf">PCIe Atomics</a></p>
+<p><a class="reference external" href="https://patchwork.kernel.org/patch/7261731/">Linux Kernel Patch to pci_enable_atomic_request</a></p>
+<p>There are also a number of papers which talk about these new capabilities:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://www.intel.es/content/dam/doc/white-paper/atomic-read-modify-write-primitives-i-o-devices-paper.pdf">Atomic Read Modify Write Primitives by Intel</a></li>
+<li><a class="reference external" href="https://www.intel.sg/content/dam/doc/white-paper/pci-express3-accelerator-white-paper.pdf">PCI express 3 Accelerator Whitepaper by Intel</a></li>
+<li><a class="reference external" href="https://www.hotchips.org/wp-content/uploads/hc_archives/hc21/1_sun/HC21.23.1.SystemInterconnectTutorial-Epub/HC21.23.131.Ajanovic-Intel-PCIeGen3.pdf">Intel PCIe Generation 3 Hotchips Paper</a></li>
+<li><a class="reference external" href="http://composter.com.ua/documents/PCI_Express_Base_Specification_Revision_4.0.Ver.0.3.pdf">PCIe Generation 4 Base Specification includes Atomics Operation</a></li>
+</ul>
+</div></blockquote>
+<p>Other I/O devices with PCIe Atomics support</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www.mellanox.com/related-docs/prod_adapter_cards/PB_ConnectX-5_VPI_Card.pdf">Mellanox ConnectX-5 InfiniBand Card</a></li>
+<li><a class="reference external" href="http://www.hoti.org/hoti20/slides/Bob_Alverson.pdf">Cray Aries Interconnect</a></li>
+<li><a class="reference external" href="https://www.xilinx.com/support/documentation/white_papers/wp464-PCIe-ultrascale.pdf">Xilinx PCIe Ultrascale Whitepaper</a></li>
+<li><a class="reference external" href="https://www.xilinx.com/support/documentation/ip_documentation/pcie_7x/v3_1/pg054-7series-pcie.pdf">Xilinx 7 Series Devices</a></li>
+</ul>
+</div></blockquote>
+<p>Future bus technology with richer I/O Atomics Operation Support</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://genzconsortium.org/faq/gen-z-technology/#33/">GenZ</a></li>
+</ul>
+</div></blockquote>
+<p>New PCIe Endpoints with support beyond AMD Ryzen and EPYC CPU; Intel Haswell or newer CPU’s with PCIe Generation 3.0 support.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www.mellanox.com/related-docs/npu-multicore-processors/PB_Bluefield_SoC.pdf">Mellanox Bluefield SOC</a></li>
+<li><a class="reference external" href="http://www.cavium.com/ThunderX2_ARM_Processors.html">Cavium Thunder X2</a></li>
+</ul>
+</div></blockquote>
+<p>In ROCm, we also take advantage of PCIe ID based ordering technology for P2P when the GPU originates two writes to two different targets:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">1. write to another GPU memory,</div>
+</div>
+<div class="line-block">
+<div class="line">2. then write to system memory to indicate transfer complete.</div>
+</div>
+</div></blockquote>
+<p>They are routed off to different ends of the computer but we want to make sure the write to system memory to indicate transfer complete occurs AFTER P2P write to GPU has complete.</p>
+<p><a class="reference external" href="https://www.altera.com/en_US/pdfs/literature/an/an690.pdf">Good Paper on Understanding PCIe Generation 3 Throughput</a></p>
+<div class="section" id="bar-memory-overview">
+<h3>BAR Memory Overview<a class="headerlink" href="#bar-memory-overview" title="Permalink to this headline">¶</a></h3>
+<p>On a Xeon E5 based system in the BIOS we can turn on above 4GB PCIe addressing, if so he need to set MMIO Base address ( MMIOH Base) and Range ( MMIO High Size) in the BIOS.</p>
+<p>In SuperMicro system in the system bios you need to see the following</p>
+<blockquote>
+<div><ul class="simple">
+<li>Advanced-&gt;PCIe/PCI/PnP configuration-&gt; Above 4G Decoding = Enabled</li>
+<li>Advanced-&gt;PCIe/PCI/PnP Configuration-&gt;MMIOH Base = 512G</li>
+<li>Advanced-&gt;PCIe/PCI/PnP Configuration-&gt;MMIO High Size = 256G</li>
+</ul>
+</div></blockquote>
+<p>When we support Large Bar Capability there is a Large Bar Vbios which also disable the IO bar.</p>
+<p>For GFX9 and Vega10 which have Physical Address up 44 bit and 48 bit Virtual address.</p>
+<blockquote>
+<div><ul class="simple">
+<li>BAR0-1 registers: 64bit, prefetchable, GPU memory. 8GB or 16GB depending on Vega10 SKU. Must be placed &lt; 2^44 to support P2P       access from other Vega10.</li>
+<li>BAR2-3 registers: 64bit, prefetchable, Doorbell. Must be placed &lt; 2^44 to support P2P access from other Vega10.</li>
+<li>BAR4 register: Optional, not a boot device.</li>
+<li>BAR5 register: 32bit, non-prefetchable, MMIO. Must be placed &lt; 4GB.</li>
+</ul>
+</div></blockquote>
+<p>Here is how our BAR works on GFX 8 GPU’s with 40 bit Physical Address Limit</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">11</span><span class="p">:</span><span class="mf">00.0</span> <span class="n">Display</span> <span class="n">controller</span><span class="p">:</span> <span class="n">Advanced</span> <span class="n">Micro</span> <span class="n">Devices</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span> <span class="p">[</span><span class="n">AMD</span><span class="o">/</span><span class="n">ATI</span><span class="p">]</span> <span class="n">Fiji</span> <span class="p">[</span><span class="n">Radeon</span> <span class="n">R9</span> <span class="n">FURY</span> <span class="o">/</span> <span class="n">NANO</span> <span class="n">Series</span><span class="p">]</span> <span class="p">(</span><span class="n">rev</span> <span class="n">c1</span><span class="p">)</span>
+
+<span class="n">Subsystem</span><span class="p">:</span> <span class="n">Advanced</span> <span class="n">Micro</span> <span class="n">Devices</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span> <span class="p">[</span><span class="n">AMD</span><span class="o">/</span><span class="n">ATI</span><span class="p">]</span> <span class="n">Device</span> <span class="mi">0</span><span class="n">b35</span>
+
+<span class="n">Flags</span><span class="p">:</span> <span class="n">bus</span> <span class="n">master</span><span class="p">,</span> <span class="n">fast</span> <span class="n">devsel</span><span class="p">,</span> <span class="n">latency</span> <span class="mi">0</span><span class="p">,</span> <span class="n">IRQ</span> <span class="mi">119</span>
+
+<span class="n">Memory</span> <span class="n">at</span> <span class="n">bf40000000</span> <span class="p">(</span><span class="mi">64</span><span class="o">-</span><span class="n">bit</span><span class="p">,</span> <span class="n">prefetchable</span><span class="p">)</span> <span class="p">[</span><span class="n">size</span><span class="o">=</span><span class="mi">256</span><span class="n">M</span><span class="p">]</span>
+
+<span class="n">Memory</span> <span class="n">at</span> <span class="n">bf50000000</span> <span class="p">(</span><span class="mi">64</span><span class="o">-</span><span class="n">bit</span><span class="p">,</span> <span class="n">prefetchable</span><span class="p">)</span> <span class="p">[</span><span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span><span class="p">]</span>
+
+<span class="n">I</span><span class="o">/</span><span class="n">O</span> <span class="n">ports</span> <span class="n">at</span> <span class="mi">3000</span> <span class="p">[</span><span class="n">size</span><span class="o">=</span><span class="mi">256</span><span class="p">]</span>
+
+<span class="n">Memory</span> <span class="n">at</span> <span class="n">c7400000</span> <span class="p">(</span><span class="mi">32</span><span class="o">-</span><span class="n">bit</span><span class="p">,</span> <span class="n">non</span><span class="o">-</span><span class="n">prefetchable</span><span class="p">)</span> <span class="p">[</span><span class="n">size</span><span class="o">=</span><span class="mi">256</span><span class="n">K</span><span class="p">]</span>
+
+<span class="n">Expansion</span> <span class="n">ROM</span> <span class="n">at</span> <span class="n">c7440000</span> <span class="p">[</span><span class="n">disabled</span><span class="p">]</span> <span class="p">[</span><span class="n">size</span><span class="o">=</span><span class="mi">128</span><span class="n">K</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Legend:</p>
+<p>1 : GPU Frame Buffer BAR – In this example it happens to be 256M, but typically this will be size of the GPU memory (typically 4GB+). This BAR has to be placed &lt; 2^40 to allow peer-to-peer access from other GFX8 AMD GPUs. For GFX9 (Vega GPU) the BAR has to be placed &lt; 2^44 to allow peer-to-peer access from other GFX9 AMD GPUs.</p>
+<p>2 : Doorbell BAR – The size of the BAR is typically will be &lt; 10MB (currently fixed at 2MB) for this generation GPUs. This BAR has to be placed &lt; 2^40 to allow peer-to-peer access from other current generation AMD GPUs.</p>
+<p>3 : IO BAR - This is for legacy VGA and boot device support, but since this the GPUs in this project are not VGA devices (headless), this is not a concern even if the SBIOS does not setup.</p>
+<p>4 : MMIO BAR – This is required for the AMD Driver SW to access the configuration registers. Since the reminder of the BAR available is only 1 DWORD (32bit), this is placed &lt; 4GB. This is fixed at 256KB.</p>
+<p>5 : Expansion ROM – This is required for the AMD Driver SW to access the GPU’s video-bios. This is currently fixed at 128KB.</p>
+</div>
+</div>
+<div class="section" id="excepts-form-overview-of-changes-to-pci-express-3-0">
+<h2>Excepts form Overview of Changes to PCI Express 3.0<a class="headerlink" href="#excepts-form-overview-of-changes-to-pci-express-3-0" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="by-mike-jackson-senior-staff-architect-mindshare-inc">
+<h3>By Mike Jackson, Senior Staff Architect, MindShare, Inc.<a class="headerlink" href="#by-mike-jackson-senior-staff-architect-mindshare-inc" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="atomic-operations-goal">
+<h3>Atomic Operations – Goal:<a class="headerlink" href="#atomic-operations-goal" title="Permalink to this headline">¶</a></h3>
+<p>Support SMP-type operations across a PCIe network to allow for things like offloading tasks between CPU cores and accelerators like a GPU. The spec says this enables advanced synchronization mechanisms that are particularly useful with multiple producers or consumers that need to be synchronized in a non-blocking fashion. Three new atomic non-posted requests were added, plus the corresponding completion (the address must be naturally aligned with the operand size or the TLP is malformed):</p>
+<blockquote>
+<div><ul class="simple">
+<li>Fetch and Add – uses one operand as the “add” value. Reads the target location, adds the operand, and then writes the result back     to the original location.</li>
+<li>Unconditional Swap – uses one operand as the “swap” value. Reads the target location and then writes the swap value to it.</li>
+<li>Compare and Swap – uses 2 operands: first data is compare value, second is swap value. Reads the target location, checks it         against the compare value and, if equal, writes the swap value to the target location.</li>
+<li>AtomicOpCompletion – new completion to give the result so far atomic request and indicate that the atomicity of the transaction     has been maintained.</li>
+</ul>
+</div></blockquote>
+<p>Since AtomicOps are not locked they don’t have the performance downsides of the PCI locked protocol. Compared to locked cycles, they provide “lower latency, higher scalability, advanced synchronization algorithms, and dramatically lower impact on other PCIe traffic.” The lock mechanism can still be used across a bridge to PCI or PCI-X to achieve the desired operation.</p>
+<p>AtomicOps can go from device to device, device to host, or host to device. Each completer indicates whether it supports this capability and guarantees atomic access if it does. The ability to route AtomicOps is also indicated in the registers for a given port.</p>
+</div>
+<div class="section" id="id-based-ordering-goal">
+<h3>ID-based Ordering – Goal:<a class="headerlink" href="#id-based-ordering-goal" title="Permalink to this headline">¶</a></h3>
+<p>Improve performance by avoiding stalls caused by ordering rules. For example, posted writes are never normally allowed to pass each other in a queue, but if they are requested by different functions, we can have some confidence that the requests are not dependent on each other. The previously reserved Attribute bit [2] is now combined with the RO bit to indicate ID ordering with or without relaxed ordering.</p>
+<p>This only has meaning for memory requests, and is reserved for Configuration or IO requests. Completers are not required to copy this bit into a completion, and only use the bit if their enable bit is set for this operation.</p>
+<p>To read more on PCIe Gen 3 new options <a class="reference external" href="https://www.mindshare.com/files/resources/PCIe%203-0.pdf">https://www.mindshare.com/files/resources/PCIe%203-0.pdf</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

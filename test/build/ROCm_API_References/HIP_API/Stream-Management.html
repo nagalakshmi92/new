@@ -1,0 +1,512 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Stream Management &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Stream Management</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/ROCm_API_References/HIP_API/Stream-Management.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="stream-management">
+<span id="id1"></span><h1>Stream Management<a class="headerlink" href="#stream-management" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hipstreamcreate">
+<h2>hipStreamCreate<a class="headerlink" href="#hipstreamcreate" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv315hipStreamCreateP11hipStream_t">
+<span id="_CPPv215hipStreamCreateP11hipStream_t"></span><span id="hipStreamCreate__hipStream_tP"></span><span class="target" id="group___stream_1gaff5b62d6e9502d80879f7176f4d03102"></span>hipError_t <code class="descname">hipStreamCreate</code><span class="sig-paren">(</span>hipStream_t *<em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv315hipStreamCreateP11hipStream_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create an asynchronous stream. </p>
+<p><p>Create a new asynchronous stream. </p>
+<code class="docutils literal notranslate"><span class="pre">stream</span></code> returns an opaque handle that can be used to reference the newly created stream in subsequent hipStream* commands. The stream is allocated on the heap and will remain allocated even if the handle goes out-of-scope. To release the memory used by the stream, applicaiton must call hipStreamDestroy.<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: Valid pointer to hipStream_t. This function writes the memory with the newly created stream. </li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___stream_1gaf2382e3cc6632332a8983a0f58e43494"><span class="std std-ref">hipStreamCreateWithFlags</span></a>, <a class="reference internal" href="#group___stream_1gace005d8ea734fb66c995bd43dac3fd44"><span class="std std-ref">hipStreamCreateWithPriority</span></a>, <a class="reference internal" href="#group___stream_1gabbfb9f573a6ebe8c478605ecb5504a74"><span class="std std-ref">hipStreamSynchronize</span></a>, <a class="reference internal" href="#group___stream_1gacdd84c8f8ef1539c96c57c1d5bcae633"><span class="std std-ref">hipStreamWaitEvent</span></a>, <a class="reference internal" href="#group___stream_1ga3076a3499ed2c7821311006100bb95ec"><span class="std std-ref">hipStreamDestroy</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipstreamcreatewithflags">
+<h2>hipStreamCreateWithFlags<a class="headerlink" href="#hipstreamcreatewithflags" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv324hipStreamCreateWithFlagsP11hipStream_tj">
+<span id="_CPPv224hipStreamCreateWithFlagsP11hipStream_tj"></span><span id="hipStreamCreateWithFlags__hipStream_tP.unsigned-i"></span><span class="target" id="group___stream_1gaf2382e3cc6632332a8983a0f58e43494"></span>hipError_t <code class="descname">hipStreamCreateWithFlags</code><span class="sig-paren">(</span>hipStream_t *<em>stream</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv324hipStreamCreateWithFlagsP11hipStream_tj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create an asynchronous stream. </p>
+<p><p>Create a new asynchronous stream. </p>
+<code class="docutils literal notranslate"><span class="pre">stream</span></code> returns an opaque handle that can be used to reference the newly created stream in subsequent hipStream* commands. The stream is allocated on the heap and will remain allocated even if the handle goes out-of-scope. To release the memory used by the stream, applicaiton must call hipStreamDestroy. Flags controls behavior of the stream. See hipStreamDefault, hipStreamNonBlocking.<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: Pointer to new stream </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: to control stream creation. </li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___stream_1gaff5b62d6e9502d80879f7176f4d03102"><span class="std std-ref">hipStreamCreate</span></a>, <a class="reference internal" href="#group___stream_1gace005d8ea734fb66c995bd43dac3fd44"><span class="std std-ref">hipStreamCreateWithPriority</span></a>, <a class="reference internal" href="#group___stream_1gabbfb9f573a6ebe8c478605ecb5504a74"><span class="std std-ref">hipStreamSynchronize</span></a>, <a class="reference internal" href="#group___stream_1gacdd84c8f8ef1539c96c57c1d5bcae633"><span class="std std-ref">hipStreamWaitEvent</span></a>, <a class="reference internal" href="#group___stream_1ga3076a3499ed2c7821311006100bb95ec"><span class="std std-ref">hipStreamDestroy</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipstreamcreatewithpriority">
+<h2>hipStreamCreateWithPriority<a class="headerlink" href="#hipstreamcreatewithpriority" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv327hipStreamCreateWithPriorityP11hipStream_tji">
+<span id="_CPPv227hipStreamCreateWithPriorityP11hipStream_tji"></span><span id="hipStreamCreateWithPriority__hipStream_tP.unsigned-i.i"></span><span class="target" id="group___stream_1gace005d8ea734fb66c995bd43dac3fd44"></span>hipError_t <code class="descname">hipStreamCreateWithPriority</code><span class="sig-paren">(</span>hipStream_t *<em>stream</em>, unsigned int <em>flags</em>, int <em>priority</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv327hipStreamCreateWithPriorityP11hipStream_tji" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create an asynchronous stream with the specified priority. </p>
+<p><p>Create a new asynchronous stream with the specified priority. </p>
+<code class="docutils literal notranslate"><span class="pre">stream</span></code> returns an opaque handle that can be used to reference the newly created stream in subsequent hipStream* commands. The stream is allocated on the heap and will remain allocated even if the handle goes out-of-scope. To release the memory used by the stream, applicaiton must call hipStreamDestroy. Flags controls behavior of the stream. See hipStreamDefault, hipStreamNonBlocking.<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: Pointer to new stream </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: to control stream creation. </li>
+<li><code class="docutils literal notranslate"><span class="pre">priority</span></code>: of the stream. Lower numbers represent higher priorities. </li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___stream_1gaff5b62d6e9502d80879f7176f4d03102"><span class="std std-ref">hipStreamCreate</span></a>, <a class="reference internal" href="#group___stream_1gabbfb9f573a6ebe8c478605ecb5504a74"><span class="std std-ref">hipStreamSynchronize</span></a>, <a class="reference internal" href="#group___stream_1gacdd84c8f8ef1539c96c57c1d5bcae633"><span class="std std-ref">hipStreamWaitEvent</span></a>, <a class="reference internal" href="#group___stream_1ga3076a3499ed2c7821311006100bb95ec"><span class="std std-ref">hipStreamDestroy</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicegetstreampriorityrange">
+<h2>hipDeviceGetStreamPriorityRange<a class="headerlink" href="#hipdevicegetstreampriorityrange" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv331hipDeviceGetStreamPriorityRangePiPi">
+<span id="_CPPv231hipDeviceGetStreamPriorityRangePiPi"></span><span id="hipDeviceGetStreamPriorityRange__iP.iP"></span><span class="target" id="group___stream_1ga2b0709fb23b273abec8ea223ebb362bc"></span>hipError_t <code class="descname">hipDeviceGetStreamPriorityRange</code><span class="sig-paren">(</span>int *<em>leastPriority</em>, int *<em>greatestPriority</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv331hipDeviceGetStreamPriorityRangePiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns numerical values that correspond to the least and greatest stream priority. </p>
+<p><p>Returns in *leastPriority and *greatestPriority the numerical values that correspond to the least and greatest stream priority respectively. Stream priorities follow a convention where lower numbers imply greater priorities. The range of meaningful stream priorities is given by [*greatestPriority, *leastPriority]. If the user attempts to create a stream with a priority value that is outside the the meaningful range as specified by this API, the priority is automatically clamped to within the valid range. </p>
+<dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">leastPriority</span></code>: pointer in which value corresponding to least priority is returned. </li>
+<li><code class="docutils literal notranslate"><span class="pre">greatestPriority</span></code>: pointer in which value corresponding to greatest priority is returned.</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipstreamdestroy">
+<h2>hipStreamDestroy<a class="headerlink" href="#hipstreamdestroy" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv316hipStreamDestroy11hipStream_t">
+<span id="_CPPv216hipStreamDestroy11hipStream_t"></span><span id="hipStreamDestroy__hipStream_t"></span><span class="target" id="group___stream_1ga3076a3499ed2c7821311006100bb95ec"></span>hipError_t <code class="descname">hipStreamDestroy</code><span class="sig-paren">(</span>hipStream_t <em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv316hipStreamDestroy11hipStream_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Destroys the specified stream. </p>
+<p><p>Destroys the specified stream.</p>
+<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess #hipErrorInvalidResourceHandle</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: Valid pointer to hipStream_t. This function writes the memory with the newly created stream. </li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>If commands are still executing on the specified stream, some may complete execution before the queue is deleted.</p>
+<p>The queue may be destroyed while some commands are still inflight, or may wait for all commands queued to the stream before destroying it.</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___stream_1gaff5b62d6e9502d80879f7176f4d03102"><span class="std std-ref">hipStreamCreate</span></a>, <a class="reference internal" href="#group___stream_1gaf2382e3cc6632332a8983a0f58e43494"><span class="std std-ref">hipStreamCreateWithFlags</span></a>, <a class="reference internal" href="#group___stream_1gace005d8ea734fb66c995bd43dac3fd44"><span class="std std-ref">hipStreamCreateWithPriority</span></a>, <a class="reference internal" href="#group___stream_1ga925b39ff78d3b5fd458bd9e2cade9f4e"><span class="std std-ref">hipStreamQuery</span></a>, <a class="reference internal" href="#group___stream_1gacdd84c8f8ef1539c96c57c1d5bcae633"><span class="std std-ref">hipStreamWaitEvent</span></a>, <a class="reference internal" href="#group___stream_1gabbfb9f573a6ebe8c478605ecb5504a74"><span class="std std-ref">hipStreamSynchronize</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipstreamquery">
+<h2>hipStreamQuery<a class="headerlink" href="#hipstreamquery" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv314hipStreamQuery11hipStream_t">
+<span id="_CPPv214hipStreamQuery11hipStream_t"></span><span id="hipStreamQuery__hipStream_t"></span><span class="target" id="group___stream_1ga925b39ff78d3b5fd458bd9e2cade9f4e"></span>hipError_t <code class="descname">hipStreamQuery</code><span class="sig-paren">(</span>hipStream_t <em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv314hipStreamQuery11hipStream_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return #hipSuccess if all of the operations in the specified <code class="docutils literal notranslate"><span class="pre">stream</span></code> have completed, or #hipErrorNotReady if not. </p>
+<p><p>This is thread-safe and returns a snapshot of the current state of the queue. However, if other host threads are sending work to the stream, the status may change immediately after the function is called. It is typically used for debug.</p>
+<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorNotReady, #hipErrorInvalidResourceHandle</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: stream to query</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___stream_1gaff5b62d6e9502d80879f7176f4d03102"><span class="std std-ref">hipStreamCreate</span></a>, <a class="reference internal" href="#group___stream_1gaf2382e3cc6632332a8983a0f58e43494"><span class="std std-ref">hipStreamCreateWithFlags</span></a>, <a class="reference internal" href="#group___stream_1gace005d8ea734fb66c995bd43dac3fd44"><span class="std std-ref">hipStreamCreateWithPriority</span></a>, <a class="reference internal" href="#group___stream_1gacdd84c8f8ef1539c96c57c1d5bcae633"><span class="std std-ref">hipStreamWaitEvent</span></a>, <a class="reference internal" href="#group___stream_1gabbfb9f573a6ebe8c478605ecb5504a74"><span class="std std-ref">hipStreamSynchronize</span></a>, <a class="reference internal" href="#group___stream_1ga3076a3499ed2c7821311006100bb95ec"><span class="std std-ref">hipStreamDestroy</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipstreamsynchronize">
+<h2>hipStreamSynchronize<a class="headerlink" href="#hipstreamsynchronize" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv320hipStreamSynchronize11hipStream_t">
+<span id="_CPPv220hipStreamSynchronize11hipStream_t"></span><span id="hipStreamSynchronize__hipStream_t"></span><span class="target" id="group___stream_1gabbfb9f573a6ebe8c478605ecb5504a74"></span>hipError_t <code class="descname">hipStreamSynchronize</code><span class="sig-paren">(</span>hipStream_t <em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv320hipStreamSynchronize11hipStream_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wait for all commands in stream to complete. </p>
+<p><p>This command is host-synchronous : the host will block until the specified stream is empty.</p>
+<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidResourceHandle</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: stream identifier.</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>This command follows standard null-stream semantics. Specifically, specifying the null stream will cause the command to wait for other streams on the same device to complete all pending operations.</p>
+<p>This command honors the hipDeviceLaunchBlocking flag, which controls whether the wait is active or blocking.</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___stream_1gaff5b62d6e9502d80879f7176f4d03102"><span class="std std-ref">hipStreamCreate</span></a>, <a class="reference internal" href="#group___stream_1gaf2382e3cc6632332a8983a0f58e43494"><span class="std std-ref">hipStreamCreateWithFlags</span></a>, <a class="reference internal" href="#group___stream_1gace005d8ea734fb66c995bd43dac3fd44"><span class="std std-ref">hipStreamCreateWithPriority</span></a>, <a class="reference internal" href="#group___stream_1gacdd84c8f8ef1539c96c57c1d5bcae633"><span class="std std-ref">hipStreamWaitEvent</span></a>, <a class="reference internal" href="#group___stream_1ga3076a3499ed2c7821311006100bb95ec"><span class="std std-ref">hipStreamDestroy</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipstreamwaitevent">
+<h2>hipStreamWaitEvent<a class="headerlink" href="#hipstreamwaitevent" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv318hipStreamWaitEvent11hipStream_t10hipEvent_tj">
+<span id="_CPPv218hipStreamWaitEvent11hipStream_t10hipEvent_tj"></span><span id="hipStreamWaitEvent__hipStream_t.hipEvent_t.unsigned-i"></span><span class="target" id="group___stream_1gacdd84c8f8ef1539c96c57c1d5bcae633"></span>hipError_t <code class="descname">hipStreamWaitEvent</code><span class="sig-paren">(</span>hipStream_t <em>stream</em>, hipEvent_t <em>event</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv318hipStreamWaitEvent11hipStream_t10hipEvent_tj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Make the specified compute stream wait for an event. </p>
+<p><p>This function inserts a wait operation into the specified stream. All future work submitted to </p>
+<code class="docutils literal notranslate"><span class="pre">stream</span></code> will wait until <code class="docutils literal notranslate"><span class="pre">event</span></code> reports completion before beginning execution.<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidResourceHandle</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: stream to make wait. </li>
+<li><code class="docutils literal notranslate"><span class="pre">event</span></code>: event to wait on </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: control operation [must be 0]</li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>This function only waits for commands in the current stream to complete. Notably,, this function does not impliciy wait for commands in the default stream to complete, even if the specified stream is created with hipStreamNonBlocking = 0.</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___stream_1gaff5b62d6e9502d80879f7176f4d03102"><span class="std std-ref">hipStreamCreate</span></a>, <a class="reference internal" href="#group___stream_1gaf2382e3cc6632332a8983a0f58e43494"><span class="std std-ref">hipStreamCreateWithFlags</span></a>, <a class="reference internal" href="#group___stream_1gace005d8ea734fb66c995bd43dac3fd44"><span class="std std-ref">hipStreamCreateWithPriority</span></a>, <a class="reference internal" href="#group___stream_1gabbfb9f573a6ebe8c478605ecb5504a74"><span class="std std-ref">hipStreamSynchronize</span></a>, <a class="reference internal" href="#group___stream_1ga3076a3499ed2c7821311006100bb95ec"><span class="std std-ref">hipStreamDestroy</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipstreamgetflags">
+<h2>hipStreamGetFlags<a class="headerlink" href="#hipstreamgetflags" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv317hipStreamGetFlags11hipStream_tPj">
+<span id="_CPPv217hipStreamGetFlags11hipStream_tPj"></span><span id="hipStreamGetFlags__hipStream_t.unsigned-iP"></span><span class="target" id="group___stream_1ga3249555a26439591b8873f70b39bb116"></span>hipError_t <code class="descname">hipStreamGetFlags</code><span class="sig-paren">(</span>hipStream_t <em>stream</em>, unsigned int *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv317hipStreamGetFlags11hipStream_tPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return flags associated with this stream. </p>
+<p><p>Return flags associated with this stream in *</p>
+<code class="docutils literal notranslate"><span class="pre">flags</span></code>.<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInvalidResourceHandle</dd>
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess #hipErrorInvalidValue #hipErrorInvalidResourceHandle</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: stream to be queried </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: Pointer to an unsigned integer in which the stream’s flags are returned </li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___stream_1gaf2382e3cc6632332a8983a0f58e43494"><span class="std std-ref">hipStreamCreateWithFlags</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipstreamgetpriority">
+<h2>hipStreamGetPriority<a class="headerlink" href="#hipstreamgetpriority" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv320hipStreamGetPriority11hipStream_tPi">
+<span id="_CPPv220hipStreamGetPriority11hipStream_tPi"></span><span id="hipStreamGetPriority__hipStream_t.iP"></span><span class="target" id="group___stream_1gae5a0d1e66035b157149ec10f5c7952be"></span>hipError_t <code class="descname">hipStreamGetPriority</code><span class="sig-paren">(</span>hipStream_t <em>stream</em>, int *<em>priority</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv320hipStreamGetPriority11hipStream_tPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Query the priority of a stream. </p>
+<p><p>Query the priority of a stream. The priority is returned in in priority.</p>
+<dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidValue, #hipErrorInvalidResourceHandle</dd>
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess #hipErrorInvalidValue #hipErrorInvalidResourceHandle</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: stream to be queried </li>
+<li><code class="docutils literal notranslate"><span class="pre">priority</span></code>: Pointer to an unsigned integer in which the stream’s priority is returned </li>
+</ul>
+</dd>
+</dl>
+</p>
+<p><dl class="docutils">
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___stream_1gaf2382e3cc6632332a8983a0f58e43494"><span class="std std-ref">hipStreamCreateWithFlags</span></a> </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipstreamaddcallback">
+<h2>hipStreamAddCallback<a class="headerlink" href="#hipstreamaddcallback" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv320hipStreamAddCallback11hipStream_t19hipStreamCallback_tPvj">
+<span id="_CPPv220hipStreamAddCallback11hipStream_t19hipStreamCallback_tPvj"></span><span id="hipStreamAddCallback__hipStream_t.hipStreamCallback_t.voidP.unsigned-i"></span><span class="target" id="group___stream_1ga3e098cd7478828b2104abb41a7bb00d3"></span>hipError_t <code class="descname">hipStreamAddCallback</code><span class="sig-paren">(</span>hipStream_t <em>stream</em>, hipStreamCallback_t <em>callback</em>, void *<em>userData</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv320hipStreamAddCallback11hipStream_t19hipStreamCallback_tPvj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Adds a callback to be called on the host after all currently enqueued items in the stream have completed. </p>
+<p>For each cudaStreamAddCallback call, a callback will be executed exactly once. The callback will block later work in the stream until it is finished. <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInvalidResourceHandle, #hipErrorNotSupported</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___stream_1gaff5b62d6e9502d80879f7176f4d03102"><span class="std std-ref">hipStreamCreate</span></a>, <a class="reference internal" href="#group___stream_1gaf2382e3cc6632332a8983a0f58e43494"><span class="std std-ref">hipStreamCreateWithFlags</span></a>, <a class="reference internal" href="#group___stream_1ga925b39ff78d3b5fd458bd9e2cade9f4e"><span class="std std-ref">hipStreamQuery</span></a>, <a class="reference internal" href="#group___stream_1gabbfb9f573a6ebe8c478605ecb5504a74"><span class="std std-ref">hipStreamSynchronize</span></a>, <a class="reference internal" href="#group___stream_1gacdd84c8f8ef1539c96c57c1d5bcae633"><span class="std std-ref">hipStreamWaitEvent</span></a>, <a class="reference internal" href="#group___stream_1ga3076a3499ed2c7821311006100bb95ec"><span class="std std-ref">hipStreamDestroy</span></a>, <a class="reference internal" href="#group___stream_1gace005d8ea734fb66c995bd43dac3fd44"><span class="std std-ref">hipStreamCreateWithPriority</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: - Stream to add callback to </li>
+<li><code class="docutils literal notranslate"><span class="pre">callback</span></code>: - The function to call once preceding stream operations are complete </li>
+<li><code class="docutils literal notranslate"><span class="pre">userData</span></code>: - User specified data to be passed to the callback function </li>
+<li><code class="docutils literal notranslate"><span class="pre">flags</span></code>: - Reserved for future use, must be 0 </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

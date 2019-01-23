@@ -1,0 +1,1051 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ROCm Installation Guide &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>ROCm Installation Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/InstallGuide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rocm-installation-guide">
+<h1>ROCm Installation Guide<a class="headerlink" href="#rocm-installation-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="current-rocm-version-2-0">
+<h2>Current ROCm Version: 2.0<a class="headerlink" href="#current-rocm-version-2-0" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="hardware-support">
+<h2>Hardware Support<a class="headerlink" href="#hardware-support" title="Permalink to this headline">¶</a></h2>
+<p>ROCm is focused on using AMD GPUs to accelerate computational tasks such
+as machine learning, engineering workloads, and scientific computing. In
+order to focus our development efforts on these domains of interest,
+ROCm supports a targeted set of hardware configurations which are
+detailed further in this section.</p>
+<div class="section" id="supported-gpus">
+<h3>Supported GPUs<a class="headerlink" href="#supported-gpus" title="Permalink to this headline">¶</a></h3>
+<p>Because the ROCm Platform has a focus on particular computational
+domains, we offer official support for a selection of AMD GPUs that are
+designed to offer good performance and price in these domains.</p>
+<p>ROCm officially supports AMD GPUs that use following chips:</p>
+<ul class="simple">
+<li>GFX8 GPUs<ul>
+<li>“Fiji” chips, such as on the AMD Radeon R9 Fury X and Radeon
+Instinct MI8</li>
+<li>“Polaris 10” chips, such as on the AMD Radeon RX 580 and Radeon
+Instinct MI6</li>
+<li>“Polaris 11” chips, such as on the AMD Radeon RX 570 and Radeon
+Pro WX 4100</li>
+<li>“Polaris 12” chips, such as on the AMD Radeon RX 550 and Radeon RX
+540</li>
+</ul>
+</li>
+<li>GFX9 GPUs<ul>
+<li>“Vega 10” chips, such as on the AMD Radeon RX Vega 64 and Radeon
+Instinct MI25</li>
+<li>“Vega 7nm” chips</li>
+</ul>
+</li>
+</ul>
+<p>ROCm is a collection of software ranging from drivers and runtimes to
+libraries and developer tools. Some of this software may work with more
+GPUs than the “officially supported” list above, though AMD does not
+make any official claims of support for these devices on the ROCm
+software platform. The following list of GPUs are enabled in the ROCm
+software, though full support is not guaranteed:</p>
+<ul class="simple">
+<li>GFX7 GPUs<ul>
+<li>“Hawaii” chips, such as the AMD Radeon R9 390X and FirePro W9100</li>
+</ul>
+</li>
+</ul>
+<p>As described in the next section, GFX8 GPUs require PCI Express 3.0
+(PCIe 3.0) with support for PCIe atomics. This requires both CPU and
+motherboard support. GFX9 GPUs, by default, also require PCIe 3.0 with
+support for PCIe atomics, but they can operate in most cases without
+this capability.</p>
+<p>At this time, the integrated GPUs in AMD APUs are not officially
+supported targets for ROCm. As descried below, “Carrizo”, “Bristol
+Ridge”, and “Raven Ridge” APUs are enabled in our upstream drivers and
+the ROCm OpenCL runtime. However, they are not enabled in our HCC or HIP
+runtimes, and may not work due to motherboard or OEM hardware
+limitations. As such, they are not yet officially supported targets for
+ROCm.</p>
+<p>For a more detailed list of hardware support, please see <a class="reference external" href="https://rocm.github.io/hardware.html">the following
+documentation</a>.</p>
+</div>
+<div class="section" id="supported-cpus">
+<h3>Supported CPUs<a class="headerlink" href="#supported-cpus" title="Permalink to this headline">¶</a></h3>
+<p>As described above, GFX8 GPUs require PCIe 3.0 with PCIe atomics in
+order to run ROCm. In particular, the CPU and every active PCIe point
+between the CPU and GPU require support for PCIe 3.0 and PCIe atomics.
+The CPU root must indicate PCIe AtomicOp Completion capabilities and any
+intermediate switch must indicate PCIe AtomicOp Routing capabilities.</p>
+<p>Current CPUs which support PCIe Gen3 + PCIe Atomics are:</p>
+<ul class="simple">
+<li>AMD Ryzen CPUs;</li>
+<li>The CPUs in AMD Ryzen APUs;</li>
+<li>AMD Ryzen Threadripper CPUs</li>
+<li>AMD EPYC CPUs;</li>
+<li>Intel Xeon E7 v3 or newer CPUs;</li>
+<li>Intel Xeon E5 v3 or newer CPUs;</li>
+<li>Intel Xeon E3 v3 or newer CPUs;</li>
+<li>Intel Core i7 v4, Core i5 v4, Core i3 v4 or newer CPUs (i.e. Haswell
+family or newer).</li>
+<li>Some Ivy Bridge-E systems</li>
+</ul>
+<p>Beginning with ROCm 1.8, GFX9 GPUs (such as Vega 10) no longer require
+PCIe atomics. We have similarly opened up more options for number of
+PCIe lanes. GFX9 GPUs can now be run on CPUs without PCIe atomics and on
+older PCIe generations, such as PCIe 2.0. This is not supported on GPUs
+below GFX9, e.g. GFX8 cards in the Fiji and Polaris families.</p>
+<p>If you are using any PCIe switches in your system, please note that PCIe
+Atomics are only supported on some switches, such as Broadcom PLX. When
+you install your GPUs, make sure you install them in a PCIe 3.0 x16, x8,
+x4, or x1 slot attached either directly to the CPU’s Root I/O controller
+or via a PCIe switch directly attached to the CPU’s Root I/O controller.</p>
+<p>In our experience, many issues stem from trying to use consumer
+motherboards which provide physical x16 connectors that are electrically
+connected as e.g. PCIe 2.0 x4, PCIe slots connected via the Southbridge
+PCIe I/O controller, or PCIe slots connected through a PCIe switch that
+does not support PCIe atomics.</p>
+<p>If you attempt to run ROCm on a system without proper PCIe atomic
+support, you may see an error in the kernel log (<code class="docutils literal notranslate"><span class="pre">dmesg</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kfd</span><span class="p">:</span> <span class="n">skipped</span> <span class="n">device</span> <span class="mi">1002</span><span class="p">:</span><span class="mi">7300</span><span class="p">,</span> <span class="n">PCI</span> <span class="n">rejects</span> <span class="n">atomics</span>
+</pre></div>
+</div>
+<p>Experimental support for our Hawaii (GFX7) GPUs (Radeon R9 290, R9 390,
+FirePro W9100, S9150, S9170) does not require or take advantage of PCIe
+Atomics. However, we still recommend that you use a CPU from the list
+provided above for compatibility purposes.</p>
+</div>
+<div class="section" id="not-supported-or-limited-support-under-rocm">
+<h3>Not supported or limited support under ROCm<a class="headerlink" href="#not-supported-or-limited-support-under-rocm" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="limited-support">
+<h4>Limited support<a class="headerlink" href="#limited-support" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>ROCm 2.0.x should support PCIe 2.0 enabled CPUs such as the AMD
+Opteron, Phenom, Phenom II, Athlon, Athlon X2, Athlon II and older
+Intel Xeon and Intel Core Architecture and Pentium CPUs. However, we
+have done very limited testing on these configurations, since our
+test farm has been catering to CPUs listed above. This is where we
+need community support. <em>If you find problems on such setups, please
+report these issues</em>.</li>
+<li>Thunderbolt 1, 2, and 3 enabled breakout boxes should now be able to
+work with ROCm. Thunderbolt 1 and 2 are PCIe 2.0 based, and thus are
+only supported with GPUs that do not require PCIe 3.0 atomics
+(e.g. Vega 10). However, we have done no testing on this
+configuration and would need community support due to limited access
+to this type of equipment.</li>
+<li>AMD “Carrizo” and “Bristol Ridge” APUs are enabled to run OpenCL, but
+do not yet support HCC, HIP, or our libraries built on top of these
+compilers and runtimes.<ul>
+<li>As of ROCm 2.0, “Carrizo” and “Bristol Ridge” require the use of
+upstream kernel drivers.</li>
+<li>In addition, various “Carrizo” and “Bristol Ridge” platforms may
+not work due to OEM and ODM choices when it comes to key
+configurations parameters such as inclusion of the required CRAT
+tables and IOMMU configuration parameters in the system BIOS.</li>
+<li>Before purchasing such a system for ROCm, please verify that the
+BIOS provides an option for enabling IOMMUv2 and that the system
+BIOS properly exposes the correct CRAT table. Inquire with your
+vendor about the latter.</li>
+</ul>
+</li>
+<li>AMD “Raven Ridge” APUs are enabled to run OpenCL, but do not yet
+support HCC, HIP, or our libraries built on top of these compilers
+and runtimes.<ul>
+<li>As of ROCm 2.0, “Raven Ridge” requires the use of upstream kernel
+drivers.</li>
+<li>In addition, various “Raven Ridge” platforms may not work due to
+OEM and ODM choices when it comes to key configurations parameters
+such as inclusion of the required CRAT tables and IOMMU
+configuration parameters in the system BIOS.</li>
+<li>Before purchasing such a system for ROCm, please verify that the
+BIOS provides an option for enabling IOMMUv2 and that the system
+BIOS properly exposes the correct CRAT table. Inquire with your
+vendor about the latter.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="not-supported">
+<h4>Not supported<a class="headerlink" href="#not-supported" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>“Tonga”, “Iceland”, “Vega M”, and “Vega 12” GPUs are not supported in
+ROCm 2.0.x</li>
+<li>We do not support GFX8-class GPUs (Fiji, Polaris, etc.) on CPUs that
+do not have PCIe 3.0 with PCIe atomics.<ul>
+<li>As such, we do not support AMD Carrizo and Kaveri APUs as hosts for
+such GPUs.</li>
+<li>Thunderbolt 1 and 2 enabled GPUs are not supported by GFX8 GPUs on
+ROCm. Thunderbolt 1 &amp; 2 are based on PCIe 2.0.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="the-latest-rocm-platform-rocm-2-0">
+<h2>The latest ROCm platform - ROCm 2.0<a class="headerlink" href="#the-latest-rocm-platform-rocm-2-0" title="Permalink to this headline">¶</a></h2>
+<p>The latest supported version of the drivers, tools, libraries and source
+code for the ROCm platform have been released and are available from the
+following GitHub repositories:</p>
+<ul class="simple">
+<li>ROCm Core Components<ul>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/ROCK-Kernel-Driver/tree/roc-2.0.0">ROCk Kernel Driver</a></li>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/ROCR-Runtime/tree/roc-2.0.0">ROCr Runtime</a></li>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface/tree/roc-2.0.0">ROCt Thunk Interface</a></li>
+</ul>
+</li>
+<li>ROCm Support Software<ul>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/ROC-smi/tree/roc-2.0.0">ROCm SMI</a></li>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/rocm-cmake/tree/ac45c6e6">ROCm cmake</a></li>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/rocminfo/tree/1bb0ccc7">rocminfo</a></li>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/rocm_bandwidth_test/tree/roc-2.0.0">ROCm Bandwidth Test</a></li>
+</ul>
+</li>
+<li>ROCm Development Tools<ul>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/hcc/tree/roc-2.0.0">HCC compiler</a></li>
+<li><a class="reference external" href="https://github.com/ROCm-Developer-Tools/HIP/tree/roc-2.0.0">HIP</a></li>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/ROCm-Device-Libs/tree/roc-2.0.0">ROCm Device Libraries</a></li>
+<li>ROCm OpenCL, which is created from the following components:<ul>
+<li><a class="reference external" href="http://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/tree/roc-2.0.0">ROCm OpenCL Runtime</a></li>
+<li><a class="reference external" href="http://github.com/RadeonOpenCompute/ROCm-OpenCL-Driver/tree/roc-2.0.0">ROCm OpenCL Driver</a></li>
+<li>The ROCm OpenCL compiler, which is created from the following
+components:<ul>
+<li><a class="reference external" href="http://github.com/RadeonOpenCompute/llvm/tree/roc-2.0.0">ROCm LLVM</a></li>
+<li><a class="reference external" href="http://github.com/RadeonOpenCompute/clang/tree/roc-2.0.0">ROCm Clang</a></li>
+<li><a class="reference external" href="http://github.com/RadeonOpenCompute/lld/tree/roc-2.0.0">ROCm lld</a></li>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/ROCm-Device-Libs/tree/roc-2.0.0">ROCm Device Libraries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/clang-ocl/tree/688fe5d9">ROCM Clang-OCL Kernel Compiler</a></li>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/atmi/tree/4dd14ad8">Asynchronous Task and Memory Interface (ATMI)</a></li>
+<li><a class="reference external" href="https://github.com/ROCm-Developer-Tools/rocr_debug_agent/tree/roc-2.0.0">ROCr Debug Agent</a></li>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/tree/roc-2.0.0">ROCm Code Object Manager</a></li>
+<li><a class="reference external" href="https://github.com/ROCm-Developer-Tools/rocprofiler/tree/roc-2.0.0">ROC Profiler</a></li>
+<li><a class="reference external" href="https://github.com/GPUOpen-Tools/RCP/tree/v5.6">Radeon Compute Profiler</a></li>
+<li>Example Applications:<ul>
+<li><a class="reference external" href="https://github.com/ROCm-Developer-Tools/HCC-Example-Application/tree/ffd65333">HCC Examples</a></li>
+<li><a class="reference external" href="https://github.com/ROCm-Developer-Tools/HIP-Examples/tree/roc-2.0.x">HIP Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ROCm Libraries<ul>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/rocBLAS/tree/v2.0.0">rocBLAS</a></li>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/hipBLAS/tree/v0.12.1.0">hipBLAS</a></li>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/rocFFT/tree/v0.8.8">rocFFT</a></li>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/rocRAND/tree/7278524e">rocRAND</a></li>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/rocSPARSE/tree/v1.0.1">rocSPARSE</a></li>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/hipSPARSE/tree/v1.0.2">hipSPARSE</a></li>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/rocALUTION/tree/v1.3.7">rocALUTION</a></li>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/MIOpenGEMM/tree/9547fb9e">MIOpenGEMM</a></li>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/MIOpen/tree/1.7.0">MIOpen</a></li>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/Thrust/tree/e0b8fe2a">HIP Thrust</a></li>
+<li><a class="reference external" href="https://github.com/RadeonOpenCompute/rocm_smi_lib/tree/roc-2.0.0">ROCm SMI Lib</a></li>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/rccl/tree/0.7.1">RCCL</a></li>
+<li><a class="reference external" href="https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/tree/1.0.0">MIVisionX</a></li>
+<li><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/cub-hip/tree/hip_port_1.7.4">CUB HIP</a></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="supported-operating-systems-new-operating-systems-available">
+<h3>Supported Operating Systems - New operating systems available<a class="headerlink" href="#supported-operating-systems-new-operating-systems-available" title="Permalink to this headline">¶</a></h3>
+<p>The ROCm 2.0.x platform supports the following operating systems:</p>
+<ul class="simple">
+<li>Ubuntu 16.04.x and 18.04.x (Version 16.04.3 and newer or kernels 4.13
+and newer)</li>
+<li>CentOS 7.4, 7.5, and 7.6 (Using devtoolset-7 runtime support)</li>
+<li>RHEL 7.4, 7.5, and 7.6 (Using devtoolset-7 runtime support)</li>
+</ul>
+</div>
+<div class="section" id="rocm-support-in-upstream-linux-kernels">
+<h3>ROCm support in upstream Linux kernels<a class="headerlink" href="#rocm-support-in-upstream-linux-kernels" title="Permalink to this headline">¶</a></h3>
+<p>As of ROCm 1.9.0, the ROCm user-level software is compatible with the
+AMD drivers in certain upstream Linux kernels. As such, users have the
+option of either using the ROCK kernel driver that are part of AMD’s
+ROCm repositories or using the upstream driver and only installing ROCm
+user-level utilities from AMD’s ROCm repositories.</p>
+<p>These releases of the upstream Linux kernel support the following GPUs
+in ROCm:</p>
+<ul class="simple">
+<li>4.17: Fiji, Polaris 10, Polaris 11</li>
+<li>4.18: Fiji, Polaris 10, Polaris 11, Vega10</li>
+</ul>
+<p>The upstream driver may be useful for running ROCm software on systems
+that are not compatible with the kernel driver available in AMD’s
+repositories. For users that have the option of using either AMD’s or
+the upstreamed driver, there are various tradeoffs to take into
+consideration:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="50%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">Using AMD’s <cite>rock-dkms</cite> package</th>
+<th class="head">Using the upstream kernel driver</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Pros</td>
+<td>More GPU features, and they are enabled earlier</td>
+<td>Includes the latest Linux kernel features</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>Tested by AMD on supported distributions</td>
+<td>May work on other distributions and with
+custom kernels</td>
+</tr>
+<tr class="row-even"><td rowspan="2">&#160;</td>
+<td rowspan="2">Supported GPUs enabled regardless of
+kernel version</td>
+<td rowspan="2">&#160;</td>
+</tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"><td>&#160;</td>
+<td>Includes the latest GPU firmware</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Cons</td>
+<td>May not work on all Linx distributions or
+versions</td>
+<td>Features and hardware support varies
+depending on kernel version</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>Not currently supported on kernels newer
+than 4.18.</td>
+<td>Limits GPU’s usage of system memory to
+3/8 of system memory</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>IPC and RDMA capabilities not yet enabled</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>Not tested by AMD to the same level as
+<cite>rock-dkms</cite> package</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>Does not include most up-to-date firmware</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="installing-from-amd-rocm-repositories">
+<h2>Installing from AMD ROCm repositories<a class="headerlink" href="#installing-from-amd-rocm-repositories" title="Permalink to this headline">¶</a></h2>
+<p>AMD hosts both <a class="reference external" href="http://repo.radeon.com/rocm/apt/debian/">Debian</a> and <a class="reference external" href="http://repo.radeon.com/rocm/yum/rpm/">RPM</a> repositories for the ROCm 2.0.x
+packages at this time.</p>
+<p>The packages in the Debian repository have been signed to ensure package
+integrity.</p>
+<div class="section" id="rocm-binary-package-structure">
+<h3>ROCm Binary Package Structure<a class="headerlink" href="#rocm-binary-package-structure" title="Permalink to this headline">¶</a></h3>
+<p>ROCm is a collection of software ranging from drivers and runtimes to
+libraries and developer tools. In AMD’s package distributions, these
+software projects are provided as a separate packages. This allows users
+to install only the packages they need, if they do not wish to install
+all of ROCm. These packages will install most of the ROCm software into
+<code class="docutils literal notranslate"><span class="pre">/opt/rocm/</span></code> by default.</p>
+<p>The packages for each of the major ROCm components are:</p>
+<ul class="simple">
+<li>ROCm Core Components<ul>
+<li>ROCk Kernel Driver: <code class="docutils literal notranslate"><span class="pre">rock-dkms</span></code></li>
+<li>ROCr Runtime: <code class="docutils literal notranslate"><span class="pre">hsa-rocr-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">hsa-ext-rocr-dev</span></code></li>
+<li>ROCt Thunk Interface: <code class="docutils literal notranslate"><span class="pre">hsakmt-roct</span></code>, <code class="docutils literal notranslate"><span class="pre">hsakmt-roct-dev</span></code></li>
+</ul>
+</li>
+<li>ROCm Support Software<ul>
+<li>ROCm SMI: <code class="docutils literal notranslate"><span class="pre">rocm-smi</span></code></li>
+<li>ROCm cmake: <code class="docutils literal notranslate"><span class="pre">rocm-cmake</span></code></li>
+<li>rocminfo: <code class="docutils literal notranslate"><span class="pre">rocminfo</span></code></li>
+<li>ROCm Bandwidth Test: <code class="docutils literal notranslate"><span class="pre">rocm_bandwidth_test</span></code></li>
+</ul>
+</li>
+<li>ROCm Development Tools<ul>
+<li>HCC compiler: <code class="docutils literal notranslate"><span class="pre">hcc</span></code></li>
+<li>HIP: <code class="docutils literal notranslate"><span class="pre">hip_base</span></code>, <code class="docutils literal notranslate"><span class="pre">hip_doc</span></code>, <code class="docutils literal notranslate"><span class="pre">hip_hcc</span></code>, <code class="docutils literal notranslate"><span class="pre">hip_samples</span></code></li>
+<li>ROCm Device Libraries: <code class="docutils literal notranslate"><span class="pre">rocm-device-libs</span></code></li>
+<li>ROCm OpenCL: <code class="docutils literal notranslate"><span class="pre">rocm-opencl</span></code>, <code class="docutils literal notranslate"><span class="pre">rocm-opencl-devel</span></code> (on
+RHEL/CentOS), <code class="docutils literal notranslate"><span class="pre">rocm-opencl-dev</span></code> (on Ubuntu)</li>
+<li>ROCM Clang-OCL Kernel Compiler: <code class="docutils literal notranslate"><span class="pre">rocm-clang-ocl</span></code></li>
+<li>Asynchronous Task and Memory Interface (ATMI): <code class="docutils literal notranslate"><span class="pre">atmi</span></code></li>
+<li>ROCr Debug Agent: <code class="docutils literal notranslate"><span class="pre">rocr_debug_agent</span></code></li>
+<li>ROCm Code Object Manager: <code class="docutils literal notranslate"><span class="pre">comgr</span></code></li>
+<li>ROC Profiler: <code class="docutils literal notranslate"><span class="pre">rocprofiler-dev</span></code></li>
+<li>Radeon Compute Profiler: <code class="docutils literal notranslate"><span class="pre">rocm-profiler</span></code></li>
+</ul>
+</li>
+<li>ROCm Libraries<ul>
+<li>rocBLAS: <code class="docutils literal notranslate"><span class="pre">rocblas</span></code></li>
+<li>hipBLAS: <code class="docutils literal notranslate"><span class="pre">hipblas</span></code></li>
+<li>rocFFT: <code class="docutils literal notranslate"><span class="pre">rocfft</span></code></li>
+<li>rocRAND: <code class="docutils literal notranslate"><span class="pre">rocrand</span></code></li>
+<li>rocSPARSE: <code class="docutils literal notranslate"><span class="pre">rocsparse</span></code></li>
+<li>hipSPARSE: <code class="docutils literal notranslate"><span class="pre">hipsparse</span></code></li>
+<li>rocALUTION: <code class="docutils literal notranslate"><span class="pre">rocalution:</span></code></li>
+<li>MIOpenGEMM: <code class="docutils literal notranslate"><span class="pre">miopengemm</span></code></li>
+<li>MIOpen: <code class="docutils literal notranslate"><span class="pre">MIOpen-HIP</span></code> (for the HIP version), <code class="docutils literal notranslate"><span class="pre">MIOpen-OpenCL</span></code>
+(for the OpenCL version)</li>
+<li>HIP Thrust: <code class="docutils literal notranslate"><span class="pre">thrust</span></code> (on RHEL/CentOS), <code class="docutils literal notranslate"><span class="pre">hip-thrust</span></code> (on
+Ubuntu)</li>
+<li>ROCm SMI Lib: <code class="docutils literal notranslate"><span class="pre">rocm_smi_lib64</span></code></li>
+<li>RCCL: <code class="docutils literal notranslate"><span class="pre">rccl</span></code></li>
+<li>MIVisionX: <code class="docutils literal notranslate"><span class="pre">mivisionx</span></code></li>
+<li>CUB HIP: <cite>cub-hip</cite></li>
+</ul>
+</li>
+</ul>
+<p>To make it easier to install ROCm, the AMD binary repos provide a number
+of meta-packages that will automatically install multiple other
+packages. For example, <code class="docutils literal notranslate"><span class="pre">rocm-dkms</span></code> is the primary meta-package that is
+used to install most of the base technology needed for ROCm to operate.
+It will install the <code class="docutils literal notranslate"><span class="pre">rock-dkms</span></code> kernel driver, and another
+meta-package (<code class="docutils literal notranslate"><span class="pre">rocm-dev</span></code>) which installs most of the user-land ROCm
+core components, support software, and development tools.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">rocm-utils</span></code> meta-package will install useful utilities that,
+while not required for ROCm to operate, may still be beneficial to have.
+Finally, the <code class="docutils literal notranslate"><span class="pre">rocm-libs</span></code> meta-package will install some (but not all)
+of the libraries that are part of ROCm.</p>
+<p>The chain of software installed by these meta-packages is illustrated
+below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rocm</span><span class="o">-</span><span class="n">dkms</span>
+ <span class="o">|--</span> <span class="n">rock</span><span class="o">-</span><span class="n">dkms</span>
+ \<span class="o">--</span> <span class="n">rocm</span><span class="o">-</span><span class="n">dev</span>
+      <span class="o">|--</span><span class="n">hsa</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span>
+      <span class="o">|--</span><span class="n">hsa</span><span class="o">-</span><span class="n">ext</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span>
+      <span class="o">|--</span><span class="n">rocm</span><span class="o">-</span><span class="n">device</span><span class="o">-</span><span class="n">libs</span>
+      <span class="o">|--</span><span class="n">rocm</span><span class="o">-</span><span class="n">utils</span>
+          <span class="o">|--</span> <span class="n">rocminfo</span>
+          <span class="o">|--</span> <span class="n">rocm</span><span class="o">-</span><span class="n">cmake</span>
+          \<span class="o">--</span> <span class="n">rocm</span><span class="o">-</span><span class="n">clang</span><span class="o">-</span><span class="n">ocl</span> <span class="c1"># This will cause OpenCL to be installed</span>
+      <span class="o">|--</span><span class="n">hcc</span>
+      <span class="o">|--</span><span class="n">hip_base</span>
+      <span class="o">|--</span><span class="n">hip_doc</span>
+      <span class="o">|--</span><span class="n">hip_hcc</span>
+      <span class="o">|--</span><span class="n">hip_samples</span>
+      <span class="o">|--</span><span class="n">rocm</span><span class="o">-</span><span class="n">smi</span>
+      <span class="o">|--</span><span class="n">hsakmt</span><span class="o">-</span><span class="n">roct</span>
+      <span class="o">|--</span><span class="n">hsakmt</span><span class="o">-</span><span class="n">roct</span><span class="o">-</span><span class="n">dev</span>
+      <span class="o">|--</span><span class="n">hsa</span><span class="o">-</span><span class="n">amd</span><span class="o">-</span><span class="n">aqlprofile</span>
+      <span class="o">|--</span><span class="n">comgr</span>
+      \<span class="o">--</span><span class="n">rocr_debug_agent</span>
+
+<span class="n">rocm</span><span class="o">-</span><span class="n">libs</span>
+ <span class="o">|--</span> <span class="n">rocblas</span>
+ <span class="o">|--</span> <span class="n">rocfft</span>
+ <span class="o">|--</span> <span class="n">rocrand</span>
+ \<span class="o">--</span> <span class="n">hipblas</span>
+</pre></div>
+</div>
+<p>These meta-packages are not required but may be useful to make it easier
+to install ROCm on most systems. Some users may want to skip certain
+packages. For instance, a user that wants to use the upstream kernel
+drivers (rather than those supplied by AMD) may want to skip the
+<code class="docutils literal notranslate"><span class="pre">rocm-dkms</span></code> and <code class="docutils literal notranslate"><span class="pre">rock-dkms</span></code> packages, and instead directly install
+<code class="docutils literal notranslate"><span class="pre">rocm-dev</span></code>.</p>
+<p>Similarly, a user that only wants to install OpenCL support instead of
+HCC and HIP may want to skip the <code class="docutils literal notranslate"><span class="pre">rocm-dkms</span></code> and <code class="docutils literal notranslate"><span class="pre">rocm-dev</span></code>
+packages. Instead, they could directly install <code class="docutils literal notranslate"><span class="pre">rock-dkms</span></code>,
+<code class="docutils literal notranslate"><span class="pre">rocm-opencl</span></code>, and <code class="docutils literal notranslate"><span class="pre">rocm-opencl-dev</span></code> and their dependencies.</p>
+</div>
+<div class="section" id="ubuntu-support-installing-from-a-debian-repository">
+<h3>Ubuntu Support - installing from a Debian repository<a class="headerlink" href="#ubuntu-support-installing-from-a-debian-repository" title="Permalink to this headline">¶</a></h3>
+<p>The following directions show how to install ROCm on supported
+Debian-based systems such as Ubuntu 18.04. These directions may not work
+as written on unsupported Debian-based distributions. For example, newer
+versions of Ubuntu may not be compatible with the <code class="docutils literal notranslate"><span class="pre">rock-dkms</span></code> kernel
+driver. As such, users may want to skip the <code class="docutils literal notranslate"><span class="pre">rocm-dkms</span></code> and
+<code class="docutils literal notranslate"><span class="pre">rock-dkms</span></code> packages, as described above, and instead use the
+upstream kernel driver.</p>
+<div class="section" id="first-make-sure-your-system-is-up-to-date">
+<h4>First make sure your system is up to date<a class="headerlink" href="#first-make-sure-your-system-is-up-to-date" title="Permalink to this headline">¶</a></h4>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">dist</span><span class="o">-</span><span class="n">upgrade</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">libnuma</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">sudo</span> <span class="n">reboot</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-the-rocm-apt-repository">
+<h4>Add the ROCm apt repository<a class="headerlink" href="#add-the-rocm-apt-repository" title="Permalink to this headline">¶</a></h4>
+<p>For Debian-based systems like Ubuntu, configure the Debian ROCm
+repository as follows:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">qO</span> <span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">radeon</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rocm</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span><span class="n">rocm</span><span class="o">.</span><span class="n">gpg</span><span class="o">.</span><span class="n">key</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">add</span> <span class="o">-</span>
+<span class="n">echo</span> <span class="s1">&#39;deb [arch=amd64] http://repo.radeon.com/rocm/apt/debian/ xenial main&#39;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">rocm</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+<p>The gpg key might change, so it may need to be updated when installing a
+new release. If the key signature verification is failed while update,
+please re-add the key from ROCm apt repository. The current rocm.gpg.key
+is not available in a standard key ring distribution, but has the
+following sha1sum hash:</p>
+<p><code class="docutils literal notranslate"><span class="pre">f7f8147431c75e505c58a6f3a3548510869357a6</span>&#160; <span class="pre">rocm.gpg.key</span></code></p>
+</div>
+<div class="section" id="install">
+<h4>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h4>
+<p>Next, update the apt repository list and install the <code class="docutils literal notranslate"><span class="pre">rocm-dkms</span></code>
+meta-package:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">rocm</span><span class="o">-</span><span class="n">dkms</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="next-set-your-permissions">
+<h4>Next set your permissions<a class="headerlink" href="#next-set-your-permissions" title="Permalink to this headline">¶</a></h4>
+<p>Users will need to be in the <code class="docutils literal notranslate"><span class="pre">video</span></code> group in order to have access to
+the GPU. As such, you should ensure that your user account is a member
+of the <code class="docutils literal notranslate"><span class="pre">video</span></code> group prior to using ROCm. You can find which groups
+you are a member of with the following command:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span>
+</pre></div>
+</div>
+<p>To add yourself to the video group you will need the sudo password and
+can use the following command:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span>sudo usermod -a -G video $LOGNAME
+</pre></div>
+</div>
+<p>You may want to ensure that any future users you add to your system are
+put into the “video” group by default. To do that, you can run the
+following commands:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;ADD_EXTRA_GROUPS=1&#39;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">adduser</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">echo</span> <span class="s1">&#39;EXTRA_GROUPS=video&#39;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">adduser</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>Once complete, reboot your system.</p>
+</div>
+<div class="section" id="test-basic-rocm-installation">
+<h4>Test basic ROCm installation<a class="headerlink" href="#test-basic-rocm-installation" title="Permalink to this headline">¶</a></h4>
+<p>After rebooting the system run the following commands to verify that the
+ROCm installation was successful. If you see your GPUs listed by both of
+these commands, you should be ready to go!</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rocm</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">rocminfo</span>
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rocm</span><span class="o">/</span><span class="n">opencl</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">/</span><span class="n">clinfo</span>
+</pre></div>
+</div>
+<p>Note that, to make running ROCm programs easier, you may wish to put the
+ROCm binaries in your PATH.</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;export PATH=$PATH:/opt/rocm/bin:/opt/rocm/profiler/bin:/opt/rocm/opencl/bin/x86_64&#39;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">rocm</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>If you have an <a class="reference external" href="https://rocm.github.io/install_issues.html">install issue</a> please read this FAQ.</p>
+</div>
+<div class="section" id="performing-an-opencl-only-installation-of-rocm">
+<h4>Performing an OpenCL-only Installation of ROCm<a class="headerlink" href="#performing-an-opencl-only-installation-of-rocm" title="Permalink to this headline">¶</a></h4>
+<p>Some users may want to install a subset of the full ROCm installation.
+In particular, if you are trying to install on a system with a limited
+amount of storage space, or which will only run a small collection of
+known applications, you may want to install only the packages that are
+required to run OpenCL applications. To do that, you can run the
+following installation command <strong>instead</strong> of the command to install
+<code class="docutils literal notranslate"><span class="pre">rocm-dkms</span></code>.</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">dkms</span> <span class="n">rock</span><span class="o">-</span><span class="n">dkms</span> <span class="n">rocm</span><span class="o">-</span><span class="n">opencl</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-uninstall-from-ubuntu-16-04-or-ubuntu-18-04">
+<h4>How to uninstall from Ubuntu 16.04 or Ubuntu 18.04<a class="headerlink" href="#how-to-uninstall-from-ubuntu-16-04-or-ubuntu-18-04" title="Permalink to this headline">¶</a></h4>
+<p>To uninstall the ROCm packages installed in the above directions, you
+can execute;</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">autoremove</span> <span class="n">rocm</span><span class="o">-</span><span class="n">dkms</span> <span class="n">rocm</span><span class="o">-</span><span class="n">dev</span> <span class="n">rocm</span><span class="o">-</span><span class="n">utils</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-development-packages-for-cross-compilation">
+<h4>Installing development packages for cross compilation<a class="headerlink" href="#installing-development-packages-for-cross-compilation" title="Permalink to this headline">¶</a></h4>
+<p>It is often useful to develop and test on different systems. For
+example, some development or build systems may not have an AMD GPU
+installed. In this scenario, you may prefer to avoid installing the ROCK
+kernel driver to your development system.</p>
+<p>In this case, install the development subset of packages:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">rocm</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<blockquote>
+<div><strong>Note:</strong> To execute ROCm enabled apps you will require a system with
+the full ROCm driver stack installed</div></blockquote>
+</div>
+<div class="section" id="using-debian-based-rocm-with-upstream-kernel-drivers">
+<h4>Using Debian-based ROCm with upstream kernel drivers<a class="headerlink" href="#using-debian-based-rocm-with-upstream-kernel-drivers" title="Permalink to this headline">¶</a></h4>
+<p>As described in the above section about upstream Linux kernel
+support, users may want to try installing ROCm user-level software
+without installing AMD’s custom ROCK kernel driver. Users who do want to
+use upstream kernels can run the following commands instead of
+installing <code class="docutils literal notranslate"><span class="pre">rocm-dkms</span></code></p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">rocm</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">echo</span> <span class="s1">&#39;SUBSYSTEM==&quot;kfd&quot;, KERNEL==&quot;kfd&quot;, TAG+=&quot;uaccess&quot;, GROUP=&quot;video&quot;&#39;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">udev</span><span class="o">/</span><span class="n">rules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="mi">70</span><span class="o">-</span><span class="n">kfd</span><span class="o">.</span><span class="n">rules</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="centos-rhel-7-7-4-7-5-7-6-support">
+<h3>CentOS/RHEL 7 (7.4, 7.5, 7.6) Support<a class="headerlink" href="#centos-rhel-7-7-4-7-5-7-6-support" title="Permalink to this headline">¶</a></h3>
+<p>The following directions show how to install ROCm on supported RPM-based
+systems such as CentOS 7.6. These directions may not work as written on
+unsupported RPM-based distributions. For example, Fedora may work but
+may not be compatible with the <code class="docutils literal notranslate"><span class="pre">rock-dkms</span></code> kernel driver. As such,
+users may want to skip the <code class="docutils literal notranslate"><span class="pre">rocm-dkms</span></code> and <code class="docutils literal notranslate"><span class="pre">rock-dkms</span></code> packages, as
+described above, and instead use the upstream kernel driver.</p>
+<p>Support for CentOS/RHEL 7 was added in ROCm 1.8, but ROCm requires a
+special runtime environment provided by the RHEL Software Collections
+and additional dkms support packages to properly install and run.</p>
+<div class="section" id="preparing-rhel-7-7-4-7-5-7-6-for-installation">
+<h4>Preparing RHEL 7 (7.4, 7.5, 7.6) for installation<a class="headerlink" href="#preparing-rhel-7-7-4-7-5-7-6-for-installation" title="Permalink to this headline">¶</a></h4>
+<p>RHEL is a subscription-based operating system, and you must enable
+several external repositories to enable installation of the devtoolset-7
+environment and the DKMS support files. These steps are not required for
+CentOS.</p>
+<p>First, the subscription for RHEL must be enabled and attached to a pool
+id. Please see Obtaining an RHEL image and license page for instructions
+on registering your system with the RHEL subscription server and
+attaching to a pool id.</p>
+<p>Second, enable the following repositories:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">subscription</span><span class="o">-</span><span class="n">manager</span> <span class="n">repos</span> <span class="o">--</span><span class="n">enable</span> <span class="n">rhel</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">rhscl</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">rpms</span>
+<span class="n">sudo</span> <span class="n">subscription</span><span class="o">-</span><span class="n">manager</span> <span class="n">repos</span> <span class="o">--</span><span class="n">enable</span> <span class="n">rhel</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">optional</span><span class="o">-</span><span class="n">rpms</span>
+<span class="n">sudo</span> <span class="n">subscription</span><span class="o">-</span><span class="n">manager</span> <span class="n">repos</span> <span class="o">--</span><span class="n">enable</span> <span class="n">rhel</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">extras</span><span class="o">-</span><span class="n">rpms</span>
+</pre></div>
+</div>
+<p>Third, enable additional repositories by downloading and installing the
+epel-release-latest-7 repository RPM:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">rpm</span> <span class="o">-</span><span class="n">ivh</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dl</span><span class="o">.</span><span class="n">fedoraproject</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">epel</span><span class="o">/</span><span class="n">epel</span><span class="o">-</span><span class="n">release</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="mf">7.</span><span class="n">noarch</span><span class="o">.</span><span class="n">rpm</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-and-setup-devtoolset-7">
+<h4>Install and setup Devtoolset-7<a class="headerlink" href="#install-and-setup-devtoolset-7" title="Permalink to this headline">¶</a></h4>
+<p>To setup the Devtoolset-7 environment, follow the instructions on this
+page:</p>
+<p><a class="reference external" href="https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/">https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/</a></p>
+<p>Note that devtoolset-7 is a Software Collections package, and it is not
+supported by AMD.</p>
+</div>
+<div class="section" id="prepare-centos-rhel-7-4-7-5-7-6-for-dkms-install">
+<h4>Prepare CentOS/RHEL (7.4, 7.5, 7.6) for DKMS Install<a class="headerlink" href="#prepare-centos-rhel-7-4-7-5-7-6-for-dkms-install" title="Permalink to this headline">¶</a></h4>
+<p>Installing kernel drivers on CentOS/RHEL 7.4/7.5/7.6 requires dkms tool
+being installed:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span>sudo yum install -y epel-release
+sudo yum install -y dkms kernel-headers-`uname -r` kernel-devel-`uname -r`
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-rocm-on-the-system">
+<h4>Installing ROCm on the system<a class="headerlink" href="#installing-rocm-on-the-system" title="Permalink to this headline">¶</a></h4>
+<p>It is recommended to remove previous ROCm installations before
+installing the latest version to ensure a smooth installation.</p>
+<p>At this point ROCm can be installed on the target system. Create a
+/etc/yum.repos.d/rocm.repo file with the following contents:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">ROCm</span><span class="p">]</span>
+<span class="n">name</span><span class="o">=</span><span class="n">ROCm</span>
+<span class="n">baseurl</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">radeon</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rocm</span><span class="o">/</span><span class="n">yum</span><span class="o">/</span><span class="n">rpm</span>
+<span class="n">enabled</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">gpgcheck</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>The repo’s URL should point to the location of the repositories repodata
+database. Install ROCm components using these commands:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">rocm</span><span class="o">-</span><span class="n">dkms</span>
+</pre></div>
+</div>
+<p>The rock-dkms component should be installed and the <code class="docutils literal notranslate"><span class="pre">/dev/kfd</span></code> device
+should be available on reboot.</p>
+</div>
+<div class="section" id="set-up-permissions">
+<h4>Set up permissions<a class="headerlink" href="#set-up-permissions" title="Permalink to this headline">¶</a></h4>
+<p>Ensure that your user account is a member of the “video” or “wheel”
+group prior to using the ROCm driver. You can find which groups you are
+a member of with the following command:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span>
+</pre></div>
+</div>
+<p>To add yourself to the video (or wheel) group you will need the sudo
+password and can use the following command:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span>sudo usermod -a -G video $LOGNAME
+</pre></div>
+</div>
+<p>You may want to ensure that any future users you add to your system are
+put into the “video” group by default. To do that, you can run the
+following commands:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;ADD_EXTRA_GROUPS=1&#39;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">adduser</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">echo</span> <span class="s1">&#39;EXTRA_GROUPS=video&#39;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">adduser</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>Current release supports CentOS/RHEL 7.4, 7.5, 7.6. If users want to
+update the OS version, they should completely remove ROCm packages
+before updating to the latest version of the OS, to avoid DKMS related
+issues.</p>
+<p>Once complete, reboot your system.</p>
+<p>Test basic ROCm installation</p>
+<p>After rebooting the system run the following commands to verify that the
+ROCm installation was successful. If you see your GPUs listed by both of
+these commands, you should be ready to go!</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rocm</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">rocminfo</span>
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rocm</span><span class="o">/</span><span class="n">opencl</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">/</span><span class="n">clinfo</span>
+</pre></div>
+</div>
+<p>Note that, to make running ROCm programs easier, you may wish to put the
+ROCm binaries in your PATH.</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;export PATH=$PATH:/opt/rocm/bin:/opt/rocm/profiler/bin:/opt/rocm/opencl/bin/x86_64&#39;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">rocm</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>If you have an <a class="reference external" href="https://rocm.github.io/install_issues.html">install issue</a> please read this FAQ.</p>
+<p>Performing an OpenCL-only Installation of ROCm</p>
+<p>Some users may want to install a subset of the full ROCm installation.
+In particular, if you are trying to install on a system with a limited
+amount of storage space, or which will only run a small collection of
+known applications, you may want to install only the packages that are
+required to run OpenCL applications. To do that, you can run the
+following installation command <strong>instead</strong> of the command to install
+<code class="docutils literal notranslate"><span class="pre">rocm-dkms</span></code>.</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">rock</span><span class="o">-</span><span class="n">dkms</span> <span class="n">rocm</span><span class="o">-</span><span class="n">opencl</span><span class="o">-</span><span class="n">devel</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="compiling-applications-using-hcc-hip-and-other-rocm-software">
+<h4>Compiling applications using HCC, HIP, and other ROCm software<a class="headerlink" href="#compiling-applications-using-hcc-hip-and-other-rocm-software" title="Permalink to this headline">¶</a></h4>
+<p>To compile applications or samples, please use gcc-7.2 provided by the
+devtoolset-7 environment. To do this, compile all applications after
+running this command:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scl</span> <span class="n">enable</span> <span class="n">devtoolset</span><span class="o">-</span><span class="mi">7</span> <span class="n">bash</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-uninstall-rocm-from-centos-rhel-7-4-7-5-and-7-6">
+<h4>How to uninstall ROCm from CentOS/RHEL 7.4, 7.5 and 7.6<a class="headerlink" href="#how-to-uninstall-rocm-from-centos-rhel-7-4-7-5-and-7-6" title="Permalink to this headline">¶</a></h4>
+<p>To uninstall the ROCm packages installed by the above directions, you
+can execute:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">autoremove</span> <span class="n">rocm</span><span class="o">-</span><span class="n">dkms</span> <span class="n">rock</span><span class="o">-</span><span class="n">dkms</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h4>Installing development packages for cross compilation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>It is often useful to develop and test on different systems. For
+example, some development or build systems may not have an AMD GPU
+installed. In this scenario, you may prefer to avoid installing the ROCK
+kernel driver to your development system.</p>
+<p>In this case, install the development subset of packages:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">rocm</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<blockquote>
+<div><strong>Note:</strong> To execute ROCm enabled apps you will require a system with
+the full ROCm driver stack installed</div></blockquote>
+</div>
+<div class="section" id="using-rocm-with-upstream-kernel-drivers">
+<h4>Using ROCm with upstream kernel drivers<a class="headerlink" href="#using-rocm-with-upstream-kernel-drivers" title="Permalink to this headline">¶</a></h4>
+<p>As described in the above section about upstream Linux kernel
+support, use rs may want to try installing ROCm user-level software
+without installing AMD’s custom ROCK kernel driver. Users who do want to
+use upstream kernels can run the following commands instead of
+installing <code class="docutils literal notranslate"><span class="pre">rocm-dkms</span></code></p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">rocm</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">echo</span> <span class="s1">&#39;SUBSYSTEM==&quot;kfd&quot;, KERNEL==&quot;kfd&quot;, TAG+=&quot;uaccess&quot;, GROUP=&quot;video&quot;&#39;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">udev</span><span class="o">/</span><span class="n">rules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="mi">70</span><span class="o">-</span><span class="n">kfd</span><span class="o">.</span><span class="n">rules</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="known-issues-workarounds">
+<h2>Known issues / workarounds<a class="headerlink" href="#known-issues-workarounds" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hcc-removed-support-for-c-amp-in-rocm-2-0">
+<h3>HCC: removed support for C++AMP in ROCm 2.0<a class="headerlink" href="#hcc-removed-support-for-c-amp-in-rocm-2-0" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="hipcaffe-is-supported-on-single-gpu-configurations">
+<h3>HipCaffe is supported on single GPU configurations<a class="headerlink" href="#hipcaffe-is-supported-on-single-gpu-configurations" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="the-rocm-smi-library-calls-to-rsmi-dev-power-cap-set-and-rsmi-dev-power-profile-set-will-not-work-for-all-but-the-first-gpu-in-multi-gpu-set-ups">
+<h3>The ROCm SMI library calls to rsmi_dev_power_cap_set() and rsmi_dev_power_profile_set() will not work for all but the first gpu in multi-gpu set ups.<a class="headerlink" href="#the-rocm-smi-library-calls-to-rsmi-dev-power-cap-set-and-rsmi-dev-power-profile-set-will-not-work-for-all-but-the-first-gpu-in-multi-gpu-set-ups" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="closed-source-components">
+<h2>Closed source components<a class="headerlink" href="#closed-source-components" title="Permalink to this headline">¶</a></h2>
+<p>The ROCm platform relies on a few closed source components to provide
+functionality such as HSA image support. These components are only
+available through the ROCm repositories, and they will either be
+deprecated or become open source components in the future. These
+components are made available in the following packages:</p>
+<ul class="simple">
+<li>hsa-ext-rocr-dev</li>
+</ul>
+</div>
+<div class="section" id="getting-rocm-source-code">
+<h2>Getting ROCm source code<a class="headerlink" href="#getting-rocm-source-code" title="Permalink to this headline">¶</a></h2>
+<p>ROCm is built from open source software. As such, it is possible to make
+modifications to the various components of ROCm by downloading the
+source code, making modifications to it, and rebuilding the components.
+The source code for ROCm components can be cloned from each of the
+GitHub repositories using git. In order to make it easier to download
+the correct versions of each of these tools, this ROCm repository
+contains a <a class="reference external" href="https://gerrit.googlesource.com/git-repo/">repo</a> manifest file, <a class="reference external" href="default.xml">default.xml</a>. Interested users can
+thus use this manifest file to download the source code for all of the
+ROCm software.</p>
+<div class="section" id="installing-repo">
+<h3>Installing repo<a class="headerlink" href="#installing-repo" title="Permalink to this headline">¶</a></h3>
+<p>Google’s repo tool allows you to manage multiple git repositories
+simultaneously. You can install it by executing the following example
+commands:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="nb">bin</span><span class="o">/</span>
+<span class="n">curl</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">storage</span><span class="o">.</span><span class="n">googleapis</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">git</span><span class="o">-</span><span class="n">repo</span><span class="o">-</span><span class="n">downloads</span><span class="o">/</span><span class="n">repo</span> <span class="o">&gt;</span> <span class="o">~/</span><span class="nb">bin</span><span class="o">/</span><span class="n">repo</span>
+<span class="n">chmod</span> <span class="n">a</span><span class="o">+</span><span class="n">x</span> <span class="o">~/</span><span class="nb">bin</span><span class="o">/</span><span class="n">repo</span>
+</pre></div>
+</div>
+<p>Note that you can choose a different folder to install repo into if you
+desire. <code class="docutils literal notranslate"><span class="pre">~/bin/</span></code> is simply used as an example.</p>
+</div>
+<div class="section" id="downloading-the-rocm-source-code">
+<h3>Downloading the ROCm source code<a class="headerlink" href="#downloading-the-rocm-source-code" title="Permalink to this headline">¶</a></h3>
+<p>The following example shows how to use the <code class="docutils literal notranslate"><span class="pre">repo</span></code> binary downloaded
+above to download all of the ROCm source code. If you chose a directory
+other than <code class="docutils literal notranslate"><span class="pre">~/bin/</span></code> to install <code class="docutils literal notranslate"><span class="pre">repo</span></code>, you should use that directory
+below.</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">ROCm</span><span class="o">/</span>
+<span class="n">cd</span> <span class="o">~/</span><span class="n">ROCm</span><span class="o">/</span>
+<span class="o">~/</span><span class="nb">bin</span><span class="o">/</span><span class="n">repo</span> <span class="n">init</span> <span class="o">-</span><span class="n">u</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">ROCm</span><span class="o">.</span><span class="n">git</span> <span class="o">-</span><span class="n">b</span> <span class="n">roc</span><span class="o">-</span><span class="mf">2.0</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">repo</span> <span class="n">sync</span>
+</pre></div>
+</div>
+<p>This will cause repo to download all of the open source code associated
+with this ROCm release. You may want to ensure that you have ssh-keys
+configured on your machine for your GitHub ID.</p>
+</div>
+<div class="section" id="building-the-rocm-source-code">
+<h3>Building the ROCm source code<a class="headerlink" href="#building-the-rocm-source-code" title="Permalink to this headline">¶</a></h3>
+<p>Each ROCm component repository contains directions for building that
+component. As such, you should go to the repository you are interested
+in building to find how to build it.</p>
+<p>That said, AMD also offers <a class="reference external" href="https://github.com/RadeonOpenCompute/Experimental_ROC">a project</a> that demonstrates how to
+download, build, package, and install ROCm software on various
+distributions. The scripts here may be useful for anyone looking to
+build ROCm components.</p>
+</div>
+</div>
+<div class="section" id="final-notes">
+<h2>Final notes<a class="headerlink" href="#final-notes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>OpenCL Runtime and Compiler will be submitted to the Khronos Group
+for conformance testing prior to its final release.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

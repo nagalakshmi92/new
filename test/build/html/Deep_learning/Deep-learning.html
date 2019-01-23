@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Deep Learning on ROCm &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="System Level Debug" href="../Other_Solutions/Other-Solutions.html" />
+    <link rel="prev" title="Remote Device Programming" href="../Remote_Device_Programming/Remote-Device-Programming.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Deep Learning on ROCm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rocm-tensorflow-v1-12-release">ROCm Tensorflow v1.12 Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tensorflow-installation">Tensorflow Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tensorflow-more-resources">Tensorflow More Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rocm-miopen-v1-6-release">ROCm MIOpen v1.6 Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#porting-from-cudnn-to-miopen">Porting from cuDNN to MIOpen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-rocm-2-0-has-prebuilt-packages-for-miopen">The ROCm 2.0 has prebuilt packages for MIOpen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-pytorch-for-rocm">Building PyTorch for ROCm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recommended-install-using-published-pytorch-rocm-docker-image">Recommended:Install using published PyTorch ROCm docker image:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#option-2-install-using-pytorch-upstream-docker-file">Option 2: Install using PyTorch upstream docker file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#option-3-install-using-minimal-rocm-docker-file">Option 3: Install using minimal ROCm docker file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#try-pytorch-examples">Try PyTorch examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-caffe2-for-rocm">Building Caffe2 for ROCm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#option-1-docker-image-with-caffe2-installed">Option 1: Docker image with Caffe2 installed:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#option-2-install-using-caffe2-rocm-docker-image">Option 2: Install using Caffe2 ROCm docker image:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-the-caffe2-installation">Test the Caffe2 Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deep-learning-framework-support-for-rocm">Deep Learning Framework support for ROCm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorials">Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Deep Learning on ROCm</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Deep_learning/Deep-learning.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="deep-learning-on-rocm">
+<span id="deep-learning"></span><h1>Deep Learning on ROCm<a class="headerlink" href="#deep-learning-on-rocm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rocm-tensorflow-v1-12-release">
+<h2>ROCm Tensorflow v1.12 Release<a class="headerlink" href="#rocm-tensorflow-v1-12-release" title="Permalink to this headline">¶</a></h2>
+<p>We are excited to announce the release of ROCm enabled TensorFlow v1.12 for AMD GPUs.</p>
+</div>
+<div class="section" id="tensorflow-installation">
+<h2>Tensorflow Installation<a class="headerlink" href="#tensorflow-installation" title="Permalink to this headline">¶</a></h2>
+<p>First, you’ll need to install the open-source ROCm 2.0 stack. Details can be found here: <a class="reference external" href="https://rocm.github.io/ROCmInstall.html">https://rocm.github.io/ROCmInstall.html</a></p>
+<p>Then, install these other relevant ROCm packages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">rocm</span><span class="o">-</span><span class="n">libs</span> <span class="n">miopen</span><span class="o">-</span><span class="n">hip</span> <span class="n">cxlactivitylogger</span>
+</pre></div>
+</div>
+<p>And finally, install TensorFlow itself (via the Python Package Index):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">wget</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span>
+<span class="c1"># Pip3 install the whl package from PyPI</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">tensorflow</span><span class="o">-</span><span class="n">rocm</span>
+</pre></div>
+</div>
+<p>Now that Tensorflow v1.12 is installed!</p>
+</div>
+<div class="section" id="tensorflow-more-resources">
+<h2>Tensorflow More Resources<a class="headerlink" href="#tensorflow-more-resources" title="Permalink to this headline">¶</a></h2>
+<p>Tensorflow docker images are also publicly available, more details can be found here: <a class="reference external" href="https://hub.docker.com/r/rocm/tensorflow/">https://hub.docker.com/r/rocm/tensorflow/</a></p>
+<p>Please connect with us for any questions, our official github repository is here: <a class="reference external" href="https://github.com/ROCmSoftwarePlatform/tensorflow-upstream">https://github.com/ROCmSoftwarePlatform/tensorflow-upstream</a></p>
+</div>
+<div class="section" id="rocm-miopen-v1-6-release">
+<h2>ROCm MIOpen v1.6 Release<a class="headerlink" href="#rocm-miopen-v1-6-release" title="Permalink to this headline">¶</a></h2>
+<p>Announcing our new Foundation for Deep Learning acceleration MIOpen 1.6 which introduces support for Convolution Neural Network (CNN) acceleration — built to run on top of the ROCm software stack!</p>
+<dl class="docutils">
+<dt>This release includes the following:</dt>
+<dd><ul class="first last simple">
+<li>Training in fp16 (half precision) including mixed-precision is now fully supported</li>
+<li>Batch Normalization in fp16 (half precision) including mixed-precision are now available</li>
+<li>Performance improvements for 3x3 and 1x1 single-precision convolutions</li>
+<li>Layer fusions for BatchNorm+Activation are now available</li>
+<li>Layer fusions with convolutions now support varying strides and padding configurations</li>
+<li>Support for OpenCL and HIP enabled frameworks API’s</li>
+<li>MIOpen Driver enables the testing of forward/backward calls of any particular layer in MIOpen.</li>
+<li>Binary Package support for Ubuntu 16.04 and Fedora 24</li>
+<li>Source code at <a class="reference external" href="https://github.com/ROCmSoftwarePlatform/MIOpen">https://github.com/ROCmSoftwarePlatform/MIOpen</a></li>
+<li><dl class="first docutils">
+<dt>Documentation</dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://rocmsoftwareplatform.github.io/MIOpen/doc/html/apireference.html">MIOpen</a></li>
+<li><a class="reference external" href="https://rocmsoftwareplatform.github.io/MIOpenGEMM/doc/html/index.html">MIOpenGemm</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="porting-from-cudnn-to-miopen">
+<h2>Porting from cuDNN to MIOpen<a class="headerlink" href="#porting-from-cudnn-to-miopen" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/dagamayank/ROCm.github.io/blob/master/doc/miopen_porting_guide.pdf">porting guide</a> highlights the key differences between the current cuDNN and MIOpen APIs.</p>
+</div>
+<div class="section" id="the-rocm-2-0-has-prebuilt-packages-for-miopen">
+<h2>The ROCm 2.0 has prebuilt packages for MIOpen<a class="headerlink" href="#the-rocm-2-0-has-prebuilt-packages-for-miopen" title="Permalink to this headline">¶</a></h2>
+<p>Install the ROCm MIOpen implementation (assuming you already have the ‘rocm’ and ‘rocm-opencl-dev” package installed):</p>
+<p><strong>For just OpenCL development</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">miopengemm</span> <span class="n">miopen</span><span class="o">-</span><span class="n">opencl</span>
+</pre></div>
+</div>
+<p><strong>For HIP development</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">miopengemm</span> <span class="n">miopen</span><span class="o">-</span><span class="n">hip</span>
+</pre></div>
+</div>
+<p>Or you can build from <a class="reference external" href="https://github.com/ROCmSoftwarePlatform/MIOpen">source code</a></p>
+</div>
+<div class="section" id="building-pytorch-for-rocm">
+<h2>Building PyTorch for ROCm<a class="headerlink" href="#building-pytorch-for-rocm" title="Permalink to this headline">¶</a></h2>
+<p>This is a quick guide to setup PyTorch with ROCm support inside a docker container. Assumes a .deb based system. See <a class="reference external" href="https://rocm.github.io/ROCmInstall.html">ROCm install</a> for supported operating systems and general information on the ROCm software stack.</p>
+<p>A ROCm install version 2.0 is required currently.</p>
+<ol class="arabic simple">
+<li>Install or update rocm-dev on the host system:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">rocm</span><span class="o">-</span><span class="n">dev</span>
+<span class="ow">or</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">upgrade</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="recommended-install-using-published-pytorch-rocm-docker-image">
+<h2>Recommended:Install using published PyTorch ROCm docker image:<a class="headerlink" href="#recommended-install-using-published-pytorch-rocm-docker-image" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" start="2">
+<li>Obtain docker image:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">rocm</span><span class="o">/</span><span class="n">pytorch</span><span class="p">:</span><span class="n">rocm2</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Clone PyTorch repository on the host:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pytorch</span><span class="o">/</span><span class="n">pytorch</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">pytorch</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Start a docker container using the downloaded image:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo docker run -it -v $HOME:/data --privileged --rm --device=/dev/kfd --device=/dev/dri --group-add video rocm/pytorch:rocm2.0
+</pre></div>
+</div>
+<p>Note: This will mount your host home directory on /data in the container.</p>
+<ol class="arabic simple" start="5">
+<li>Change to previous PyTorch checkout from within the running docker:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">pytorch</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Build PyTorch for ROCm:</li>
+</ol>
+<p>Unless you are running a gfx900/Vega10-type GPU (MI25, Vega56, Vega64,…), explicitly export the GPU architecture to build for, e.g.:
+export HCC_AMDGPU_TARGET=gfx906</p>
+<p>then</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">jenkins</span><span class="o">/</span><span class="n">pytorch</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>This will first hipify the PyTorch sources and then compile using 4 concurrent jobs, needing 16 GB of RAM to be available to the docker image.</p>
+<ol class="arabic simple" start="7">
+<li>Confirm working installation:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PYTORCH_TEST_WITH_ROCM</span><span class="o">=</span><span class="mi">1</span> <span class="n">python</span> <span class="n">test</span><span class="o">/</span><span class="n">run_test</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">verbose</span>
+</pre></div>
+</div>
+<p>No tests will fail if the compilation and installation is correct.</p>
+<ol class="arabic simple" start="8">
+<li>Install torchvision:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">torchvision</span>
+</pre></div>
+</div>
+<p>This step is optional but most PyTorch scripts will use torchvision to load models. E.g., running the pytorch examples requires torchvision.</p>
+<ol class="arabic simple" start="9">
+<li>Commit the container to preserve the pytorch install (from the host):</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">commit</span> <span class="o">&lt;</span><span class="n">container_id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;pytorch installed&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="option-2-install-using-pytorch-upstream-docker-file">
+<h2>Option 2: Install using PyTorch upstream docker file<a class="headerlink" href="#option-2-install-using-pytorch-upstream-docker-file" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" start="2">
+<li>Clone PyTorch repository on the host:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pytorch</span><span class="o">/</span><span class="n">pytorch</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">pytorch</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Build PyTorch docker image:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">pytorch</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">caffe2</span><span class="o">/</span><span class="n">jenkins</span>
+<span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="n">py2</span><span class="o">-</span><span class="n">clang7</span><span class="o">-</span><span class="n">rocmdeb</span><span class="o">-</span><span class="n">ubuntu16</span><span class="o">.</span><span class="mi">04</span>
+</pre></div>
+</div>
+<p>This should complete with a message “Successfully built &lt;image_id&gt;”
+Note here that other software versions may be chosen, such setups are currently not tested though!</p>
+<ol class="arabic simple" start="4">
+<li>Start a docker container using the new image:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo docker run -it -v $HOME:/data --privileged --rm --device=/dev/kfd --device=/dev/dri --group-add video &lt;image_id&gt;
+</pre></div>
+</div>
+<p>Note: This will mount your host home directory on /data in the container.</p>
+<ol class="arabic simple" start="5">
+<li>Change to previous PyTorch checkout from within the running docker:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">pytorch</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Build PyTorch for ROCm:</li>
+</ol>
+<p>Unless you are running a gfx900/Vega10-type GPU (MI25, Vega56, Vega64,…), explicitly export the GPU architecture to build for, e.g.:
+export HCC_AMDGPU_TARGET=gfx906</p>
+<p>then</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">jenkins</span><span class="o">/</span><span class="n">pytorch</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>This will first hipify the PyTorch sources and then compile using 4 concurrent jobs, needing 16 GB of RAM to be available to the docker image.</p>
+<ol class="arabic simple" start="7">
+<li>Confirm working installation:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PYTORCH_TEST_WITH_ROCM</span><span class="o">=</span><span class="mi">1</span> <span class="n">python</span> <span class="n">test</span><span class="o">/</span><span class="n">run_test</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">verbose</span>
+</pre></div>
+</div>
+<p>No tests will fail if the compilation and installation is correct.</p>
+<ol class="arabic simple" start="8">
+<li>Install torchvision:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">torchvision</span>
+</pre></div>
+</div>
+<p>This step is optional but most PyTorch scripts will use torchvision to load models. E.g., running the pytorch examples requires torchvision.</p>
+<ol class="arabic simple" start="9">
+<li>Commit the container to preserve the pytorch install (from the host):</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">commit</span> <span class="o">&lt;</span><span class="n">container_id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;pytorch installed&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="option-3-install-using-minimal-rocm-docker-file">
+<h2>Option 3: Install using minimal ROCm docker file<a class="headerlink" href="#option-3-install-using-minimal-rocm-docker-file" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" start="2">
+<li>Download pytorch dockerfile:</li>
+</ol>
+<p><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/pytorch/wiki/Dockerfile">Dockerfile</a></p>
+<ol class="arabic simple" start="3">
+<li>Build docker image:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">pytorch_docker</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">build</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>This should complete with a message “Successfully built &lt;image_id&gt;”</p>
+<ol class="arabic simple" start="4">
+<li>Start a docker container using the new image:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo docker run -it -v $HOME:/data --privileged --rm --device=/dev/kfd --device=/dev/dri --group-add video &lt;image_id&gt;
+</pre></div>
+</div>
+<p>Note: This will mount your host home directory on /data in the container.</p>
+<ol class="arabic simple" start="5">
+<li>Clone pytorch master (on to the host):</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pytorch</span><span class="o">/</span><span class="n">pytorch</span><span class="o">.</span><span class="n">git</span> <span class="ow">or</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ROCmSoftwarePlatform</span><span class="o">/</span><span class="n">pytorch</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">pytorch</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Run “hipify” to prepare source code (in the container):</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">pytorch</span><span class="o">/</span>
+<span class="n">python</span> <span class="n">tools</span><span class="o">/</span><span class="n">amd_build</span><span class="o">/</span><span class="n">build_pytorch_amd</span><span class="o">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="n">tools</span><span class="o">/</span><span class="n">amd_build</span><span class="o">/</span><span class="n">build_caffe2_amd</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li>Build and install pytorch:</li>
+</ol>
+<p>Unless you are running a gfx900/Vega10-type GPU (MI25, Vega56, Vega64,…), explicitly export the GPU architecture to build for, e.g.:
+export HCC_AMDGPU_TARGET=gfx906</p>
+<p>then</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">USE_ROCM</span><span class="o">=</span><span class="mi">1</span> <span class="n">MAX_JOBS</span><span class="o">=</span><span class="mi">4</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span>
+</pre></div>
+</div>
+<p>UseMAX_JOBS=n to limit peak memory usage. If building fails try falling back to fewer jobs. 4 jobs assume available main memory of 16 GB or larger.</p>
+<ol class="arabic simple" start="8">
+<li>Confirm working installation:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PYTORCH_TEST_WITH_ROCM</span><span class="o">=</span><span class="mi">1</span> <span class="n">python</span> <span class="n">test</span><span class="o">/</span><span class="n">run_test</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">verbose</span>
+</pre></div>
+</div>
+<p>No tests will fail if the compilation and installation is correct.</p>
+<ol class="arabic simple" start="9">
+<li>Install torchvision:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">torchvision</span>
+</pre></div>
+</div>
+<p>This step is optional but most PyTorch scripts will use torchvision to load models. E.g., running the pytorch examples requires torchvision.</p>
+<ol class="arabic simple" start="10">
+<li>Commit the container to preserve the pytorch install (from the host):</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">commit</span> <span class="o">&lt;</span><span class="n">container_id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;pytorch installed&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="try-pytorch-examples">
+<h2>Try PyTorch examples<a class="headerlink" href="#try-pytorch-examples" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Clone the PyTorch examples repository:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pytorch</span><span class="o">/</span><span class="n">examples</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Run individual example: MNIST</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">examples</span><span class="o">/</span><span class="n">mnist</span>
+</pre></div>
+</div>
+<p>Follow instructions in README.md, in this case:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="n">python</span> <span class="n">main</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Run individual example: Try ImageNet training</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">imagenet</span>
+</pre></div>
+</div>
+<p>Follow instructions in README.md.</p>
+</div>
+<div class="section" id="building-caffe2-for-rocm">
+<h2>Building Caffe2 for ROCm<a class="headerlink" href="#building-caffe2-for-rocm" title="Permalink to this headline">¶</a></h2>
+<p>This is a quick guide to setup Caffe2 with ROCm support inside docker container and run on AMD GPUs. Caffe2 with ROCm support offers complete functionality on a single GPU achieving great performance on AMD GPUs using both native ROCm libraries and custom hip kernels. This requires your host system to have rocm-2.0s drivers installed. Please refer to ROCm install to install ROCm software stack. If your host system doesn’t have docker installed, please refer to docker install. It is recommended to add the user to the docker group to run docker as a non-root user, please refer here.</p>
+<dl class="docutils">
+<dt>This guide provides two options to run Caffe2.</dt>
+<dd><ol class="first last arabic simple">
+<li>Launch the docker container using a docker image with Caffe2 installed.</li>
+<li>Build Caffe2 from source inside a Caffe2 ROCm docker image.</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="option-1-docker-image-with-caffe2-installed">
+<h2>Option 1: Docker image with Caffe2 installed:<a class="headerlink" href="#option-1-docker-image-with-caffe2-installed" title="Permalink to this headline">¶</a></h2>
+<p>This option provides a docker image which has Caffe2 installed. Users can launch the docker container and train/run deep learning models directly. This docker image will run on both gfx900(Vega10-type GPU - MI25, Vega56, Vega64,…) and gfx906(Vega20-type GPU - MI50, MI60)</p>
+<blockquote>
+<div><ul class="simple">
+<li>Launch the docker container</li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">network</span><span class="o">=</span><span class="n">host</span> <span class="o">--</span><span class="n">device</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">kfd</span> <span class="o">--</span><span class="n">device</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">dri</span> <span class="o">--</span><span class="n">group</span><span class="o">-</span><span class="n">add</span> <span class="n">video</span> <span class="n">rocm</span><span class="o">/</span><span class="n">caffe2</span><span class="p">:</span><span class="mi">238</span><span class="o">-</span><span class="mf">2.0</span>
+</pre></div>
+</div>
+<p>This will automatically download the image if it does not exist on the host. You can also pass -v argument to mount any data directories on to the container.</p>
+</div>
+<div class="section" id="option-2-install-using-caffe2-rocm-docker-image">
+<h2>Option 2: Install using Caffe2 ROCm docker image:<a class="headerlink" href="#option-2-install-using-caffe2-rocm-docker-image" title="Permalink to this headline">¶</a></h2>
+<p>1.  Clone PyTorch repository on the host:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recurse</span><span class="o">-</span><span class="n">submodules</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pytorch</span><span class="o">/</span><span class="n">pytorch</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">pytorch</span>
+<span class="n">sgit</span> <span class="n">submodule</span> <span class="n">update</span> <span class="o">--</span><span class="n">init</span> <span class="o">--</span><span class="n">recursive</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Launch the docker container</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --network=host --device=/dev/kfd --device=/dev/dri --group-add video -v $PWD:/pytorch rocm/caffe2:unbuilt-238-2.0
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Build Caffe2 from source</li>
+</ol>
+<p>If running on gfx900/vega10-type GPU(MI25, Vega56, Vega64,…)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">jenkins</span><span class="o">/</span><span class="n">caffe2</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>If running on gfx906/vega20-type GPU(MI50, MI60)HCC_AMDGPU_TARGET=gfx906</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">jenkins</span><span class="o">/</span><span class="n">caffe2</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="test-the-caffe2-installation">
+<h2>Test the Caffe2 Installation<a class="headerlink" href="#test-the-caffe2-installation" title="Permalink to this headline">¶</a></h2>
+<p>To validate Caffe2 installation, for both options, run</p>
+<p>1. Test Command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">build_caffe2</span> <span class="o">&amp;&amp;</span> <span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;from caffe2.python import core&#39;</span> <span class="mi">2</span><span class="o">&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="o">&amp;&amp;</span> <span class="n">echo</span> <span class="s2">&quot;Success&quot;</span> <span class="o">||</span> <span class="n">echo</span> <span class="s2">&quot;Failure&quot;</span>
+</pre></div>
+</div>
+<p>If the test fails, make sure the following environment variables are set. LD_LIBRARY_PATH=/pytorch/build_caffe2/lib</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PYTHONPATH</span><span class="o">=/</span><span class="n">pytorch</span><span class="o">/</span><span class="n">build_caffe2</span>
+</pre></div>
+</div>
+<p>2. Running unit tests in Caffe2</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">jenkins</span><span class="o">/</span><span class="n">caffe2</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deep-learning-framework-support-for-rocm">
+<h2>Deep Learning Framework support for ROCm<a class="headerlink" href="#deep-learning-framework-support-for-rocm" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="12%" />
+<col width="15%" />
+<col width="15%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Framework</th>
+<th class="head">Status</th>
+<th class="head">MIOpen Enabled</th>
+<th class="head">Upstreamed</th>
+<th class="head">Current Repository</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Caffe</td>
+<td>Public</td>
+<td>Yes</td>
+<td>&#160;</td>
+<td><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/hipCaffe">https://github.com/ROCmSoftwarePlatform/hipCaffe</a></td>
+</tr>
+<tr class="row-odd"><td>Tensorflow</td>
+<td>Development</td>
+<td>Yes</td>
+<td>CLA inProgress</td>
+<td>Notes: Working on NCCL and XLA enablement, Running</td>
+</tr>
+<tr class="row-even"><td>Caffe2</td>
+<td>Upstreaming</td>
+<td>Yes</td>
+<td>CLA inProgress</td>
+<td><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/caffe2">https://github.com/ROCmSoftwarePlatform/caffe2</a></td>
+</tr>
+<tr class="row-odd"><td>Torch</td>
+<td>HIP</td>
+<td>Upstreaming</td>
+<td>Development
+inProgress</td>
+<td><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/cutorch_hip">https://github.com/ROCmSoftwarePlatform/cutorch_hip</a></td>
+</tr>
+<tr class="row-even"><td>HIPnn</td>
+<td>Upstreaming</td>
+<td>Development</td>
+<td>&#160;</td>
+<td><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/cunn_hip">https://github.com/ROCmSoftwarePlatform/cunn_hip</a></td>
+</tr>
+<tr class="row-odd"><td>PyTorch</td>
+<td>Development</td>
+<td>Development</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>MxNet</td>
+<td>Development</td>
+<td>Development</td>
+<td>&#160;</td>
+<td><a class="reference external" href="https://github.com/ROCmSoftwarePlatform/mxnet">https://github.com/ROCmSoftwarePlatform/mxnet</a></td>
+</tr>
+<tr class="row-odd"><td>CNTK</td>
+<td>Development</td>
+<td>Development</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
+<p><strong>hipCaffe</strong></p>
+<ul class="simple">
+<li><a class="reference internal" href="../Tutorial/caffe.html#caffe"><span class="std std-ref">hipCaffe: the HIP Port of Caffe</span></a></li>
+</ul>
+<p><strong>MXNet</strong></p>
+<ul class="simple">
+<li><a class="reference internal" href="MXNet.html#mxnet"><span class="std std-ref">MXNet</span></a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Other_Solutions/Other-Solutions.html" class="btn btn-neutral float-right" title="System Level Debug" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Remote_Device_Programming/Remote-Device-Programming.html" class="btn btn-neutral" title="Remote Device Programming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

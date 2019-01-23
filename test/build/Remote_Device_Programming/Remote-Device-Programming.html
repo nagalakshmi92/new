@@ -1,0 +1,1046 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Remote Device Programming &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deep Learning on ROCm" href="../Deep_learning/Deep-learning.html" />
+    <link rel="prev" title="ROCm Virtualization &amp; Containers" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Remote Device Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rocnrdma">ROCnRDMA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#restrictions-and-limitations">Restrictions and limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rocmrdma-interface-specification">ROCmRDMA interface specification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-structures">Data structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-function-to-query-rocmrdma-interface">The function to query ROCmRDMA interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">The function to query ROCmRDMA interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rocmrdma-interface-functions-description">ROCmRDMA interface functions description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ucx">UCX</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ucx-quick-start">UCX Quick start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ucx-api-usage-examples">UCX API usage examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-ucx">Running UCX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ucx-internal-performance-tests">UCX internal performance tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#openmpi-and-openshmem-with-ucx">OpenMPI and OpenSHMEM with UCX</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#interface-to-rocm">Interface to ROCm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#documentation">Documentation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#high-level-design">High Level Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#infrastructure-and-tools">Infrastructure and Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mpi">MPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ipc">IPC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Introduction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Remote Device Programming</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Remote_Device_Programming/Remote-Device-Programming.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="remote-device-programming">
+<span id="id1"></span><h1>Remote Device Programming<a class="headerlink" href="#remote-device-programming" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rocnrdma">
+<h2>ROCnRDMA<a class="headerlink" href="#rocnrdma" title="Permalink to this headline">¶</a></h2>
+<p>ROCmRDMA is the solution designed to allow third-party kernel drivers to utilize DMA access to the GPU  memory. It allows direct path for data exchange (peer-to-peer) using the standard features of PCI Express.</p>
+<p>Currently ROCmRDMA provides the following benefits:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Direct access to ROCm memory for 3rd party PCIe devices</li>
+<li>Support for PeerDirect(c) interface to offloads the CPU when dealing
+with ROCm memory for RDMA network stacks;</li>
+</ul>
+</div></blockquote>
+<div class="section" id="restrictions-and-limitations">
+<h3>Restrictions and limitations<a class="headerlink" href="#restrictions-and-limitations" title="Permalink to this headline">¶</a></h3>
+<p>To fully utilize ROCmRDMA  the number of limitation could apply impacting either performance or functionality in the whole:</p>
+<blockquote>
+<div><ul class="simple">
+<li>It is recommended that devices utilizing ROCmRDMA share the same upstream PCI Express root complex. Such limitation depends on       PCIe chipset manufacturses and outside of GPU controls;</li>
+<li>To provide peer-to-peer DMA access all GPU local memory must be exposed via PCI memory BARs (so called large-BAR configuration);</li>
+<li>It is recommended to have IOMMU support disabled or configured in pass-through mode due to limitation in Linux kernel to support     local PCIe device memory for any form transition others then 1:1 mapping.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="rocmrdma-interface-specification">
+<h3>ROCmRDMA interface specification<a class="headerlink" href="#rocmrdma-interface-specification" title="Permalink to this headline">¶</a></h3>
+<p>The implementation of ROCmRDMA interface could be found in <a class="reference external" href="https://github.com/RadeonOpenCompute/ROCK-Kernel-Driver/blob/roc-1.4.0/include/drm/amd_rdma.h">[amd_rdma.h]</a> file.</p>
+</div>
+<div class="section" id="data-structures">
+<h3>Data structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">Structure</span> <span class="n">describing</span> <span class="n">information</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">P2P</span> <span class="n">access</span> <span class="kn">from</span> <span class="nn">another</span> <span class="n">device</span>
+ <span class="o">*</span> <span class="n">to</span> <span class="n">specific</span> <span class="n">location</span> <span class="n">of</span> <span class="n">GPU</span> <span class="n">memory</span>
+ <span class="o">*/</span>
+<span class="n">struct</span> <span class="n">amd_p2p_info</span> <span class="p">{</span>
+        <span class="n">uint64_t</span>        <span class="n">va</span><span class="p">;</span>             <span class="o">/**&lt;</span> <span class="n">Specify</span> <span class="n">user</span> <span class="n">virt</span><span class="o">.</span> <span class="n">address</span>
+                                          <span class="o">*</span> <span class="n">which</span> <span class="n">this</span> <span class="n">page</span> <span class="n">table</span> <span class="n">described</span>
+                                          <span class="o">*/</span>
+
+        <span class="n">uint64_t</span>        <span class="n">size</span><span class="p">;</span>           <span class="o">/**&lt;</span> <span class="n">Specify</span> <span class="n">total</span> <span class="n">size</span> <span class="n">of</span>
+                                          <span class="o">*</span> <span class="n">allocation</span>
+                                          <span class="o">*/</span>
+
+       <span class="n">struct</span> <span class="n">pid</span>       <span class="o">*</span><span class="n">pid</span><span class="p">;</span>           <span class="o">/**&lt;</span> <span class="n">Specify</span> <span class="n">process</span> <span class="n">pid</span> <span class="n">to</span> <span class="n">which</span>
+                                          <span class="o">*</span> <span class="n">virtual</span> <span class="n">address</span> <span class="n">belongs</span>
+                                          <span class="o">*/</span>
+
+       <span class="n">struct</span> <span class="n">sg_table</span> <span class="o">*</span><span class="n">pages</span><span class="p">;</span>          <span class="o">/**&lt;</span> <span class="n">Specify</span> <span class="n">DMA</span><span class="o">/</span><span class="n">Bus</span> <span class="n">addresses</span> <span class="o">*/</span>
+
+        <span class="n">void</span>         <span class="o">*</span><span class="n">priv</span><span class="p">;</span>             <span class="o">/**&lt;</span> <span class="n">Pointer</span> <span class="nb">set</span> <span class="n">by</span> <span class="n">AMD</span> <span class="n">kernel</span>
+                                           <span class="o">*</span> <span class="n">driver</span>
+                                           <span class="o">*/</span>
+  <span class="p">};</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">Structure</span> <span class="n">providing</span> <span class="n">function</span> <span class="n">pointers</span> <span class="n">to</span> <span class="n">support</span> <span class="n">rdma</span><span class="o">/</span><span class="n">p2p</span> <span class="n">requirements</span><span class="o">.</span>
+ <span class="o">*</span> <span class="n">to</span> <span class="n">specific</span> <span class="n">location</span> <span class="n">of</span> <span class="n">GPU</span> <span class="n">memory</span>
+ <span class="o">*/</span>
+
+ <span class="n">struct</span> <span class="n">amd_rdma_interface</span> <span class="p">{</span>
+        <span class="nb">int</span> <span class="p">(</span><span class="o">*</span><span class="n">get_pages</span><span class="p">)(</span><span class="n">uint64_t</span> <span class="n">address</span><span class="p">,</span> <span class="n">uint64_t</span> <span class="n">length</span><span class="p">,</span> <span class="n">struct</span> <span class="n">pid</span> <span class="o">*</span><span class="n">pid</span><span class="p">,</span>
+                                <span class="n">struct</span> <span class="n">amd_p2p_info</span>  <span class="o">**</span><span class="n">amd_p2p_data</span><span class="p">,</span>
+                                <span class="n">void</span>  <span class="p">(</span><span class="o">*</span><span class="n">free_callback</span><span class="p">)(</span><span class="n">void</span> <span class="o">*</span><span class="n">client_priv</span><span class="p">),</span>
+                                <span class="n">void</span>  <span class="o">*</span><span class="n">client_priv</span><span class="p">);</span>
+        <span class="nb">int</span> <span class="p">(</span><span class="o">*</span><span class="n">put_pages</span><span class="p">)(</span><span class="n">struct</span> <span class="n">amd_p2p_info</span> <span class="o">**</span><span class="n">amd_p2p_data</span><span class="p">);</span>
+        <span class="nb">int</span> <span class="p">(</span><span class="o">*</span><span class="n">is_gpu_address</span><span class="p">)(</span><span class="n">uint64_t</span> <span class="n">address</span><span class="p">,</span> <span class="n">struct</span> <span class="n">pid</span> <span class="o">*</span><span class="n">pid</span><span class="p">);</span>
+        <span class="nb">int</span> <span class="p">(</span><span class="o">*</span><span class="n">get_page_size</span><span class="p">)(</span><span class="n">uint64_t</span> <span class="n">address</span><span class="p">,</span> <span class="n">uint64_t</span> <span class="n">length</span><span class="p">,</span> <span class="n">struct</span> <span class="n">pid</span> <span class="o">*</span><span class="n">pid</span><span class="p">,</span>
+                                <span class="n">unsigned</span> <span class="n">long</span> <span class="o">*</span><span class="n">page_size</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-function-to-query-rocmrdma-interface">
+<h3>The function to query ROCmRDMA interface<a class="headerlink" href="#the-function-to-query-rocmrdma-interface" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">amdkfd_query_rdma_interface</span> <span class="o">-</span> <span class="n">Return</span> <span class="n">interface</span> <span class="p">(</span><span class="n">function</span> <span class="n">pointers</span> <span class="n">table</span><span class="p">)</span> <span class="k">for</span>
+ <span class="o">*</span>                            <span class="n">rdma</span> <span class="n">interface</span>
+ <span class="o">*</span>
+ <span class="o">*</span>
+ <span class="o">*</span>    \<span class="n">param</span> <span class="n">interace</span>     <span class="o">-</span> <span class="n">OUT</span><span class="p">:</span> <span class="n">Pointer</span> <span class="n">to</span> <span class="n">interface</span>
+ <span class="o">*</span>    \<span class="k">return</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">operation</span> <span class="n">was</span> <span class="n">successful</span><span class="o">.</span>
+ <span class="o">*/</span>
+<span class="nb">int</span> <span class="n">amdkfd_query_rdma_interface</span><span class="p">(</span><span class="n">const</span> <span class="n">struct</span> <span class="n">amd_rdma_interface</span> <span class="o">**</span><span class="n">rdma</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>The function to query ROCmRDMA interface<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">amdkfd_query_rdma_interface</span> <span class="o">-</span> <span class="n">Return</span> <span class="n">interface</span> <span class="p">(</span><span class="n">function</span> <span class="n">pointers</span> <span class="n">table</span><span class="p">)</span> <span class="k">for</span> <span class="n">rdma</span> <span class="n">interface</span>
+ <span class="o">*</span> \<span class="n">param</span> <span class="n">interace</span>     <span class="o">-</span> <span class="n">OUT</span><span class="p">:</span> <span class="n">Pointer</span> <span class="n">to</span> <span class="n">interface</span>
+ <span class="o">*</span> \<span class="k">return</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">operation</span> <span class="n">was</span> <span class="n">successful</span><span class="o">.</span>
+ <span class="o">*/</span>
+ <span class="nb">int</span> <span class="n">amdkfd_query_rdma_interface</span><span class="p">(</span><span class="n">const</span> <span class="n">struct</span> <span class="n">amd_rdma_interface</span> <span class="o">**</span><span class="n">rdma</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rocmrdma-interface-functions-description">
+<h3>ROCmRDMA interface functions description<a class="headerlink" href="#rocmrdma-interface-functions-description" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">This</span> <span class="n">function</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">pages</span> <span class="n">underlying</span> <span class="n">a</span> <span class="nb">range</span> <span class="n">of</span> <span class="n">GPU</span> <span class="n">virtual</span> <span class="n">memory</span>
+ <span class="o">*</span> <span class="n">accessible</span> <span class="k">for</span> <span class="n">DMA</span> <span class="n">operations</span> <span class="kn">from</span> <span class="nn">another</span> <span class="n">PCIe</span> <span class="n">device</span>
+ <span class="o">*</span>
+ <span class="o">*</span> \<span class="n">param</span>   <span class="n">address</span>       <span class="o">-</span> <span class="n">The</span> <span class="n">start</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Unified</span> <span class="n">Virtual</span> <span class="n">Address</span>
+ <span class="o">*</span>                          <span class="n">space</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">process</span>
+ <span class="o">*</span> \<span class="n">param</span>   <span class="n">length</span>        <span class="o">-</span> <span class="n">The</span> <span class="n">length</span> <span class="n">of</span> <span class="n">requested</span> <span class="n">mapping</span>
+ <span class="o">*</span> \<span class="n">param</span>   <span class="n">pid</span>           <span class="o">-</span> <span class="n">Pointer</span> <span class="n">to</span> <span class="n">structure</span> <span class="n">pid</span> <span class="n">to</span> <span class="n">which</span> <span class="n">address</span> <span class="n">belongs</span><span class="o">.</span>
+ <span class="o">*</span>                          <span class="n">Could</span> <span class="n">be</span> <span class="n">NULL</span> <span class="k">for</span> <span class="n">current</span> <span class="n">process</span> <span class="n">address</span> <span class="n">space</span><span class="o">.</span>
+ <span class="o">*</span> \<span class="n">param</span>   <span class="n">p2p_data</span>      <span class="o">-</span> <span class="n">On</span> <span class="k">return</span><span class="p">:</span> <span class="n">Pointer</span> <span class="n">to</span> <span class="n">structure</span> <span class="n">describing</span>
+ <span class="o">*</span>                          <span class="n">underlying</span> <span class="n">pages</span><span class="o">/</span><span class="n">locations</span>
+ <span class="o">*</span> \<span class="n">param</span>   <span class="n">free_callback</span> <span class="o">-</span> <span class="n">Pointer</span> <span class="n">to</span> <span class="n">callback</span> <span class="n">which</span> <span class="n">will</span> <span class="n">be</span> <span class="n">called</span> <span class="n">when</span> <span class="n">access</span>
+ <span class="o">*</span>                          <span class="n">to</span> <span class="n">such</span> <span class="n">memory</span> <span class="n">must</span> <span class="n">be</span> <span class="n">stopped</span> <span class="n">immediately</span><span class="p">:</span> <span class="n">Memory</span>
+ <span class="o">*</span>                          <span class="n">was</span> <span class="n">freed</span><span class="p">,</span> <span class="n">GECC</span> <span class="n">events</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span>
+ <span class="o">*</span>                          <span class="n">Client</span> <span class="n">should</span>  <span class="n">immediately</span> <span class="n">stop</span> <span class="nb">any</span> <span class="n">transfer</span>
+ <span class="o">*</span>                          <span class="n">operations</span> <span class="ow">and</span> <span class="n">returned</span> <span class="k">as</span> <span class="n">soon</span> <span class="k">as</span> <span class="n">possible</span><span class="o">.</span>
+ <span class="o">*</span>                          <span class="n">After</span> <span class="k">return</span> <span class="nb">all</span> <span class="n">resources</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">address</span>
+ <span class="o">*</span>                          <span class="n">will</span> <span class="n">be</span> <span class="n">release</span> <span class="ow">and</span> <span class="n">no</span> <span class="n">access</span> <span class="n">will</span> <span class="n">be</span> <span class="n">allowed</span><span class="o">.</span>
+ <span class="o">*</span> \<span class="n">param</span>   <span class="n">client_priv</span>   <span class="o">-</span> <span class="n">Pointer</span> <span class="n">to</span> <span class="n">be</span> <span class="n">passed</span> <span class="k">as</span> <span class="n">parameter</span> <span class="n">on</span>
+ <span class="o">*</span>                          <span class="s1">&#39;free_callback;</span>
+ <span class="o">*</span>
+ <span class="o">*</span> \<span class="k">return</span>  <span class="mi">0</span> <span class="k">if</span> <span class="n">operation</span> <span class="n">was</span> <span class="n">successful</span>
+ <span class="o">*/</span>
+ <span class="nb">int</span> <span class="n">get_pages</span><span class="p">(</span><span class="n">uint64_t</span> <span class="n">address</span><span class="p">,</span> <span class="n">uint64_t</span> <span class="n">length</span><span class="p">,</span> <span class="n">struct</span> <span class="n">pid</span> <span class="o">*</span><span class="n">pid</span><span class="p">,</span>
+                 <span class="n">struct</span> <span class="n">amd_p2p_info</span> <span class="o">**</span><span class="n">amd_p2p_data</span><span class="p">,</span>
+                 <span class="n">void</span>  <span class="p">(</span><span class="o">*</span><span class="n">free_callback</span><span class="p">)(</span><span class="n">void</span> <span class="o">*</span><span class="n">client_priv</span><span class="p">),</span>
+                 <span class="n">void</span>  <span class="o">*</span><span class="n">client_priv</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">This</span> <span class="n">function</span> <span class="n">release</span> <span class="n">resources</span> <span class="n">previously</span> <span class="n">allocated</span> <span class="n">by</span> <span class="n">get_pages</span><span class="p">()</span> <span class="n">call</span><span class="o">.</span>
+ <span class="o">*</span> \<span class="n">param</span>   <span class="n">p_p2p_data</span> <span class="o">-</span> <span class="n">A</span> <span class="n">pointer</span> <span class="n">to</span> <span class="n">pointer</span> <span class="n">to</span> <span class="n">amd_p2p_info</span> <span class="n">entries</span>
+ <span class="o">*</span>                   <span class="n">allocated</span> <span class="n">by</span> <span class="n">get_pages</span><span class="p">()</span> <span class="n">call</span><span class="o">.</span>
+ <span class="o">*</span> \<span class="k">return</span>  <span class="mi">0</span> <span class="k">if</span> <span class="n">operation</span> <span class="n">was</span> <span class="n">successful</span>
+ <span class="o">*/</span>
+ <span class="nb">int</span> <span class="n">put_pages</span><span class="p">(</span><span class="n">struct</span> <span class="n">amd_p2p_info</span> <span class="o">**</span><span class="n">p_p2p_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
+  <span class="o">*</span> <span class="n">Check</span> <span class="k">if</span> <span class="n">given</span> <span class="n">address</span> <span class="n">belongs</span> <span class="n">to</span> <span class="n">GPU</span> <span class="n">address</span> <span class="n">space</span><span class="o">.</span>
+  <span class="o">*</span> \<span class="n">param</span>   <span class="n">address</span> <span class="o">-</span> <span class="n">Address</span> <span class="n">to</span> <span class="n">check</span>
+  <span class="o">*</span> \<span class="n">param</span>   <span class="n">pid</span>     <span class="o">-</span> <span class="n">Process</span> <span class="n">to</span> <span class="n">which</span> <span class="n">given</span> <span class="n">address</span> <span class="n">belongs</span><span class="o">.</span>
+  <span class="o">*</span>                    <span class="n">Could</span> <span class="n">be</span> <span class="n">NULL</span> <span class="k">if</span> <span class="n">current</span> <span class="n">one</span><span class="o">.</span>
+  <span class="o">*</span> \<span class="k">return</span>  <span class="mi">0</span>       <span class="o">-</span> <span class="n">This</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">GPU</span> <span class="n">address</span> <span class="n">managed</span> <span class="n">by</span> <span class="n">AMD</span> <span class="n">driver</span>
+  <span class="o">*</span>          <span class="mi">1</span>       <span class="o">-</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">GPU</span> <span class="n">address</span> <span class="n">managed</span> <span class="n">by</span> <span class="n">AMD</span> <span class="n">driver</span>
+  <span class="o">*/</span>
+  <span class="nb">int</span> <span class="n">is_gpu_address</span><span class="p">(</span><span class="n">uint64_t</span> <span class="n">address</span><span class="p">,</span> <span class="n">struct</span> <span class="n">pid</span> <span class="o">*</span><span class="n">pid</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ucx">
+<h2>UCX<a class="headerlink" href="#ucx" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="introduction">
+<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/ucx.jpg"><img alt="../_images/ucx.jpg" class="align-center" src="../_images/ucx.jpg" style="width: 500px;" /></a>
+</div>
+<div class="section" id="ucx-quick-start">
+<h3>UCX Quick start<a class="headerlink" href="#ucx-quick-start" title="Permalink to this headline">¶</a></h3>
+<p><strong>Compiling UCX</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>% ./autogen.sh
+% ./contrib/configure-release --prefix=$PWD/install
+% make -j8 install
+</pre></div>
+</div>
+</div>
+<div class="section" id="ucx-api-usage-examples">
+<h3>UCX API usage examples<a class="headerlink" href="#ucx-api-usage-examples" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/openucx/ucx/tree/master/test/examples">https://github.com/openucx/ucx/tree/master/test/examples</a></p>
+</div>
+<div class="section" id="running-ucx">
+<h3>Running UCX<a class="headerlink" href="#running-ucx" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="ucx-internal-performance-tests">
+<h4>UCX internal performance tests<a class="headerlink" href="#ucx-internal-performance-tests" title="Permalink to this headline">¶</a></h4>
+<p>This infrastructure provided a function which runs a performance test (in the current thread) on UCX communication APIs. The purpose is to allow a developer make optimizations to the code and immediately test their effects.
+The infrastructure provides both an API, and a standalone tool which uses that API - ucx_perftest.
+The API is also used for unit tests.
+Location: src/tools/perf</p>
+<p>Features of the library:</p>
+<blockquote>
+<div><ul class="simple">
+<li>uct_perf_test_run() is the function which runs the test. (currently only UCT API is supported)</li>
+<li>No need to do any resource allocation - just pass the testing parameters to the API</li>
+<li>Requires running the function on 2 threads/processes/nodes - by passing RTE callbacks which are used to bootstrap the connections.</li>
+<li>Two testing modes - ping-pong and unidirectional stream (TBD bi-directional stream)</li>
+<li>Configurabe message size, and data layout (short/bcopy/zcopy)</li>
+<li>Supports: warmup cycles, unlimited iterations.</li>
+<li>UCT Active-messages stream is measured with simple flow-control.</li>
+<li>Tests driver is written in C++ (C linkage), to take advantage of templates.</li>
+<li><dl class="first docutils">
+<dt>Results are reported to callback function at the specified intervals, and also returned from the API call.</dt>
+<dd><ul class="first last">
+<li>Including: latency, message rate, bandwidth - iteration average, and overall average.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>Features of ucx_perftest:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Have pre-defined list of tests which are valid combinations of operation and testing mode.</li>
+<li>Can be run either as client-server application, as MPI application, or using libRTE.</li>
+<li>Supports: CSV output, numeric formatting.</li>
+<li><dl class="first docutils">
+<dt>Supports “batch mode” - write the lists of tests to run to a text file (see example in contrib/perf) and run them one after          another. Every line is the list of arguments that the tool would normally read as command-line options. They are “appended” to the       other command-line arguments, if such were passed.</dt>
+<dd><ul class="first last">
+<li>“Cartesian” mode: if several batch files are specified, all possible combinations are executed!</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ucx_perftest  -h
+Usage: ucx_perftest [ server-hostname ] [ options ]
+
+This test can be also launched as an MPI application
+  Common options:
+
+  Test options:
+     -t &lt;test&gt;      Test to run.
+                     am_lat : active message latency.
+                    put_lat : put latency.
+                    add_lat : atomic add latency.
+                        get : get latency / bandwidth / message rate.
+                       fadd : atomic fetch-and-add latency / message rate.
+                       swap : atomic swap latency / message rate.
+                      cswap : atomic compare-and-swap latency / message rate.
+                      am_bw : active message bandwidth / message rate.
+                     put_bw : put bandwidth / message rate.
+                     add_mr : atomic add message rate.
+
+     -D &lt;layout&gt;    Data layout.
+                      short : Use short messages API (cannot used for get).
+                      bcopy : Use copy-out API (cannot used for atomics).
+                      zcopy : Use zero-copy API (cannot used for atomics).
+
+     -d &lt;device&gt;    Device to use for testing.
+     -x &lt;tl&gt;        Transport to use for testing.
+     -c &lt;cpu&gt;       Set affinity to this CPU. (off)
+     -n &lt;iters&gt;     Number of iterations to run. (1000000)
+     -s &lt;size&gt;      Message size. (8)
+     -H &lt;size&gt;      AM Header size. (8)
+     -w &lt;iters&gt;     Number of warm-up iterations. (10000)
+     -W &lt;count&gt;     Flow control window size, for active messages. (128)
+     -O &lt;count&gt;     Maximal number of uncompleted outstanding sends. (1)
+     -N             Use numeric formatting - thousands separator.
+     -f             Print only final numbers.
+     -v             Print CSV-formatted output.
+     -p &lt;port&gt;      TCP port to use for data exchange. (13337)
+     -b &lt;batchfile&gt; Batch mode. Read and execute tests from a file.
+                     Every line of the file is a test to run. The first word is the
+                     test name, and the rest are command-line arguments for the test.
+     -h             Show this help message.
+
+  Server options:
+     -l             Accept clients in an infinite loop
+</pre></div>
+</div>
+<p><strong>Example - using mpi as a launcher</strong></p>
+<p>When using mpi as the launcher to run ucx_perftest, please make sure that your ucx library was configured with mpi. Add the following to your configure line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--with-mpi=/path/to/mpi/home
+$salloc -N2 --ntasks-per-node=1 mpirun --bind-to core --display-map ucx_perftest -d mlx5_1:1 \
+                                     -x rc_mlx5 -t put_lat
+salloc: Granted job allocation 6991
+salloc: Waiting for resource configuration
+salloc: Nodes clx-orion-[001-002] are ready for job
+ Data for JOB [62403,1] offset 0
+
+ ========================   JOB MAP   ========================
+
+ Data for node: clx-orion-001   Num slots: 1    Max slots: 0    Num procs: 1
+        Process OMPI jobid: [62403,1] App: 0 Process rank: 0
+
+ Data for node: clx-orion-002   Num slots: 1    Max slots: 0    Num procs: 1
+      Process OMPI jobid: [62403,1] App: 0 Process rank: 1
+
+ =============================================================
+
++--------------+-----------------------------+---------------------+-----------------------+
+|              |       latency (usec)        |   bandwidth (MB/s)  |  message rate (msg/s) |
++--------------+---------+---------+---------+----------+----------+-----------+-----------+
+| # iterations | typical | average | overall |  average |  overall |   average |   overall |
++--------------+---------+---------+---------+----------+----------+-----------+-----------+
+      586527     0.845     0.852     0.852       4.47       4.47      586527      586527
+     1000000     0.844     0.848     0.851       4.50       4.48      589339      587686
+</pre></div>
+</div>
+</div>
+<div class="section" id="openmpi-and-openshmem-with-ucx">
+<h4>OpenMPI and OpenSHMEM with UCX<a class="headerlink" href="#openmpi-and-openshmem-with-ucx" title="Permalink to this headline">¶</a></h4>
+<p><strong>UCX installation</strong></p>
+<p>Requirements: Autoconf 2.63 and above.</p>
+<p>1. Get latest version of the UCX code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/openucx/ucx.git ucx
+$ cd ucx
+</pre></div>
+</div>
+<p>2. Run autogen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./autogen.sh
+</pre></div>
+</div>
+<p>3. This step is only required for OpenPOWER platforms - Power 8 On Ubuntu platform the config.guess file is a bit outdated and does      not have support for power. In order to resolve the issue you have to download an updated config.guess. From the root of the           project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget https://github.com/shamisp/ucx/raw/topic/power8-config/config.guess
+</pre></div>
+</div>
+<p>4. Configure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir build
+$ cd build
+$ ../configure --prefix=/your_install_path
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For best performance configuration, use ../contrib/configure-release. This will strip all debugging and profiling code.</p>
+</div>
+<p>5. Build and install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make
+$ make install
+</pre></div>
+</div>
+<ol class="arabic" start="6">
+<li><p class="first">Running unit tests (using <a class="reference external" href="https://github.com/google/googletest">google test</a>).
+This only work if gtest was installed and detected on your platform, and –enable-gtest was passed to configure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make -C test/gtest test
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="interface-to-rocm">
+<h3>Interface to ROCm<a class="headerlink" href="#interface-to-rocm" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/openucx/ucx/tree/master/src/uct/rocm">https://github.com/openucx/ucx/tree/master/src/uct/rocm</a></li>
+</ul>
+</div>
+<div class="section" id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.openucx.org/wp-content/uploads/2015/08/UCX_OpenSHMEM_2015.pdf">Slides</a></li>
+<li><a class="reference external" href="https://github.com/openucx/ucx/wiki/ucx.pdf">API documentation (v1.2)</a></li>
+</ul>
+<div class="section" id="high-level-design">
+<h4>High Level Design<a class="headerlink" href="#high-level-design" title="Permalink to this headline">¶</a></h4>
+<p>UCX code consists of 3 parts:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Protocol Layer - UCP</div>
+<div class="line">Transport Layer - UCT</div>
+<div class="line">Services - UCS</div>
+</div>
+</div></blockquote>
+<p><strong>Protocol Layer</strong></p>
+<p>Supports all functionality described in the API, and does not require knowledge of particular hardware. It would try to provide best “out-of-box” performance, combining different hardware mechanisms and transports. It may emulate features which are not directly supported in hardware, such as one-sided operations. In addition, it would support common software protocols which are not implemented in hardware, such as tag matching and generic active messages. More details <a class="reference internal" href="UCP-Design.html#ucp-design"><span class="std std-ref">UCP Design</span></a></p>
+<p><strong>Transport Layer</strong></p>
+<p>Provides direct access to hardware capabilities, without decision logic which would prefer one hardware mechanism over another. Some functionality may not be supported, due to hardware limitations. The capabilities are exposed in the interface.
+More details <a class="reference internal" href="UCT-Design.html#uct-design"><span class="std std-ref">UCT Design</span></a></p>
+<p><strong>Services</strong></p>
+<p>Collection of generic services, data structures, debug aids, etc.</p>
+<p><strong>Responsibilities of each layer</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="20%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">What</th>
+<th class="head">Where</th>
+<th class="head">Why</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Tag matching</td>
+<td>High level</td>
+<td>Software protocol</td>
+</tr>
+<tr class="row-odd"><td>RMA/AMO emulation</td>
+<td>High level</td>
+<td>Software protocol</td>
+</tr>
+<tr class="row-even"><td>Fragmentation</td>
+<td>High level</td>
+<td>Software protocol</td>
+</tr>
+<tr class="row-odd"><td>Pending queue</td>
+<td>High level</td>
+<td>Stateful</td>
+</tr>
+<tr class="row-even"><td>Multi-transport/channel/rail</td>
+<td>High level</td>
+<td>OOB optimization</td>
+</tr>
+<tr class="row-odd"><td>Select inline/bcopy/zcopy</td>
+<td>High level</td>
+<td>optimization logic</td>
+</tr>
+<tr class="row-even"><td>Reliability (e.g UD)</td>
+<td>Low level</td>
+<td>Transport specific</td>
+</tr>
+<tr class="row-odd"><td>DMA buffer ownership</td>
+<td>Low level</td>
+<td>Transport specific</td>
+</tr>
+<tr class="row-even"><td>Memory registration cache</td>
+<td>Low level</td>
+<td>Transport dependent</td>
+</tr>
+</tbody>
+</table>
+<p>See also:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="sideprogresscompletion.html#sideprogresscompletion"><span class="std std-ref">Send side progress completion</span></a></li>
+<li><a class="reference internal" href="DesignDiscuss.html#designdiscuss"><span class="std std-ref">Design Discuss</span></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="infrastructure-and-tools">
+<h4>Infrastructure and Tools<a class="headerlink" href="#infrastructure-and-tools" title="Permalink to this headline">¶</a></h4>
+<p><strong>Tools</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="PrintUCXinfo.html#printucxinfo"><span class="std std-ref">Print UCX info</span></a></li>
+<li><a class="reference internal" href="findUCPendpoint.html#finducpendpoint"><span class="std std-ref">using ucx_info to find UCP endpoint short bcopy zcopy rndv thresholds</span></a></li>
+<li>Malloc hooks</li>
+<li><a class="reference internal" href="Performancemeasurement.html#performancemeasurement"><span class="std std-ref">Performance measurement</span></a></li>
+<li><a class="reference internal" href="Testing.html#testing"><span class="std std-ref">Testing</span></a></li>
+<li><a class="reference internal" href="UCXenv.html#ucxenv"><span class="std std-ref">UCX environment parameters</span></a></li>
+</ul>
+</div></blockquote>
+<p><strong>Infrastructure library (UCS)</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="Async.html#async"><span class="std std-ref">Infrastructure for asynchronous event delivery</span></a></li>
+<li>Configuration parsing</li>
+<li><a class="reference internal" href="Memoryhooks.html#memoryhooks"><span class="std std-ref">Memory hooks</span></a></li>
+<li><dl class="first docutils">
+<dt>Data structures:</dt>
+<dd><ul class="first last">
+<li>Double linked list</li>
+<li>Single linked queue</li>
+<li>Fragment list - reordering</li>
+<li>Memory pool</li>
+<li>Index/Pointer array</li>
+<li><a class="reference external" href="http://sglib.sourceforge.net/doc/index.html">SGLIB</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Debugging:</dt>
+<dd><ul class="first last">
+<li>Resolving address to file name and line number</li>
+<li>Handling faults</li>
+<li>Attaching a debugger to self</li>
+<li><a class="reference internal" href="logging.html#logging"><span class="std std-ref">Logging</span></a></li>
+<li>Assertions (compile-time and run-time)</li>
+<li>Tracking memory used by different components</li>
+<li><a class="reference internal" href="profiling.html#profiling"><span class="std std-ref">Profiling</span></a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><a class="reference internal" href="statistic.html#statistic"><span class="std std-ref">Statistics</span></a></li>
+<li><dl class="first docutils">
+<dt>Fast time measurement</dt>
+<dd><ul class="first last">
+<li>Read CPU timer</li>
+<li>Convert time to sec/msec/usec/nsec</li>
+<li>Timer queue</li>
+<li>Timer wheel</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Data types:</dt>
+<dd><ul class="first last">
+<li>Callback</li>
+<li>Class infrastructure</li>
+<li>Component infrastructure</li>
+<li>Spinlock</li>
+<li>Error codes</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>System services:</dt>
+<dd><ul class="first last">
+<li>Atomic operations</li>
+<li>Fast bit operations (find first set bit, integer log2)</li>
+<li>Get hostname</li>
+<li>Generate UUID</li>
+<li>Get CPU affinity</li>
+<li>Read a whole file</li>
+<li>Get page / huge page size</li>
+<li>Allocate memory with SystemV</li>
+<li>Get memory region access flags (from /proc/$$/maps)</li>
+<li>Modify file flags with fcntl</li>
+<li>Get process command line</li>
+<li>Get CPU model, clock frequency</li>
+<li>Get thread ID</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="faq">
+<h3>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h3>
+<p><strong>What is UCX ?</strong></p>
+<p>UCX is a framework (collection of libraries and interfaces) that provides efficient and relatively easy way to construct widely used HPC protocols: MPI tag matching, RMA operations, randevouze protocols, stream, fragmentation, remote atomic operations, etc.</p>
+<p><strong>How do I get in touch with UCX developers ?</strong></p>
+<p>Please join our mailing list: <a class="reference external" href="https://elist.ornl.gov/mailman/listinfo/ucx-group">https://elist.ornl.gov/mailman/listinfo/ucx-group</a></p>
+<p><strong>What is UCP, UCT, UCS</strong></p>
+<ul class="simple">
+<li>UCT is a transport layer that abstracts the differences across various hardware architectures and provides a low-level API that       enables the implementation of communication protocols. The primary goal of the layer is to provide direct and efficient access to       hardware network resources with minimal software overhead. For this purpose UCT relies on low-level drivers provided by vendors         such as InfiniBand Verbs, Cray’s uGNI, libfabrics, etc. In addition, the layer provides constructs for communication context            management (thread-based and ap- plication level), and allocation and management of device- specific memories including those found     in accelerators. In terms of communication APIs, UCT defines interfaces for immediate (short), buffered copy-and-send (bcopy), and      zero- copy (zcopy) communication operations. The short operations are optimized for small messages that can be posted and completed     in place. The bcopy operations are optimized for medium size messages that are typically sent through a so- called bouncing-buffer.     Finally, the zcopy operations expose zero-copy memory-to-memory communication semantics.</li>
+<li>UCP implements higher-level protocols that are typically used by message passing (MPI) and PGAS programming models by using           lower-level capabilities exposed through the UCT layer. UCP is responsible for the following functionality: initialization of the       library, selection of transports for communication, message fragmentation, and multi-rail communication. Currently, the API has the     following classes of interfaces: Initialization, Remote Memory Access (RMA) communication, Atomic Memory Operations (AMO), Active       Message, Tag-Matching, and Collectives.</li>
+<li>UCS is a service layer that provides the necessary func- tionality for implementing portable and efficient utilities.</li>
+</ul>
+<p><strong>What are the key features of UCX ?</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Open source framework supported by vendors
+The UCX framework is maintained and supported by hardware vendors in addition to the open source community. Every pull-request is    tested and multiple hardware platforms supported by vendors community.</li>
+<li>Performance, performance, performance…
+The framework design, data structures, and components are design to provide highly optimized access to the network hardware.</li>
+<li>High level API for a broad range HPC programming models.
+UCX provides a high level API implemented in software ‘UCP’ to fill in the gaps across interconnects. This allows to use a single    set of APIs in a library to implement multiple interconnects. This reduces the level of complexities when implementing libraries        such as Open MPI or OpenSHMEM. Because of this, UCX performance portable because a single implementation (in Open MPI or                OpenSHMEM) will work efficiently on multiple interconnects. (e.g. uGNI, Verbs, libfabrics, etc).</li>
+<li>Support for interaction between multiple transports (or providers) to deliver messages.
+For example, UCX has the logic (in UCP) to make ‘GPUDirect’, IB’ and share memory work together efficiently to deliver the data      where is needed without the user dealing with this.</li>
+<li>Cross-transport multi-rail capabilities</li>
+</ul>
+</div></blockquote>
+<p><strong>What protocols are supported by UCX ?</strong></p>
+<p>UCP implements RMA put/get, send/receive with tag matching, Active messages, atomic operations. In near future we plan to add support for commonly used collective operations.</p>
+<p><strong>Is UCX replacement for GASNET ?</strong></p>
+<p>No. GASNET exposes high level API for PGAS programming management that provides symmetric memory management capabilities and build in runtime environments. These capabilities are out of scope of UCX project. Instead, GASNET can leverage UCX framework for fast end efficient implementation of GASNET for the network technologies support by UCX.</p>
+<p><strong>What is the relation between UCX and network drivers ?</strong></p>
+<p>UCX framework does not provide drivers, instead it relies on the drivers provided by vendors. Currently we use: OFA VERBs, Cray’s UGNI, NVIDIA CUDA.</p>
+<p><strong>What is the relation between UCX and OFA Verbs or Libfabrics ?</strong></p>
+<p>UCX, is a middleware communication layer that relies on vendors provided user level drivers including OFA Verbs or libfabrics (or any other drivers provided by another communities or vendors) to implement high-level protocols which can be used to close functionality gaps between various vendors drivers including various libfabrics providers: coordination across various drivers, multi-rail capabilities, software based RMA, AMOs, tag-matching for transports and drivers that do not support such capabilities natively.</p>
+<p><strong>Is UCX a user level driver ?</strong></p>
+<p>No. Typically, Drivers aim to expose fine-grain access to the network architecture specific features. UCX abstracts the differences across various drivers and fill-in the gaps using software protocols for some of the architectures that don’t provide hardware level support for all the operations.</p>
+<p><strong>Does UCX depend on an external runtime environment ?</strong></p>
+<p>UCX does not depend on an external runtime environment.</p>
+<p>ucx_perftest (UCX based application/benchmark) can be linked with an external runtime environment that can be used for remote ucx_perftest launch, but this an optional configuration which is only used for environments that do not provide direct access to compute nodes. By default this option is disabled.</p>
+<p><strong>How to install UCX and OpenMPI ?</strong></p>
+<p>See <a class="reference external" href="https://github.com/openucx/ucx/wiki/OpenMPI-and-OpenSHMEM-installation-with-UCX">How to install UCX and OpenMPI</a></p>
+<p><strong>How can I contribute ?</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">1.Fork</div>
+<div class="line">2.Fix bug or implement a new feature</div>
+<div class="line">3.Open Pull Request</div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="mpi">
+<h2>MPI<a class="headerlink" href="#mpi" title="Permalink to this headline">¶</a></h2>
+<p><strong>OpenMPI and OpenSHMEM installation</strong></p>
+<p>1. Get latest-and-gratest OpenMPI version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/open-mpi/ompi.git
+</pre></div>
+</div>
+<p>2. Autogen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ompi
+$ ./autogen.pl
+</pre></div>
+</div>
+<p>3. Configure with UCX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir build
+$ cd build
+../configure --prefix=/your_install_path/ --with-ucx=/path_to_ucx_installation
+</pre></div>
+</div>
+<p>4. Build:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make
+$ make install
+</pre></div>
+</div>
+<p><strong>Running Open MPI with UCX</strong></p>
+<p>Example of the command line (for InfiniBand RC + shared memory):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mpirun -np 2 -mca pml ucx -x UCX_NET_DEVICES=mlx5_0:1 -x UCX_TLS=rc,sm ./app
+</pre></div>
+</div>
+<p><strong>Open MPI runtime optimizations for UCX</strong></p>
+<ul class="simple">
+<li>By default OpenMPI enables build-in transports (BTLs), which may result in additional software overheads in the OpenMPI progress function. In order to workaround this issue you may try to disable certain BTLs.</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mpirun -np 2 -mca pml ucx --mca btl ^vader,tcp,openib -x UCX_NET_DEVICES=mlx5_0:1 -x UCX_TLS=rc,sm ./app
+</pre></div>
+</div>
+<ul class="simple">
+<li>OpenMPI version <a class="reference external" href="https://github.com/open-mpi/ompi/commit/066370202dcad8e302f2baf8921e9efd0f1f7dfc">https://github.com/open-mpi/ompi/commit/066370202dcad8e302f2baf8921e9efd0f1f7dfc</a> leverages more efficient timer mechanism and there fore reduces software overheads in OpenMPI progress</li>
+</ul>
+<p><strong>MPI and OpenSHMEM release versions tested with UCX master</strong></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>UCX current tarball: <a class="reference external" href="https://github.com/openucx/ucx/archive/master.zip">https://github.com/openucx/ucx/archive/master.zip</a></li>
+<li>The table of MPI and OpenSHMEM distributions that are tested with the HEAD of UCX master</li>
+</ol>
+</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="59%" />
+<col width="41%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>MPI/OpenSHMEM</td>
+<td>project</td>
+</tr>
+<tr class="row-even"><td>OpenMPI/OSHMEM</td>
+<td>2.1.0</td>
+</tr>
+<tr class="row-odd"><td>MPICH</td>
+<td>Latest</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ipc">
+<h2>IPC<a class="headerlink" href="#ipc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Introduction<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><strong>New datatypes</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hsa_amd_ipc_memory_handle_t</span>
+
+<span class="o">/**</span> <span class="n">IPC</span> <span class="n">memory</span> <span class="n">handle</span> <span class="n">to</span> <span class="n">by</span> <span class="n">passed</span> <span class="kn">from</span> <span class="nn">one</span> <span class="n">process</span> <span class="n">to</span> <span class="n">another</span> <span class="o">*/</span>
+<span class="n">typedef</span> <span class="n">struct</span>  <span class="n">hsa_amd_ipc_memory_handle_s</span> <span class="p">{</span>
+      <span class="n">uint64_t</span> <span class="n">handle</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">hsa_amd_ipc_memory_handle_t</span><span class="p">;</span>
+
+<span class="n">hsa_amd_ipc_signal_handle_t</span>
+
+<span class="o">/**</span> <span class="n">IPC</span> <span class="n">signal</span>  <span class="n">handle</span> <span class="n">to</span> <span class="n">by</span> <span class="n">passed</span> <span class="kn">from</span> <span class="nn">one</span> <span class="n">process</span> <span class="n">to</span> <span class="n">another</span> <span class="o">*/</span>
+<span class="n">typedef</span> <span class="n">struct</span>  <span class="n">hsa_amd_ipc_signal_handle_s</span> <span class="p">{</span>
+     <span class="n">uint64_t</span> <span class="n">handle</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">hsa_amd_ipc_signal_handle_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Memory sharing API</strong></p>
+<p>Allows sharing of HSA allocated memory between different processes.</p>
+<div class="line-block">
+<div class="line">hsa_amd_ipc_get_memory_handle</div>
+<div class="line">The purpose of this API is to get / export an IPC handle for an existing allocation from pool.</div>
+</div>
+<p><strong>hsa_status_t HSA_API</strong></p>
+<div class="line-block">
+<div class="line">hsa_amd_ipc_get_memory_handle(void <a href="#id4"><span class="problematic" id="id5">*</span></a>ptr, hsa_amd_ipc_memory_handle_t <a href="#id6"><span class="problematic" id="id7">*</span></a>ipc_handle);</div>
+<div class="line">where:</div>
+<div class="line-block">
+<div class="line">IN:    ptr - Pointer to memory previously allocated via hsa_amd_memory_pool_allocate() call</div>
+<div class="line">OUT:   ipc_handle - Unique IPC handle to be used in IPC.</div>
+<div class="line-block">
+<div class="line">Application must pass this handle to another process.</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">hsa_amd_ipc_close_memory_handle</div>
+<div class="line">Close IPC memory handle previously received via “hsa_amd_ipc_get_memory_handle()” call .</div>
+</div>
+<p><strong>hsa_status_t HSA_API</strong></p>
+<div class="line-block">
+<div class="line">hsa_amd_ipc_close_memory_handle(hsa_amd_ipc_memory_handle_t ipc_handle);</div>
+<div class="line">where:</div>
+<div class="line-block">
+<div class="line">IN: ipc_handle - IPC Handle to close</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">hsa_amd_ipc_open_memory_handle</div>
+<div class="line">Open / import an IPC memory handle exported from another process and return address to be used in the current process.</div>
+</div>
+<p><strong>hsa_status_t HSA_API</strong></p>
+<div class="line-block">
+<div class="line">hsa_amd_ipc_open_memory_handle(hsa_amd_ipc_memory_handle_t ipc_handle, void <a href="#id8"><span class="problematic" id="id9">**</span></a>ptr);</div>
+<div class="line">where:</div>
+<div class="line-block">
+<div class="line">IN:   ipc_handle - IPC Handle</div>
+<div class="line">OUT:  ptr- Address which could be used in the given process for access to the memory</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Client should call hsa_amd_memory_pool_free() when access to this resource is not needed any more.</div>
+</div>
+<p><strong>Signal sharing API</strong></p>
+<div class="line-block">
+<div class="line">Allows sharing of HSA signals  between different processes.</div>
+<div class="line"><br /></div>
+<div class="line">hsa_amd_ipc_get_signal_handle</div>
+<div class="line">The purpose of this API is to get / export an IPC handle for an existing signal.</div>
+</div>
+<p><strong>hsa_status_t HSA_API</strong></p>
+<div class="line-block">
+<div class="line">hsa_amd_ipc_get_signal_handle(hsa_signal_t signal, hsa_amd_ipc_signal_handle_t <a href="#id10"><span class="problematic" id="id11">*</span></a>ipc_handle);</div>
+<div class="line">where:</div>
+<div class="line-block">
+<div class="line">IN:    signal     - Signal handle created as the result of hsa_signal_create() call.</div>
+<div class="line">OUT:   ipc_handle - Unique IPC handle to be used in IPC.</div>
+<div class="line-block">
+<div class="line">Application must pass this handle to another process.</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">hsa_amd_ipc_close_signal_handle</div>
+<div class="line">Close IPC signal handle previously received via “hsa_amd_ipc_get_signal_handle()” call .</div>
+</div>
+<p><strong>hsa_status_t HSA_API</strong></p>
+<div class="line-block">
+<div class="line">hsa_amd_ipc_close_signal_handle(hsa_amd_ipc_signal_handle_t ipc_handle);</div>
+<div class="line">where:</div>
+<div class="line-block">
+<div class="line">IN: ipc_handle - IPC Handle to close</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">hsa_amd_ipc_open_signal_handle</div>
+<div class="line">Open / import an IPC signal handle exported from another process and return address to be used in the current process.</div>
+</div>
+<p><strong>hsa_status_t HSA_API</strong></p>
+<div class="line-block">
+<div class="line">hsa_amd_ipc_open_signal_handle(hsa_amd_ipc_signal_handle_t ipc_handle, hsa_signal_t &amp;signal);</div>
+<div class="line">where:</div>
+<div class="line-block">
+<div class="line">IN:   ipc_handle - IPC Handle</div>
+<div class="line">OUT:  signal     - Signal handle to be used in the current process</div>
+</div>
+</div>
+<p>Client should call hsa_signal_destroy() when access to this resource is not needed any more.</p>
+<p><strong>Query API</strong></p>
+<div class="line-block">
+<div class="line">Query memory information</div>
+</div>
+<p>Allows query information about memory resource based on address. It is partially overlapped with the following requirement Memory info interface so it may be possible to merge those two interfaces.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">enum</span> <span class="n">hsa_amd_address_info_s</span> <span class="p">{</span>
+
+    <span class="o">/*</span> <span class="n">Return</span> <span class="n">uint32_t</span>  <span class="o">/</span> <span class="n">boolean</span> <span class="k">if</span> <span class="n">address</span> <span class="n">was</span> <span class="n">allocated</span> <span class="n">via</span>  <span class="n">HSA</span> <span class="n">stack</span> <span class="o">*/</span>
+    <span class="n">HSA_AMD_ADDRESS_HSA_ALLOCATED</span> <span class="o">=</span> <span class="mh">0x1</span><span class="p">,</span>
+
+    <span class="o">/**</span> <span class="n">Return</span> <span class="n">agent</span> <span class="n">where</span> <span class="n">such</span> <span class="n">memory</span> <span class="n">was</span> <span class="n">allocated</span> <span class="o">*/</span>
+    <span class="n">HSA_AMD_ADDRESS_AGENT</span> <span class="o">=</span> <span class="mh">0x2</span><span class="p">,</span>
+
+    <span class="o">/**</span> <span class="n">Return</span> <span class="n">pool</span> <span class="kn">from</span> <span class="nn">which</span> <span class="n">this</span> <span class="n">address</span> <span class="n">was</span> <span class="n">allocated</span>  <span class="o">*/</span>
+    <span class="n">HSA_AMD_ADDRESS_POOL</span> <span class="o">=</span> <span class="mh">0x3</span><span class="p">,</span>
+
+    <span class="o">/**</span> <span class="n">Return</span> <span class="n">size</span> <span class="n">of</span> <span class="n">allocation</span>   <span class="o">*/</span>
+    <span class="n">HSA_AMD_ADDRESS_ALLOC_SIZE</span> <span class="o">=</span> <span class="mh">0x4</span>
+
+ <span class="p">}</span> <span class="n">hsa_amd_address_info_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>hsa_status_t HSA_API</strong></p>
+<div class="line-block">
+<div class="line">hsa_amd_get_address_info(void <em>ptr,  hsa_amd_address_info_t attribute,   void</em> value);</div>
+<div class="line">where:</div>
+<div class="line-block">
+<div class="line">ptr         - Address information about which to query</div>
+<div class="line">attribute   - Attribute to query</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Deep_learning/Deep-learning.html" class="btn btn-neutral float-right" title="Deep Learning on ROCm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html" class="btn btn-neutral" title="ROCm Virtualization &amp; Containers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

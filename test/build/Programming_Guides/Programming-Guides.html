@@ -1,0 +1,1277 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Programming Guide &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ROCm GPU Tuning Guides" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html" />
+    <link rel="prev" title="ROCm Installation Guide" href="../Installation_Guide/Installation-Guide.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Programming Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rocm-languages">ROCm Languages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rocm-lingua-franca-c-opencl-and-python">ROCm, Lingua Franca,  C++, OpenCL and Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hcc-heterogeneous-compute-compiler">HCC: Heterogeneous Compute Compiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#when-to-use-hc">When to Use HC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hip-heterogeneous-computing-interface-for-portability">HIP: Heterogeneous-Computing Interface for Portability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#when-to-use-hip">When to Use HIP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opencl-open-compute-language">OpenCL™: Open Compute Language</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#when-to-use-opencl">When to Use OpenCL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anaconda-python-with-numba">Anaconda Python With Numba</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numba">Numba</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#when-to-use-anaconda">When to Use Anaconda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wrap-up">Wrap-Up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#table-comparing-syntax-for-different-compute-apis">Table Comparing Syntax for Different Compute APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hc-programming-guide">HC Programming Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#platform-requirements">Platform Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compiler-backends">Compiler Backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ubuntu">Ubuntu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#download-hcc">Download HCC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-hcc-from-source">Build HCC from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-hcc">Use HCC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiple-isa">Multiple ISA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#codexl-activity-logger">CodeXL Activity Logger</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hc-best-practices">HC Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hcc-built-in-macros">HCC built-in macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hc-specific-features">HC-specific features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#differences-between-hc-api-and-c-amp">Differences between HC API and C++ AMP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hcc-profile-mode">HCC Profile Mode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#kernel-commands">Kernel Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memory-copy-commands">Memory Copy Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#barrier-commands">Barrier Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overhead">Overhead</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-details-and-tips">Additional Details and tips</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api-documentation">API documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hip-programing-guide">HIP Programing Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hip-best-practices">HIP Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opencl-programing-guide">OpenCL Programing Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opencl-best-practices">OpenCL Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Programming Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Programming_Guides/Programming-Guides.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="programming-guide">
+<span id="programming-guides"></span><h1>Programming Guide<a class="headerlink" href="#programming-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rocm-languages">
+<h2>ROCm Languages<a class="headerlink" href="#rocm-languages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rocm-lingua-franca-c-opencl-and-python">
+<h3>ROCm, Lingua Franca,  C++, OpenCL and Python<a class="headerlink" href="#rocm-lingua-franca-c-opencl-and-python" title="Permalink to this headline">¶</a></h3>
+<p>The open-source ROCm stack offers multiple programming-language choices. The goal is to give you a range of tools to help solve the
+problem at hand. Here, we describe some of the options and how to choose among them.</p>
+</div>
+<div class="section" id="hcc-heterogeneous-compute-compiler">
+<h3>HCC: Heterogeneous Compute Compiler<a class="headerlink" href="#hcc-heterogeneous-compute-compiler" title="Permalink to this headline">¶</a></h3>
+<p>What is the Heterogeneous Compute (HC) API? It’s a C++ dialect with extensions to launch kernels and manage accelerator memory. It closely tracks the evolution of C++ and will incorporate parallelism and concurrency features as the C++ standard does. For example, HC includes early support for the C++17 Parallel STL. At the recent ISO C++ meetings in Kona and Jacksonville, the committee was excited about enabling the language to express all forms of parallelism, including multicore CPU, SIMD and GPU. We’ll be following these developments closely, and you’ll see HC move quickly to include standard C++ capabilities.</p>
+<p>The Heterogeneous Compute Compiler (HCC) provides two important benefits:</p>
+<p><strong>Ease of development</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>A full C++ API for managing devices, queues and events</li>
+<li>C++ data containers that provide type safety, multidimensional-array indexing and automatic data management</li>
+<li>C++ kernel-launch syntax using parallel_for_each plus C++11 lambda functions</li>
+<li>A single-source C++ programming environment—the host and source code can be in the same source file and use the same C++           language;templates and classes work naturally across the host/device boundary</li>
+<li>HCC generates both host and device code from the same compiler, so it benefits from a consistent view of the source code using the
+same Clang-based language parser</li>
+</ul>
+</div></blockquote>
+<p><strong>Full control over the machine</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Access AMD scratchpad memories (“LDS”)</li>
+<li>Fully control data movement, prefetch and discard</li>
+<li>Fully control asynchronous kernel launch and completion</li>
+<li>Get device-side dependency resolution for kernel and data commands (without host involvement)</li>
+<li>Obtain HSA agents, queues and signals for low-level control of the architecture using the HSA Runtime API</li>
+<li>Use [direct-to-ISA](<a class="reference external" href="https://github.com/RadeonOpenCompute/HCC-Native-GCN-ISA">https://github.com/RadeonOpenCompute/HCC-Native-GCN-ISA</a>) compilation</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="when-to-use-hc">
+<h3>When to Use HC<a class="headerlink" href="#when-to-use-hc" title="Permalink to this headline">¶</a></h3>
+<p>Use HC when you’re targeting the AMD ROCm platform: it delivers a single-source, easy-to-program C++ environment without compromising
+performance or control of the machine.</p>
+</div>
+<div class="section" id="hip-heterogeneous-computing-interface-for-portability">
+<h3>HIP: Heterogeneous-Computing Interface for Portability<a class="headerlink" href="#hip-heterogeneous-computing-interface-for-portability" title="Permalink to this headline">¶</a></h3>
+<p>What is Heterogeneous-Computing Interface for Portability (HIP)? It’s a C++ dialect designed to ease conversion of Cuda applications to portable C++ code. It provides a C-style API and a C++ kernel language. The C++ interface can use templates and classes across the
+host/kernel boundary.</p>
+<p>The Hipify tool automates much of the conversion work by performing a source-to-source transformation from Cuda to HIP. HIP code can run on AMD hardware (through the HCC compiler) or Nvidia hardware (through the NVCC compiler) with no performance loss compared with the original Cuda code.</p>
+<p>Programmers familiar with other GPGPU languages will find HIP very easy to learn and use. AMD platforms implement this language using the HC dialect described above, providing similar low-level control over the machine.</p>
+</div>
+<div class="section" id="when-to-use-hip">
+<h3>When to Use HIP<a class="headerlink" href="#when-to-use-hip" title="Permalink to this headline">¶</a></h3>
+<p>Use HIP when converting Cuda applications to portable C++ and for new projects that require portability between AMD and Nvidia. HIP provides a C++ development language and access to the best development tools on both platforms.</p>
+</div>
+<div class="section" id="opencl-open-compute-language">
+<h3>OpenCL™: Open Compute Language<a class="headerlink" href="#opencl-open-compute-language" title="Permalink to this headline">¶</a></h3>
+<p>What is OpenCL ?  It’s a framework for developing programs that can execute across a wide variety of heterogeneous platforms. AMD, Intel
+and Nvidia GPUs support version 1.2 of the specification, as do x86 CPUs and other devices (including FPGAs and DSPs). OpenCL provides a C run-time API and C99-based kernel language.</p>
+</div>
+<div class="section" id="when-to-use-opencl">
+<h3>When to Use OpenCL<a class="headerlink" href="#when-to-use-opencl" title="Permalink to this headline">¶</a></h3>
+<p>Use OpenCL when you have existing code in that language and when you need portability to multiple platforms and devices. It runs on
+Windows, Linux and Mac OS, as well as a wide variety of hardware platforms (described above).</p>
+</div>
+<div class="section" id="anaconda-python-with-numba">
+<h3>Anaconda Python With Numba<a class="headerlink" href="#anaconda-python-with-numba" title="Permalink to this headline">¶</a></h3>
+<p>What is Anaconda ?  It’s a modern open-source analytics platform powered by Python. Continuum Analytics, a ROCm platform partner,  is the driving force behind it. Anaconda delivers high-performance capabilities including acceleration of HSA APUs, as well as
+ROCm-enabled discrete GPUs via Numba. It gives superpowers to the people who are changing the world.</p>
+</div>
+<div class="section" id="numba">
+<h3>Numba<a class="headerlink" href="#numba" title="Permalink to this headline">¶</a></h3>
+<p>Numba gives you the power to speed up your applications with high-performance functions written directly in Python. Through a few
+annotations, you can just-in-time compile array-oriented and math-heavy Python code to native machine instructions—offering
+performance similar to that of C, C++ and Fortran—without having to switch languages or Python interpreters.</p>
+<p>Numba works by generating optimized machine code using the LLVM compiler infrastructure at import time, run time or statically
+(through the included Pycc tool). It supports Python compilation to run on either CPU or GPU hardware and is designed to integrate with Python scientific software stacks, such as NumPy.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://numba.pydata.org/numba-doc/latest/index.html">Anaconda® with Numba acceleration</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="when-to-use-anaconda">
+<h3>When to Use Anaconda<a class="headerlink" href="#when-to-use-anaconda" title="Permalink to this headline">¶</a></h3>
+<p>Use Anaconda when you’re handling large-scale data-analytics,
+scientific and engineering problems that require you to manipulate
+large data arrays.</p>
+</div>
+<div class="section" id="wrap-up">
+<h3>Wrap-Up<a class="headerlink" href="#wrap-up" title="Permalink to this headline">¶</a></h3>
+<p>From a high-level perspective, ROCm delivers a rich set of tools that
+allow you to choose the best language for your application.</p>
+<blockquote>
+<div><ul class="simple">
+<li>HCC (Heterogeneous Compute Compiler) supports HC dialects</li>
+<li>HIP is a run-time library that layers on top of HCC (for AMD ROCm platforms; for Nvidia, it uses the NVCC compiler)</li>
+<li><dl class="first docutils">
+<dt>The following will soon offer native compiler support for the GCN ISA:</dt>
+<dd><ul class="first last">
+<li>OpenCL 1.2+</li>
+<li>Anaconda (Python) with Numba</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>All are open-source projects, so you can employ a fully open stack from the language down to the metal. AMD is committed to providing an open ecosystem that gives developers the ability to choose; we are excited about innovating quickly using open source and about
+interacting closely with our developer community. More to come soon!</p>
+</div>
+<div class="section" id="table-comparing-syntax-for-different-compute-apis">
+<h3>Table Comparing Syntax for Different Compute APIs<a class="headerlink" href="#table-comparing-syntax-for-different-compute-apis" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="12%" />
+<col width="13%" />
+<col width="17%" />
+<col width="19%" />
+<col width="21%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Term</td>
+<td>CUDA</td>
+<td>HIP</td>
+<td>HC</td>
+<td>C++AMP</td>
+<td>OpenCL</td>
+</tr>
+<tr class="row-even"><td>Device</td>
+<td>int deviceId</td>
+<td>int deviceId</td>
+<td>hc::accelerator</td>
+<td>concurrency::
+accelerator</td>
+<td>cl_device</td>
+</tr>
+<tr class="row-odd"><td>Queue</td>
+<td>cudaStream_t</td>
+<td>hipStream_t</td>
+<td>hc::
+accelerator_view</td>
+<td>concurrency::
+accelerator_view</td>
+<td>cl_command_queue</td>
+</tr>
+<tr class="row-even"><td>Event</td>
+<td>cudaEvent_t</td>
+<td>hipEvent_t</td>
+<td>hc::
+completion_future</td>
+<td>concurrency::
+completion_future</td>
+<td>cl_event</td>
+</tr>
+<tr class="row-odd"><td>Memory</td>
+<td>void *</td>
+<td>void *</td>
+<td>void <a href="#id1"><span class="problematic" id="id2">*</span></a>; hc::array;
+hc::array_view</td>
+<td><blockquote class="first">
+<div>concurrency::array;</div></blockquote>
+<p class="last">concurrency::array_view</p>
+</td>
+<td>cl_mem</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td rowspan="5">&#160;</td>
+<td rowspan="5"><blockquote class="first">
+<div>grid</div></blockquote>
+<blockquote>
+<div>block</div></blockquote>
+<blockquote>
+<div>thread</div></blockquote>
+<blockquote class="last">
+<div>warp</div></blockquote>
+</td>
+<td rowspan="5"><blockquote class="first">
+<div>grid</div></blockquote>
+<blockquote>
+<div>block</div></blockquote>
+<blockquote>
+<div>thread</div></blockquote>
+<blockquote class="last">
+<div>warp</div></blockquote>
+</td>
+<td rowspan="5"><blockquote class="first">
+<div>extent</div></blockquote>
+<blockquote>
+<div>tile</div></blockquote>
+<blockquote>
+<div>thread</div></blockquote>
+<blockquote class="last">
+<div>wavefront</div></blockquote>
+</td>
+<td rowspan="5"><blockquote class="first">
+<div>extent</div></blockquote>
+<blockquote>
+<div>tile</div></blockquote>
+<blockquote>
+<div>thread</div></blockquote>
+<blockquote class="last">
+<div>N/A</div></blockquote>
+</td>
+<td rowspan="5"><blockquote class="first">
+<div>NDRange</div></blockquote>
+<blockquote>
+<div>work-group</div></blockquote>
+<blockquote>
+<div>work-item</div></blockquote>
+<blockquote class="last">
+<div>sub-group</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"><td>Thread index</td>
+<td>threadIdx.x</td>
+<td>hipThreadIdx_x</td>
+<td>t_idx.local[0]</td>
+<td>t_idx.local[0]</td>
+<td>get_local_id(0)</td>
+</tr>
+<tr class="row-odd"><td>Block index</td>
+<td>blockIdx.x</td>
+<td>hipBlockIdx_x</td>
+<td>t_idx.tile[0]</td>
+<td>t_idx.tile[0]</td>
+<td>get_group_id(0)</td>
+</tr>
+<tr class="row-even"><td>Block  dim</td>
+<td>blockDim.x</td>
+<td>hipBlockDim_x</td>
+<td>t_ext.tile_dim[0]</td>
+<td>t_idx.tile_dim0</td>
+<td>get_local_size(0)</td>
+</tr>
+<tr class="row-odd"><td>Grid-dim</td>
+<td>gridDim.x</td>
+<td>hipGridDim_x</td>
+<td>t_ext[0]</td>
+<td>t_ext[0]</td>
+<td>get_global_size(0)</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Device Function</td>
+<td>__device__</td>
+<td>__device__</td>
+<td>[[hc]] (detected
+automatically in
+many case)</td>
+<td>restrict(amp)</td>
+<td>Implied in device
+Compilation</td>
+</tr>
+<tr class="row-even"><td>Host Function</td>
+<td><dl class="first last docutils">
+<dt>__host_</dt>
+<dd>(default)</dd>
+</dl>
+</td>
+<td>__host_ (default)</td>
+<td>[[cpu]] (default)</td>
+<td>strict(cpu) (default)</td>
+<td>Implied in host
+Compilation</td>
+</tr>
+<tr class="row-odd"><td>Host +
+Device
+Function</td>
+<td>__host__
+__device__</td>
+<td><blockquote class="first">
+<div>__host_</div></blockquote>
+<p class="last">__device__</p>
+</td>
+<td>[[hc]] [[cpu]]</td>
+<td>restrict(amp,cpu)</td>
+<td>No equivalent</td>
+</tr>
+<tr class="row-even"><td>Kernel Launch</td>
+<td>&lt;&lt;&lt; &gt;&gt;&gt;</td>
+<td>hipLaunchKernel</td>
+<td>hc::
+parallel_for_each</td>
+<td>concurrency::
+parallel_for_each</td>
+<td>clEnqueueND-
+RangeKernel</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Global Memory</td>
+<td>__global__</td>
+<td>__global__</td>
+<td>Unnecessary/
+Implied</td>
+<td>Unnecessary/Implied</td>
+<td>__global</td>
+</tr>
+<tr class="row-odd"><td>Group Memory</td>
+<td>__shared__</td>
+<td>__shared__</td>
+<td>tile_static</td>
+<td>tile_static</td>
+<td>__local</td>
+</tr>
+<tr class="row-even"><td>Constant</td>
+<td>__constant__</td>
+<td>__constant__</td>
+<td>Unnecessary/
+Implied</td>
+<td>Unnecessary / Implied</td>
+<td>__constant</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>__syncthreads</td>
+<td>__syncthreads</td>
+<td>tile_static.barrier()</td>
+<td>t_idx.barrier()</td>
+<td>barrier(CLK_LOCAL_MEMFENCE)</td>
+</tr>
+<tr class="row-odd"><td>Atomic Builtins</td>
+<td>atomicAdd</td>
+<td>atomicAdd</td>
+<td>hc::atomic_fetch_add</td>
+<td>concurrency::
+atomic_fetch_add</td>
+<td>atomic_add</td>
+</tr>
+<tr class="row-even"><td>Precise Math</td>
+<td>cos(f)</td>
+<td>cos(f)</td>
+<td>hc::
+precise_math::cos(f)</td>
+<td>concurrency::
+precise_math::cos(f)</td>
+<td>cos(f)</td>
+</tr>
+<tr class="row-odd"><td>Fast Math</td>
+<td>__cos(f)</td>
+<td>__cos(f)</td>
+<td>hc::fast_math::cos(f)</td>
+<td>concurrency::
+fast_math::cos(f)</td>
+<td>native_cos(f)</td>
+</tr>
+<tr class="row-even"><td>Vector</td>
+<td>float4</td>
+<td>float4</td>
+<td>hc::
+short_vector::float4</td>
+<td>concurrency::
+graphics::float_4</td>
+<td>float4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>For HC and C++AMP, assume a captured _tiled_ext_ named “t_ext” and captured _extent_ named “ext”.  These languages use captured variables to pass information to the kernel rather than using special built-in functions so the exact variable name may vary.</li>
+<li>The indexing functions (starting with <cite>thread-index</cite>) show the terminology for a 1D grid.  Some APIs use reverse order of xyz / 012 indexing for 3D grids.</li>
+<li>HC allows tile dimensions to be specified at runtime while C++AMP requires that tile dimensions be specified at compile-time.  Thus hc syntax for tile dims is <code class="docutils literal notranslate"><span class="pre">t_ext.tile_dim[0]</span></code>  while C++AMP is <code class="docutils literal notranslate"><span class="pre">t_ext.tile_dim0</span></code>.</li>
+<li><strong>From ROCm version 2.0 onwards C++AMP is no longer available in HCC.</strong></li>
+</ol>
+</div>
+</div>
+<div class="section" id="hc-programming-guide">
+<h2>HC Programming Guide<a class="headerlink" href="#hc-programming-guide" title="Permalink to this headline">¶</a></h2>
+<p><strong>What is the Heterogeneous Compute (HC) API ?</strong></p>
+<p>It’s a C++ dialect with extensions to launch kernels and manage accelerator memory. It closely tracks the evolution of C++ and will incorporate parallelism and concurrency features as the C++ standard does. For example, HC includes early support for the C++17 Parallel STL. At the recent ISO C++ meetings in Kona and Jacksonville, the committee was excited about enabling the language to express all forms of parallelism, including multicore CPU, SIMD and GPU. We’ll be following these developments closely, and you’ll see HC move quickly to include standard C++ capabilities.</p>
+<p>The Heterogeneous Compute Compiler (HCC) provides two important benefits:</p>
+<p>Ease of development</p>
+<blockquote>
+<div><ul class="simple">
+<li>A full C++ API for managing devices, queues and events</li>
+<li>C++ data containers that provide type safety, multidimensional-array indexing and automatic data management</li>
+<li>C++ kernel-launch syntax using parallel_for_each plus C++11 lambda functions</li>
+<li>A single-source C++ programming environment—the host and source code can be in the same source file and use the same C++          language; templates and classes work naturally across the host/device boundary</li>
+<li>HCC generates both host and device code from the same compiler, so it benefits from a consistent view of the source code using        the same Clang-based language parser</li>
+</ul>
+</div></blockquote>
+<p>Full control over the machine</p>
+<blockquote>
+<div><ul class="simple">
+<li>Access AMD scratchpad memories (“LDS”)</li>
+<li>Fully control data movement, prefetch and discard</li>
+<li>Fully control asynchronous kernel launch and completion</li>
+<li>Get device-side dependency resolution for kernel and data commands (without host involvement)</li>
+<li>Obtain HSA agents, queues and signals for low-level control of the architecture using the HSA Runtime API</li>
+<li>Use <a class="reference external" href="https://github.com/RadeonOpenCompute/HCC-Native-GCN-ISA">direct-to-ISA</a> compilation</li>
+</ul>
+</div></blockquote>
+<div class="section" id="platform-requirements">
+<h3>Platform Requirements<a class="headerlink" href="#platform-requirements" title="Permalink to this headline">¶</a></h3>
+<p>Accelerated applications could be run on Radeon discrete GPUs from the Fiji family (AMD R9 Nano, R9 Fury, R9 Fury X, FirePro S9300 x2, Polaris 10, Polaris 11) paired with an Intel Haswell CPU or newer. HCC would work with AMD HSA APUs (Kaveri, Carrizo); however, they are not our main support platform and some of the more advanced compute capabilities may not be available on the APUs.</p>
+<p>HCC currently only works on Linux and with the open source ROCK kernel driver and the ROCR runtime (see Installation for details). It will not work with the closed source AMD graphics driver.</p>
+</div>
+<div class="section" id="compiler-backends">
+<h3>Compiler Backends<a class="headerlink" href="#compiler-backends" title="Permalink to this headline">¶</a></h3>
+<p>This backend compiles GPU kernels into native GCN ISA, which can be directly executed on the GPU hardware. It’s being actively developed by the Radeon Technology Group in LLVM.</p>
+<dl class="docutils">
+<dt><strong>When to Use HC</strong></dt>
+<dd>Use HC when you’re targeting the AMD ROCm platform: it delivers a single-source, easy-to-program C++ environment without compromising performance or control of the machine.</dd>
+</dl>
+</div>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p><strong>Prerequisites</strong></p>
+<p>Before continuing with the installation, please make sure any previously installed hcc compiler has been removed from on your system.
+Install <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html">ROCm</a> and make sure it works correctly.</p>
+</div>
+<div class="section" id="ubuntu">
+<h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h3>
+<p><strong>Ubuntu 14.04</strong></p>
+<p>Support for 14.04 has been deprecated.</p>
+<p><strong>Ubuntu 16.04</strong></p>
+<p>Follow the instruction <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installation-guide-ubuntu">here</a> to setup the ROCm apt repository and install the rocm or the rocm-dev meta-package.</p>
+<p><strong>Fedora 24</strong></p>
+<p>Follow the instruction <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installation-guide-fedora">here</a> to setup the ROCm apt repository and install the rocm or the rocm-dev meta-package.</p>
+<p><strong>RHEL 7.4/CentOS 7</strong></p>
+<p>Follow the instruction <a class="reference external" href="http://rocm-documentation.readthedocs.io/en/latest/Installation_Guide/Installation-Guide.html#installation-guide-fedora">here</a> to setup the ROCm apt repository and install the rocm or the rocm-dev meta-package for RHEL/CentOS. Currently, HCC support for RHEL 7.4 and CentOS 7 is experimental and the compiler has to be built from source. Note: CentOS 7 cmake is outdated, will need to use alternate cmake3.</p>
+<p><strong>openSUSE Leap 42.3</strong></p>
+<p>Currently, HCC support for openSUSE is experimental and the compiler has to be built from source.</p>
+</div>
+<div class="section" id="download-hcc">
+<h3>Download HCC<a class="headerlink" href="#download-hcc" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>The project now employs git submodules to manage external components it depends upon. It it advised to add –recursive when you clone the project so all submodules are fetched automatically.</div></blockquote>
+<p>For example</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># automatically fetches all submodules</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recursive</span> <span class="o">-</span><span class="n">b</span> <span class="n">clang_tot_upgrade</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">hcc</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-hcc-from-source">
+<h3>Build HCC from source<a class="headerlink" href="#build-hcc-from-source" title="Permalink to this headline">¶</a></h3>
+<p>First, install the build dependencies</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ubuntu 14.04</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">git</span> <span class="n">cmake</span> <span class="n">make</span> <span class="n">g</span><span class="o">++</span>  <span class="n">g</span><span class="o">++-</span><span class="n">multilib</span> <span class="n">gcc</span><span class="o">-</span><span class="n">multilib</span> <span class="n">libc</span><span class="o">++-</span><span class="n">dev</span> <span class="n">libc</span><span class="o">++</span><span class="mi">1</span> <span class="n">libc</span><span class="o">++</span><span class="n">abi</span><span class="o">-</span><span class="n">dev</span> <span class="n">libc</span><span class="o">++</span><span class="n">abi1</span> <span class="n">python</span> <span class="n">findutils</span> <span class="n">libelf1</span> <span class="n">libpci3</span> <span class="n">file</span> <span class="n">debianutils</span> <span class="n">libunwind8</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsa</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsa</span><span class="o">-</span><span class="n">ext</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsakmt</span><span class="o">-</span><span class="n">roct</span><span class="o">-</span><span class="n">dev</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span> <span class="n">rocm</span><span class="o">-</span><span class="n">utils</span>
+</pre></div>
+</div>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ubuntu 16.04</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">git</span> <span class="n">cmake</span> <span class="n">make</span> <span class="n">g</span><span class="o">++</span>  <span class="n">g</span><span class="o">++-</span><span class="n">multilib</span> <span class="n">gcc</span><span class="o">-</span><span class="n">multilib</span> <span class="n">python</span> <span class="n">findutils</span> <span class="n">libelf1</span> <span class="n">libpci3</span> <span class="n">file</span> <span class="n">debianutils</span> <span class="n">libunwind</span><span class="o">-</span> <span class="n">dev</span> <span class="n">hsa</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsa</span><span class="o">-</span><span class="n">ext</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsakmt</span><span class="o">-</span><span class="n">roct</span><span class="o">-</span><span class="n">dev</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span> <span class="n">rocm</span><span class="o">-</span><span class="n">utils</span>
+</pre></div>
+</div>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fedora 23/24</span>
+<span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">git</span> <span class="n">cmake</span> <span class="n">make</span> <span class="n">gcc</span><span class="o">-</span><span class="n">c</span><span class="o">++</span> <span class="n">python</span> <span class="n">findutils</span> <span class="n">elfutils</span><span class="o">-</span><span class="n">libelf</span> <span class="n">pciutils</span><span class="o">-</span><span class="n">libs</span> <span class="n">file</span> <span class="n">pth</span> <span class="n">rpm</span><span class="o">-</span><span class="n">build</span> <span class="n">libunwind</span><span class="o">-</span><span class="n">devel</span> <span class="n">hsa</span><span class="o">-</span> <span class="n">rocr</span><span class="o">-</span> <span class="n">dev</span> <span class="n">hsa</span><span class="o">-</span><span class="n">ext</span><span class="o">-</span><span class="n">rocr</span><span class="o">-</span><span class="n">dev</span> <span class="n">hsakmt</span><span class="o">-</span><span class="n">roct</span><span class="o">-</span><span class="n">dev</span> <span class="n">pkgconfig</span> <span class="n">rocm</span><span class="o">-</span><span class="n">utils</span>
+</pre></div>
+</div>
+<p>Clone the HCC source tree</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># automatically fetches all submodules</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recursive</span> <span class="o">-</span><span class="n">b</span> <span class="n">clang_tot_upgrade</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">hcc</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Create a build directory and run cmake in that directory to configure the build</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build</span><span class="p">;</span>
+<span class="n">cd</span> <span class="n">build</span><span class="p">;</span>
+<span class="n">cmake</span> <span class="o">../</span><span class="n">hcc</span>
+</pre></div>
+</div>
+<p>Compile HCC</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">j</span>
+</pre></div>
+</div>
+<p>Run the unit tests</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">test</span>
+</pre></div>
+</div>
+<p>Create an installer package (DEB or RPM file)</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">package</span>
+</pre></div>
+</div>
+<p>To configure and build HCC from source, use the following steps</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="n">build</span><span class="p">;</span> <span class="n">cd</span> <span class="n">build</span>
+<span class="c1"># NUM_BUILD_THREADS is optional</span>
+<span class="c1"># set the number to your CPU core numbers time 2 is recommended</span>
+<span class="c1"># in this example we set it to 96</span>
+  <span class="n">cmake</span> <span class="o">-</span><span class="n">DNUM_BUILD_THREADS</span><span class="o">=</span><span class="mi">96</span> \
+  <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> \
+<span class="o">..</span>
+<span class="n">make</span>
+</pre></div>
+</div>
+<p>To install it, use the following steps</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-hcc">
+<h3>Use HCC<a class="headerlink" href="#use-hcc" title="Permalink to this headline">¶</a></h3>
+<p>For C++AMP source codes</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>hcc `clamp-config --cxxflags --ldflags` foo.cpp
+</pre></div>
+</div>
+<p><strong>WARNING: From ROCm version 2.0 onwards C++AMP is no longer available in HCC.</strong></p>
+<p>For HC source codes</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>hcc `hcc-config --cxxflags --ldflags` foo.cpp
+</pre></div>
+</div>
+<p>In case you build HCC from source and want to use the compiled binaries directly in the build directory:</p>
+<p>For C++AMP source codes</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span># notice the --build flag
+bin/hcc `bin/clamp-config --build --cxxflags --ldflags` foo.cpp
+</pre></div>
+</div>
+<p><strong>WARNING: From ROCm version 2.0 onwards C++AMP is no longer available in HCC.</strong></p>
+<p>For HC source codes</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span># notice the --build flag
+bin/hcc `bin/hcc-config --build --cxxflags --ldflags` foo.cpp
+</pre></div>
+</div>
+<p><strong>Compiling for Different GPU Architectures</strong></p>
+<p>By default, HCC will auto-detect all the GPU’s local to the compiling machine and set the correct GPU architectures. Users could use the –amdgpu-target=&lt;GCN Version&gt; option to compile for a specific architecture and to disable the auto-detection. The following table shows the different versions currently supported by HCC.</p>
+<p>There exists an environment variable HCC_AMDGPU_TARGET to override the default GPU architecture globally for HCC; however, the usage of this environment variable is NOT recommended as it is unsupported and it will be deprecated in a future release.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="20%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">GCN Version</th>
+<th class="head">GPU/APU Family</th>
+<th class="head">Examples of Radeon GPU</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>gfx701</td>
+<td>GFX7</td>
+<td>FirePro W8100, FirePro W9100, Radeon R9 290, Radeon R9 390</td>
+</tr>
+<tr class="row-odd"><td>gfx801</td>
+<td>Carrizo APU</td>
+<td>FX-8800P</td>
+</tr>
+<tr class="row-even"><td>gfx803</td>
+<td>GFX8</td>
+<td>R9 Fury, R9 Fury X, R9 Nano, FirePro S9300 x2, Radeon RX 480,
+Radeon RX 470, Radeon RX 460</td>
+</tr>
+<tr class="row-odd"><td>gfx900</td>
+<td>GFX9</td>
+<td>Vega10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="multiple-isa">
+<h3>Multiple ISA<a class="headerlink" href="#multiple-isa" title="Permalink to this headline">¶</a></h3>
+<p>HCC now supports having multiple GCN ISAs in one executable file. You can do it in different ways: <strong>use :: –amdgpu-target= command line option</strong>
+It’s possible to specify multiple –amdgpu-target= option.</p>
+<p>Example</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span># ISA for Hawaii(gfx701), Carrizo(gfx801), Tonga(gfx802) and Fiji(gfx803) would
+# be produced
+hcc `hcc-config --cxxflags --ldflags` \
+   --amdgpu-target=gfx701 \
+   --amdgpu-target=gfx801 \
+   --amdgpu-target=gfx802 \
+   --amdgpu-target=gfx803 \
+   foo.cpp
+</pre></div>
+</div>
+<p><strong>use :: HCC_AMDGPU_TARGET env var</strong></p>
+<p>Use, to delimit each AMDGPU target in HCC. Example</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>export HCC_AMDGPU_TARGET=gfx701,gfx801,gfx802,gfx803
+# ISA for Hawaii(gfx701), Carrizo(gfx801), Tonga(gfx802) and Fiji(gfx803) would
+# be produced
+hcc `hcc-config --cxxflags --ldflags` foo.cpp
+</pre></div>
+</div>
+<p><strong>configure HCC using the CMake HSA_AMDGPU_GPU_TARGET variable</strong></p>
+<p>If you build HCC from source, it’s possible to configure it to automatically produce multiple ISAs via :: HSA_AMDGPU_GPU_TARGET CMake variable.
+Use ; to delimit each AMDGPU target. Example</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ISA for Hawaii(gfx701), Carrizo(gfx801), Tonga(gfx802) and Fiji(gfx803) would</span>
+<span class="c1"># be produced by default</span>
+<span class="n">cmake</span> \
+   <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> \
+   <span class="o">-</span><span class="n">DROCM_DEVICE_LIB_DIR</span><span class="o">=~</span><span class="n">hcc</span><span class="o">/</span><span class="n">ROCm</span><span class="o">-</span><span class="n">Device</span><span class="o">-</span><span class="n">Libs</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">lib</span> \
+   <span class="o">-</span><span class="n">DHSA_AMDGPU_GPU_TARGET</span><span class="o">=</span><span class="s2">&quot;gfx701;gfx801;gfx802;gfx803&quot;</span> \
+   <span class="o">../</span><span class="n">hcc</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="codexl-activity-logger">
+<h3>CodeXL Activity Logger<a class="headerlink" href="#codexl-activity-logger" title="Permalink to this headline">¶</a></h3>
+<p>To enable the CodeXL Activity Logger, use the  USE_CODEXL_ACTIVITY_LOGGER environment variable.</p>
+<p>Configure the build in the following way</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> \
+  <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> \
+  <span class="o">-</span><span class="n">DHSA_AMDGPU_GPU_TARGET</span><span class="o">=&lt;</span><span class="n">AMD</span> <span class="n">GPU</span> <span class="n">ISA</span> <span class="n">version</span> <span class="n">string</span><span class="o">&gt;</span> \
+  <span class="o">-</span><span class="n">DROCM_DEVICE_LIB_DIR</span><span class="o">=&lt;</span><span class="n">location</span> <span class="n">of</span> <span class="n">the</span> <span class="n">ROCm</span><span class="o">-</span><span class="n">Device</span><span class="o">-</span><span class="n">Libs</span> <span class="n">bitcode</span><span class="o">&gt;</span> \
+  <span class="o">-</span><span class="n">DUSE_CODEXL_ACTIVITY_LOGGER</span><span class="o">=</span><span class="mi">1</span> \
+  <span class="o">&lt;</span><span class="n">ToT</span> <span class="n">HCC</span> <span class="n">checkout</span> <span class="n">directory</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>In your application compiled using hcc, include the CodeXL Activiy Logger header</p>
+<div class="code cpp highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;CXLActivityLogger.h&gt;</span>
+</pre></div>
+</div>
+<p>For information about the usage of the Activity Logger for profiling, please refer to <a class="reference external" href="https://documentation.help/CodeXL/amdtactivitylogger-library.htm">documentation</a></p>
+</div>
+</div>
+<div class="section" id="hc-best-practices">
+<h2>HC Best Practices<a class="headerlink" href="#hc-best-practices" title="Permalink to this headline">¶</a></h2>
+<p>HC comes with two header files as of now:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://scchan.github.io/hcc/hc_8hpp.html">hc.hpp</a> : Main header file for HC</li>
+<li><a class="reference external" href="http://scchan.github.io/hcc/hc__math_8hpp_source.html">hc_math.hpp</a> : Math functions for HC</li>
+</ul>
+</div></blockquote>
+<p>Most HC APIs are stored under “hc” namespace, and the class name is the same as their counterpart in C++AMP “Concurrency” namespace. Users of C++AMP should find it easy to switch from C++AMP to HC.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="58%" />
+<col width="42%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">C++AMP</th>
+<th class="head">HC</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::accelerator</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::accelerator</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::accelerator_view</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::accelerator_view</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::extent</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::extent</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::index</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::index</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::completion_future</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::completion_future</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::array</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::array</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Concurrency::array_view</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">hc::array_view</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="hcc-built-in-macros">
+<h3>HCC built-in macros<a class="headerlink" href="#hcc-built-in-macros" title="Permalink to this headline">¶</a></h3>
+<p>Built-in macros:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Macro</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__HCC__</span></code></td>
+<td>always be 1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">__hcc_major__</span></code></td>
+<td>major version number of HCC</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__hcc_minor__</span></code></td>
+<td>minor version number of HCC</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">__hcc_patchlevel__</span></code></td>
+<td>patchlevel of HCC</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__hcc_version__</span></code></td>
+<td>combined string of <code class="docutils literal notranslate"><span class="pre">__hcc_major__</span></code>, <code class="docutils literal notranslate"><span class="pre">__hcc_minor__</span></code>, <code class="docutils literal notranslate"><span class="pre">__hcc_patchlevel__</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The rule for <code class="docutils literal notranslate"><span class="pre">__hcc_patchlevel__</span></code> is: yyWW-(HCC driver git commit #)-(HCC clang git commit #)</p>
+<blockquote>
+<div><ul class="simple">
+<li>yy stands for the last 2 digits of the year</li>
+<li>WW stands for the week number of the year</li>
+</ul>
+</div></blockquote>
+<p>Macros for language modes in use:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Macro</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__KALMAR_AMP__</span></code></td>
+<td>1 in case in C++ AMP mode (-std=c++amp; <strong>Removed from ROCm 2.0 onwards</strong>)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">__KALMAR_HC__</span></code></td>
+<td>1 in case in HC mode (-hc)</td>
+</tr>
+</tbody>
+</table>
+<p>Compilation mode: HCC is a single-source compiler where kernel codes and host codes can reside in the same file. Internally HCC would trigger 2 compilation iterations, and the following macros can be used by user programs to determine which mode the compiler is in.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Macro</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">__KALMAR_ACCELERATOR__</span></code></td>
+<td>not 0 in case the compiler runs in kernel code compilation mode</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">__KALMAR_CPU__</span></code></td>
+<td>not 0 in case the compiler runs in host code compilation mode</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="hc-specific-features">
+<h3>HC-specific features<a class="headerlink" href="#hc-specific-features" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>relaxed rules in operations allowed in kernels</li>
+<li>new syntax of tiled_extent and tiled_index</li>
+<li>dynamic group segment memory allocation</li>
+<li>true asynchronous kernel launching behavior</li>
+<li>additional HSA-specific APIs</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="differences-between-hc-api-and-c-amp">
+<h3>Differences between HC API and C++ AMP<a class="headerlink" href="#differences-between-hc-api-and-c-amp" title="Permalink to this headline">¶</a></h3>
+<p>Despite HC and C++ AMP sharing many similar program constructs (e.g. parallel_for_each, array, array_view, etc.), there are several significant differences between the two APIs.</p>
+<p><strong>Support for explicit asynchronous parallel_for_each</strong>
+In C++ AMP, the parallel_for_each appears as a synchronous function call in a program (i.e. the host waits for the kernel to complete); howevever, the compiler may optimize it to execute the kernel asynchronously and the host would synchronize with the device on the first access of the data modified by the kernel. For example, if a parallel_for_each writes the an array_view, then the first access to this array_view on the host after the parallel_for_each would block until the parallel_for_each completes.</p>
+<p>HC supports the automatic synchronization behavior as in C++ AMP. In addition, HC’s parallel_for_each supports explicit asynchronous execution. It returns a completion_future (similar to C++ std::future) object that other asynchronous operations could synchronize with, which provides better flexibility on task graph construction and enables more precise control on optimization.</p>
+<p><strong>Annotation of device functions</strong></p>
+<p>C++ AMP uses the restrict(amp) keyword to annotate functions that runs on the device.</p>
+<div class="code cpp highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">foo</span><span class="p">()</span> <span class="n">restrict</span><span class="p">(</span><span class="n">amp</span><span class="p">)</span> <span class="p">{</span> <span class="o">..</span> <span class="p">}</span> <span class="o">...</span> <span class="n">parallel_for_each</span><span class="p">(</span><span class="o">...</span><span class="p">,[</span><span class="o">=</span><span class="p">]</span> <span class="p">()</span> <span class="n">restrict</span><span class="p">(</span><span class="n">amp</span><span class="p">)</span> <span class="p">{</span> <span class="n">foo</span><span class="p">();</span> <span class="p">});</span>
+</pre></div>
+</div>
+<p>HC uses a function attribute ([[hc]] or __attribute__((hc)) ) to annotate a device function.</p>
+<div class="code cpp highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">foo</span><span class="p">()</span> <span class="p">[[</span><span class="n">hc</span><span class="p">]]</span> <span class="p">{</span> <span class="o">..</span> <span class="p">}</span> <span class="o">...</span> <span class="n">parallel_for_each</span><span class="p">(</span><span class="o">...</span><span class="p">,[</span><span class="o">=</span><span class="p">]</span> <span class="p">()</span> <span class="p">[[</span><span class="n">hc</span><span class="p">]]</span> <span class="p">{</span> <span class="n">foo</span><span class="p">();</span> <span class="p">});</span>
+</pre></div>
+</div>
+<p>The [[hc]] annotation for the kernel function called by parallel_for_each is optional as it is automatically annotated as a device function by the hcc compiler. The compiler also supports partial automatic [[hc]] annotation for functions that are called by other device functions within the same source file:</p>
+<p>Since bar is called by foo, which is a device function, the hcc compiler will automatically annotate bar as a device function <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">bar()</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span> <span class="pre">void</span> <span class="pre">foo()</span> <span class="pre">[[hc]]</span> <span class="pre">{</span> <span class="pre">bar();</span> <span class="pre">}</span></code></p>
+<p><strong>Dynamic tile size</strong></p>
+<p>C++ AMP doesn’t support dynamic tile size. The size of each tile dimensions has to be a compile-time constant specified as template arguments to the tile_extent object:</p>
+<blockquote>
+<div><p><a class="reference external" href="http://scchan.github.io/hcc/classConcurrency_1_1extent.html">extent&lt;2&gt;</a>  ex(x, y)</p>
+<p>To create a tile extent of 8x8 from the extent object,note that the tile dimensions have to be constant values:</p>
+<blockquote>
+<div>tiled_extent&lt;8,8&gt; t_ex(ex)</div></blockquote>
+</div></blockquote>
+<p>parallel_for_each(t_ex, [=](tiled_index&lt;8,8&gt; t_id) restrict(amp) { … });</p>
+<blockquote>
+<div><blockquote>
+<div>HC supports both static and dynamic tile size:</div></blockquote>
+<p><a class="reference external" href="http://scchan.github.io/hcc/classConcurrency_1_1extent.html">extent&lt;2&gt;</a> ex(x,y)</p>
+</div></blockquote>
+<p>To create a tile extent from dynamically calculated values,note that the the tiled_extent template takes the rank instead of dimensions</p>
+<blockquote>
+<div><p>tx = test_x ? tx_a : tx_b;</p>
+<p>ty = test_y ? ty_a : ty_b;</p>
+<p>tiled_extent&lt;2&gt; t_ex(ex, tx, ty);</p>
+<p>parallel_for_each(t_ex, [=](tiled_index&lt;2&gt; t_id) [[hc]] { … });</p>
+</div></blockquote>
+<p><strong>Support for memory pointer</strong></p>
+<p>C++ AMP doesn’t support lambda capture of memory pointer into a GPU kernel.</p>
+<p>HC supports capturing memory pointer by a GPU kernel.</p>
+<p>allocate GPU memory through the HSA API
+<code class="docutils literal notranslate"><span class="pre">int*</span> <span class="pre">gpu_pointer;</span> <span class="pre">hsa_memory_allocate(...,</span> <span class="pre">&amp;gpu_pointer);</span> <span class="pre">...</span> <span class="pre">parallel_for_each(ext,</span> <span class="pre">[=](index</span> <span class="pre">i)</span> <span class="pre">[[hc]]</span> <span class="pre">{</span> <span class="pre">gpu_pointer[i[0]]++;</span> <span class="pre">}</span></code></p>
+<p>For HSA APUs that supports system wide shared virtual memory, a GPU kernel can directly access system memory allocated by the host:
+<code class="docutils literal notranslate"><span class="pre">int*</span> <span class="pre">cpu_memory</span> <span class="pre">=</span> <span class="pre">(int*)</span> <span class="pre">malloc(...);</span> <span class="pre">...</span> <span class="pre">parallel_for_each(ext,</span> <span class="pre">[=](index</span> <span class="pre">i)</span> <span class="pre">[[hc]]</span> <span class="pre">{</span> <span class="pre">cpu_memory[i[0]]++;</span> <span class="pre">});</span></code></p>
+</div>
+<div class="section" id="hcc-profile-mode">
+<h3>HCC Profile Mode<a class="headerlink" href="#hcc-profile-mode" title="Permalink to this headline">¶</a></h3>
+<p>HCC supports low-overhead profiler to trace or summarize command timestamp information to stderr for any HCC or HIP program. Tho profiler messages are interleaved with the trace output from the application - which is handy to identify the region-of-interest and can complement deeper analysis with the CodeXL GUI Additionally, the hcc profiler requires only console mode access and can be used on machine where graphics are not available or are hard to access.</p>
+<p>Some other useful features:</p>
+<ul class="simple">
+<li>Calculates the actual bandwidth for memory transfers</li>
+<li>Identifies PeerToPeer memory copies</li>
+<li>Shows start / stop timestamps for each command (if requested)</li>
+<li>Shows barrier commands and the time they spent waiting to resolve (if requested)</li>
+</ul>
+<p><strong>Enable and configure</strong></p>
+<div class="line-block">
+<div class="line">HCC_PROFILE=1 shows a summary of kernel and data commands when hcc exits (under development).</div>
+<div class="line">HCC_PROFILE=2 enables a profile message after each command (kernel or data movement) completes.</div>
+</div>
+<div class="line-block">
+<div class="line">Additionally, the HCC_PROFILE_VERBOSE variable controls the information shown in the profile log. This is a bit-vector:</div>
+<div class="line">0x2 : Show start and stop timestamps for each command.</div>
+<div class="line">0x4 : Show the device.queue.cmdseqnum for each command.</div>
+<div class="line">0x8 : Show the short CPU TID for each command (not supported).</div>
+<div class="line">0x10 : Show logs for barrier commands.</div>
+</div>
+<p><strong>Sample Output</strong></p>
+<div class="section" id="kernel-commands">
+<h4>Kernel Commands<a class="headerlink" href="#kernel-commands" title="Permalink to this headline">¶</a></h4>
+<p>This shows the simplest trace output for kernel commands with no additional verbosity flags</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>$ HCC_PROFILE=2 ./my-hcc-app ...
+profile:  kernel;            Im2Col;   17.8 us;
+profile:  kernel;  tg_betac_alphaab;   32.6 us;
+profile:  kernel;     MIOpenConvUni;  125.4 us;
+</pre></div>
+</div>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROFILE</span><span class="p">:</span>  <span class="n">TYPE</span><span class="p">;</span>    <span class="n">KERNEL_NAME</span>     <span class="p">;</span>  <span class="n">DURATION</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This example shows profiled kernel commands with full verbose output</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>$ HCC_PROFILE=2 HCC_PROFILE_VERBOSE=0xf ./my-hcc-app ...
+profile:  kernel;            Im2Col;   17.8 us;  94859076277181; 94859076294941; #0.3.1;
+profile:  kernel;  tg_betac_alphaab;   32.6 us;  94859537593679; 94859537626319; #0.3.2;
+profile:  kernel;     MIOpenConvUni;  125.4 us;  94860077852212; 94860077977651; #0.3.3;
+</pre></div>
+</div>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROFILE</span><span class="p">:</span>  <span class="n">TYPE</span><span class="p">;</span>    <span class="n">KERNEL_NAME</span>     <span class="p">;</span>  <span class="n">DURATION</span><span class="p">;</span>  <span class="n">START</span>         <span class="p">;</span> <span class="n">STOP</span>          <span class="p">;</span> <span class="n">ID</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>PROFILE: always “profile:” to distinguish it from other output.</li>
+<li>TYPE: the command type : kernel, copy, copyslo, or barrier. The examples and descriptions in this section are all kernel commands.</li>
+<li>KERNEL_NAME: the (short) kernel name.</li>
+<li>DURATION: command duration measured in us. This is measured using the GPU timestamps and represents the command execution on the accelerator device.</li>
+<li>START: command start time in ns. (if HCC_PROFILE_VERBOSE &amp; 0x2)</li>
+<li>STOP: command stop time in ns. (if HCC_PROFILE_VERBOSE &amp; 0x2)</li>
+<li>ID: command id in device.queue.cmd format. (if HCC_PROFILE_VERBOSE &amp; 0x4). The cmdsequm is a unique monotonically increasing number per-queue, so the triple of device.queue.cmdseqnum uniquely identifies the command during the process execution.</li>
+</ul>
+</div>
+<div class="section" id="memory-copy-commands">
+<h4>Memory Copy Commands<a class="headerlink" href="#memory-copy-commands" title="Permalink to this headline">¶</a></h4>
+<p>This example shows memory copy commands with full verbose output:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span><span class="p">:</span> <span class="n">copyslo</span><span class="p">;</span> <span class="n">HostToDevice_sync_slow</span><span class="p">;</span>   <span class="mf">909.2</span> <span class="n">us</span><span class="p">;</span> <span class="mi">94858703102</span><span class="p">;</span> <span class="mi">94858704012</span><span class="p">;</span> <span class="c1">#0.0.0; 2359296 bytes;  2.2 MB;   2.5 GB/s;</span>
+<span class="n">profile</span><span class="p">:</span>    <span class="n">copy</span><span class="p">;</span> <span class="n">DeviceToHost_sync_fast</span><span class="p">;</span>   <span class="mf">117.0</span> <span class="n">us</span><span class="p">;</span> <span class="mi">94858726408</span><span class="p">;</span> <span class="mi">94858726525</span><span class="p">;</span> <span class="c1">#0.0.0; 1228800 bytes;  1.2 MB;   10.0 GB/s;</span>
+<span class="n">profile</span><span class="p">:</span>    <span class="n">copy</span><span class="p">;</span> <span class="n">DeviceToHost_sync_fast</span><span class="p">;</span>     <span class="mf">9.0</span> <span class="n">us</span><span class="p">;</span> <span class="mi">94858726668</span><span class="p">;</span> <span class="mi">94858726677</span><span class="p">;</span> <span class="c1">#0.0.0; 400 bytes;      0.0 MB;   0.0 GB/s;</span>
+<span class="n">profile</span><span class="p">:</span>    <span class="n">copy</span><span class="p">;</span> <span class="n">HostToDevice_sync_fast</span><span class="p">;</span>    <span class="mf">15.2</span> <span class="n">us</span><span class="p">;</span> <span class="mi">94858727639</span><span class="p">;</span> <span class="mi">94858727654</span><span class="p">;</span> <span class="c1">#0.0.0; 9600 bytes;     0.0 MB;   0.6 GB/s;</span>
+<span class="n">profile</span><span class="p">:</span>    <span class="n">copy</span><span class="p">;</span> <span class="n">HostToDevice_async_fast</span><span class="p">;</span>  <span class="mf">131.5</span> <span class="n">us</span><span class="p">;</span> <span class="mi">94858729198</span><span class="p">;</span> <span class="mi">94858729330</span><span class="p">;</span> <span class="c1">#0.6.1; 1228800 bytes;  1.2 MB;   8.9 GB/s;</span>
+<span class="n">PROFILE</span><span class="p">:</span>  <span class="n">TYPE</span><span class="p">;</span>    <span class="n">COPY_NAME</span>             <span class="p">;</span>  <span class="n">DURATION</span><span class="p">;</span>       <span class="n">START</span><span class="p">;</span>       <span class="n">STOP</span><span class="p">;</span>  <span class="n">ID</span>    <span class="p">;</span> <span class="n">SIZE_BYTES</span><span class="p">;</span>     <span class="n">SIZE_MB</span><span class="p">;</span>  <span class="n">BANDWIDTH</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>PROFILE: always “profile:” to distinguish it from other output.</li>
+<li>TYPE: the command type : kernel, copy, copyslo,or barrier. The examples and descriptions in this section are all copy or copyslo commands.</li>
+<li><dl class="first docutils">
+<dt>COPY_NAME has 3 parts:</dt>
+<dd><ul class="first last">
+<li>Copy kind: HostToDevice, HostToHost, DeviceToHost, DeviceToDevice, or PeerToPeer. DeviceToDevice indicates the copy occurs on a single device while PeerToPeer indicates a copy between devices.</li>
+<li>Sync or Async. Synchronous copies indicate the host waits for the completion for the copy. Asynchronous copies are launched by the host without waiting for the copy to complete.</li>
+<li>Fast or Slow. Fast copies use the GPUs optimized copy routines from the hsa_amd_memory_copy routine. Slow copies typically involve unpinned host memory and can’t take the fast path.</li>
+<li>For example <cite>HostToDevice_async_fast</cite>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>DURATION: command duration measured in us. This is measured using the GPU timestamps and represents the command execution on the accelerator device.</li>
+<li>START: command start time in ns. (if HCC_PROFILE_VERBOSE &amp; 0x2)</li>
+<li>STOP: command stop time in ns. (if HCC_PROFILE_VERBOSE &amp; 0x2)</li>
+<li>ID: command id in device.queue.cmd format. (if HCC_PROFILE_VERBOSE &amp; 0x4). The cmdsequm is a unique mononotically increasing number per-queue, so the triple of device.queue.cmdseqnum uniquely identifies the command during the process execution.</li>
+<li>SIZE_BYTES: the size of the transfer, measured in bytes.</li>
+<li>SIZE_MB: the size of the transfer, measured in megabytes.</li>
+<li>BANDWIDTH: the bandwidth of the transfer, measured in GB/s.</li>
+</ul>
+</div>
+<div class="section" id="barrier-commands">
+<h4>Barrier Commands<a class="headerlink" href="#barrier-commands" title="Permalink to this headline">¶</a></h4>
+<p>Barrier commands are only enabled if HCC_PROFILE_VERBOSE 0x10</p>
+<p>An example barrier command with full vebosity</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span><span class="p">:</span> <span class="n">barrier</span><span class="p">;</span> <span class="n">deps</span><span class="p">:</span><span class="mi">0</span><span class="n">_acq</span><span class="p">:</span><span class="n">none_rel</span><span class="p">:</span><span class="n">sys</span><span class="p">;</span>  <span class="mf">5.3</span> <span class="n">us</span><span class="p">;</span>   <span class="mi">94858731419410</span><span class="p">;</span> <span class="mi">94858731424690</span><span class="p">;</span> <span class="c1"># 0.0.2;</span>
+<span class="n">PROFILE</span><span class="p">:</span>  <span class="n">TYPE</span><span class="p">;</span>   <span class="n">BARRIER_NAME</span>           <span class="p">;</span>  <span class="n">DURATION</span><span class="p">;</span> <span class="n">START</span>         <span class="p">;</span> <span class="n">STOP</span>          <span class="p">;</span> <span class="n">ID</span>    <span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>PROFILE: always “profile:” to distinguish it from other output.</li>
+<li>TYPE: the command type: either kernel, copy, copyslo, or barrier. The examples and descriptions in this section are all copy commands. Copy indicates that the runtime used a call to the fast hsa memory copy routine while copyslo indicates that the copy was implemented with staging buffers or another less optimal path. copy computes the commands using device-side timestamps while copyslo computes the bandwidth based on host timestamps.</li>
+<li><dl class="first docutils">
+<dt>BARRIER_NAME has 3 parts:</dt>
+<dd><ul class="first last">
+<li><strong>deps:#</strong> - the number of input dependencies into the barrier packet.</li>
+<li><strong>acq:</strong> - the acquire fence for the barrier. May be none, acc(accelerator or agent), sys(system). See HSA AQL spec for additional information.</li>
+<li><strong>rel:</strong> - the release fence for the barrier. May be none, acc(accelerator or agent), sys(system). See HSA AQL spec for additional information.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>DURATION: command duration measured in us. This is measured using the GPU timestamps from the time the barrier reaches the head of the queue to when it executes. Thus this includes the time to wait for all input dependencies, plus the previous command to complete, plus any fence operations performed by the barrier.</li>
+<li>START: command start time in ns. (if HCC_PROFILE_VERBOSE &amp; 0x2)</li>
+<li>STOP: command stop time in ns. (if HCC_PROFILE_VERBOSE &amp; 0x2)</li>
+<li>ID: the command id in device.queue.cmd format. (if HCC_PROFILE_VERBOSE &amp; 0x4). The cmdsequm is a unique mononotically increasing number per-queue, so the triple of device.queue.cmdseqnum uniquely identifies the command during the process execution.</li>
+</ul>
+</div>
+<div class="section" id="overhead">
+<h4>Overhead<a class="headerlink" href="#overhead" title="Permalink to this headline">¶</a></h4>
+<p>The hcc profiler does not add any additional synchronization between commands or queues. Profile information is recorded when a command is deleted. The profile mode will allocate a signal for each command to record the timestamp information. This can add 1-2 us to the overall program execution for command which do not already use a completion signal. However, the command duration (start-stop) is still accurate. Trace mode will generate strings to stderr which will likely impact the overall application exection time. However, the GPU duration and timestamps are still valid. Summary mode accumulates statistics into an array and should have little impact on application execution time.</p>
+</div>
+<div class="section" id="additional-details-and-tips">
+<h4>Additional Details and tips<a class="headerlink" href="#additional-details-and-tips" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Commands are logged in the order they are removed from the internal HCC command tracker. Typically this is the same order that        commands are dispatched, though sometimes these may diverge. For example, commands from different devices,queues, or cpu threads        may be interleaved on the hcc trace display to stderr. If a single view in timeline order is required, enable and sort by the           profiler START timestamps (HCC_PROFILE_VERBOSE=0x2)</li>
+<li>If the application keeps a reference to a completion_future, then the command timestamp may be reported significantly after it        occurs.</li>
+<li>HCC_PROFILE has an (untested) feature to write to a log file.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="api-documentation">
+<h3>API documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://scchan.github.io/hcc/">API reference of HCC</a></p>
+</div>
+</div>
+<div class="section" id="hip-programing-guide">
+<h2>HIP Programing Guide<a class="headerlink" href="#hip-programing-guide" title="Permalink to this headline">¶</a></h2>
+<p>HIP provides a C++ syntax that is suitable for compiling most code that commonly appears in compute kernels, including classes, namespaces, operator overloading, templates and more. Additionally, it defines other language features designed specifically to target accelerators, such as the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li>A kernel-launch syntax that uses standard C++, resembles a function call and is portable to all HIP targets</li>
+<li>Short-vector headers that can serve on a host or a device</li>
+<li>Math functions resembling those in the “math.h” header included with standard C++ compilers</li>
+<li>Built-in functions for accessing specific GPU hardware capabilities</li>
+</ul>
+</div></blockquote>
+<p>This section describes the built-in variables and functions accessible from the HIP kernel. It’s intended for readers who are familiar with Cuda kernel syntax and want to understand how HIP is different.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="HIP-GUIDE.html#hip-guide"><span class="std std-ref">HIP Programming Guide</span></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="hip-best-practices">
+<h2>HIP Best Practices<a class="headerlink" href="#hip-best-practices" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="HIP-porting-guide.html#hip-porting-guide"><span class="std std-ref">HIP porting guide: overview and how-to</span></a></li>
+<li><a class="reference internal" href="HIP-terminology.html#hip-terminology"><span class="std std-ref">HIP terminology comparison with OpenCL, Cuda, C++ AMP and HCC</span></a></li>
+<li><a class="reference internal" href="hip_profiling.html#hip-profiling"><span class="std std-ref">Profiling HIP Code</span></a></li>
+<li><a class="reference internal" href="HIP_Debugging.html#hip-debugging"><span class="std std-ref">HIP Debugging</span></a></li>
+<li><a class="reference internal" href="Kernel_language.html#kernel-language"><span class="std std-ref">Kernel Language</span></a></li>
+<li><a class="reference internal" href="HIP-Terms.html#hip-terms"><span class="std std-ref">Table Comparing Syntax for Different Compute APIs</span></a></li>
+<li><span class="xref std std-ref">HIP-bug</span></li>
+<li><a class="reference internal" href="hipporting-driver-api.html#hipporting-driver-api"><span class="std std-ref">Porting CUDA Driver API</span></a></li>
+<li><a class="reference internal" href="CUDAAPIHIP.html#cudaapihip"><span class="std std-ref">CUDA Driver API functions supported by HIP</span></a></li>
+<li><a class="reference internal" href="CUDAAPIHIPTEXTURE.html#cudaapihiptexture"><span class="std std-ref">CUDA Runtime API functions supported by HIP</span></a></li>
+<li><a class="reference internal" href="HIP-FAQ.html#hip-faq"><span class="std std-ref">HIP FAQ</span></a></li>
+<li><a class="reference internal" href="HIP-Terms2.html#hip-term2"><span class="std std-ref">Terms used in HIP Documentation</span></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="opencl-programing-guide">
+<h2>OpenCL Programing Guide<a class="headerlink" href="#opencl-programing-guide" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="Opencl-programming-guide.html#opencl-programming-guide"><span class="std std-ref">OpenCL Programming Guide</span></a></li>
+</ul>
+</div>
+<div class="section" id="opencl-best-practices">
+<h2>OpenCL Best Practices<a class="headerlink" href="#opencl-best-practices" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="Opencl-optimization.html#optimization-opencl"><span class="std std-ref">OPENCL Optimization</span></a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html" class="btn btn-neutral float-right" title="ROCm GPU Tuning Guides" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Installation_Guide/Installation-Guide.html" class="btn btn-neutral" title="ROCm Installation Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

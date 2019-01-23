@@ -1,0 +1,2985 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CUDA Runtime API functions supported by HIP &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>CUDA Runtime API functions supported by HIP</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Programming_Guides/CUDAAPIHIPTEXTURE.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cuda-runtime-api-functions-supported-by-hip">
+<span id="cudaapihiptexture"></span><h1>CUDA Runtime API functions supported by HIP<a class="headerlink" href="#cuda-runtime-api-functions-supported-by-hip" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="device-management">
+<h2>1. Device Management<a class="headerlink" href="#device-management" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="54%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaChooseDevice</td>
+<td>hipChooseDevice</td>
+</tr>
+<tr class="row-odd"><td>cudaDeviceGetAttribute</td>
+<td>hipDeviceGetAttribute</td>
+</tr>
+<tr class="row-even"><td>cudaDeviceGetByPCIBusId</td>
+<td>hipDeviceGetByPCIBusId</td>
+</tr>
+<tr class="row-odd"><td>cudaDeviceGetCacheConfig</td>
+<td>hipDeviceGetCacheConfig</td>
+</tr>
+<tr class="row-even"><td>cudaDeviceGetLimit</td>
+<td>hipDeviceGetLimit</td>
+</tr>
+<tr class="row-odd"><td>cudaDeviceGetPCIBusId</td>
+<td>hipDeviceGetPCIBusId</td>
+</tr>
+<tr class="row-even"><td>cudaDeviceGetSharedMemConfig</td>
+<td>hipDeviceGetSharedMemConfig</td>
+</tr>
+<tr class="row-odd"><td>cudaDeviceGetStreamPriorityRange</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaDeviceReset</td>
+<td>hipDeviceReset</td>
+</tr>
+<tr class="row-odd"><td>cudaDeviceSetCacheConfig</td>
+<td>hipDeviceSetCacheConfig</td>
+</tr>
+<tr class="row-even"><td>cudaDeviceSetLimit</td>
+<td>hipDeviceSetLimit</td>
+</tr>
+<tr class="row-odd"><td>cudaDeviceSetSharedMemConfig</td>
+<td>hipDeviceSetSharedMemConfig</td>
+</tr>
+<tr class="row-even"><td>cudaDeviceSynchronize</td>
+<td>hipDeviceSynchronize</td>
+</tr>
+<tr class="row-odd"><td>cudaGetDevice</td>
+<td>hipGetDevice</td>
+</tr>
+<tr class="row-even"><td>cudaGetDeviceCount</td>
+<td>hipGetDeviceCount</td>
+</tr>
+<tr class="row-odd"><td>cudaGetDeviceFlags</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGetDeviceProperties</td>
+<td>hipGetDeviceProperties</td>
+</tr>
+<tr class="row-odd"><td>cudaIpcCloseMemHandle</td>
+<td>hipIpcCloseMemHandle</td>
+</tr>
+<tr class="row-even"><td>cudaIpcGetEventHandle</td>
+<td>hipIpcGetEventHandle</td>
+</tr>
+<tr class="row-odd"><td>cudaIpcGetMemHandle</td>
+<td>hipIpcGetMemHandle</td>
+</tr>
+<tr class="row-even"><td>cudaIpcOpenEventHandle</td>
+<td>hipIpcOpenEventHandle</td>
+</tr>
+<tr class="row-odd"><td>cudaIpcOpenMemHandle</td>
+<td>hipIpcOpenMemHandle</td>
+</tr>
+<tr class="row-even"><td>cudaSetDevice</td>
+<td>hipSetDevice</td>
+</tr>
+<tr class="row-odd"><td>cudaSetDeviceFlags</td>
+<td>hipSetDeviceFlags</td>
+</tr>
+<tr class="row-even"><td>cudaSetValidDevices</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="thread-management-deprecated">
+<h2>2. Thread Management [DEPRECATED]<a class="headerlink" href="#thread-management-deprecated" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaThreadExit</td>
+<td>hipDeviceReset</td>
+</tr>
+<tr class="row-odd"><td>cudaThreadGetCacheConfig</td>
+<td>hipDeviceGetCacheConfig</td>
+</tr>
+<tr class="row-even"><td>cudaThreadGetLimit</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaThreadSetCacheConfig</td>
+<td>hipDeviceSetCacheConfig</td>
+</tr>
+<tr class="row-even"><td>cudaThreadSetLimit</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaThreadSynchronize</td>
+<td>hipDeviceSynchronize</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="error-handling">
+<h2>3. Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaGetErrorName</td>
+<td>hipGetErrorName</td>
+</tr>
+<tr class="row-odd"><td>cudaGetErrorString</td>
+<td>hipGetErrorString</td>
+</tr>
+<tr class="row-even"><td>cudaGetLastError</td>
+<td>hipGetLastError</td>
+</tr>
+<tr class="row-odd"><td>cudaPeekAtLastError</td>
+<td>hipPeekAtLastError</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="stream-management">
+<h2>4. Stream Management<a class="headerlink" href="#stream-management" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaStreamAddCallback</td>
+<td>hipStreamAddCallback</td>
+</tr>
+<tr class="row-odd"><td>cudaStreamAttachMemAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaStreamCreate</td>
+<td>hipStreamCreate</td>
+</tr>
+<tr class="row-odd"><td>cudaStreamCreateWithFlags</td>
+<td>hipStreamCreateWithFlags</td>
+</tr>
+<tr class="row-even"><td>cudaStreamCreateWithPriority</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaStreamDestroy</td>
+<td>hipStreamDestroy</td>
+</tr>
+<tr class="row-even"><td>cudaStreamGetFlags</td>
+<td>hipStreamGetFlags</td>
+</tr>
+<tr class="row-odd"><td>cudaStreamGetPriority</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaStreamQuery</td>
+<td>hipStreamQuery</td>
+</tr>
+<tr class="row-odd"><td>cudaStreamSynchronize</td>
+<td>hipStreamSynchronize</td>
+</tr>
+<tr class="row-even"><td>cudaStreamWaitEvent</td>
+<td>hipStreamWaitEvent</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="event-management">
+<h2>5. Event Management<a class="headerlink" href="#event-management" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaEventCreate</td>
+<td>hipEventCreate</td>
+</tr>
+<tr class="row-odd"><td>cudaEventCreateWithFlags</td>
+<td>hipEventCreateWithFlags</td>
+</tr>
+<tr class="row-even"><td>cudaEventDestroy</td>
+<td>hipEventDestroy</td>
+</tr>
+<tr class="row-odd"><td>cudaEventElapsedTime</td>
+<td>hipEventElapsedTime</td>
+</tr>
+<tr class="row-even"><td>cudaEventQuery</td>
+<td>hipEventQuery</td>
+</tr>
+<tr class="row-odd"><td>cudaEventRecord</td>
+<td>hipEventRecord</td>
+</tr>
+<tr class="row-even"><td>cudaEventSynchronize</td>
+<td>hipEventSynchronize</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="execution-control">
+<h2>6. Execution Control<a class="headerlink" href="#execution-control" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="54%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaFuncGetAttributes</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaFuncSetCacheConfig</td>
+<td>hipFuncSetCacheConfig</td>
+</tr>
+<tr class="row-even"><td>cudaFuncSetSharedMemConfig</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGetParameterBuffer</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGetParameterBufferV2</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaLaunchKernel</td>
+<td>hipLaunchKernel</td>
+</tr>
+<tr class="row-even"><td>cudaSetDoubleForDevice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaSetDoubleForHost</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="occupancy">
+<h2>7. Occupancy<a class="headerlink" href="#occupancy" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaOccupancyMaxActiveBlocksPerMultiprocessor</td>
+<td>hipOccupancyMaxActiveBlocksPerMultiprocessor</td>
+</tr>
+<tr class="row-odd"><td>cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="execution-control-deprecated-since-7-0">
+<h2>8. Execution Control [deprecated since 7.0]<a class="headerlink" href="#execution-control-deprecated-since-7-0" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaConfigureCall</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaLaunch</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaSetupArgument</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="memory-management">
+<h2>9. Memory Management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaArrayGetInfo</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaFree</td>
+<td>hipFree</td>
+</tr>
+<tr class="row-even"><td>cudaFreeArray</td>
+<td>hipFreeArray</td>
+</tr>
+<tr class="row-odd"><td>cudaFreeHost</td>
+<td>hipHostFree</td>
+</tr>
+<tr class="row-even"><td>cudaFreeMipmappedArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGetMipmappedArrayLevel</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGetSymbolAddress</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGetSymbolSize</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaHostAlloc</td>
+<td>hipHostMalloc</td>
+</tr>
+<tr class="row-odd"><td>cudaHostGetDevicePointer</td>
+<td>hipHostGetDevicePointer</td>
+</tr>
+<tr class="row-even"><td>cudaHostGetFlags</td>
+<td>hipHostGetFlags</td>
+</tr>
+<tr class="row-odd"><td>cudaHostRegister</td>
+<td>hipHostRegister</td>
+</tr>
+<tr class="row-even"><td>cudaHostUnregister</td>
+<td>hipHostUnregister</td>
+</tr>
+<tr class="row-odd"><td>cudaMalloc</td>
+<td>hipMalloc</td>
+</tr>
+<tr class="row-even"><td>cudaMalloc3D</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaMalloc3DArray</td>
+<td>hipMalloc3DArray</td>
+</tr>
+<tr class="row-even"><td>cudaMallocArray</td>
+<td>hipMallocArray</td>
+</tr>
+<tr class="row-odd"><td>cudaMallocHost</td>
+<td>hipHostMalloc</td>
+</tr>
+<tr class="row-even"><td>cudaMallocManaged</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaMallocMipmappedArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaMallocPitch</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaMemGetInfo</td>
+<td>hipMemGetInfo</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpy</td>
+<td>hipMemcpy</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpy2D</td>
+<td>hipMemcpy2D</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpy2DArrayToArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpy2DAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpy2DFromArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpy2DFromArrayAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpy2DToArray</td>
+<td>hipMemcpy2DToArray</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpy2DToArrayAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpy3D</td>
+<td>hipMemcpy3D</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpy3DAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpy3DPeer</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpy3DPeerAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpyArrayToArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpyAsync</td>
+<td>hipMemcpyAsync</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpyFromArray</td>
+<td>MemcpyFromArray</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpyFromArrayAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpyFromSymbol</td>
+<td>hipMemcpyFromSymbol</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpyFromSymbolAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpyPeer</td>
+<td>hipMemcpyPeer</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpyPeerAsync</td>
+<td>hipMemcpyPeerAsync</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpyToArray</td>
+<td>hipMemcpyToArray</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpyToArrayAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpyToSymbol</td>
+<td>hipMemcpyToSymbol</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpyToSymbolAsync</td>
+<td>hipMemcpyToSymbolAsync</td>
+</tr>
+<tr class="row-even"><td>cudaMemset</td>
+<td>hipMemset</td>
+</tr>
+<tr class="row-odd"><td>cudaMemset2D</td>
+<td>hipMemset2D</td>
+</tr>
+<tr class="row-even"><td>cudaMemset2DAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaMemset3D</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaMemset3DAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaMemsetAsync</td>
+<td>hipMemsetAsync</td>
+</tr>
+<tr class="row-even"><td>make_cudaExtent</td>
+<td>make_hipExtent</td>
+</tr>
+<tr class="row-odd"><td>make_cudaPitchedPtr</td>
+<td>make_hipPitchedPtr</td>
+</tr>
+<tr class="row-even"><td>make_cudaPos</td>
+<td>make_hipPos</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="unified-addressing">
+<h2>10. Unified Addressing<a class="headerlink" href="#unified-addressing" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaPointerGetAttributes</td>
+<td>hipPointerGetAttributes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="peer-device-memory-access">
+<h2>11. Peer Device Memory Access<a class="headerlink" href="#peer-device-memory-access" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaDeviceCanAccessPeer</td>
+<td>hipDeviceCanAccessPeer</td>
+</tr>
+<tr class="row-odd"><td>cudaDeviceDisablePeerAccess</td>
+<td>hipDeviceDisablePeerAccess</td>
+</tr>
+<tr class="row-even"><td>cudaDeviceEnablePeerAccess</td>
+<td>hipDeviceEnablePeerAccess</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="opengl-interoperability">
+<h2>12. OpenGL Interoperability<a class="headerlink" href="#opengl-interoperability" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaGLGetDevices</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGraphicsGLRegisterBuffer</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGraphicsGLRegisterImage</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaWGLGetDevice</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="opengl-interoperability-deprecated">
+<h2>13. OpenGL Interoperability [DEPRECATED]<a class="headerlink" href="#opengl-interoperability-deprecated" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaGLMapBufferObject</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGLMapBufferObjectAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGLRegisterBufferObject</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGLSetBufferObjectMapFlags</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGLSetGLDevice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGLUnmapBufferObject</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGLUnmapBufferObjectAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGLUnregisterBufferObject</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="direct3d-9-interoperability">
+<h2>14. Direct3D 9 Interoperability<a class="headerlink" href="#direct3d-9-interoperability" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaD3D9GetDevice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D9GetDevices</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaD3D9GetDirect3DDevice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D9SetDirect3DDevice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGraphicsD3D9RegisterResource</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="direct3d-9-interoperability-deprecated">
+<h2>15. Direct3D 9 Interoperability [DEPRECATED]<a class="headerlink" href="#direct3d-9-interoperability-deprecated" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaD3D9MapResources</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D9RegisterResource</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaD3D9ResourceGetMappedArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D9ResourceGetMappedPitch</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaD3D9ResourceGetMappedPointer</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D9ResourceGetMappedSize</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaD3D9ResourceGetSurfaceDimensions</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D9ResourceSetMapFlags</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaD3D9UnmapResources</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D9UnregisterResource</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="direct3d-10-interoperability">
+<h2>16. Direct3D 10 Interoperability<a class="headerlink" href="#direct3d-10-interoperability" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>CUDA</td>
+<td>HIP</td>
+</tr>
+<tr class="row-even"><td>cudaD3D10GetDevice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D10GetDevices</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGraphicsD3D10RegisterResource</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="direct3d-10-interoperability-deprecated">
+<h2>17. Direct3D 10 Interoperability [DEPRECATED]<a class="headerlink" href="#direct3d-10-interoperability-deprecated" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="54%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaD3D10GetDirect3DDevice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D10MapResources</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaD3D10RegisterResource</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D10ResourceGetMappedArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaD3D10ResourceGetMappedPitch</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D10ResourceGetMappedPointer</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaD3D10ResourceGetMappedSize</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D10ResourceGetSurfaceDimensions</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaD3D10ResourceSetMapFlags</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D10SetDirect3DDevice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaD3D10UnmapResources</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D10UnregisterResource</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="direct3d-11-interoperability">
+<h2>18. Direct3D 11 Interoperability<a class="headerlink" href="#direct3d-11-interoperability" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="54%" />
+<col width="46%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>CUDA</td>
+<td>HIP</td>
+</tr>
+<tr class="row-even"><td>cudaD3D11GetDevice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D11GetDevices</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGraphicsD3D11RegisterResource</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="direct3d-11-interoperability-deprecated">
+<h2>19. Direct3D 11 Interoperability [DEPRECATED]<a class="headerlink" href="#direct3d-11-interoperability-deprecated" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaD3D11GetDirect3DDevice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaD3D11SetDirect3DDevice</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="vdpau-interoperability">
+<h2>20. VDPAU Interoperability<a class="headerlink" href="#vdpau-interoperability" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="59%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaGraphicsVDPAURegisterOutputSurface</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGraphicsVDPAURegisterVideoSurface</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaVDPAUGetDevice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaVDPAUSetVDPAUDevice</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="egl-interoperability">
+<h2>21. EGL Interoperability<a class="headerlink" href="#egl-interoperability" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaEGLStreamConsumerAcquireFrame</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaEGLStreamConsumerConnect</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaEGLStreamConsumerConnectWithFlags</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaEGLStreamConsumerReleaseFrame</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaEGLStreamProducerConnect</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaEGLStreamProducerDisconnect</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaEGLStreamProducerPresentFrame</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaEGLStreamProducerReturnFrame</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGraphicsEGLRegisterImage</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGraphicsResourceGetMappedEglFrame</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="graphics-interoperability">
+<h2>22. Graphics Interoperability<a class="headerlink" href="#graphics-interoperability" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaGraphicsMapResources</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGraphicsResourceGetMappedMipmappedArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGraphicsResourceGetMappedPointer</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGraphicsResourceSetMapFlags</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGraphicsSubResourceGetMappedArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGraphicsUnmapResources</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGraphicsUnregisterResource</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="texture-reference-management">
+<h2>23. Texture Reference Management<a class="headerlink" href="#texture-reference-management" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="58%" />
+<col width="42%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>CUDA</td>
+<td>HIP</td>
+</tr>
+<tr class="row-even"><td>cudaBindTexture</td>
+<td>hipBindTexture</td>
+</tr>
+<tr class="row-odd"><td>cudaBindTexture2D</td>
+<td>hipBindTexture2D</td>
+</tr>
+<tr class="row-even"><td>cudaBindTextureToArray</td>
+<td>hipBindTextureToArray</td>
+</tr>
+<tr class="row-odd"><td>cudaBindTextureToMipmappedArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaCreateChannelDesc</td>
+<td>hipCreateChannelDesc</td>
+</tr>
+<tr class="row-odd"><td>cudaGetChannelDesc</td>
+<td>hipGetChannelDesc</td>
+</tr>
+<tr class="row-even"><td>cudaGetTextureAlignmentOffset</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGetTextureReference</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaUnbindTexture</td>
+<td>hipUnbindTexture</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="surface-reference-management">
+<h2>24. Surface Reference Management<a class="headerlink" href="#surface-reference-management" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaBindSurfaceToArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGetSurfaceReference</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="texture-object-management">
+<h2>25. Texture Object Management<a class="headerlink" href="#texture-object-management" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaCreateTextureObject</td>
+<td>hipCreateTextureObject</td>
+</tr>
+<tr class="row-odd"><td>cudaDestroyTextureObject</td>
+<td>hipDestroyTextureObject</td>
+</tr>
+<tr class="row-even"><td>cudaGetTextureObjectResourceDesc</td>
+<td>hipGetTextureObjectResourceDesc</td>
+</tr>
+<tr class="row-odd"><td>cudaGetTextureObjectResourceViewDesc</td>
+<td>hipGetTextureObjectResourceViewDesc</td>
+</tr>
+<tr class="row-even"><td>cudaGetTextureObjectTextureDesc</td>
+<td>hipGetTextureObjectTextureDesc</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="surface-object-management">
+<h2>26. Surface Object Management<a class="headerlink" href="#surface-object-management" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaCreateSurfaceObject</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaDestroySurfaceObject</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGetSurfaceObjectResourceDesc</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="version-management">
+<h2>27. Version Management<a class="headerlink" href="#version-management" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaDriverGetVersion</td>
+<td>hipDriverGetVersion</td>
+</tr>
+<tr class="row-odd"><td>cudaRuntimeGetVersion</td>
+<td>hipRuntimeGetVersion</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="c-api-routines">
+<h2>28. C++ API Routines<a class="headerlink" href="#c-api-routines" title="Permalink to this headline">¶</a></h2>
+<p>(7.0 contains, 7.5 doesn’t)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaBindSurfaceToArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaBindTexture</td>
+<td>hipBindTexture</td>
+</tr>
+<tr class="row-even"><td>cudaBindTexture2D</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaBindTextureToArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaBindTextureToMipmappedArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaCreateChannelDesc</td>
+<td>hipCreateChannelDesc</td>
+</tr>
+<tr class="row-even"><td>cudaFuncGetAttributes</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaFuncSetCacheConfig</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGetSymbolAddress</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaGetSymbolSize</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaGetTextureAlignmentOffset</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaLaunch</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaLaunchKernel</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaMallocHost</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaMallocManaged</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpyFromSymbol</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpyFromSymbolAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaMemcpyToSymbol</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaMemcpyToSymbolAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaOccupancyMaxActiveBlocksPerMultiprocessor</td>
+<td>hipOccupancyMaxActiveBlocksPerMultiprocessor</td>
+</tr>
+<tr class="row-even"><td>cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaOccupancyMaxPotentialBlockSize</td>
+<td>hipOccupancyMaxPotentialBlockSize</td>
+</tr>
+<tr class="row-even"><td>cudaOccupancyMaxPotentialBlockSizeVariableSMem</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaOccupancyMaxPotentialBlockSizeVariableSMemWithFlags</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaOccupancyMaxPotentialBlockSizeWithFlags</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaSetupArgument</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>cudaStreamAttachMemAsync</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaUnbindTexture</td>
+<td>hipUnbindTexture</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="profiler-control">
+<h2>30. Profiler Control<a class="headerlink" href="#profiler-control" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="74%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cudaProfilerInitialize</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cudaProfilerStart</td>
+<td>hipProfilerStart</td>
+</tr>
+<tr class="row-even"><td>cudaProfilerStop</td>
+<td>hipProfilerStop</td>
+</tr>
+<tr class="row-odd"><td>Data types used by CUDA Runtime API and supported by HIP</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="data-types">
+<h2>31. Data types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="42%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">type</th>
+<th class="head">CUDA</th>
+<th class="head">HIP</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>struct</td>
+<td>cudaChannelFormatDesc</td>
+<td>hipChannelFormatDesc</td>
+</tr>
+<tr class="row-odd"><td>struct</td>
+<td>cudaDeviceProp</td>
+<td>hipDeviceProp_t</td>
+</tr>
+<tr class="row-even"><td>struct</td>
+<td>cudaExtent</td>
+<td>hipExtent</td>
+</tr>
+<tr class="row-odd"><td>struct</td>
+<td>cudaFuncAttributes</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>struct</td>
+<td>cudaIpcEventHandle_t</td>
+<td>hipIpcEventHandle_t</td>
+</tr>
+<tr class="row-odd"><td>struct</td>
+<td>cudaIpcMemHandle_t</td>
+<td>hipIpcMemHandle_t</td>
+</tr>
+<tr class="row-even"><td>struct</td>
+<td>cudaMemcpy3DParms</td>
+<td>hipMemcpy3DParms</td>
+</tr>
+<tr class="row-odd"><td>struct</td>
+<td>cudaMemcpy3DPeerParms</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>struct</td>
+<td>cudaPitchedPtr</td>
+<td>hipPitchedPtr</td>
+</tr>
+<tr class="row-odd"><td>struct</td>
+<td>cudaPointerAttributes</td>
+<td>hipPointerAttribute_t</td>
+</tr>
+<tr class="row-even"><td>struct</td>
+<td>cudaPos</td>
+<td>hipPos</td>
+</tr>
+<tr class="row-odd"><td>struct</td>
+<td>cudaResourceDesc</td>
+<td>hipResourceDesc</td>
+</tr>
+<tr class="row-even"><td>struct</td>
+<td>cudaResourceViewDesc</td>
+<td>hipResourceViewDesc</td>
+</tr>
+<tr class="row-odd"><td>struct</td>
+<td>cudaTextureDesc</td>
+<td>hipTextureDesc</td>
+</tr>
+<tr class="row-even"><td>struct</td>
+<td>surfaceReference</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>struct</td>
+<td>textureReference</td>
+<td>textureReference</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaChannelFormatKind</strong></td>
+<td><strong>hipChannelFormatKind</strong></td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>cudaChannelFormatKindSigned</td>
+<td>hipChannelFormatKindSigned</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>cudaChannelFormatKindUnsigned</td>
+<td>hipChannelFormatKindUnsigned</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>cudaChannelFormatKindFloat</td>
+<td>hipChannelFormatKindFloat</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>cudaChannelFormatKindNone</td>
+<td>hipChannelFormatKindNone</td>
+</tr>
+<tr class="row-odd"><td>enum</td>
+<td><strong>cudaComputeMode</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>cudaComputeModeDefault</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>cudaComputeModeExclusive</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>cudaComputeModeProhibited</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>cudaComputeModeExclusiveProcess</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaDeviceAttr</strong></td>
+<td><strong>hipDeviceAttribute_t</strong></td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>cudaDevAttrMaxThreadsPerBlock</td>
+<td>hipDeviceAttributeMaxThreadsPerBlock</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>cudaDevAttrMaxBlockDimX</td>
+<td>hipDeviceAttributeMaxBlockDimX</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>cudaDevAttrMaxBlockDimY</td>
+<td>hipDeviceAttributeMaxBlockDimY</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>cudaDevAttrMaxBlockDimZ</td>
+<td>hipDeviceAttributeMaxBlockDimZ</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>cudaDevAttrMaxGridDimX</td>
+<td>hipDeviceAttributeMaxGridDimX</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>cudaDevAttrMaxGridDimY</td>
+<td>hipDeviceAttributeMaxGridDimY</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>cudaDevAttrMaxGridDimZ</td>
+<td>hipDeviceAttributeMaxGridDimZ</td>
+</tr>
+<tr class="row-even"><td>8</td>
+<td>cudaDevAttrMaxSharedMemoryPerBlock</td>
+<td>hipDeviceAttributeMaxSharedMemoryPerBlock</td>
+</tr>
+<tr class="row-odd"><td>9</td>
+<td>cudaDevAttrTotalConstantMemory</td>
+<td>hipDeviceAttributeTotalConstantMemory</td>
+</tr>
+<tr class="row-even"><td>10</td>
+<td>cudaDevAttrWarpSize</td>
+<td>hipDeviceAttributeWarpSize</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>cudaDevAttrMaxPitch</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>12</td>
+<td>cudaDevAttrMaxRegistersPerBlock</td>
+<td>hipDeviceAttributeMaxRegistersPerBlock</td>
+</tr>
+<tr class="row-odd"><td>13</td>
+<td>cudaDevAttrClockRate</td>
+<td>hipDeviceAttributeClockRate</td>
+</tr>
+<tr class="row-even"><td>14</td>
+<td>cudaDevAttrTextureAlignment</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>cudaDevAttrGpuOverlap</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>16</td>
+<td>cudaDevAttrMultiProcessorCount</td>
+<td>hipDeviceAttributeMultiprocessorCount</td>
+</tr>
+<tr class="row-odd"><td>17</td>
+<td>cudaDevAttrKernelExecTimeout</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>18</td>
+<td>cudaDevAttrIntegrated</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>cudaDevAttrCanMapHostMemory</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>20</td>
+<td>cudaDevAttrComputeMode</td>
+<td>hipDeviceAttributeComputeMode</td>
+</tr>
+<tr class="row-odd"><td>21</td>
+<td>cudaDevAttrMaxTexture1DWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>22</td>
+<td>cudaDevAttrMaxTexture2DWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>23</td>
+<td>cudaDevAttrMaxTexture2DHeight</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>24</td>
+<td>cudaDevAttrMaxTexture3DWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>25</td>
+<td>cudaDevAttrMaxTexture3DHeight</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>26</td>
+<td>cudaDevAttrMaxTexture3DDepth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>27</td>
+<td>cudaDevAttrMaxTexture2DLayeredWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>28</td>
+<td>cudaDevAttrMaxTexture2DLayeredHeight</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>29</td>
+<td>cudaDevAttrMaxTexture2DLayeredLayers</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>30</td>
+<td>cudaDevAttrSurfaceAlignment</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>31</td>
+<td>cudaDevAttrConcurrentKernels</td>
+<td>hipDeviceAttributeConcurrentKernels</td>
+</tr>
+<tr class="row-even"><td>32</td>
+<td>cudaDevAttrEccEnabled</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>33</td>
+<td>cudaDevAttrPciBusId</td>
+<td>hipDeviceAttributePciBusId</td>
+</tr>
+<tr class="row-even"><td>34</td>
+<td>cudaDevAttrPciDeviceId</td>
+<td>hipDeviceAttributePciDeviceId</td>
+</tr>
+<tr class="row-odd"><td>35</td>
+<td>cudaDevAttrTccDriver</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>36</td>
+<td>cudaDevAttrMemoryClockRate</td>
+<td>hipDeviceAttributeMemoryClockRate</td>
+</tr>
+<tr class="row-odd"><td>37</td>
+<td>cudaDevAttrGlobalMemoryBusWidth</td>
+<td>hipDeviceAttributeMemoryBusWidth</td>
+</tr>
+<tr class="row-even"><td>38</td>
+<td>cudaDevAttrL2CacheSize</td>
+<td>hipDeviceAttributeL2CacheSize</td>
+</tr>
+<tr class="row-odd"><td>39</td>
+<td>cudaDevAttrMaxThreadsPerMultiProcessor</td>
+<td>hipDeviceAttributeMaxThreadsPerMultiProcessor</td>
+</tr>
+<tr class="row-even"><td>40</td>
+<td>cudaDevAttrAsyncEngineCount</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>41</td>
+<td>cudaDevAttrUnifiedAddressing</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>42</td>
+<td>cudaDevAttrMaxTexture1DLayeredWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>43</td>
+<td>cudaDevAttrMaxTexture1DLayeredLayers</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>44</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>45</td>
+<td>cudaDevAttrMaxTexture2DGatherWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>46</td>
+<td>cudaDevAttrMaxTexture2DGatherHeight</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>47</td>
+<td>cudaDevAttrMaxTexture3DWidthAlt</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>48</td>
+<td>cudaDevAttrMaxTexture3DHeightAlt</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>49</td>
+<td>cudaDevAttrMaxTexture3DDepthAlt</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>50</td>
+<td>cudaDevAttrPciDomainId</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>51</td>
+<td>cudaDevAttrTexturePitchAlignment</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>52</td>
+<td>cudaDevAttrMaxTextureCubemapWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>53</td>
+<td>cudaDevAttrMaxTextureCubemapLayeredWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>54</td>
+<td>cudaDevAttrMaxTextureCubemapLayeredLayers</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>55</td>
+<td>cudaDevAttrMaxSurface1DWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>56</td>
+<td>cudaDevAttrMaxSurface2DWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>57</td>
+<td>cudaDevAttrMaxSurface2DHeight</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>58</td>
+<td>cudaDevAttrMaxSurface3DWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>59</td>
+<td>cudaDevAttrMaxSurface3DHeight</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>60</td>
+<td>cudaDevAttrMaxSurface3DDepth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>61</td>
+<td>cudaDevAttrMaxSurface1DLayeredWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>62</td>
+<td>cudaDevAttrMaxSurface1DLayeredLayers</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>63</td>
+<td>cudaDevAttrMaxSurface2DLayeredWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>64</td>
+<td>cudaDevAttrMaxSurface2DLayeredHeight</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>65</td>
+<td>cudaDevAttrMaxSurface2DLayeredLayers</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>66</td>
+<td>cudaDevAttrMaxSurfaceCubemapWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>67</td>
+<td>cudaDevAttrMaxSurfaceCubemapLayeredWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>68</td>
+<td>cudaDevAttrMaxSurfaceCubemapLayeredLayers</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>69</td>
+<td>cudaDevAttrMaxTexture1DLinearWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>70</td>
+<td>cudaDevAttrMaxTexture2DLinearWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>71</td>
+<td>cudaDevAttrMaxTexture2DLinearHeight</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>72</td>
+<td>cudaDevAttrMaxTexture2DLinearPitch</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>73</td>
+<td>cudaDevAttrMaxTexture2DMipmappedWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>74</td>
+<td>cudaDevAttrMaxTexture2DMipmappedHeight</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>75</td>
+<td>cudaDevAttrComputeCapabilityMajor</td>
+<td>hipDeviceAttributeComputeCapabilityMajor</td>
+</tr>
+<tr class="row-even"><td>76</td>
+<td>cudaDevAttrComputeCapabilityMinor</td>
+<td>hipDeviceAttributeComputeCapabilityMinor</td>
+</tr>
+<tr class="row-odd"><td>77</td>
+<td>cudaDevAttrMaxTexture1DMipmappedWidth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>78</td>
+<td>cudaDevAttrStreamPrioritiesSupported</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>79</td>
+<td>cudaDevAttrGlobalL1CacheSupported</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>80</td>
+<td>cudaDevAttrLocalL1CacheSupported</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>81</td>
+<td>cudaDevAttrMaxSharedMemoryPerMultiprocessor</td>
+<td>hipDeviceAttributeMaxSharedMemoryPerMultiprocessor</td>
+</tr>
+<tr class="row-even"><td>82</td>
+<td>cudaDevAttrMaxRegistersPerMultiprocessor</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>83</td>
+<td>cudaDevAttrManagedMemory</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>84</td>
+<td>cudaDevAttrIsMultiGpuBoard</td>
+<td>hipDeviceAttributeIsMultiGpuBoard</td>
+</tr>
+<tr class="row-odd"><td>85</td>
+<td>cudaDevAttrMultiGpuBoardGroupID</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaError</strong></td>
+<td><strong>hipError_t</strong></td>
+</tr>
+<tr class="row-odd"><td>enum</td>
+<td><strong>cudaError_t</strong></td>
+<td><strong>hipError_t</strong></td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>cudaSuccess</td>
+<td>hipSuccess</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>cudaErrorMissingConfiguration</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>cudaErrorMemoryAllocation</td>
+<td>hipErrorMemoryAllocation</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>cudaErrorInitializationError</td>
+<td>hipErrorInitializationError</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>cudaErrorLaunchFailure</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>cudaErrorPriorLaunchFailure</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>cudaErrorLaunchTimeout</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>cudaErrorLaunchOutOfResources</td>
+<td>hipErrorLaunchOutOfResources</td>
+</tr>
+<tr class="row-even"><td>8</td>
+<td>cudaErrorInvalidDeviceFunction</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>9</td>
+<td>cudaErrorInvalidConfiguration</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>10</td>
+<td>cudaErrorInvalidDevice</td>
+<td>hipErrorInvalidDevice</td>
+</tr>
+<tr class="row-odd"><td>11</td>
+<td>cudaErrorInvalidValue</td>
+<td>hipErrorInvalidValue</td>
+</tr>
+<tr class="row-even"><td>12</td>
+<td>cudaErrorInvalidPitchValue</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>13</td>
+<td>cudaErrorInvalidSymbol</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>14</td>
+<td>cudaErrorMapBufferObjectFailed</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>cudaErrorUnmapBufferObjectFailed</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>16</td>
+<td>cudaErrorInvalidHostPointer</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>17</td>
+<td>cudaErrorInvalidDevicePointer</td>
+<td>hipErrorInvalidDevicePointer</td>
+</tr>
+<tr class="row-even"><td>18</td>
+<td>cudaErrorInvalidTexture</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>19</td>
+<td>cudaErrorInvalidTextureBinding</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>20</td>
+<td>cudaErrorInvalidChannelDescriptor</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>21</td>
+<td>cudaErrorInvalidMemcpyDirection</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>22</td>
+<td>cudaErrorAddressOfConstant</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>23</td>
+<td>cudaErrorTextureFetchFailed</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>24</td>
+<td>cudaErrorTextureNotBound</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>25</td>
+<td>cudaErrorSynchronizationError</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>26</td>
+<td>cudaErrorInvalidFilterSetting</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>27</td>
+<td>cudaErrorInvalidNormSetting</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>28</td>
+<td>cudaErrorMixedDeviceExecution</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>29</td>
+<td>cudaErrorCudartUnloading</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>30</td>
+<td>cudaErrorUnknown</td>
+<td>hipErrorUnknown</td>
+</tr>
+<tr class="row-odd"><td>31</td>
+<td>cudaErrorNotYetImplemented</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>32</td>
+<td>cudaErrorMemoryValueTooLarge</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>33</td>
+<td>cudaErrorInvalidResourceHandle</td>
+<td>hipErrorInvalidResourceHandle</td>
+</tr>
+<tr class="row-even"><td>34</td>
+<td>cudaErrorNotReady</td>
+<td>hipErrorNotReady</td>
+</tr>
+<tr class="row-odd"><td>35</td>
+<td>cudaErrorInsufficientDriver</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>36</td>
+<td>cudaErrorSetOnActiveProcess</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>37</td>
+<td>cudaErrorInvalidSurface</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>38</td>
+<td>cudaErrorNoDevice</td>
+<td>hipErrorNoDevice</td>
+</tr>
+<tr class="row-odd"><td>39</td>
+<td>cudaErrorECCUncorrectable</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>40</td>
+<td>cudaErrorSharedObjectSymbolNotFound</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>41</td>
+<td>cudaErrorSharedObjectInitFailed</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>42</td>
+<td>cudaErrorUnsupportedLimit</td>
+<td>hipErrorUnsupportedLimit</td>
+</tr>
+<tr class="row-odd"><td>43</td>
+<td>cudaErrorDuplicateVariableName</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>44</td>
+<td>cudaErrorDuplicateTextureName</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>45</td>
+<td>cudaErrorDuplicateSurfaceName</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>46</td>
+<td>cudaErrorDevicesUnavailable</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>47</td>
+<td>cudaErrorInvalidKernelImage</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>48</td>
+<td>cudaErrorNoKernelImageForDevice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>49</td>
+<td>cudaErrorIncompatibleDriverContext</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>50</td>
+<td>cudaErrorPeerAccessAlreadyEnabled</td>
+<td>hipErrorPeerAccessAlreadyEnabled</td>
+</tr>
+<tr class="row-odd"><td>51</td>
+<td>cudaErrorPeerAccessNotEnabled</td>
+<td>hipErrorPeerAccessNotEnabled</td>
+</tr>
+<tr class="row-even"><td>52</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>53</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>54</td>
+<td>cudaErrorDeviceAlreadyInUse</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>55</td>
+<td>cudaErrorProfilerDisabled</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>56</td>
+<td>cudaErrorProfilerNotInitialized</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>57</td>
+<td>cudaErrorProfilerAlreadyStarted</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>58</td>
+<td>cudaErrorProfilerAlreadyStopped</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>59</td>
+<td>cudaErrorAssert</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>60</td>
+<td>cudaErrorTooManyPeers</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>61</td>
+<td>cudaErrorHostMemoryAlreadyRegistered</td>
+<td>hipErrorHostMemoryAlreadyRegistered</td>
+</tr>
+<tr class="row-even"><td>62</td>
+<td>cudaErrorHostMemoryNotRegistered</td>
+<td>hipErrorHostMemoryNotRegistered</td>
+</tr>
+<tr class="row-odd"><td>63</td>
+<td>cudaErrorOperatingSystem</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>64</td>
+<td>cudaErrorPeerAccessUnsupported</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>65</td>
+<td>cudaErrorLaunchMaxDepthExceeded</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>66</td>
+<td>cudaErrorLaunchFileScopedTex</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>67</td>
+<td>cudaErrorLaunchFileScopedSurf</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>68</td>
+<td>cudaErrorSyncDepthExceeded</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>69</td>
+<td>cudaErrorLaunchPendingCountExceeded</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>70</td>
+<td>cudaErrorNotPermitted</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>71</td>
+<td>cudaErrorNotSupported</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>72</td>
+<td>cudaErrorHardwareStackError</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>73</td>
+<td>cudaErrorIllegalInstruction</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>74</td>
+<td>cudaErrorMisalignedAddress</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>75</td>
+<td>cudaErrorInvalidAddressSpace</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>76</td>
+<td>cudaErrorInvalidPc</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>77</td>
+<td>cudaErrorIllegalAddress</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>78</td>
+<td>cudaErrorInvalidPtx</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>79</td>
+<td>cudaErrorInvalidGraphicsContext</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>0x7f</td>
+<td>cudaErrorStartupFailure</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>1000</td>
+<td>cudaErrorApiFailureBase</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaFuncCache</strong></td>
+<td><strong>hipFuncCache_t</strong></td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>cudaFuncCachePreferNone</td>
+<td>hipFuncCachePreferNone</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>cudaFuncCachePreferShared</td>
+<td>hipFuncCachePreferShared</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>cudaFuncCachePreferL1</td>
+<td>hipFuncCachePreferL1</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>cudaFuncCachePreferEqual</td>
+<td>hipFuncCachePreferEqual</td>
+</tr>
+<tr class="row-odd"><td>enum</td>
+<td><strong>cudaGraphicsCubeFace</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>0x00</td>
+<td>cudaGraphicsCubeFacePositiveX</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0x01</td>
+<td>cudaGraphicsCubeFaceNegativeX</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>0x02</td>
+<td>cudaGraphicsCubeFacePositiveY</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0x03</td>
+<td>cudaGraphicsCubeFaceNegativeY</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>0x04</td>
+<td>cudaGraphicsCubeFacePositiveZ</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0x05</td>
+<td>cudaGraphicsCubeFaceNegativeZ</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaGraphicsMapFlags</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>cudaGraphicsMapFlagsNone</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>cudaGraphicsMapFlagsReadOnly</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>cudaGraphicsMapFlagsWriteDiscard</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaGraphicsRegisterFlags</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>cudaGraphicsRegisterFlagsNone</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>cudaGraphicsRegisterFlagsReadOnly</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>cudaGraphicsRegisterFlagsWriteDiscard</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>cudaGraphicsRegisterFlagsSurfaceLoadStore</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>cudaGraphicsRegisterFlagsTextureGather</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaLimit</strong></td>
+<td><strong>hipLimit_t</strong></td>
+</tr>
+<tr class="row-odd"><td>0x00</td>
+<td>cudaLimitStackSize</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>0x01</td>
+<td>cudaLimitPrintfFifoSize</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0x02</td>
+<td>cudaLimitMallocHeapSize</td>
+<td>hipLimitMallocHeapSize</td>
+</tr>
+<tr class="row-even"><td>0x03</td>
+<td>cudaLimitDevRuntimeSyncDepth</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0x04</td>
+<td>cudaLimitDevRuntimePendingLaunchCount</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaMemcpyKind</strong></td>
+<td><strong>hipMemcpyKind</strong></td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>cudaMemcpyHostToHost</td>
+<td>hipMemcpyHostToHost</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>cudaMemcpyHostToDevice</td>
+<td>hipMemcpyHostToDevice</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>cudaMemcpyDeviceToHost</td>
+<td>hipMemcpyDeviceToHost</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>cudaMemcpyDeviceToDevice</td>
+<td>hipMemcpyDeviceToDevice</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>cudaMemcpyDefault</td>
+<td>hipMemcpyDefault</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaMemoryType</strong></td>
+<td><strong>hipMemoryType</strong></td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>cudaMemoryTypeHost</td>
+<td>hipMemoryTypeHost</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>cudaMemoryTypeDevice</td>
+<td>hipMemoryTypeDevice</td>
+</tr>
+<tr class="row-odd"><td>enum</td>
+<td><strong>cudaResourceType</strong></td>
+<td><strong>hipResourceType</strong></td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>cudaResourceTypeArray</td>
+<td>hipResourceTypeArray</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>cudaResourceTypeMipmappedArray</td>
+<td>hipResourceTypeMipmappedArray</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>cudaResourceTypeLinear</td>
+<td>hipResourceTypeLinear</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>cudaResourceTypePitch2D</td>
+<td>hipResourceTypePitch2D</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaResourceViewFormat</strong></td>
+<td><strong>hipResourceViewFormat</strong></td>
+</tr>
+<tr class="row-odd"><td>0x00</td>
+<td>cudaResViewFormatNone</td>
+<td>hipResViewFormatNone</td>
+</tr>
+<tr class="row-even"><td>0x01</td>
+<td>cudaResViewFormatUnsignedChar1</td>
+<td>hipResViewFormatUnsignedChar1</td>
+</tr>
+<tr class="row-odd"><td>0x02</td>
+<td>cudaResViewFormatUnsignedChar2</td>
+<td>hipResViewFormatUnsignedChar2</td>
+</tr>
+<tr class="row-even"><td>0x03</td>
+<td>cudaResViewFormatUnsignedChar4</td>
+<td>hipResViewFormatUnsignedChar4</td>
+</tr>
+<tr class="row-odd"><td>0x04</td>
+<td>cudaResViewFormatSignedChar1</td>
+<td>hipResViewFormatSignedChar1</td>
+</tr>
+<tr class="row-even"><td>0x05</td>
+<td>cudaResViewFormatSignedChar2</td>
+<td>hipResViewFormatSignedChar2</td>
+</tr>
+<tr class="row-odd"><td>0x06</td>
+<td>cudaResViewFormatSignedChar4</td>
+<td>hipResViewFormatSignedChar4</td>
+</tr>
+<tr class="row-even"><td>0x07</td>
+<td>cudaResViewFormatUnsignedShort1</td>
+<td>hipResViewFormatUnsignedShort1</td>
+</tr>
+<tr class="row-odd"><td>0x08</td>
+<td>cudaResViewFormatUnsignedShort2</td>
+<td>hipResViewFormatUnsignedShort2</td>
+</tr>
+<tr class="row-even"><td>0x09</td>
+<td>cudaResViewFormatUnsignedShort4</td>
+<td>hipResViewFormatUnsignedShort4</td>
+</tr>
+<tr class="row-odd"><td>0x0a</td>
+<td>cudaResViewFormatSignedShort1</td>
+<td>hipResViewFormatSignedShort1</td>
+</tr>
+<tr class="row-even"><td>0x0b</td>
+<td>cudaResViewFormatSignedShort2</td>
+<td>hipResViewFormatSignedShort2</td>
+</tr>
+<tr class="row-odd"><td>0x0c</td>
+<td>cudaResViewFormatSignedShort4</td>
+<td>hipResViewFormatSignedShort4</td>
+</tr>
+<tr class="row-even"><td>0x0d</td>
+<td>cudaResViewFormatUnsignedInt1</td>
+<td>hipResViewFormatUnsignedInt1</td>
+</tr>
+<tr class="row-odd"><td>0x0e</td>
+<td>cudaResViewFormatUnsignedInt2</td>
+<td>hipResViewFormatUnsignedInt2</td>
+</tr>
+<tr class="row-even"><td>0x0f</td>
+<td>cudaResViewFormatUnsignedInt4</td>
+<td>hipResViewFormatUnsignedInt4</td>
+</tr>
+<tr class="row-odd"><td>0x10</td>
+<td>cudaResViewFormatSignedInt1</td>
+<td>hipResViewFormatSignedInt1</td>
+</tr>
+<tr class="row-even"><td>0x11</td>
+<td>cudaResViewFormatSignedInt2</td>
+<td>hipResViewFormatSignedInt2</td>
+</tr>
+<tr class="row-odd"><td>0x12</td>
+<td>cudaResViewFormatSignedInt4</td>
+<td>hipResViewFormatSignedInt4</td>
+</tr>
+<tr class="row-even"><td>0x13</td>
+<td>cudaResViewFormatHalf1</td>
+<td>hipResViewFormatHalf1</td>
+</tr>
+<tr class="row-odd"><td>0x14</td>
+<td>cudaResViewFormatHalf2</td>
+<td>hipResViewFormatHalf2</td>
+</tr>
+<tr class="row-even"><td>0x15</td>
+<td>cudaResViewFormatHalf4</td>
+<td>hipResViewFormatHalf4</td>
+</tr>
+<tr class="row-odd"><td>0x16</td>
+<td>cudaResViewFormatFloat1</td>
+<td>hipResViewFormatFloat1</td>
+</tr>
+<tr class="row-even"><td>0x17</td>
+<td>cudaResViewFormatFloat2</td>
+<td>hipResViewFormatFloat2</td>
+</tr>
+<tr class="row-odd"><td>0x18</td>
+<td>cudaResViewFormatFloat4</td>
+<td>hipResViewFormatFloat4</td>
+</tr>
+<tr class="row-even"><td>0x19</td>
+<td>cudaResViewFormatUnsignedBlockCompressed1</td>
+<td>hipResViewFormatUnsignedBlockCompressed1</td>
+</tr>
+<tr class="row-odd"><td>0x1a</td>
+<td>cudaResViewFormatUnsignedBlockCompressed2</td>
+<td>hipResViewFormatUnsignedBlockCompressed2</td>
+</tr>
+<tr class="row-even"><td>0x1b</td>
+<td>cudaResViewFormatUnsignedBlockCompressed3</td>
+<td>hipResViewFormatUnsignedBlockCompressed3</td>
+</tr>
+<tr class="row-odd"><td>0x1c</td>
+<td>cudaResViewFormatUnsignedBlockCompressed4</td>
+<td>hipResViewFormatUnsignedBlockCompressed4</td>
+</tr>
+<tr class="row-even"><td>0x1d</td>
+<td>cudaResViewFormatSignedBlockCompressed4</td>
+<td>hipResViewFormatSignedBlockCompressed4</td>
+</tr>
+<tr class="row-odd"><td>0x1e</td>
+<td>cudaResViewFormatUnsignedBlockCompressed5</td>
+<td>hipResViewFormatUnsignedBlockCompressed5</td>
+</tr>
+<tr class="row-even"><td>0x1f</td>
+<td>cudaResViewFormatSignedBlockCompressed5</td>
+<td>hipResViewFormatSignedBlockCompressed5</td>
+</tr>
+<tr class="row-odd"><td>0x20</td>
+<td>cudaResViewFormatUnsignedBlockCompressed6H</td>
+<td>hipResViewFormatUnsignedBlockCompressed6H</td>
+</tr>
+<tr class="row-even"><td>0x21</td>
+<td>cudaResViewFormatSignedBlockCompressed6H</td>
+<td>hipResViewFormatSignedBlockCompressed6H</td>
+</tr>
+<tr class="row-odd"><td>0x22</td>
+<td>cudaResViewFormatUnsignedBlockCompressed7</td>
+<td>hipResViewFormatUnsignedBlockCompressed7</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaSharedMemConfig</strong></td>
+<td><strong>hipSharedMemConfig</strong></td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>cudaSharedMemBankSizeDefault</td>
+<td>hipSharedMemBankSizeDefault</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>cudaSharedMemBankSizeFourByte</td>
+<td>hipSharedMemBankSizeFourByte</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>cudaSharedMemBankSizeEightByte</td>
+<td>hipSharedMemBankSizeEightByte</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaSurfaceBoundaryMode</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>cudaBoundaryModeZero</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>cudaBoundaryModeClamp</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>cudaBoundaryModeTrap</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td>cudaSurfaceFormatMode</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>cudaFormatModeForced</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>cudaFormatModeAuto</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>enum</td>
+<td><strong>cudaTextureAddressMode</strong></td>
+<td><strong>hipTextureAddressMode</strong></td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>cudaAddressModeWrap</td>
+<td>hipAddressModeWrap</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>cudaAddressModeClamp</td>
+<td>hipAddressModeClamp</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>cudaAddressModeMirror</td>
+<td>hipAddressModeMirror</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>cudaAddressModeBorder</td>
+<td>hipAddressModeBorder</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaTextureFilterMode</strong></td>
+<td><strong>hipTextureFilterMode</strong></td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>cudaFilterModePoint</td>
+<td>hipFilterModePoint</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>cudaFilterModeLinear</td>
+<td>hipFilterModeLinear</td>
+</tr>
+<tr class="row-odd"><td>enum</td>
+<td><strong>cudaTextureReadMode</strong></td>
+<td><strong>hipTextureReadMode</strong></td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>cudaReadModeElementType</td>
+<td>hipReadModeElementType</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>cudaReadModeNormalizedFloat</td>
+<td>hipReadModeNormalizedFloat</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaGLDeviceList</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0x01</td>
+<td>cudaGLDeviceListAll</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>0x02</td>
+<td>cudaGLDeviceListCurrentFrame</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0x03</td>
+<td>cudaGLDeviceListNextFrame</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaGLMapFlags</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0x00</td>
+<td>cudaGLMapFlagsNone</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>0x01</td>
+<td>cudaGLMapFlagsReadOnly</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0x02</td>
+<td>cudaGLMapFlagsWriteDiscard</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaD3D9DeviceList</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>cudaD3D9DeviceListAll</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>cudaD3D9DeviceListCurrentFrame</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>cudaD3D9DeviceListNextFrame</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaD3D9MapFlags</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>cudaD3D9MapFlagsNone</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>cudaD3D9MapFlagsReadOnly</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>cudaD3D9MapFlagsWriteDiscard</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaD3D9RegisterFlags</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>cudaD3D9RegisterFlagsNone</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>cudaD3D9RegisterFlagsArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>enum</td>
+<td><strong>cudaD3D10DeviceList</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>cudaD3D10DeviceListAll</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>cudaD3D10DeviceListCurrentFrame</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>cudaD3D10DeviceListNextFrame</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>enum</td>
+<td><strong>cudaD3D10MapFlags</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>cudaD3D10MapFlagsNone</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>cudaD3D10MapFlagsReadOnly</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>cudaD3D10MapFlagsWriteDiscard</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>enum</td>
+<td><strong>cudaD3D10RegisterFlags</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>cudaD3D10RegisterFlagsNone</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>cudaD3D10RegisterFlagsArray</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>enum</td>
+<td><strong>cudaD3D11DeviceList</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>cudaD3D11DeviceListAll</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>cudaD3D11DeviceListCurrentFrame</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>cudaD3D11DeviceListNextFrame</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>struct</td>
+<td>cudaArray</td>
+<td>hipArray</td>
+</tr>
+<tr class="row-odd"><td>typedef</td>
+<td>cudaArray_t</td>
+<td>hipArray_t</td>
+</tr>
+<tr class="row-even"><td>typedef</td>
+<td>cudaArray_const_t</td>
+<td>hipArray_const_t</td>
+</tr>
+<tr class="row-odd"><td>enum</td>
+<td><strong>cudaError</strong></td>
+<td><strong>hipError_t</strong></td>
+</tr>
+<tr class="row-even"><td>typedef</td>
+<td>cudaError_t</td>
+<td>hipError_t</td>
+</tr>
+<tr class="row-odd"><td>typedef</td>
+<td>cudaEvent_t</td>
+<td>hipEvent_t</td>
+</tr>
+<tr class="row-even"><td>typedef</td>
+<td>cudaGraphicsResource_t</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>typedef</td>
+<td>cudaMipmappedArray_t</td>
+<td>hipMipmappedArray_t</td>
+</tr>
+<tr class="row-even"><td>typedef</td>
+<td>cudaMipmappedArray_const_t</td>
+<td>hipMipmappedArray_const_t</td>
+</tr>
+<tr class="row-odd"><td>enum</td>
+<td><strong>cudaOutputMode</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>0x00</td>
+<td>cudaKeyValuePair</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>0x01</td>
+<td>cudaCSV</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>typedef</td>
+<td>cudaOutputMode_t</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>typedef</td>
+<td>cudaStream_t</td>
+<td>hipStream_t</td>
+</tr>
+<tr class="row-even"><td>typedef</td>
+<td>cudaStreamCallback_t</td>
+<td>hipStreamCallback_t</td>
+</tr>
+<tr class="row-odd"><td>typedef</td>
+<td>cudaSurfaceObject_t</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>typedef</td>
+<td>cudaTextureObject_t</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>typedef</td>
+<td>CUuuid_stcudaUUID_t</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>CUDA_IPC_HANDLE_SIZE</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaArrayCubemap</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaArrayDefault</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaArrayLayered</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaArraySurfaceLoadStore</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaArrayTextureGather</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaDeviceBlockingSync</td>
+<td>hipDeviceScheduleBlockingSync</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaDeviceLmemResizeToMax</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaDeviceMapHost</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaDeviceMask</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaDevicePropDontCare</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaDeviceScheduleAuto</td>
+<td>hipDeviceScheduleAuto</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaDeviceScheduleBlockingSync</td>
+<td>hipDeviceScheduleBlockingSync</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaDeviceScheduleMask</td>
+<td>hipDeviceScheduleMask</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaDeviceScheduleSpin</td>
+<td>hipDeviceScheduleSpin</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaDeviceScheduleYield</td>
+<td>hipDeviceScheduleYield</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaEventDefault</td>
+<td>hipEventDefault</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaEventDisableTiming</td>
+<td>hipEventDisableTiming</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaEventInterprocess</td>
+<td>hipEventInterprocess</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaHostAllocDefault</td>
+<td>hipHostMallocDefault</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaHostAllocMapped</td>
+<td>hipHostMallocMapped</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaHostAllocPortable</td>
+<td>hipHostMallocPortable</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaHostAllocWriteCombined</td>
+<td>hipHostMallocWriteCombined</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaHostRegisterDefault</td>
+<td>hipHostRegisterDefault</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaHostRegisterIoMemory</td>
+<td>hipHostRegisterIoMemory</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaHostRegisterMapped</td>
+<td>hipHostRegisterMapped</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaHostRegisterPortable</td>
+<td>hipHostRegisterPortable</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaIpcMemLazyEnablePeerAccess</td>
+<td>hipIpcMemLazyEnablePeerAccess</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaMemAttachGlobal</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaMemAttachHost</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaMemAttachSingle</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaOccupancyDefault</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaOccupancyDisableCachingOverride</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaPeerAccessDefault</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaStreamDefault</td>
+<td>hipStreamDefault</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaStreamLegacy</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>define</td>
+<td>cudaStreamNonBlocking</td>
+<td>hipStreamNonBlocking</td>
+</tr>
+<tr class="row-odd"><td>define</td>
+<td>cudaStreamPerThread</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

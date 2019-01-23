@@ -1,0 +1,528 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>clSPARSE API Documentation &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>clSPARSE API Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_API_References/clSPARSE_API.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="clsparse-api-documentation">
+<span id="clsparse-api"></span><h1>clSPARSE API Documentation<a class="headerlink" href="#clsparse-api-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="library-setup-or-teardown-functions">
+<h2>Library setup or teardown functions<a class="headerlink" href="#library-setup-or-teardown-functions" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseGetVersion” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseSetup” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseTeardown” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="routines-to-initialize-a-clsparse-object">
+<h2>Routines to initialize a clsparse object<a class="headerlink" href="#routines-to-initialize-a-clsparse-object" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseInitMatrix” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseInitCooMatrix” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseInitCsrMatrix” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseInitScalar” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseInitScalar” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="modifying-library-state">
+<h2>Modifying library state<a class="headerlink" href="#modifying-library-state" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygentypedef: Cannot find typedef “clsparseControl” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseCreateControl” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseEnableAsync” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseEnableExtendedPrecision” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseGetEvent” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseReleaseControl” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="sparse-iterative-solvers">
+<h2>Sparse iterative solvers<a class="headerlink" href="#sparse-iterative-solvers" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseCreateSolverControl” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseDcsrbicgStab” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseDcsrcg” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseReleaseSolverControl” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseScsrbicgStab” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseScsrcg” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseSetSolverParams” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseSolverPrintMode” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="support-functions-provided-to-read-sparse-matrices-from-file">
+<h2>Support functions provided to read sparse matrices from file<a class="headerlink" href="#support-functions-provided-to-read-sparse-matrices-from-file" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseCsrMetaCreate” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseCsrMetaDelete” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseCsrMetaSize” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseDCooMatrixfromFile” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseDCsrMatrixfromFile” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseHeaderfromFile” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseSCooMatrixfromFile” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseSCsrMatrixfromFile” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="clsparse-blas-operations">
+<h2>clSPARSE BLAS operations<a class="headerlink" href="#clsparse-blas-operations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dense-l1-blas-operations">
+<h3>Dense L1 BLAS operations<a class="headerlink" href="#dense-l1-blas-operations" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseDadd” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseDaxpby” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseDaxpy” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseDdiv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseDdot” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseDmul” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseDnrm1” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseDnrm2” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseDreduce” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseDscale” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseDsub” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseIreduce” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseSadd” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseSaxpby” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseSaxpy” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseSdiv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseSdot” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseSmul” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseSnrm1” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseSnrm2” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseSreduce” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseSscale” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “cldenseSsub” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="sparse-l2-blas-operations">
+<h3>Sparse L2 BLAS operations<a class="headerlink" href="#sparse-l2-blas-operations" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseDcoomv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseDcsrmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseScoomv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseScsrmv” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+<div class="section" id="sparse-l3-blas-operations">
+<h3>Sparse L3 BLAS operations<a class="headerlink" href="#sparse-l3-blas-operations" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseDcsrmm” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseScsrmm” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseScsrSpGemm” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+</div>
+<div class="section" id="matrix-conversion-routines">
+<h2>Matrix conversion routines<a class="headerlink" href="#matrix-conversion-routines" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseDcoo2csr” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseDcsr2coo” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseDcsr2dense” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseDdense2csr” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseScoo2csr” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseScsr2coo” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseScsr2dense” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">doxygenfunction: Cannot find function “clsparseSdense2csr” in doxygen xml output for project “ReadTheDocs-Breathe” from directory: ../../docs/xml/</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

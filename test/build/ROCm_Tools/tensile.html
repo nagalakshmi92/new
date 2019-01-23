@@ -1,0 +1,778 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tensile wiki &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Tensile wiki</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ROCm_Tools/tensile.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tensile-wiki">
+<span id="tensile"></span><h1>Tensile wiki<a class="headerlink" href="#tensile-wiki" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="#home"><span class="std std-ref">HOME</span></a></li>
+<li><a class="reference internal" href="#benchmarkconfig"><span class="std std-ref">Benchmark Config</span></a></li>
+<li><a class="reference internal" href="#benchmarkprotocol"><span class="std std-ref">Benchmark Protocol</span></a></li>
+<li><a class="reference internal" href="#contributing"><span class="std std-ref">Contributing</span></a></li>
+<li><a class="reference internal" href="#dependencies"><span class="std std-ref">Dependencies</span></a></li>
+<li><a class="reference internal" href="#installation"><span class="std std-ref">Installation</span></a></li>
+<li><a class="reference internal" href="#kernelparameters"><span class="std std-ref">Kernel Parameters</span></a></li>
+<li><a class="reference internal" href="#languages"><span class="std std-ref">Languages</span></a></li>
+<li><a class="reference internal" href="#librarylogic"><span class="std std-ref">Library Logic</span></a></li>
+<li><a class="reference internal" href="#problemnomenclature"><span class="std std-ref">Problem Nomenclature</span></a></li>
+<li><a class="reference internal" href="#tensile-lib"><span class="std std-ref">Tensile.lib</span></a></li>
+<li><span class="xref std std-ref">Versioning</span></li>
+</ul>
+<blockquote>
+<div></div></blockquote>
+<div class="section" id="home">
+<span id="id1"></span><h2>HOME<a class="headerlink" href="#home" title="Permalink to this headline">¶</a></h2>
+<p>A tool for creating a benchmark-driven backend library for GEMMs, GEMM-like problems (such as batched GEMM), N-dimensional tensor contractions, and anything else that multiplies two multi-dimensional objects together on a GPU.</p>
+<p>Overview for creating a custom TensileLib backend library for your application:</p>
+<ol class="arabic simple">
+<li>Install Tensile (optional), or at least install the PyYAML dependency (mandatory).</li>
+<li>Create a benchmark config.yaml file.</li>
+<li>Run the benchmark to produce a library logic.yaml file.</li>
+<li><dl class="first docutils">
+<dt>Add the Tensile library to your application’s CMake target. The Tensile library will be written, compiled and linked to your          application at application-compile-time.</dt>
+<dd><ul class="first last">
+<li>GPU kernels, written in HIP or OpenCL.</li>
+<li>Solution classes which enqueue the kernels.</li>
+<li>APIs which call the fastest solution for a problem.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="section" id="quick-example">
+<h3>Quick Example:<a class="headerlink" href="#quick-example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">yaml</span>
+<span class="n">mkdir</span> <span class="n">Tensile</span>
+<span class="n">cd</span> <span class="n">Tensile</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">Tensile</span><span class="o">.</span><span class="n">git</span> <span class="n">repo</span>
+<span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">python</span> <span class="o">../</span><span class="n">repo</span><span class="o">/</span><span class="n">Tensile</span><span class="o">/</span><span class="n">Tensile</span><span class="o">.</span><span class="n">py</span> <span class="o">../</span><span class="n">repo</span><span class="o">/</span><span class="n">Tensile</span><span class="o">/</span><span class="n">Configs</span><span class="o">/</span><span class="n">sgemm_5760</span><span class="o">.</span><span class="n">yaml</span> <span class="o">./</span>
+</pre></div>
+</div>
+<p>After a while of benchmarking, Tensile will print out the path to the client you can run.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="mi">4</span><span class="n">_LibraryClient</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">client</span> <span class="o">-</span><span class="n">h</span>
+<span class="o">./</span><span class="mi">4</span><span class="n">_LibraryClient</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">client</span> <span class="o">--</span><span class="n">sizes</span> <span class="mi">5760</span> <span class="mi">5760</span> <span class="mi">5760</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="benchmark-config">
+<span id="benchmarkconfig"></span><h2>Benchmark Config<a class="headerlink" href="#benchmark-config" title="Permalink to this headline">¶</a></h2>
+<p>Example Benchmark config.yaml</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GlobalParameters</span><span class="p">:</span>
+  <span class="n">PrintLevel</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">ForceRedoBenchmarkProblems</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">ForceRedoLibraryLogic</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">ForceRedoLibraryClient</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">CMakeBuildType</span><span class="p">:</span> <span class="n">Release</span>
+  <span class="n">EnqueuesPerSync</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">SyncsPerBenchmark</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">LibraryPrintDebug</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">NumElementsToValidate</span><span class="p">:</span> <span class="mi">128</span>
+  <span class="n">ValidationMaxToPrint</span><span class="p">:</span> <span class="mi">16</span>
+  <span class="n">ValidationPrintValids</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">ShortNames</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="n">MergeFiles</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="n">PlatformIdx</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">DeviceIdx</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">DataInitTypeAB</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="n">BenchmarkProblems</span><span class="p">:</span>
+  <span class="o">-</span> <span class="c1"># sgemm NN</span>
+    <span class="o">-</span> <span class="c1"># ProblemType</span>
+      <span class="n">OperationType</span><span class="p">:</span> <span class="n">GEMM</span>
+      <span class="n">DataType</span><span class="p">:</span> <span class="n">s</span>
+      <span class="n">TransposeA</span><span class="p">:</span> <span class="kc">False</span>
+      <span class="n">TransposeB</span><span class="p">:</span> <span class="kc">False</span>
+      <span class="n">UseBeta</span><span class="p">:</span> <span class="kc">True</span>
+      <span class="n">Batched</span><span class="p">:</span> <span class="kc">False</span>
+
+    <span class="o">-</span> <span class="c1"># BenchmarkProblemSizeGroup</span>
+      <span class="n">InitialSolutionParameters</span><span class="p">:</span>
+      <span class="n">BenchmarkCommonParameters</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">ProblemSizes</span><span class="p">:</span>
+          <span class="o">-</span> <span class="n">Range</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span><span class="mi">5760</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">]</span>
+        <span class="o">-</span> <span class="n">LoopDoWhile</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span>
+        <span class="o">-</span> <span class="n">NumLoadsCoalescedA</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="o">-</span> <span class="n">NumLoadsCoalescedB</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="o">-</span> <span class="n">WorkGroupMapping</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+      <span class="n">ForkParameters</span><span class="p">:</span>
+         <span class="o">-</span> <span class="n">ThreadTile</span><span class="p">:</span>
+         <span class="o">-</span> <span class="p">[</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span> <span class="p">]</span>
+         <span class="o">-</span> <span class="p">[</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span> <span class="p">]</span>
+         <span class="o">-</span> <span class="p">[</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span> <span class="p">]</span>
+        <span class="o">-</span> <span class="n">WorkGroup</span><span class="p">:</span>
+          <span class="o">-</span> <span class="p">[</span>  <span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span>  <span class="mi">1</span> <span class="p">]</span>
+          <span class="o">-</span> <span class="p">[</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span>  <span class="mi">1</span> <span class="p">]</span>
+        <span class="o">-</span> <span class="n">LoopTail</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+        <span class="o">-</span> <span class="n">EdgeType</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;Branch&quot;</span><span class="p">,</span> <span class="s2">&quot;ShiftPtr&quot;</span><span class="p">]</span>
+        <span class="o">-</span> <span class="n">DepthU</span><span class="p">:</span> <span class="p">[</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+        <span class="o">-</span> <span class="n">VectorWidth</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+      <span class="n">BenchmarkForkParameters</span><span class="p">:</span>
+      <span class="n">JoinParameters</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">MacroTile</span>
+      <span class="n">BenchmarkJoinParameters</span><span class="p">:</span>
+      <span class="n">BenchmarkFinalParameters</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">ProblemSizes</span><span class="p">:</span>
+          <span class="o">-</span> <span class="n">Range</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span><span class="mi">5760</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">]</span>
+
+<span class="n">LibraryLogic</span><span class="p">:</span>
+
+<span class="n">LibraryClient</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="section" id="structure-of-config-yaml">
+<h3>Structure of config.yaml<a class="headerlink" href="#structure-of-config-yaml" title="Permalink to this headline">¶</a></h3>
+<p>Top level data structure whose keys are Parameters, BenchmarkProblems, LibraryLogic and LibraryClient.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Parameters contains a dictionary storing global parameters used for all parts of the benchmarking.</li>
+<li>BenchmarkProblems contains a list of dictionaries representing the benchmarks to conduct; each element, i.e. dictionary, in the list is for benchmarking a single ProblemType. The keys for these dictionaries are ProblemType, InitialSolutionParameters,           BenchmarkCommonParameters, ForkParameters, BenchmarkForkParameters, JoinParameters, BenchmarkJoinParameters and                         BenchmarkFinalParameters. See Benchmark Protocol for more information on these steps.</li>
+<li>LibraryLogic contains a dictionary storing parameters for analyzing the benchmark data and designing how the backend library will select which Solution for certain ProblemSizes.</li>
+<li>LibraryClient contains a dictionary storing parameters for actually creating the library and creating a client which calls into the library.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="global-parameters">
+<h3>Global Parameters<a class="headerlink" href="#global-parameters" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Name: Prefix to add to API function names; typically name of device.</li>
+<li>MinimumRequiredVersion: Which version of Tensile is required to interpret this yaml file</li>
+<li>RuntimeLanguage: Use HIP or OpenCL runtime.</li>
+<li>KernelLanguage: For OpenCL runtime, kernel language must be set to OpenCL. For HIP runtime, kernel language can be set to HIP or assembly (gfx803, gfx900).</li>
+<li>PrintLevel: 0=Tensile prints nothing, 1=prints some, 2=prints a lot.</li>
+<li>ForceRedoBenchmarkProblems: False means don’t redo a benchmark phase if results for it already exist.</li>
+<li>ForceRedoLibraryLogic: False means don’t re-generate library logic if it already exist.</li>
+<li>ForceRedoLibraryClient: False means don’t re-generate library client if it already exist.</li>
+<li>CMakeBuildType: Release or Debug</li>
+<li>EnqueuesPerSync: Num enqueues before syncing the queue.</li>
+<li>SyncsPerBenchmark: Num queue syncs for each problem size.</li>
+<li>LibraryPrintDebug: True means Tensile solutions will print kernel enqueue info to stdout</li>
+<li>NumElementsToValidate: Number of elements to validate; 0 means no validation.</li>
+<li>ValidationMaxToPrint: How many invalid results to print.</li>
+<li>ValidationPrintValids: True means print validation comparisons that are valid, not just invalids.</li>
+<li>ShortNames: Convert long kernel, solution and files names to short serial ids.</li>
+<li>MergeFiles: False means write each solution and kernel to its own file.</li>
+<li>PlatformIdx: OpenCL platform id.</li>
+<li>DeviceIdx: OpenCL or HIP device id.</li>
+<li>DataInitType[AB,C]: Initialize validation data with 0=0’s, 1=1’s, 2=serial, 3=random.</li>
+<li>KernelTime: Use kernel time reported from runtime rather than api times from cpu clocks to compare kernel performance.</li>
+</ul>
+<p>The exhaustive list of global parameters and their defaults is stored in Common.py.</p>
+</div>
+<div class="section" id="problem-type-parameters">
+<h3>Problem Type Parameters<a class="headerlink" href="#problem-type-parameters" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>OperationType: GEMM or TensorContraction.</li>
+<li>DataType: s, d, c, z, h</li>
+<li>UseBeta: False means library/solutions/kernel won’t accept a beta parameter; thus beta=0.</li>
+<li>UseInitialStrides: False means data is contiguous in memory.</li>
+<li>HighPrecisionAccumulate: For tmpC += a*b, use twice the precision for tmpC as for DataType. Not yet implemented.</li>
+<li>ComplexConjugateA: True or False; ignored for real precision.</li>
+<li>ComplexConjugateB: True or False; ignored for real precision.</li>
+</ul>
+<p>For OperationType=GEMM only:
+* TransposeA: True or False.
+* TransposeB: True or False.
+* Batched: True or False.</p>
+<p>For OperationType=TensorContraction only (showing batched gemm NT: C[ijk] = Sum[l] A[ilk] * B[jlk])
+* IndexAssignmentsA: [0, 3, 2]
+* IndexAssignmentsB: [1, 3, 2]
+* NumDimensionsC: 3.</p>
+</div>
+<div class="section" id="defaults">
+<h3>Defaults<a class="headerlink" href="#defaults" title="Permalink to this headline">¶</a></h3>
+<p>Because of the flexibility / complexity of the benchmarking process and, therefore, of the config.yaml files; Tensile has a default value for every parameter. If you neglect to put LoopUnroll anywhere in your benchmark, rather than crashing or complaining, Tensile will put the default LoopUnroll options into the default phase (common, fork, join…). This guarantees ease of use and more importantly backward compatibility; every time we add a new possible solution parameter, you don’t necessarily need to update your configs; we’ll have a default figured out for you.</p>
+<p>However, this may cause some confusion. If your config fork 2 parameters, but you see that 3 were forked during benchmarking, that’s because you didn’t specify the 3rd parameter anywhere, so Tensile stuck it in its default phase, which was forking (for example). Also, specifying ForkParameters: and leaving it empty isn’t the same as leaving JoinParameter out of your config. If you leave ForkParameters out of your config, Tensile will add a ForkParameters step and put the default parameters into it (unless you put all the parameters elsewhere), but if you specify ForkParameters and leave it empty, then you won’t work anything.</p>
+<p>Therefore, it is safest to specify all parameters in your config.yaml files; that way you’ll guarantee the behavior you want. See /Tensile/Common.py for the current list of parameters.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="benchmark-protocol">
+<span id="benchmarkprotocol"></span><h2>Benchmark Protocol<a class="headerlink" href="#benchmark-protocol" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="old-benchmark-architecture-was-intractable">
+<h3>Old Benchmark Architecture was Intractable<a class="headerlink" href="#old-benchmark-architecture-was-intractable" title="Permalink to this headline">¶</a></h3>
+<p>The benchmarking strategy from version 1 was vanilla flavored brute force: <code class="docutils literal notranslate"><span class="pre">(8</span> <span class="pre">WorkGroups)*</span> <span class="pre">(12</span> <span class="pre">ThreadTiles)*</span> <span class="pre">(4</span> <span class="pre">NumLoadsCoalescedAs)*</span> <span class="pre">(4</span> <span class="pre">NumLoadsCoalescedBs)*</span> <span class="pre">(3</span> <span class="pre">LoopUnrolls)*</span> <span class="pre">(5</span> <span class="pre">BranchTypes)*</span> <span class="pre">...*(1024</span> <span class="pre">ProblemSizes)=23,592,960</span></code> is a multiplicative series which grows very quickly. Adding one more boolean parameter doubles the number of kernel enqueues of the benchmark.</p>
+</div>
+<div class="section" id="incremental-benchmark-is-faster">
+<h3>Incremental Benchmark is Faster<a class="headerlink" href="#incremental-benchmark-is-faster" title="Permalink to this headline">¶</a></h3>
+<p>Tensile version 2 allows the user to manually interrupt the multiplicative series with “additions” instead of “multiplies”, i.e., <code class="docutils literal notranslate"><span class="pre">(8</span> <span class="pre">WorkGroups)*</span> <span class="pre">(12</span> <span class="pre">ThreadTiles)+</span> <span class="pre">(4</span> <span class="pre">NumLoadsCoalescedAs)*</span> <span class="pre">(4</span> <span class="pre">NumLoadsCoalescedBs)*</span> <span class="pre">(3</span> <span class="pre">LoopUnrolls)+</span> <span class="pre">(5</span> <span class="pre">BranchTypes)*</span> <span class="pre">...+(1024</span> <span class="pre">ProblemSizes)=1,151</span></code> is a dramatically smaller number of enqueues. Now, adding one more boolean parameter may only add on 2 more enqueues.</p>
+</div>
+<div class="section" id="phases-of-benchmark">
+<h3>Phases of Benchmark<a class="headerlink" href="#phases-of-benchmark" title="Permalink to this headline">¶</a></h3>
+<p>To make the Tensile’s programability more manageable for the user and developer, the benchmarking protocol has been split up into several steps encoded in a config.yaml file. The below sections reference the following config.yaml. Note that this config.yaml has been created to be a simple illustration and doesn’t not represent an actual good benchmark protocol. See the configs included in the repository (/Tensile/Configs) for examples of good benchmarking configs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BenchmarkProblems</span><span class="p">:</span>
+ <span class="o">-</span> <span class="c1"># sgemm</span>
+   <span class="o">-</span> <span class="c1"># Problem Type</span>
+     <span class="n">OperationType</span><span class="p">:</span> <span class="n">GEMM</span>
+   <span class="o">-</span> <span class="c1"># Benchmark Size-Group</span>
+    <span class="n">InitialSolutionParameters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">WorkGroup</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span> <span class="p">]</span> <span class="p">]</span>
+      <span class="o">-</span> <span class="n">NumLoadsCoalescedA</span><span class="p">:</span> <span class="p">[</span> <span class="mi">1</span> <span class="p">]</span>
+      <span class="o">-</span> <span class="n">NumLoadsCoalescedB</span><span class="p">:</span> <span class="p">[</span> <span class="mi">1</span> <span class="p">]</span>
+      <span class="o">-</span> <span class="n">ThreadTile</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span> <span class="p">]</span> <span class="p">]</span>
+
+    <span class="n">BenchmarkCommonParameters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">ProblemSizes</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">Range</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span><span class="mi">512</span><span class="p">],</span> <span class="p">[</span><span class="mi">512</span><span class="p">],</span> <span class="p">[</span><span class="mi">512</span><span class="p">]</span> <span class="p">]</span>
+      <span class="o">-</span> <span class="n">EdgeType</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Branch&quot;</span><span class="p">,</span> <span class="s2">&quot;ShiftPtr&quot;</span><span class="p">]</span>
+        <span class="n">PrefetchGlobalRead</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+
+    <span class="n">ForkParameters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">WorkGroup</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="p">]</span>
+        <span class="n">ThreadTile</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="p">]</span>
+
+    <span class="n">BenchmarkForkParameters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">ProblemSizes</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">Exact</span><span class="p">:</span> <span class="p">[</span> <span class="mi">2880</span><span class="p">,</span> <span class="mi">2880</span><span class="p">,</span> <span class="mi">2880</span> <span class="p">]</span>
+      <span class="o">-</span> <span class="n">NumLoadsCoalescedA</span><span class="p">:</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span> <span class="p">]</span>
+      <span class="o">-</span> <span class="n">NumLoadsCoalescedB</span><span class="p">:</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span> <span class="p">]</span>
+
+    <span class="n">JoinParameters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">MacroTile</span>
+
+    <span class="n">BenchmarkJoinParameters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">LoopUnroll</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+
+    <span class="n">BenchmarkFinalParameters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">ProblemSizes</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">Range</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">128</span><span class="p">],</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">128</span><span class="p">],</span> <span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="initial-solution-parameters">
+<h3>Initial Solution Parameters<a class="headerlink" href="#initial-solution-parameters" title="Permalink to this headline">¶</a></h3>
+<p>A Solution is comprised of ~20 parameters, and all are needed to create a kernel. Therefore, during the first benchmark which determines which WorkGroupShape is fastest, what are the other 19 solution parameters which are used to describe the kernels that we benchmark? That’s what InitialSolutionParameters are for. The solution used for benchmarking WorkGroupShape will use the parameters from InitialSolutionParameters. The user must choose good default solution parameters in order to correctly identify subsequent optimal parameters.</p>
+</div>
+<div class="section" id="problem-sizes">
+<h3>Problem Sizes<a class="headerlink" href="#problem-sizes" title="Permalink to this headline">¶</a></h3>
+<p>Each step of the benchmark can override what problem sizes will be benchmarked. A ProblemSizes entry of type Range is a list whose length is the number of indices in the ProblemType. A GEMM ProblemSizes must have 3 elements while a batched-GEMM ProblemSizes must have 4 elements. So, for a ProblemType of C[ij] = Sum[k] A[ik]*B[jk], the ProblemSizes elements represent [SizeI, SizeJ, SizeK]. For each index, there are 5 ways of specifying the sizes of that index:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>1.[1968]</dt>
+<dd><ul class="first last simple">
+<li>Benchmark only size 1968; n = 1.</li>
+</ul>
+</dd>
+<dt>2.[16, 1920]</dt>
+<dd><ul class="first last simple">
+<li>Benchmark sizes 16 to 1968 using the default step size (=16); n = 123.</li>
+</ul>
+</dd>
+<dt>3.[16, 32, 1968]</dt>
+<dd><ul class="first last simple">
+<li>Benchmark sizes 16 to 1968 using a step size of 32; n = 61.</li>
+</ul>
+</dd>
+<dt>4.[64, 32, 16, 1968]</dt>
+<dd><ul class="first last simple">
+<li>Benchmark sizes from 64 to 1968 with a step size of 32. Also, increase the step size by 16 each iteration.</li>
+<li>This causes fewer sizes to be benchmarked when the sizes are large, and more benchmarks where the sizes are small; this is          typically desired behavior.</li>
+<li>n = 16 (64, 96, 144, 208, 288, 384, 496, 624, 768, 928, 1104, 1296, 1504, 1728, 1968). The stride at the beginning is 32, but       the stride at the end is 256.</li>
+</ul>
+</dd>
+<dt>5.[0]</dt>
+<dd><ul class="first last simple">
+<li>The size of this index is just whatever size index 0 is. For a 3-dimensional ProblemType, this allows benchmarking only a 2-                dimensional or 1-dimensional slice of problem sizes.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<p>Here are a few examples of valid ProblemSizes for 3D GEMMs:</p>
+<p>Range: [ [16, 128], [16, 128], [16, 128] ] # n = 512
+Range: [ [16, 128], 0, 0] # n = 8
+Range: [ [16, 16, 16, 5760], 0, [1024, 1024, 4096] ] # n = 108</p>
+</div>
+<div class="section" id="benchmark-common-parameters">
+<h3>Benchmark Common Parameters<a class="headerlink" href="#benchmark-common-parameters" title="Permalink to this headline">¶</a></h3>
+<p>During this first phase of benchmarking, we examine parameters which will be the same for all solutions for this ProblemType. During each step of benchmarking, there is only 1 winner. In the above example we are benchmarking the dictionary {EdgeType: [ Branch, ShiftPtr], PrefetchGlobalRead: [False, True]}.; therefore, this benchmark step generates 4 solution candidates, and the winner will be the fastest EdgeType/PrefetchGlobalRead combination. Assuming the winner is ET=SP and PGR=T, then all solutions for this ProblemType will have ET=SP and PGR=T. Also, once a parameter has been determined, all subsequent benchmarking steps will use this determined parameter rather than pulling values from InitialSolutionParameters. Because the common parameters will apply to all kernels, they are typically the parameters which are compiler-dependent or hardware-dependent rather than being tile-dependent.</p>
+</div>
+<div class="section" id="fork-parameters">
+<h3>Fork Parameters<a class="headerlink" href="#fork-parameters" title="Permalink to this headline">¶</a></h3>
+<p>If we continued to determine every parameter in the above manner, we’d end up with a single fastest solution for the specified ProblemSizes; we usually desire multiple different solutions with varying parameters which may be fastest for different groups of ProblemSizes. One simple example of this is small tiles sizes are fastest for small problem sizes, and large tiles are fastest for large tile sizes.</p>
+<p>Therefore, we allow “forking” parameters; this means keeping multiple winners after each benchmark steps. In the above example we fork {WorkGroup: […], ThreadTile: […]}. This means that in subsequent benchmarking steps, rather than having one winning parameter, we’ll have one winning parameter per fork permutation; we’ll have 9 winners.</p>
+</div>
+<div class="section" id="benchmark-fork-parameters">
+<h3>Benchmark Fork Parameters<a class="headerlink" href="#benchmark-fork-parameters" title="Permalink to this headline">¶</a></h3>
+<p>When we benchmark the fork parameters, we retain one winner per permutation. Therefore, we first determine the fastest NumLoadsCoalescedA for each of the WG,TT permutations, then we determine the fastest NumLoadsCoalescedB for each permutation.</p>
+</div>
+<div class="section" id="join-parameters">
+<h3>Join Parameters<a class="headerlink" href="#join-parameters" title="Permalink to this headline">¶</a></h3>
+<p>After determining fastest parameters for all the forked solution permutations, we have the option of reducing the number of winning solutions. When a parameter is listed in the JoinParameters section, that means that of the kept winning solutions, each will have a different value for that parameter. Listing more parameters to join results in more winners being kept, while having a JoinParameters section with no parameters listed results on only 1 fastest solution.</p>
+<p>In our example we join over the MacroTile (work-group x thread-tile). After forking tiles, there were 9 solutions that we kept. After joining MacroTile, we’ll only keep six: 16x256, 32x128, 64x64, 128x32 and 256x16. The solutions that are kept are based on their performance during the last BenchmarkForkParameters benchmark, or, if there weren’t any, JoinParameters will conduct a benchmark of all solution candidates then choose the fastest.</p>
+</div>
+<div class="section" id="benchmark-join-parameters">
+<h3>Benchmark Join Parameters<a class="headerlink" href="#benchmark-join-parameters" title="Permalink to this headline">¶</a></h3>
+<p>After narrowing the list of fastest solutions through joining, you can continue to benchmark parameters, keeping one winning parameter per solution permutation.</p>
+</div>
+<div class="section" id="benchmark-final-parameters">
+<h3>Benchmark Final Parameters<a class="headerlink" href="#benchmark-final-parameters" title="Permalink to this headline">¶</a></h3>
+<p>After all the parameter benchmarking has been completed and the final list of fastest solution has been assembled, we can benchmark all the solution over a large set of ProblemSizes. This benchmark represent the final output of benchmarking; it outputs a .csv file where the rows are all the problem sizes and the columns are all the solutions. This is the information which gets analysed to produce the library logic.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="contributing">
+<span id="id2"></span><h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
+<p>We’d love your help, but…</p>
+<ol class="arabic simple">
+<li>Never check in a tab (t); use 2 spaces.</li>
+<li>Follow the coding style of the file you’re editing.</li>
+<li>Make pull requests against develop branch.</li>
+<li>Rebase your develop branch against ROCmSoftwarePlatform::Tensile::develop branch right before pull-requesting.</li>
+<li>In your pull request, state what you tested (which OS, what drivers, what devices, which config.yaml’s) so we can ensure that your    changes haven’t broken anything.</li>
+</ol>
+<blockquote>
+<div></div></blockquote>
+</div>
+<div class="section" id="dependencies">
+<span id="id3"></span><h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cmake">
+<h3>CMake<a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>CMake 2.8</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="python">
+<h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Python 2.7</li>
+<li>PyYAML (Can be installed via apt, apt-get, yum, pip…; module is typically named python-yaml, pyyaml or PyYAML.)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="compilers">
+<h3>Compilers<a class="headerlink" href="#compilers" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>For Tensile_BACKEND = OpenCL1.2</dt>
+<dd><ul class="first last">
+<li>Visual Studio 14 (2015). (VS 2012 may also be supported; c++11 should no longer be required by Tensile. Need to verify.)</li>
+<li>GCC 4.8</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>For Tensile_BACKEND = HIP</dt>
+<dd><ul class="first last">
+<li>ROCM 2.0</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="installation">
+<span id="id4"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Tensile can be installed via:</p>
+<ol class="arabic simple">
+<li>Install directly from repo using pip:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">Tensile</span><span class="o">.</span><span class="n">git</span><span class="nd">@develop</span>
+<span class="n">tensile</span> <span class="n">config</span><span class="o">.</span><span class="n">yaml</span> <span class="n">benchmark_path</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Download repo and install manually:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">Tensile</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">Tensile</span>
+<span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<span class="n">tensile</span> <span class="n">config</span><span class="o">.</span><span class="n">yaml</span> <span class="n">benchmark_path</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Download repo and don’t install; install PyYAML dependency manually and call python scripts manually:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">Tensile</span><span class="o">.</span><span class="n">git</span>
+<span class="n">python</span> <span class="n">Tensile</span><span class="o">/</span><span class="n">Tensile</span><span class="o">/</span><span class="n">Tensile</span><span class="o">.</span><span class="n">py</span> <span class="n">config</span><span class="o">.</span><span class="n">yaml</span> <span class="n">benchmark_path</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="kernel-parameters">
+<span id="kernelparameters"></span><h2>Kernel Parameters<a class="headerlink" href="#kernel-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="solution-kernel-parameters">
+<h3>Solution / Kernel Parameters<a class="headerlink" href="#solution-kernel-parameters" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>LoopDoWhile: True=DoWhile loop, False=While or For loop</li>
+<li>LoopTail: Additional loop with LoopUnroll=1.</li>
+<li>EdgeType: Branch, ShiftPtr or None</li>
+<li>WorkGroup: [dim0, dim1, LocalSplitU]</li>
+<li>ThreadTile: [dim0, dim1]</li>
+<li>GlobalSplitU: Split up summation among work-groups to create more concurrency. This option launches a kernel to handle the beta       scaling, then a second kernel where the writes to global memory are atomic.</li>
+<li>PrefetchGlobalRead: True means outer loop should prefetch global data one iteration ahead.</li>
+<li>PrefetchLocalRead: True means inner loop should prefetch lds data one iteration ahead.</li>
+<li>WorkGroupMapping: In what order will work-groups compute C; affects cacheing.</li>
+<li>LoopUnroll: How many iterations to unroll inner loop; helps loading coalesced memory.</li>
+<li>MacroTile: Derrived from WorkGroup*ThreadTile.</li>
+<li>DepthU: Derrived from LoopUnroll*SplitU.</li>
+<li>NumLoadsCoalescedA,B: Number of loads from A in coalesced dimension.</li>
+<li>GlobalReadCoalesceGroupA,B: True means adjacent threads map to adjacent global read elements (but, if transposing data then write     to lds is scattered).</li>
+<li>GlobalReadCoalesceVectorA,B: True means vector components map to adjacent global read elements (but, if transposing data then write   to lds is scattered).</li>
+<li>VectorWidth: Thread tile elements are contiguous for faster memory accesses. For example VW=4 means a thread will read a float4        from memory rather than 4 non-contiguous floats.</li>
+</ul>
+<p>The exhaustive list of solution parameters and their defaults is stored in Common.py.</p>
+</div>
+<div class="section" id="kernel-parameters-affect-performance">
+<h3>Kernel Parameters Affect Performance<a class="headerlink" href="#kernel-parameters-affect-performance" title="Permalink to this headline">¶</a></h3>
+<p>The kernel parameters affect many aspects of performance. Changing a parameter may help address one performance bottleneck but worsen another. That is why searching through the parameter space is vital to discovering the fastest kernel for a given problem.</p>
+<blockquote>
+<div><img alt="../_images/img11.png" class="align-center" src="../_images/img11.png" />
+</div></blockquote>
+</div>
+<div class="section" id="how-n-dimensional-tensor-contractions-are-mapped-to-finite-dimensional-gpu-kernels">
+<h3>How N-Dimensional Tensor Contractions Are Mapped to Finite-Dimensional GPU Kernels<a class="headerlink" href="#how-n-dimensional-tensor-contractions-are-mapped-to-finite-dimensional-gpu-kernels" title="Permalink to this headline">¶</a></h3>
+<p>For a traditional GEMM, the 2-dimensional output, C[i,j], is mapped to launching a 2-dimensional grid of work groups, each of which has a 2-dimensional grid of work items; one dimension belongs to i and one dimension belongs to j. The 1-dimensional summation is represented by a single loop within the kernel body.</p>
+</div>
+<div class="section" id="special-dimensions-d0-d1-and-du">
+<h3>Special Dimensions: D0, D1 and DU<a class="headerlink" href="#special-dimensions-d0-d1-and-du" title="Permalink to this headline">¶</a></h3>
+<p>To handle arbitrary dimensionality, Tensile begins by determining 3 special dimensions: D0, D1 and DU.</p>
+<p>D0 and D1 are the free indices of A and B (one belongs to A and one to B) which have the shortest strides. This allows the inner-most loops to read from A and B the fastest via coalescing. In a traditional GEMM, every matrix has a dimension with a shortest stride of 1, but Tensile doesn’t make that assumption. Of these two dimensions, D0 is the dimension which has the shortest tensor C stride which allows for fast writing.</p>
+<p>DU represents the summation index with the shortest combined stride (stride in A + stride in B); it becomes the inner most loop which gets “U”nrolled. This assignment is also mean’t to assure fast reading in the inner-most summation loop. There can be multiple summation indices (i.e. embedded loops) and DU will be iterated over in the inner most loop.</p>
+</div>
+<div class="section" id="gpu-kernel-dimension">
+<h3>GPU Kernel Dimension<a class="headerlink" href="#gpu-kernel-dimension" title="Permalink to this headline">¶</a></h3>
+<p>OpenCL allows for 3-dimensional grid of work-groups, and each work-group can be a 3-dimensional grid of work-items. Tensile assigns D0 to be dimension-0 of the work-group and work-item grid; it assigns D1 to be dimension-1 of the work-group and work-item grids. All other free or batch dimensions are flattened down into the final dimension-2 of the work-group and work-item grids. Withing the GPU kernel, dimensions-2 is reconstituted back into whatever dimensions it represents.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="languages">
+<span id="id5"></span><h2>Languages<a class="headerlink" href="#languages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tensile-benchmarking-is-python">
+<h3>Tensile Benchmarking is Python<a class="headerlink" href="#tensile-benchmarking-is-python" title="Permalink to this headline">¶</a></h3>
+<p>The benchmarking module, Tensile.py, is written in python. The python scripts write solution, kernels, cmake files and all other C/C++ files used for benchmarking.</p>
+</div>
+<div class="section" id="tensile-library">
+<h3>Tensile Library<a class="headerlink" href="#tensile-library" title="Permalink to this headline">¶</a></h3>
+<p>The Tensile API, Tensile.h, is confined to C89 so that it will be usable by most software. The code behind the API is allowed to be c++11.</p>
+</div>
+<div class="section" id="device-languages">
+<h3>Device Languages<a class="headerlink" href="#device-languages" title="Permalink to this headline">¶</a></h3>
+<p>The device languages Tensile supports for the gpu kernels is</p>
+<ul class="simple">
+<li>OpenCL 1.2</li>
+<li>HIP</li>
+<li><dl class="first docutils">
+<dt>Assembly</dt>
+<dd><ul class="first last">
+<li>gfx803</li>
+<li>gfx900</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="library-logic">
+<span id="librarylogic"></span><h2>Library Logic<a class="headerlink" href="#library-logic" title="Permalink to this headline">¶</a></h2>
+<p>Running the LibraryLogic phase of benchmarking analyses the benchmark data and encodes a mapping for each problem type. For each problem type, it maps problem sizes to best solution (i.e. kernel).</p>
+<p>When you build Tensile.lib, you point the TensileCreateLibrary function to a directory where your library logic yaml files are.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+<div class="section" id="problem-nomenclature">
+<span id="problemnomenclature"></span><h2>Problem Nomenclature<a class="headerlink" href="#problem-nomenclature" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-problems">
+<h3>Example Problems<a class="headerlink" href="#example-problems" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>C[i,j] = Sum[k] A[i,k] * B[k,j] (GEMM; 2 free indices and 1 summation index)</li>
+<li>C[i,j,k] = Sum[l] A[i,l,k] * B[l,j,k] (batched-GEMM; 2 free indices, 1 batched index and 1 summation index)</li>
+<li>C[i,j] = Sum[k,l] A[i,k,l] * B[j,l,k] (2D summation)</li>
+<li>C[i,j,k,l,m] = Sum[n] A[i,k,m,l,n] * B[j,k,l,n,m] (GEMM with 3 batched indices)</li>
+<li>C[i,j,k,l,m] = Sum[n,o] A[i,k,m,o,n] * B[j,m,l,n,o] (4 free indices, 2 summation indices and 1 batched index)</li>
+<li>C[i,j,k,l] = Sum[m,n] A[i,j,m,n,l] * B[m,n,k,j,l] (batched image convolution mapped to 7D tensor contraction)</li>
+<li>and even crazier</li>
+</ul>
+</div>
+<div class="section" id="nomenclature">
+<h3>Nomenclature<a class="headerlink" href="#nomenclature" title="Permalink to this headline">¶</a></h3>
+<p>The indices describe the dimensionality of the problem being solved. A GEMM operation takes 2 2-dimensional matrices as input (totaling 4 input dimensions) and contracts them along one dimension (which cancels out 2 of the dimensions), resulting in a 2-dimensional result.</p>
+<p>Whenever an index shows up in multiple tensors, those tensors must be the same size along that dimension but they may have different strides.</p>
+<p>There are 3 categories of indices/dimensions that Tensile deals with: free, batch and bound.</p>
+</div>
+<div class="section" id="free-indices">
+<h3>Free Indices<a class="headerlink" href="#free-indices" title="Permalink to this headline">¶</a></h3>
+<p>Free indices are the indices of tensor C which come in pairs; one of the pair shows up in tensor A while the other shows up in tensor B. In the really crazy example above, i/j/k/l are the 4 free indices of tensor C. Indices i and k come from tensor A and indices j and l come from tensor B.</p>
+</div>
+<div class="section" id="batch-indices">
+<h3>Batch Indices<a class="headerlink" href="#batch-indices" title="Permalink to this headline">¶</a></h3>
+<p>Batch indices are the indices of tensor C which shows up in both tensor A and tensor B. For example, the difference between the GEMM example and the batched-GEMM example above is the additional index. In the batched-GEMM example, the index K is the batch index which is batching together multiple independent GEMMs.</p>
+</div>
+<div class="section" id="bound-summation-indices">
+<h3>Bound/Summation Indices<a class="headerlink" href="#bound-summation-indices" title="Permalink to this headline">¶</a></h3>
+<p>The final type of indices are called bound indices or summation indices. These indices do not show up in tensor C; they show up in the summation symbol (Sum[k]) and in tensors A and B. It is along these indices that we perform the inner products (pairwise multiply then sum).</p>
+</div>
+<div class="section" id="limitations">
+<h3>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h3>
+<p>Problem supported by Tensile must meet the following conditions:</p>
+<p>There must be at least one pair of free indices.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="tensile-lib">
+<span id="id6"></span><h2>Tensile.lib<a class="headerlink" href="#tensile-lib" title="Permalink to this headline">¶</a></h2>
+<p>After running the benchmark and generating library config files, you’re ready to add Tensile.lib to your project. Tensile provides a TensileCreateLibrary function, which can be called:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> set(Tensile_BACKEND &quot;HIP&quot;)
+ set( Tensile_LOGIC_PATH &quot;~/LibraryLogic&quot; CACHE STRING &quot;Path to Tensile logic.yaml files&quot;)
+ option( Tensile_MERGE_FILES &quot;Tensile to merge kernels and solutions files?&quot; OFF)
+ option( Tensile_SHORT_NAMES &quot;Tensile to use short file/function names? Use if compiler complains they&#39;re too long.&quot; OFF)
+ option( Tensile_PRINT_DEBUG &quot;Tensile to print runtime debug info?&quot; OFF)
+
+ find_package(Tensile) # use if Tensile has been installed
+
+ TensileCreateLibrary(
+   ${Tensile_LOGIC_PATH}
+   ${Tensile_BACKEND}
+   ${Tensile_MERGE_FILES}
+   ${Tensile_SHORT_NAMES}
+   ${Tensile_PRINT_DEBUG}
+   Tensile_ROOT ${Tensile_ROOT} # optional; use if tensile not installed
+   )
+ target_link_libraries( TARGET Tensile )
+
+
+.. _Versioning:
+</pre></div>
+</div>
+</div>
+<div class="section" id="versioning">
+<h2>Versioning<a class="headerlink" href="#versioning" title="Permalink to this headline">¶</a></h2>
+<p>Tensile follows semantic versioning practices, i.e. Major.Minor.Patch, in BenchmarkConfig.yaml files, LibraryConfig.yaml files and in cmake find_package. Tensile is compatible with a “MinimumRequiredVersion” if Tensile.Major==MRV.Major and Tensile.Minor.Patch &gt;= MRV.Minor.Patch.</p>
+<ul class="simple">
+<li>Major: Tensile increments the major version if the public API changes, or if either the benchmark.yaml or library-config.yaml files   change format in a non-backwards-compatible manner.</li>
+<li>Minor: Tensile increments the minor version when new kernel, solution or benchmarking features are introduced in a backwards-         compatible manner.</li>
+<li>Patch: Bug fixes or minor improvements.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

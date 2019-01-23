@@ -1,0 +1,563 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Initialization and Version &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Initialization and Version</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/ROCm_API_References/HIP_API/Initialization-and-Version.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="initialization-and-version">
+<span id="id1"></span><h1>Initialization and Version<a class="headerlink" href="#initialization-and-version" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hipinit">
+<h2>hipInit<a class="headerlink" href="#hipinit" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv37hipInitj">
+<span id="_CPPv27hipInitj"></span><span id="hipInit__unsigned-i"></span><span class="target" id="group___driver_1ga01baa652dda5815c594d047060496caa"></span>hipError_t <code class="descname">hipInit</code><span class="sig-paren">(</span>unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv37hipInitj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Explicitly initializes the HIP runtime. </p>
+<p>Most HIP APIs implicitly initialize the HIP runtime. This API provides control over the timing of the initialization. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdeviceget">
+<h2>hipDeviceGet<a class="headerlink" href="#hipdeviceget" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv312hipDeviceGetP11hipDevice_ti">
+<span id="_CPPv212hipDeviceGetP11hipDevice_ti"></span><span id="hipDeviceGet__hipDevice_tP.i"></span><span class="target" id="group___driver_1gadf6c74aaf7c22fea80e9ac3400d43704"></span>hipError_t <code class="descname">hipDeviceGet</code><span class="sig-paren">(</span>hipDevice_t *<em>device</em>, int <em>ordinal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv312hipDeviceGetP11hipDevice_ti" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a handle to a compute device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInavlidDevice </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">device</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">ordinal</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicecomputecapability">
+<h2>hipDeviceComputeCapability<a class="headerlink" href="#hipdevicecomputecapability" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv326hipDeviceComputeCapabilityPiPi11hipDevice_t">
+<span id="_CPPv226hipDeviceComputeCapabilityPiPi11hipDevice_t"></span><span id="hipDeviceComputeCapability__iP.iP.hipDevice_t"></span><span class="target" id="group___driver_1ga0a1cf94d2b571ca3279577d5af0d1672"></span>hipError_t <code class="descname">hipDeviceComputeCapability</code><span class="sig-paren">(</span>int *<em>major</em>, int *<em>minor</em>, hipDevice_t <em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv326hipDeviceComputeCapabilityPiPi11hipDevice_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the compute capability of the device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInavlidDevice </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">major</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">minor</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">device</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicegetname">
+<h2>hipDeviceGetName<a class="headerlink" href="#hipdevicegetname" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv316hipDeviceGetNamePci11hipDevice_t">
+<span id="_CPPv216hipDeviceGetNamePci11hipDevice_t"></span><span id="hipDeviceGetName__cP.i.hipDevice_t"></span><span class="target" id="group___driver_1ga24df15e180a7b2b351cd362e5b7d2dac"></span>hipError_t <code class="descname">hipDeviceGetName</code><span class="sig-paren">(</span>char *<em>name</em>, int <em>len</em>, hipDevice_t <em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv316hipDeviceGetNamePci11hipDevice_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns an identifer string for the device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInavlidDevice </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">device</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicegetpcibusid">
+<h2>hipDeviceGetPCIBusId<a class="headerlink" href="#hipdevicegetpcibusid" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv320hipDeviceGetPCIBusIdPcii">
+<span id="_CPPv220hipDeviceGetPCIBusIdPcii"></span><span id="hipDeviceGetPCIBusId__cP.i.i"></span><span class="target" id="group___driver_1gaaa961c8ec8047903617f4245fa50256a"></span>hipError_t <code class="descname">hipDeviceGetPCIBusId</code><span class="sig-paren">(</span>char *<em>pciBusId</em>, int <em>len</em>, int <em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv320hipDeviceGetPCIBusIdPcii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a PCI Bus Id string for the device, overloaded to take int device ID. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInavlidDevice </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pciBusId</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">device</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicegetbypcibusid">
+<h2>hipDeviceGetByPCIBusId<a class="headerlink" href="#hipdevicegetbypcibusid" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv322hipDeviceGetByPCIBusIdPiPKc">
+<span id="_CPPv222hipDeviceGetByPCIBusIdPiPKc"></span><span id="hipDeviceGetByPCIBusId__iP.cCP"></span><span class="target" id="group___driver_1ga2ec307f165d576c0c673a7b1fa9b0fe4"></span>hipError_t <code class="descname">hipDeviceGetByPCIBusId</code><span class="sig-paren">(</span>int *<em>device</em>, <em class="property">const</em> char *<em>pciBusId</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv322hipDeviceGetByPCIBusIdPiPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a handle to a compute device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInavlidDevice, #hipErrorInvalidValue </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">device</span></code>: handle </li>
+<li><code class="docutils literal notranslate"><span class="pre">PCI</span></code>: Bus ID</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdevicetotalmem">
+<h2>hipDeviceTotalMem<a class="headerlink" href="#hipdevicetotalmem" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv317hipDeviceTotalMemP6size_t11hipDevice_t">
+<span id="_CPPv217hipDeviceTotalMemP6size_t11hipDevice_t"></span><span id="hipDeviceTotalMem__sP.hipDevice_t"></span><span class="target" id="group___driver_1ga8991e535d0ef1ead0524e73364623041"></span>hipError_t <code class="descname">hipDeviceTotalMem</code><span class="sig-paren">(</span>size_t *<em>bytes</em>, hipDevice_t <em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv317hipDeviceTotalMemP6size_t11hipDevice_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the total amount of memory on the device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInavlidDevice </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">bytes</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">device</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipdrivergetversion">
+<h2>hipDriverGetVersion<a class="headerlink" href="#hipdrivergetversion" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv319hipDriverGetVersionPi">
+<span id="_CPPv219hipDriverGetVersionPi"></span><span id="hipDriverGetVersion__iP"></span><span class="target" id="group___driver_1gaf6c342f52d2a29a0aca5cdd89b4dd47c"></span>hipError_t <code class="descname">hipDriverGetVersion</code><span class="sig-paren">(</span>int *<em>driverVersion</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv319hipDriverGetVersionPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the approximate HIP driver version. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInavlidValue</dd>
+<dt><strong>Warning</strong></dt>
+<dd>The HIP feature set does not correspond to an exact CUDA SDK driver revision. This function always set *driverVersion to 4 as an approximation though HIP supports some features which were introduced in later CUDA SDK revisions. HIP apps code should not rely on the driver revision number here and should use arch feature flags to test device capabilities or conditional compilation.</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___driver_1gae8b7ba34d2e11e334650aa51a4dd87ee"><span class="std std-ref">hipRuntimeGetVersion</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">driverVersion</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipruntimegetversion">
+<h2>hipRuntimeGetVersion<a class="headerlink" href="#hipruntimegetversion" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv320hipRuntimeGetVersionPi">
+<span id="_CPPv220hipRuntimeGetVersionPi"></span><span id="hipRuntimeGetVersion__iP"></span><span class="target" id="group___driver_1gae8b7ba34d2e11e334650aa51a4dd87ee"></span>hipError_t <code class="descname">hipRuntimeGetVersion</code><span class="sig-paren">(</span>int *<em>runtimeVersion</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv320hipRuntimeGetVersionPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the approximate HIP Runtime version. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>#hipSuccess, #hipErrorInavlidValue</dd>
+<dt><strong>Warning</strong></dt>
+<dd>On HIP/HCC path this function returns HIP runtime patch version however on HIP/NVCC path this function return CUDA runtime version.</dd>
+<dt><strong>See</strong></dt>
+<dd><a class="reference internal" href="#group___driver_1gaf6c342f52d2a29a0aca5cdd89b4dd47c"><span class="std std-ref">hipDriverGetVersion</span></a> </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">runtimeVersion</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmoduleload">
+<h2>hipModuleLoad<a class="headerlink" href="#hipmoduleload" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv313hipModuleLoadP11hipModule_tPKc">
+<span id="_CPPv213hipModuleLoadP11hipModule_tPKc"></span><span id="hipModuleLoad__hipModule_tP.cCP"></span><span class="target" id="group___driver_1ga31d806d976e91d36bd990ae3004d8760"></span>hipError_t <code class="descname">hipModuleLoad</code><span class="sig-paren">(</span>hipModule_t *<em>module</em>, <em class="property">const</em> char *<em>fname</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv313hipModuleLoadP11hipModule_tPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Loads code object from file into a hipModule_t. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>hipSuccess, hipErrorInvalidValue, hipErrorInvalidContext, hipErrorFileNotFound, hipErrorOutOfMemory, hipErrorSharedObjectInitFailed, hipErrorNotInitialized </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fname</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">module</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmoduleunload">
+<h2>hipModuleUnload<a class="headerlink" href="#hipmoduleunload" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv315hipModuleUnload11hipModule_t">
+<span id="_CPPv215hipModuleUnload11hipModule_t"></span><span id="hipModuleUnload__hipModule_t"></span><span class="target" id="group___driver_1gae58e345f55bb3ec13dca80d2df88e0ed"></span>hipError_t <code class="descname">hipModuleUnload</code><span class="sig-paren">(</span>hipModule_t <em>module</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv315hipModuleUnload11hipModule_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Frees the module. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>hipSuccess, hipInvalidValue module is freed and the code objects associated with it are destroyed </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">module</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmodulegetfunction">
+<h2>hipModuleGetFunction<a class="headerlink" href="#hipmodulegetfunction" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv320hipModuleGetFunctionP13hipFunction_t11hipModule_tPKc">
+<span id="_CPPv220hipModuleGetFunctionP13hipFunction_t11hipModule_tPKc"></span><span id="hipModuleGetFunction__hipFunction_tP.hipModule_t.cCP"></span><span class="target" id="group___driver_1ga9648b457bb837838cb936b417b56a65d"></span>hipError_t <code class="descname">hipModuleGetFunction</code><span class="sig-paren">(</span>hipFunction_t *<em>function</em>, hipModule_t <em>module</em>, <em class="property">const</em> char *<em>kname</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv320hipModuleGetFunctionP13hipFunction_t11hipModule_tPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Function with kname will be extracted if present in module. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>hipSuccess, hipErrorInvalidValue, hipErrorInvalidContext, hipErrorNotInitialized, hipErrorNotFound, </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">module</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">kname</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">function</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmodulegetglobal">
+<h2>hipModuleGetGlobal<a class="headerlink" href="#hipmodulegetglobal" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv318hipModuleGetGlobalP14hipDeviceptr_tP6size_t11hipModule_tPKc">
+<span id="_CPPv218hipModuleGetGlobalP14hipDeviceptr_tP6size_t11hipModule_tPKc"></span><span id="hipModuleGetGlobal__hipDeviceptr_tP.sP.hipModule_t.cCP"></span><span class="target" id="group___driver_1ga3e425a680285f495e776f096e9632c89"></span>hipError_t <code class="descname">hipModuleGetGlobal</code><span class="sig-paren">(</span>hipDeviceptr_t *<em>dptr</em>, size_t *<em>bytes</em>, hipModule_t <em>hmod</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv318hipModuleGetGlobalP14hipDeviceptr_tP6size_t11hipModule_tPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>returns device memory pointer and size of the kernel present in the module with symbol <code class="docutils literal notranslate"><span class="pre">name</span></code> </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>hipSuccess, hipErrorInvalidValue, hipErrorNotInitialized </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">dptr</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">bytes</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">hmod</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmoduleloaddata">
+<h2>hipModuleLoadData<a class="headerlink" href="#hipmoduleloaddata" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv317hipModuleLoadDataP11hipModule_tPKv">
+<span id="_CPPv217hipModuleLoadDataP11hipModule_tPKv"></span><span id="hipModuleLoadData__hipModule_tP.voidCP"></span><span class="target" id="group___driver_1gaabdbd73e952a741e861d01109c4790f3"></span>hipError_t <code class="descname">hipModuleLoadData</code><span class="sig-paren">(</span>hipModule_t *<em>module</em>, <em class="property">const</em> void *<em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv317hipModuleLoadDataP11hipModule_tPKv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>builds module from code object which resides in host memory. </p>
+<p>Image is pointer to that location.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>hipSuccess, hipErrorNotInitialized, hipErrorOutOfMemory, hipErrorNotInitialized </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">image</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">module</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmoduleloaddataex">
+<h2>hipModuleLoadDataEx<a class="headerlink" href="#hipmoduleloaddataex" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv319hipModuleLoadDataExP11hipModule_tPKvjP12hipJitOptionPPv">
+<span id="_CPPv219hipModuleLoadDataExP11hipModule_tPKvjP12hipJitOptionPPv"></span><span id="hipModuleLoadDataEx__hipModule_tP.voidCP.unsigned-i.hipJitOptionP.voidPP"></span><span class="target" id="group___driver_1ga3e70722338894f48540c7be9a136af79"></span>hipError_t <code class="descname">hipModuleLoadDataEx</code><span class="sig-paren">(</span>hipModule_t *<em>module</em>, <em class="property">const</em> void *<em>image</em>, unsigned int <em>numOptions</em>, hipJitOption *<em>options</em>, void **<em>optionValues</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv319hipModuleLoadDataExP11hipModule_tPKvjP12hipJitOptionPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>builds module from code object which resides in host memory. </p>
+<p>Image is pointer to that location. Options are not used. hipModuleLoadData is called.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>hipSuccess, hipErrorNotInitialized, hipErrorOutOfMemory, hipErrorNotInitialized </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">image</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">module</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">number</span></code>: of options </li>
+<li><code class="docutils literal notranslate"><span class="pre">options</span></code>: for JIT </li>
+<li><code class="docutils literal notranslate"><span class="pre">option</span></code>: values for JIT</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hipmodulelaunchkernel">
+<h2>hipModuleLaunchKernel<a class="headerlink" href="#hipmodulelaunchkernel" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv321hipModuleLaunchKernel13hipFunction_tjjjjjjj11hipStream_tPPvPPv">
+<span id="_CPPv221hipModuleLaunchKernel13hipFunction_tjjjjjjj11hipStream_tPPvPPv"></span><span id="hipModuleLaunchKernel__hipFunction_t.unsigned-i.unsigned-i.unsigned-i.unsigned-i.unsigned-i.unsigned-i.unsigned-i.hipStream_t.voidPP.voidPP"></span><span class="target" id="group___driver_1ga2e4de5937aa8171e9eda16c881ed0674"></span>hipError_t <code class="descname">hipModuleLaunchKernel</code><span class="sig-paren">(</span>hipFunction_t <em>f</em>, unsigned int <em>gridDimX</em>, unsigned int <em>gridDimY</em>, unsigned int <em>gridDimZ</em>, unsigned int <em>blockDimX</em>, unsigned int <em>blockDimY</em>, unsigned int <em>blockDimZ</em>, unsigned int <em>sharedMemBytes</em>, hipStream_t <em>stream</em>, void **<em>kernelParams</em>, void **<em>extra</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv321hipModuleLaunchKernel13hipFunction_tjjjjjjj11hipStream_tPPvPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>launches kernel f with launch parameters and shared memory on stream with arguments passed to kernelparams or extra </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>hipSuccess, hipInvalidDevice, hipErrorNotInitialized, hipErrorInvalidValue</dd>
+<dt><strong>Warning</strong></dt>
+<dd>kernellParams argument is not yet implemented in HIP. Please use extra instead. Please refer to hip_porting_driver_api.md for sample usage. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">f</span></code>: Kernel to launch. </li>
+<li><code class="docutils literal notranslate"><span class="pre">gridDimX</span></code>: X grid dimension specified as multiple of blockDimX. </li>
+<li><code class="docutils literal notranslate"><span class="pre">gridDimY</span></code>: Y grid dimension specified as multiple of blockDimY. </li>
+<li><code class="docutils literal notranslate"><span class="pre">gridDimZ</span></code>: Z grid dimension specified as multiple of blockDimZ. </li>
+<li><code class="docutils literal notranslate"><span class="pre">blockDimX</span></code>: X block dimensions specified in work-items </li>
+<li><code class="docutils literal notranslate"><span class="pre">blockDimY</span></code>: Y grid dimension specified in work-items </li>
+<li><code class="docutils literal notranslate"><span class="pre">blockDimZ</span></code>: Z grid dimension specified in work-items </li>
+<li><code class="docutils literal notranslate"><span class="pre">sharedMemBytes</span></code>: Amount of dynamic shared memory to allocate for this kernel. The kernel can access this with HIP_DYNAMIC_SHARED. </li>
+<li><code class="docutils literal notranslate"><span class="pre">stream</span></code>: Stream where the kernel should be dispatched. May be 0, in which case th default stream is used with associated synchronization rules. </li>
+<li><code class="docutils literal notranslate"><span class="pre">kernelParams</span></code>: </li>
+<li><code class="docutils literal notranslate"><span class="pre">extra</span></code>: Pointer to kernel arguments. These are passed directly to the kernel and must be in the memory layout and alignment expected by the kernel.</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

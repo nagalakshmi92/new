@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>HCC Profile Mode &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation_Guide/Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>HCC Profile Mode</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Programming_Guides/hcc-profile.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hcc-profile-mode">
+<span id="hcc-profile"></span><h1>HCC Profile Mode<a class="headerlink" href="#hcc-profile-mode" title="Permalink to this headline">¶</a></h1>
+<p>HCC supports low-overhead profiler to trace or summarize command timestamp information to stderr for any HCC or HIP program. Tho profiler messages are interleaved with the trace output from the application - which is handy to identify the region-of-interest and can complement deeper analysis with the CodeXL GUI Additionally, the hcc profiler requires only console mode access and can be used on machine where graphics are not available or are hard to access.</p>
+<p>Some other useful features:</p>
+<ul class="simple">
+<li>Calculates the actual bandwidth for memory transfers</li>
+<li>Identifies PeerToPeer memory copies</li>
+<li>Shows start / stop timestamps for each command (if requested)</li>
+<li>Shows barrier commands and the time they spent waiting to resolve (if requested)</li>
+</ul>
+<div class="section" id="enable-and-configure">
+<h2>Enable and configure<a class="headerlink" href="#enable-and-configure" title="Permalink to this headline">¶</a></h2>
+<p>HCC_PROFILE=1 shows a summary of kernel and data commands when hcc exits. (under development) HCC_PROFILE=2 enables a profile message after each command (kernel or data movement) completes.</p>
+<p>Additionally, the HCC_PROFILE_VERBOSE variable controls the information shown in the profile log. This is a bit-vector: 0x2 : Show start and stop timestamps for each command. 0x4 : Show the device.queue.cmdseqnum for each command. 0x8 : Show the short CPU TID for each command. (not supported) 0x10 : Show logs for barrier commands.</p>
+</div>
+<div class="section" id="sample-output">
+<h2>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="kernel-commands">
+<h3>Kernel Commands<a class="headerlink" href="#kernel-commands" title="Permalink to this headline">¶</a></h3>
+<p>This shows the simplest trace output for kernel commands with no additional verbosity flags:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ HCC_PROFILE=2 ./my-hcc-app ...
+profile:  kernel;            Im2Col;   17.8 us;
+profile:  kernel;  tg_betac_alphaab;   32.6 us;
+profile:  kernel;     MIOpenConvUni;  125.4 us;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROFILE</span><span class="p">:</span>  <span class="n">TYPE</span><span class="p">;</span>    <span class="n">KERNEL_NAME</span>     <span class="p">;</span>  <span class="n">DURATION</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This example shows profiled kernel commands with full verbose output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ HCC_PROFILE=2 HCC_PROFILE_VERBOSE=0xf ./my-hcc-app ...
+profile:  kernel;            Im2Col;   17.8 us;  94859076277181; 94859076294941; #0.3.1;
+profile:  kernel;  tg_betac_alphaab;   32.6 us;  94859537593679; 94859537626319; #0.3.2;
+profile:  kernel;     MIOpenConvUni;  125.4 us;  94860077852212; 94860077977651; #0.3.3;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROFILE</span><span class="p">:</span>  <span class="n">TYPE</span><span class="p">;</span>    <span class="n">KERNEL_NAME</span>     <span class="p">;</span>  <span class="n">DURATION</span><span class="p">;</span>  <span class="n">START</span>         <span class="p">;</span> <span class="n">STOP</span>          <span class="p">;</span> <span class="n">ID</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>PROFILE: always “profile:” to distinguish it from other output.</li>
+<li>TYPE: the command type : kernel, copy, copyslo, or barrier. The examples and descriptions in this section are all kernel commands.</li>
+<li>KERNEL_NAME: the (short) kernel name.</li>
+<li>DURATION: command duration measured in us. This is measured using the GPU timestamps and represents the command execution on the acclerator device.</li>
+<li>START: command start time in ns. (if HCC_PROFILE_VERBOSE &amp; 0x2)</li>
+<li>STOP: command stop time in ns. (if HCC_PROFILE_VERBOSE &amp; 0x2)</li>
+<li>ID: command id in device.queue.cmd format. (if HCC_PROFILE_VERBOSE &amp; 0x4). The cmdsequm is a unique mononotically increasing number per-queue, so the triple of device.queue.cmdseqnum uniquely identifies the command during the process execution.</li>
+</ul>
+</div>
+<div class="section" id="memory-copy-commands">
+<h3>Memory Copy Commands<a class="headerlink" href="#memory-copy-commands" title="Permalink to this headline">¶</a></h3>
+<p>This example shows memory copy commands with full verbose output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span><span class="p">:</span> <span class="n">copyslo</span><span class="p">;</span> <span class="n">HostToDevice_sync_slow</span><span class="p">;</span>   <span class="mf">909.2</span> <span class="n">us</span><span class="p">;</span> <span class="mi">94858703102</span><span class="p">;</span> <span class="mi">94858704012</span><span class="p">;</span> <span class="c1">#0.0.0; 2359296 bytes;  2.2 MB;   2.5 GB/s;</span>
+<span class="n">profile</span><span class="p">:</span>    <span class="n">copy</span><span class="p">;</span> <span class="n">DeviceToHost_sync_fast</span><span class="p">;</span>   <span class="mf">117.0</span> <span class="n">us</span><span class="p">;</span> <span class="mi">94858726408</span><span class="p">;</span> <span class="mi">94858726525</span><span class="p">;</span> <span class="c1">#0.0.0; 1228800 bytes;  1.2 MB;   10.0 GB/s;</span>
+<span class="n">profile</span><span class="p">:</span>    <span class="n">copy</span><span class="p">;</span> <span class="n">DeviceToHost_sync_fast</span><span class="p">;</span>     <span class="mf">9.0</span> <span class="n">us</span><span class="p">;</span> <span class="mi">94858726668</span><span class="p">;</span> <span class="mi">94858726677</span><span class="p">;</span> <span class="c1">#0.0.0; 400 bytes;      0.0 MB;   0.0 GB/s;</span>
+<span class="n">profile</span><span class="p">:</span>    <span class="n">copy</span><span class="p">;</span> <span class="n">HostToDevice_sync_fast</span><span class="p">;</span>    <span class="mf">15.2</span> <span class="n">us</span><span class="p">;</span> <span class="mi">94858727639</span><span class="p">;</span> <span class="mi">94858727654</span><span class="p">;</span> <span class="c1">#0.0.0; 9600 bytes;     0.0 MB;   0.6 GB/s;</span>
+<span class="n">profile</span><span class="p">:</span>    <span class="n">copy</span><span class="p">;</span> <span class="n">HostToDevice_async_fast</span><span class="p">;</span>  <span class="mf">131.5</span> <span class="n">us</span><span class="p">;</span> <span class="mi">94858729198</span><span class="p">;</span> <span class="mi">94858729330</span><span class="p">;</span> <span class="c1">#0.6.1; 1228800 bytes;  1.2 MB;   8.9 GB/s;</span>
+<span class="n">PROFILE</span><span class="p">:</span>  <span class="n">TYPE</span><span class="p">;</span>    <span class="n">COPY_NAME</span>             <span class="p">;</span>  <span class="n">DURATION</span><span class="p">;</span>       <span class="n">START</span><span class="p">;</span>       <span class="n">STOP</span><span class="p">;</span>  <span class="n">ID</span>    <span class="p">;</span> <span class="n">SIZE_BYTES</span><span class="p">;</span>     <span class="n">SIZE_MB</span><span class="p">;</span>  <span class="n">BANDWIDTH</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>PROFILE: always “profile:” to distinguish it from other output.</li>
+<li>TYPE: the command type : kernel, copy, copyslo,or barrier. The examples and descriptions in this section are all copy or copyslo commands.</li>
+<li><dl class="first docutils">
+<dt>COPY_NAME has 3 parts:</dt>
+<dd><ul class="first last">
+<li>Copy kind: HostToDevice, HostToHost, DeviceToHost, DeviceToDevice, or PeerToPeer. DeviceToDevice indicates the copy occurs on a single device while PeerToPeer indicates a copy between devices.</li>
+<li>Sync or Async. Synchronous copies indicate the host waits for the completion for the copy. Asynchronous copies are launched by the host without waiting for the copy to complete.</li>
+<li>Fast or Slow. Fast copies use the GPUs optimized copy routines from the hsa_amd_memory_copy routine. Slow copies typically involve unpinned host memory and can’t take the fast path.</li>
+<li>For example <a href="#id1"><span class="problematic" id="id2">`</span></a>HostToDevice_async_fast.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>DURATION: command duration measured in us. This is measured using the GPU timestamps and represents the command execution on the acclerator device.</li>
+<li>START: command start time in ns. (if HCC_PROFILE_VERBOSE &amp; 0x2)</li>
+<li>STOP: command stop time in ns. (if HCC_PROFILE_VERBOSE &amp; 0x2)</li>
+<li>ID: command id in device.queue.cmd format. (if HCC_PROFILE_VERBOSE &amp; 0x4). The cmdsequm is a unique mononotically increasing number per-queue, so the triple of device.queue.cmdseqnum uniquely identifies the command during the process execution.</li>
+<li>SIZE_BYTES: the size of the transfer, measured in bytes.</li>
+<li>SIZE_MB: the size of the transfer, measured in megabytes.</li>
+<li>BANDWIDTH: the bandwidth of the transfer, measured in GB/s.</li>
+</ul>
+</div>
+<div class="section" id="barrier-commands">
+<h3>Barrier Commands<a class="headerlink" href="#barrier-commands" title="Permalink to this headline">¶</a></h3>
+<p>Barrier commands are only enabled if HCC_PROFILE_VERBOSE 0x</p>
+<p>An example barrier command with full vebosity:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span><span class="p">:</span> <span class="n">barrier</span><span class="p">;</span> <span class="n">deps</span><span class="p">:</span><span class="mi">0</span><span class="n">_acq</span><span class="p">:</span><span class="n">none_rel</span><span class="p">:</span><span class="n">sys</span><span class="p">;</span>  <span class="mf">5.3</span> <span class="n">us</span><span class="p">;</span>   <span class="mi">94858731419410</span><span class="p">;</span> <span class="mi">94858731424690</span><span class="p">;</span> <span class="c1">#0.0.2;</span>
+<span class="n">PROFILE</span><span class="p">:</span>  <span class="n">TYPE</span><span class="p">;</span>   <span class="n">BARRIER_NAME</span>           <span class="p">;</span>  <span class="n">DURATION</span><span class="p">;</span> <span class="n">START</span>         <span class="p">;</span> <span class="n">STOP</span>          <span class="p">;</span> <span class="n">ID</span>    <span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>PROFILE: always “profile:” to distinguish it from other output.</li>
+<li>TYPE: the command type: either kernel, copy, copyslo, or barrier. The examples and descriptions in this section are all copy commands. Copy indicates that the runtime used a call to the fast hsa memory copy routine while copyslo indicates that the copy was implemented with staging buffers or another less optimal path. copy computes the commands using device-side timestamps while copyslo computes the bandwidth based on host timestamps.</li>
+<li><dl class="first docutils">
+<dt>BARRIER_NAME has 3 parts:</dt>
+<dd><ul class="first last">
+<li>deps:# - the number of input dependencies into the barrier packet.</li>
+<li>acq: - the acquire fence for the barrier. May be none, acc(accelerator or agent), sys(system). See HSA AQL spec for additional information.</li>
+<li>rel: - the release fence for the barrier. May be none, acc(accelerator or agent), sys(system). See HSA AQL spec for additional information.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>DURATION: command duration measured in us. This is measured using the GPU timestamps from the time the barrier reaches the head of the queue to when it executes. Thus this includes the time to wait for all input dependencies, plus the previous command to complete, plus any fence operations performed by the barrier.</li>
+<li>START: command start time in ns. (if HCC_PROFILE_VERBOSE &amp; 0x2)</li>
+<li>STOP: command stop time in ns. (if HCC_PROFILE_VERBOSE &amp; 0x2)</li>
+<li>ID: the command id in device.queue.cmd format. (if HCC_PROFILE_VERBOSE &amp; 0x4). The cmdsequm is a unique mononotically increasing number per-queue, so the triple of device.queue.cmdseqnum uniquely identifies the command during the process execution.</li>
+</ul>
+</div>
+<div class="section" id="overhead">
+<h3>Overhead<a class="headerlink" href="#overhead" title="Permalink to this headline">¶</a></h3>
+<p>The hcc profiler does not add any additional synchronization between commands or queues. Profile information is recorded when a command is deleted. The profile mode will allocate a signal for each command to record the timestamp information. This can add 1-2 us to the overall program execution for command which do not already use a completion signal. However, the command duration (start-stop) is still accurate. Trace mode will generate strings to stderr which will likely impact the overall application exection time. However, the GPU duration and timestamps are still valid. Summary mode accumulates statistics into an array and should have little impact on application execution time.</p>
+</div>
+<div class="section" id="additional-details-and-tips">
+<h3>Additional Details and tips<a class="headerlink" href="#additional-details-and-tips" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Commands are logged in the order they are removed from the internal HCC command tracker. Typically this is the same order that commands are dispatched, though sometimes these may diverge. For example, commands from different devices,queues, or cpu threads may be interleaved on the hcc trace display to stderr. If a single view in timeline order is required, enable and sort by the profiler START timestamps (HCC_PROFILE_VERBOSE=0x2)</li>
+<li>If the application keeps a reference to a completion_future, then the command timestamp may be reported significantly after it occurs.</li>
+<li>HCC_PROFILE has an (untested) feature to write to a log file.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

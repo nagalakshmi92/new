@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>HCC : An open source C++ compiler for heterogeneous devices &mdash; ReadTheDocs-Breathe 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ReadTheDocs-Breathe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Current_Release_Notes/Current-Release-Notes.html">Current Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation-Guide.html">ROCm Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Programming_Guides/Programming-Guides.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_GPU_Tunning_Guides/ROCm-GPU-Tunning-Guides.html">ROCm GPU Tuning Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GCN_ISA_Manuals/GCN-ISA-Manuals.html">GCN ISA Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_API_References/ROCm-API-References.html">ROCm API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Tools/ROCm-Tools.html">ROCm Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Libraries/ROCm_Libraries.html">ROCm Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Compiler_SDK/ROCm-Compiler-SDK.html">ROCm Compiler SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_System_Managment/ROCm-System-Managment.html">ROCm System Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Virtualization_Containers/ROCm-Virtualization-&amp;-Containers.html">ROCm Virtualization &amp; Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote_Device_Programming/Remote-Device-Programming.html">Remote Device Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_learning/Deep-learning.html">Deep Learning on ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Other_Solutions/Other-Solutions.html">System Level Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ROCm_Glossary/ROCm-Glossary.html">ROCm Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs-Breathe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>HCC : An open source C++ compiler for heterogeneous devices</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Installation_Guide/HCC-Compiler.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hcc-an-open-source-c-compiler-for-heterogeneous-devices">
+<span id="hcc-compiler"></span><h1>HCC : An open source C++ compiler for heterogeneous devices<a class="headerlink" href="#hcc-an-open-source-c-compiler-for-heterogeneous-devices" title="Permalink to this headline">¶</a></h1>
+<p>This repository hosts the HCC compiler implementation project. The goal is to implement a compiler that takes a program that conforms to a parallel programming standard such as C++ AMP, HC, C++ 17 ParallelSTL, or OpenMP, and transforms it into the AMD GCN ISA.</p>
+<p>The project is based on LLVM+CLANG. For more information, please visit the <a class="reference external" href="https://github.com/RadeonOpenCompute/hcc/wiki">hcc wiki:</a></p>
+<p><a class="reference external" href="https://github.com/RadeonOpenCompute/hcc/wiki">https://github.com/RadeonOpenCompute/hcc/wiki</a></p>
+<div class="section" id="download-hcc">
+<h2>Download HCC<a class="headerlink" href="#download-hcc" title="Permalink to this headline">¶</a></h2>
+<p>The project now employs git submodules to manage external components it depends upon. It it advised to add –recursive when you clone the project so all submodules are fetched automatically.</p>
+<p>For example:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># automatically fetches all submodules</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recursive</span> <span class="o">-</span><span class="n">b</span> <span class="n">clang_tot_upgrade</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RadeonOpenCompute</span><span class="o">/</span><span class="n">hcc</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>For more information about git submodules, please refer to <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">git documentation</a>.</p>
+</div>
+<div class="section" id="build-hcc-from-source">
+<h2>Build HCC from source<a class="headerlink" href="#build-hcc-from-source" title="Permalink to this headline">¶</a></h2>
+<p>To configure and build HCC from source, use the following steps:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="n">build</span><span class="p">;</span> <span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">..</span>
+<span class="n">make</span>
+</pre></div>
+</div>
+<p>To install it, use the following steps:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-hcc">
+<h2>Use HCC<a class="headerlink" href="#use-hcc" title="Permalink to this headline">¶</a></h2>
+<p>For C++AMP source codes:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>hcc `clamp-config --cxxflags --ldflags` foo.cpp
+</pre></div>
+</div>
+<p><strong>WARNING: From ROCm version 2.0 onwards C++AMP is no longer available in HCC.</strong></p>
+<p>For HC source codes:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>hcc `hcc-config --cxxflags --ldflags` foo.cpp
+</pre></div>
+</div>
+<p>In case you build HCC from source and want to use the compiled binaries directly in the build directory:</p>
+<p>For C++AMP source codes:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span># notice the --build flag
+bin/hcc `bin/clamp-config --build --cxxflags --ldflags` foo.cpp
+</pre></div>
+</div>
+<p><strong>WARNING: From ROCm version 2.0 onwards C++AMP is no longer available in HCC.</strong></p>
+<p>For HC source codes:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span># notice the --build flag
+bin/hcc `bin/hcc-config --build --cxxflags --ldflags` foo.cpp
+</pre></div>
+</div>
+</div>
+<div class="section" id="multiple-isa">
+<h2>Multiple ISA<a class="headerlink" href="#multiple-isa" title="Permalink to this headline">¶</a></h2>
+<p>HCC now supports having multiple GCN ISAs in one executable file. You can do it in different ways:</p>
+<div class="section" id="use-amdgpu-target-command-line-option">
+<h3>use –amdgpu-target= command line option<a class="headerlink" href="#use-amdgpu-target-command-line-option" title="Permalink to this headline">¶</a></h3>
+<p>It’s possible to specify multiple <strong>–amdgpu-target=</strong>  option. Example:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span># ISA for Hawaii(gfx701), Carrizo(gfx801), Tonga(gfx802) and Fiji(gfx803) would
+# be produced
+hcc `hcc-config --cxxflags --ldflags` \
+    --amdgpu-target=gfx701 \
+    --amdgpu-target=gfx801 \
+    --amdgpu-target=gfx802 \
+    --amdgpu-target=gfx803 \
+    foo.cpp
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-hcc-amdgpu-target-env-var">
+<h3>use HCC_AMDGPU_TARGET env var<a class="headerlink" href="#use-hcc-amdgpu-target-env-var" title="Permalink to this headline">¶</a></h3>
+<p>Use , to delimit each AMDGPU target in HCC. Example:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>export HCC_AMDGPU_TARGET=gfx701,gfx801,gfx802,gfx803
+# ISA for Hawaii(gfx701), Carrizo(gfx801), Tonga(gfx802) and Fiji(gfx803) would
+# be produced
+hcc `hcc-config --cxxflags --ldflags` foo.cpp
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-hcc-use-cmake-hsa-amdgpu-gpu-target-variable">
+<h3>configure HCC use CMake HSA_AMDGPU_GPU_TARGET variable<a class="headerlink" href="#configure-hcc-use-cmake-hsa-amdgpu-gpu-target-variable" title="Permalink to this headline">¶</a></h3>
+<p>If you build HCC from source, it’s possible to configure it to automatically produce multiple ISAs via HSA_AMDGPU_GPU_TARGET CMake variable.</p>
+<p>Use ; to delimit each AMDGPU target. Example:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ISA for Hawaii(gfx701), Carrizo(gfx801), Tonga(gfx802) and Fiji(gfx803) would</span>
+<span class="c1"># be produced by default</span>
+<span class="n">cmake</span> \
+    <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> \
+    <span class="o">-</span><span class="n">DROCM_DEVICE_LIB_DIR</span><span class="o">=~</span><span class="n">hcc</span><span class="o">/</span><span class="n">ROCm</span><span class="o">-</span><span class="n">Device</span><span class="o">-</span><span class="n">Libs</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">lib</span> \
+    <span class="o">-</span><span class="n">DHSA_AMDGPU_GPU_TARGET</span><span class="o">=</span><span class="s2">&quot;gfx701;gfx801;gfx802;gfx803&quot;</span> \
+    <span class="o">../</span><span class="n">hcc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="codexl-activity-logger">
+<h2>CodeXL Activity Logger<a class="headerlink" href="#codexl-activity-logger" title="Permalink to this headline">¶</a></h2>
+<p>To enable the <a class="reference external" href="https://github.com/RadeonOpenCompute/ROCm-Profiler/tree/master/CXLActivityLogger">CodeXL Activity Logger</a>, use the USE_CODEXL_ACTIVITY_LOGGER environment variable.</p>
+<p>Configure the build in the following way:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> \
+    <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> \
+    <span class="o">-</span><span class="n">DHSA_AMDGPU_GPU_TARGET</span><span class="o">=&lt;</span><span class="n">AMD</span> <span class="n">GPU</span> <span class="n">ISA</span> <span class="n">version</span> <span class="n">string</span><span class="o">&gt;</span> \
+    <span class="o">-</span><span class="n">DROCM_DEVICE_LIB_DIR</span><span class="o">=&lt;</span><span class="n">location</span> <span class="n">of</span> <span class="n">the</span> <span class="n">ROCm</span><span class="o">-</span><span class="n">Device</span><span class="o">-</span><span class="n">Libs</span> <span class="n">bitcode</span><span class="o">&gt;</span> \
+    <span class="o">-</span><span class="n">DUSE_CODEXL_ACTIVITY_LOGGER</span><span class="o">=</span><span class="mi">1</span> \
+    <span class="o">&lt;</span><span class="n">ToT</span> <span class="n">HCC</span> <span class="n">checkout</span> <span class="n">directory</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>In your application compiled using hcc, include the CodeXL Activity Logger header:</p>
+<div class="code cpp highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;CXLActivityLogger.h&gt;</span>
+</pre></div>
+</div>
+<p>For information about the usage of the Activity Logger for profiling, please refer to its <a class="reference external" href="https://github.com/RadeonOpenCompute/ROCm-Profiler/blob/master/CXLActivityLogger/doc/AMDTActivityLogger.pdf">documentation</a>.</p>
+</div>
+<div class="section" id="hcc-with-thinlto-linking">
+<h2>HCC with ThinLTO Linking<a class="headerlink" href="#hcc-with-thinlto-linking" title="Permalink to this headline">¶</a></h2>
+<p>To enable the ThinLTO link time, use the KMTHINLTO environment variable.</p>
+<p>Set up your environment in the following way:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">KMTHINLTO</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<div class="section" id="thinlto-phase-1-implemented">
+<h3>ThinLTO Phase 1 - Implemented<a class="headerlink" href="#thinlto-phase-1-implemented" title="Permalink to this headline">¶</a></h3>
+<p>For applications compiled using hcc, ThinLTO could significantly improve link-time performance. This implementation will maintain kernels in their .bc file format, create module-summaries for each, perform llvm-lto’s cross-module function importing and then perform clamp-device (which uses opt and llc tools) on each of the kernel files. These files are linked with lld into one .hsaco per target specified.</p>
+</div>
+<div class="section" id="thinlto-phase-2-under-development">
+<h3>ThinLTO Phase 2 - Under development<a class="headerlink" href="#thinlto-phase-2-under-development" title="Permalink to this headline">¶</a></h3>
+<p>This ThinLTO implementation which will use llvm-lto LLVM tool to replace clamp-device bash script. It adds an optllc option into ThinLTOGenerator, which will perform in-program opt and codegen in parallel.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Thomas Edvalson.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
